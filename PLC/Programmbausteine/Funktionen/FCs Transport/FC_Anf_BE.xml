@@ -1,0 +1,4644 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Req_GO_Ausfahrt" Datatype="Bool" />
+    <Member Name="Req_GO_Aufgabe" Datatype="Bool" />
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut">
+    <Member Name="Req_WR02_IN" Datatype="Bool" />
+    <Member Name="Req_WR02_OUT" Datatype="Bool" />
+    <Member Name="Req_WR03_IN" Datatype="Bool" />
+    <Member Name="Req_WR03_OUT" Datatype="Bool" />
+  </Section>
+  <Section Name="Temp">
+    <Member Name="alles_frei" Datatype="Bool" />
+    <Member Name="Korb_in_Anlage" Datatype="Bool" />
+    <Member Name="BE1_inA" Datatype="Bool" />
+    <Member Name="BE1_outA" Datatype="Bool" />
+    <Member Name="BE2_inA" Datatype="Bool" />
+    <Member Name="BE2_outA" Datatype="Bool" />
+    <Member Name="BE3_inA" Datatype="Bool" />
+    <Member Name="BE3_outA" Datatype="Bool" />
+    <Member Name="BE4_inA" Datatype="Bool" />
+    <Member Name="BE4_outA" Datatype="Bool" />
+    <Member Name="BE5_inA" Datatype="Bool" />
+    <Member Name="BE5_outA" Datatype="Bool" />
+    <Member Name="BE6_inA" Datatype="Bool" />
+    <Member Name="BE6_outA" Datatype="Bool" />
+    <Member Name="links_ok" Datatype="Bool" />
+    <Member Name="rechts_ok" Datatype="Bool" />
+    <Member Name="WT_DB_Nr" Datatype="Word" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>FC_Anf_BE</Name>
+      <Namespace />
+      <Number>31</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Hat was zu tun</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Token Text="IF" UId="24" />
+  <Blank UId="25" />
+  <Token Text="(" UId="26" />
+  <Access Scope="LocalVariable" UId="27">
+    <Symbol UId="28">
+      <Component Name="Req_WR02_IN" UId="29" />
+    </Symbol>
+  </Access>
+  <Blank UId="30" />
+  <Token Text="OR" UId="31" />
+  <Blank UId="32" />
+  <Access Scope="LocalVariable" UId="33">
+    <Symbol UId="34">
+      <Component Name="Req_WR02_OUT" UId="35" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="36" />
+  <Blank UId="37" />
+  <Token Text="OR" UId="38" />
+  <Blank UId="39" />
+  <Token Text="(" UId="40" />
+  <Access Scope="LocalVariable" UId="41">
+    <Symbol UId="42">
+      <Component Name="Req_WR03_IN" UId="43" />
+    </Symbol>
+  </Access>
+  <Blank UId="44" />
+  <Token Text="OR" UId="45" />
+  <Blank UId="46" />
+  <Access Scope="LocalVariable" UId="47">
+    <Symbol UId="48">
+      <Component Name="Req_WR03_OUT" UId="49" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="50" />
+  <Blank UId="51" />
+  <Token Text="THEN" UId="52" />
+  <NewLine UId="53" />
+  <Blank Num="4" UId="54" />
+  <Token Text="RETURN" UId="55" />
+  <Token Text=";" UId="56" />
+  <NewLine UId="57" />
+  <Token Text="END_IF" UId="58" />
+  <Token Text=";" UId="59" />
+  <NewLine UId="60" />
+  <LineComment UId="61">
+    <Text UId="62"> TW hat Befehl</Text>
+  </LineComment>
+  <NewLine UId="63" />
+  <Token Text="IF" UId="64" />
+  <Blank UId="65" />
+  <Access Scope="GlobalVariable" UId="66">
+    <Symbol UId="67">
+      <Component Name="DB_POS" UId="68">
+        <BooleanAttribute Name="HasQuotes" UId="69">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="70" />
+      <Component Name="POS" UId="71">
+        <Token Text="[" UId="72" />
+        <Access Scope="LiteralConstant" UId="73">
+          <Constant UId="74">
+            <ConstantValue UId="76">25</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="77" />
+      </Component>
+      <Token Text="." UId="78" />
+      <Component Name="Quelle" UId="79" />
+    </Symbol>
+  </Access>
+  <Blank UId="80" />
+  <Token Text="OR" UId="81" />
+  <Blank UId="82" />
+  <Access Scope="GlobalVariable" UId="83">
+    <Symbol UId="84">
+      <Component Name="DB_POS" UId="85">
+        <BooleanAttribute Name="HasQuotes" UId="86">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="87" />
+      <Component Name="POS" UId="88">
+        <Token Text="[" UId="89" />
+        <Access Scope="LiteralConstant" UId="90">
+          <Constant UId="91">
+            <ConstantValue UId="93">25</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="94" />
+      </Component>
+      <Token Text="." UId="95" />
+      <Component Name="Ziel" UId="96" />
+    </Symbol>
+  </Access>
+  <Blank UId="97" />
+  <Token Text="OR" UId="98" />
+  <Blank UId="99" />
+  <Access Scope="GlobalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="DB_POS" UId="102">
+        <BooleanAttribute Name="HasQuotes" UId="103">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="104" />
+      <Component Name="POS" UId="105">
+        <Token Text="[" UId="106" />
+        <Access Scope="LiteralConstant" UId="107">
+          <Constant UId="108">
+            <ConstantValue UId="110">26</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="111" />
+      </Component>
+      <Token Text="." UId="112" />
+      <Component Name="Quelle" UId="113" />
+    </Symbol>
+  </Access>
+  <Blank UId="114" />
+  <Token Text="OR" UId="115" />
+  <Blank UId="116" />
+  <Access Scope="GlobalVariable" UId="117">
+    <Symbol UId="118">
+      <Component Name="DB_POS" UId="119">
+        <BooleanAttribute Name="HasQuotes" UId="120">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="121" />
+      <Component Name="POS" UId="122">
+        <Token Text="[" UId="123" />
+        <Access Scope="LiteralConstant" UId="124">
+          <Constant UId="125">
+            <ConstantValue UId="127">26</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="128" />
+      </Component>
+      <Token Text="." UId="129" />
+      <Component Name="Ziel" UId="130" />
+    </Symbol>
+  </Access>
+  <Blank UId="131" />
+  <Token Text="OR" UId="132" />
+  <NewLine UId="133" />
+  <Blank Num="4" UId="134" />
+  <Access Scope="GlobalVariable" UId="135">
+    <Symbol UId="136">
+      <Component Name="DB_POS" UId="137">
+        <BooleanAttribute Name="HasQuotes" UId="138">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="139" />
+      <Component Name="POS" UId="140">
+        <Token Text="[" UId="141" />
+        <Access Scope="LiteralConstant" UId="142">
+          <Constant UId="143">
+            <ConstantValue UId="145">27</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="146" />
+      </Component>
+      <Token Text="." UId="147" />
+      <Component Name="Quelle" UId="148" />
+    </Symbol>
+  </Access>
+  <Blank UId="149" />
+  <Token Text="OR" UId="150" />
+  <Blank UId="151" />
+  <Access Scope="GlobalVariable" UId="152">
+    <Symbol UId="153">
+      <Component Name="DB_POS" UId="154">
+        <BooleanAttribute Name="HasQuotes" UId="155">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="156" />
+      <Component Name="POS" UId="157">
+        <Token Text="[" UId="158" />
+        <Access Scope="LiteralConstant" UId="159">
+          <Constant UId="160">
+            <ConstantValue UId="162">27</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="163" />
+      </Component>
+      <Token Text="." UId="164" />
+      <Component Name="Ziel" UId="165" />
+    </Symbol>
+  </Access>
+  <Blank UId="166" />
+  <Token Text="OR" UId="167" />
+  <Blank UId="168" />
+  <Access Scope="GlobalVariable" UId="169">
+    <Symbol UId="170">
+      <Component Name="DB_POS" UId="171">
+        <BooleanAttribute Name="HasQuotes" UId="172">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="173" />
+      <Component Name="POS" UId="174">
+        <Token Text="[" UId="175" />
+        <Access Scope="LiteralConstant" UId="176">
+          <Constant UId="177">
+            <ConstantValue UId="179">28</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="180" />
+      </Component>
+      <Token Text="." UId="181" />
+      <Component Name="Quelle" UId="182" />
+    </Symbol>
+  </Access>
+  <Blank UId="183" />
+  <Token Text="OR" UId="184" />
+  <Blank UId="185" />
+  <Access Scope="GlobalVariable" UId="186">
+    <Symbol UId="187">
+      <Component Name="DB_POS" UId="188">
+        <BooleanAttribute Name="HasQuotes" UId="189">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="190" />
+      <Component Name="POS" UId="191">
+        <Token Text="[" UId="192" />
+        <Access Scope="LiteralConstant" UId="193">
+          <Constant UId="194">
+            <ConstantValue UId="196">28</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="197" />
+      </Component>
+      <Token Text="." UId="198" />
+      <Component Name="Ziel" UId="199" />
+    </Symbol>
+  </Access>
+  <Blank UId="200" />
+  <Token Text="OR" UId="201" />
+  <NewLine UId="202" />
+  <Blank Num="4" UId="203" />
+  <Access Scope="GlobalVariable" UId="204">
+    <Symbol UId="205">
+      <Component Name="DB_POS" UId="206">
+        <BooleanAttribute Name="HasQuotes" UId="207">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="208" />
+      <Component Name="POS" UId="209">
+        <Token Text="[" UId="210" />
+        <Access Scope="LiteralConstant" UId="211">
+          <Constant UId="212">
+            <ConstantValue UId="214">29</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="215" />
+      </Component>
+      <Token Text="." UId="216" />
+      <Component Name="Quelle" UId="217" />
+    </Symbol>
+  </Access>
+  <Blank UId="218" />
+  <Token Text="OR" UId="219" />
+  <Blank UId="220" />
+  <Access Scope="GlobalVariable" UId="221">
+    <Symbol UId="222">
+      <Component Name="DB_POS" UId="223">
+        <BooleanAttribute Name="HasQuotes" UId="224">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="225" />
+      <Component Name="POS" UId="226">
+        <Token Text="[" UId="227" />
+        <Access Scope="LiteralConstant" UId="228">
+          <Constant UId="229">
+            <ConstantValue UId="231">29</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="232" />
+      </Component>
+      <Token Text="." UId="233" />
+      <Component Name="Ziel" UId="234" />
+    </Symbol>
+  </Access>
+  <Blank UId="235" />
+  <Token Text="OR" UId="236" />
+  <Blank UId="237" />
+  <Access Scope="GlobalVariable" UId="238">
+    <Symbol UId="239">
+      <Component Name="DB_POS" UId="240">
+        <BooleanAttribute Name="HasQuotes" UId="241">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="242" />
+      <Component Name="POS" UId="243">
+        <Token Text="[" UId="244" />
+        <Access Scope="LiteralConstant" UId="245">
+          <Constant UId="246">
+            <ConstantValue UId="248">30</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="249" />
+      </Component>
+      <Token Text="." UId="250" />
+      <Component Name="Quelle" UId="251" />
+    </Symbol>
+  </Access>
+  <Blank UId="252" />
+  <Token Text="OR" UId="253" />
+  <Blank UId="254" />
+  <Access Scope="GlobalVariable" UId="255">
+    <Symbol UId="256">
+      <Component Name="DB_POS" UId="257">
+        <BooleanAttribute Name="HasQuotes" UId="258">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="259" />
+      <Component Name="POS" UId="260">
+        <Token Text="[" UId="261" />
+        <Access Scope="LiteralConstant" UId="262">
+          <Constant UId="263">
+            <ConstantValue UId="265">30</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="266" />
+      </Component>
+      <Token Text="." UId="267" />
+      <Component Name="Ziel" UId="268" />
+    </Symbol>
+  </Access>
+  <Blank UId="269" />
+  <Token Text="THEN" UId="270" />
+  <NewLine UId="271" />
+  <Blank Num="4" UId="272" />
+  <Token Text="RETURN" UId="273" />
+  <Token Text=";" UId="274" />
+  <NewLine UId="275" />
+  <Token Text="END_IF" UId="276" />
+  <Token Text=";" UId="277" />
+  <NewLine Num="2" UId="278" />
+  <LineComment UId="279">
+    <Text UId="280"> Kompleett leer</Text>
+  </LineComment>
+  <NewLine UId="281" />
+  <Access Scope="LocalVariable" UId="282">
+    <Symbol UId="283">
+      <Component Name="alles_frei" UId="284" />
+    </Symbol>
+  </Access>
+  <Blank UId="285" />
+  <Token Text=":=" UId="286" />
+  <Blank UId="287" />
+  <Token Text="NOT" UId="288" />
+  <Blank UId="289" />
+  <Access Scope="GlobalVariable" UId="290">
+    <Symbol UId="291">
+      <Component Name="DB_BE_Stand" UId="292">
+        <BooleanAttribute Name="HasQuotes" UId="293">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="294" />
+      <Component Name="Stand" UId="295">
+        <Token Text="[" UId="296" />
+        <Access Scope="LiteralConstant" UId="297">
+          <Constant UId="298">
+            <ConstantValue UId="300">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="301" />
+      </Component>
+      <Token Text="." UId="302" />
+      <Component Name="IN_Belegt" UId="303" />
+    </Symbol>
+  </Access>
+  <Blank UId="304" />
+  <Token Text="AND" UId="305" />
+  <Blank UId="306" />
+  <Token Text="NOT" UId="307" />
+  <Blank UId="308" />
+  <Access Scope="GlobalVariable" UId="309">
+    <Symbol UId="310">
+      <Component Name="DB_BE_Stand" UId="311">
+        <BooleanAttribute Name="HasQuotes" UId="312">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="313" />
+      <Component Name="Stand" UId="314">
+        <Token Text="[" UId="315" />
+        <Access Scope="LiteralConstant" UId="316">
+          <Constant UId="317">
+            <ConstantValue UId="319">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="320" />
+      </Component>
+      <Token Text="." UId="321" />
+      <Component Name="IN_Belegt" UId="322" />
+    </Symbol>
+  </Access>
+  <Blank UId="323" />
+  <Token Text="AND" UId="324" />
+  <NewLine UId="325" />
+  <Token Text="NOT" UId="326" />
+  <Blank UId="327" />
+  <Access Scope="GlobalVariable" UId="328">
+    <Symbol UId="329">
+      <Component Name="DB_BE_Stand" UId="330">
+        <BooleanAttribute Name="HasQuotes" UId="331">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="332" />
+      <Component Name="Stand" UId="333">
+        <Token Text="[" UId="334" />
+        <Access Scope="LiteralConstant" UId="335">
+          <Constant UId="336">
+            <ConstantValue UId="338">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="339" />
+      </Component>
+      <Token Text="." UId="340" />
+      <Component Name="IN_Belegt" UId="341" />
+    </Symbol>
+  </Access>
+  <Blank UId="342" />
+  <Token Text="AND" UId="343" />
+  <Blank UId="344" />
+  <Token Text="NOT" UId="345" />
+  <Blank UId="346" />
+  <Access Scope="GlobalVariable" UId="347">
+    <Symbol UId="348">
+      <Component Name="DB_BE_Stand" UId="349">
+        <BooleanAttribute Name="HasQuotes" UId="350">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="351" />
+      <Component Name="Stand" UId="352">
+        <Token Text="[" UId="353" />
+        <Access Scope="LiteralConstant" UId="354">
+          <Constant UId="355">
+            <ConstantValue UId="357">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="358" />
+      </Component>
+      <Token Text="." UId="359" />
+      <Component Name="IN_Belegt" UId="360" />
+    </Symbol>
+  </Access>
+  <Blank UId="361" />
+  <Token Text="AND" UId="362" />
+  <NewLine UId="363" />
+  <Token Text="NOT" UId="364" />
+  <Blank UId="365" />
+  <Access Scope="GlobalVariable" UId="366">
+    <Symbol UId="367">
+      <Component Name="DB_BE_Stand" UId="368">
+        <BooleanAttribute Name="HasQuotes" UId="369">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="370" />
+      <Component Name="Stand" UId="371">
+        <Token Text="[" UId="372" />
+        <Access Scope="LiteralConstant" UId="373">
+          <Constant UId="374">
+            <ConstantValue UId="376">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="377" />
+      </Component>
+      <Token Text="." UId="378" />
+      <Component Name="IN_Belegt" UId="379" />
+    </Symbol>
+  </Access>
+  <Blank UId="380" />
+  <Token Text="AND" UId="381" />
+  <Blank UId="382" />
+  <Token Text="NOT" UId="383" />
+  <Blank UId="384" />
+  <Access Scope="GlobalVariable" UId="385">
+    <Symbol UId="386">
+      <Component Name="DB_BE_Stand" UId="387">
+        <BooleanAttribute Name="HasQuotes" UId="388">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="389" />
+      <Component Name="Stand" UId="390">
+        <Token Text="[" UId="391" />
+        <Access Scope="LiteralConstant" UId="392">
+          <Constant UId="393">
+            <ConstantValue UId="395">6</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="396" />
+      </Component>
+      <Token Text="." UId="397" />
+      <Component Name="IN_Belegt" UId="398" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="399" />
+  <NewLine UId="400" />
+  <LineComment UId="401">
+    <Text UId="402"> mindestens 1 Korb in der Anlage</Text>
+  </LineComment>
+  <NewLine UId="403" />
+  <Access Scope="LocalVariable" UId="404">
+    <Symbol UId="405">
+      <Component Name="Korb_in_Anlage" UId="406" />
+    </Symbol>
+  </Access>
+  <Blank UId="407" />
+  <Token Text=":=" UId="408" />
+  <Blank UId="409" />
+  <Token Text="(" UId="410" />
+  <Access Scope="GlobalVariable" UId="411">
+    <Symbol UId="412">
+      <Component Name="DB_POS" UId="413">
+        <BooleanAttribute Name="HasQuotes" UId="414">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="415" />
+      <Component Name="POS" UId="416">
+        <Token Text="[" UId="417" />
+        <Access Scope="LiteralConstant" UId="418">
+          <Constant UId="419">
+            <ConstantValue UId="421">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="422" />
+      </Component>
+      <Token Text="." UId="423" />
+      <Component Name="next_WT" UId="424" />
+    </Symbol>
+  </Access>
+  <Blank UId="425" />
+  <Token Text="+" UId="426" />
+  <Blank UId="427" />
+  <Access Scope="GlobalVariable" UId="428">
+    <Symbol UId="429">
+      <Component Name="DB_POS" UId="430">
+        <BooleanAttribute Name="HasQuotes" UId="431">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="432" />
+      <Component Name="POS" UId="433">
+        <Token Text="[" UId="434" />
+        <Access Scope="LiteralConstant" UId="435">
+          <Constant UId="436">
+            <ConstantValue UId="438">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="439" />
+      </Component>
+      <Token Text="." UId="440" />
+      <Component Name="next_WT" UId="441" />
+    </Symbol>
+  </Access>
+  <Blank UId="442" />
+  <Token Text="+" UId="443" />
+  <Blank UId="444" />
+  <Access Scope="GlobalVariable" UId="445">
+    <Symbol UId="446">
+      <Component Name="DB_POS" UId="447">
+        <BooleanAttribute Name="HasQuotes" UId="448">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="449" />
+      <Component Name="POS" UId="450">
+        <Token Text="[" UId="451" />
+        <Access Scope="LiteralConstant" UId="452">
+          <Constant UId="453">
+            <ConstantValue UId="455">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="456" />
+      </Component>
+      <Token Text="." UId="457" />
+      <Component Name="next_WT" UId="458" />
+    </Symbol>
+  </Access>
+  <Blank UId="459" />
+  <Token Text="+" UId="460" />
+  <Blank UId="461" />
+  <Access Scope="GlobalVariable" UId="462">
+    <Symbol UId="463">
+      <Component Name="DB_POS" UId="464">
+        <BooleanAttribute Name="HasQuotes" UId="465">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="466" />
+      <Component Name="POS" UId="467">
+        <Token Text="[" UId="468" />
+        <Access Scope="LiteralConstant" UId="469">
+          <Constant UId="470">
+            <ConstantValue UId="472">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="473" />
+      </Component>
+      <Token Text="." UId="474" />
+      <Component Name="next_WT" UId="475" />
+    </Symbol>
+  </Access>
+  <Blank UId="476" />
+  <Token Text="+" UId="477" />
+  <Blank UId="478" />
+  <Access Scope="GlobalVariable" UId="479">
+    <Symbol UId="480">
+      <Component Name="DB_POS" UId="481">
+        <BooleanAttribute Name="HasQuotes" UId="482">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="483" />
+      <Component Name="POS" UId="484">
+        <Token Text="[" UId="485" />
+        <Access Scope="LiteralConstant" UId="486">
+          <Constant UId="487">
+            <ConstantValue UId="489">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="490" />
+      </Component>
+      <Token Text="." UId="491" />
+      <Component Name="next_WT" UId="492" />
+    </Symbol>
+  </Access>
+  <Blank UId="493" />
+  <Token Text="+" UId="494" />
+  <Blank UId="495" />
+  <Access Scope="GlobalVariable" UId="496">
+    <Symbol UId="497">
+      <Component Name="DB_POS" UId="498">
+        <BooleanAttribute Name="HasQuotes" UId="499">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="500" />
+      <Component Name="POS" UId="501">
+        <Token Text="[" UId="502" />
+        <Access Scope="LiteralConstant" UId="503">
+          <Constant UId="504">
+            <ConstantValue UId="506">6</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="507" />
+      </Component>
+      <Token Text="." UId="508" />
+      <Component Name="next_WT" UId="509" />
+    </Symbol>
+  </Access>
+  <NewLine UId="510" />
+  <Blank Num="4" UId="511" />
+  <Token Text="+" UId="512" />
+  <Blank UId="513" />
+  <Access Scope="GlobalVariable" UId="514">
+    <Symbol UId="515">
+      <Component Name="DB_POS" UId="516">
+        <BooleanAttribute Name="HasQuotes" UId="517">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="518" />
+      <Component Name="POS" UId="519">
+        <Token Text="[" UId="520" />
+        <Access Scope="LiteralConstant" UId="521">
+          <Constant UId="522">
+            <ConstantValue UId="524">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="525" />
+      </Component>
+      <Token Text="." UId="526" />
+      <Component Name="next_WT" UId="527" />
+    </Symbol>
+  </Access>
+  <Blank UId="528" />
+  <Token Text="+" UId="529" />
+  <Blank UId="530" />
+  <Access Scope="GlobalVariable" UId="531">
+    <Symbol UId="532">
+      <Component Name="DB_POS" UId="533">
+        <BooleanAttribute Name="HasQuotes" UId="534">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="535" />
+      <Component Name="POS" UId="536">
+        <Token Text="[" UId="537" />
+        <Access Scope="LiteralConstant" UId="538">
+          <Constant UId="539">
+            <ConstantValue UId="541">8</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="542" />
+      </Component>
+      <Token Text="." UId="543" />
+      <Component Name="next_WT" UId="544" />
+    </Symbol>
+  </Access>
+  <Blank UId="545" />
+  <Token Text="+" UId="546" />
+  <Blank UId="547" />
+  <Access Scope="GlobalVariable" UId="548">
+    <Symbol UId="549">
+      <Component Name="DB_POS" UId="550">
+        <BooleanAttribute Name="HasQuotes" UId="551">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="552" />
+      <Component Name="POS" UId="553">
+        <Token Text="[" UId="554" />
+        <Access Scope="LiteralConstant" UId="555">
+          <Constant UId="556">
+            <ConstantValue UId="558">9</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="559" />
+      </Component>
+      <Token Text="." UId="560" />
+      <Component Name="next_WT" UId="561" />
+    </Symbol>
+  </Access>
+  <Blank UId="562" />
+  <Token Text="+" UId="563" />
+  <Blank UId="564" />
+  <Access Scope="GlobalVariable" UId="565">
+    <Symbol UId="566">
+      <Component Name="DB_POS" UId="567">
+        <BooleanAttribute Name="HasQuotes" UId="568">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="569" />
+      <Component Name="POS" UId="570">
+        <Token Text="[" UId="571" />
+        <Access Scope="LiteralConstant" UId="572">
+          <Constant UId="573">
+            <ConstantValue UId="575">10</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="576" />
+      </Component>
+      <Token Text="." UId="577" />
+      <Component Name="next_WT" UId="578" />
+    </Symbol>
+  </Access>
+  <Blank UId="579" />
+  <Token Text="+" UId="580" />
+  <Blank UId="581" />
+  <Access Scope="GlobalVariable" UId="582">
+    <Symbol UId="583">
+      <Component Name="DB_POS" UId="584">
+        <BooleanAttribute Name="HasQuotes" UId="585">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="586" />
+      <Component Name="POS" UId="587">
+        <Token Text="[" UId="588" />
+        <Access Scope="LiteralConstant" UId="589">
+          <Constant UId="590">
+            <ConstantValue UId="592">11</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="593" />
+      </Component>
+      <Token Text="." UId="594" />
+      <Component Name="next_WT" UId="595" />
+    </Symbol>
+  </Access>
+  <Blank UId="596" />
+  <Token Text="+" UId="597" />
+  <Blank UId="598" />
+  <Access Scope="GlobalVariable" UId="599">
+    <Symbol UId="600">
+      <Component Name="DB_POS" UId="601">
+        <BooleanAttribute Name="HasQuotes" UId="602">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="603" />
+      <Component Name="POS" UId="604">
+        <Token Text="[" UId="605" />
+        <Access Scope="LiteralConstant" UId="606">
+          <Constant UId="607">
+            <ConstantValue UId="609">12</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="610" />
+      </Component>
+      <Token Text="." UId="611" />
+      <Component Name="next_WT" UId="612" />
+    </Symbol>
+  </Access>
+  <NewLine UId="613" />
+  <Blank Num="4" UId="614" />
+  <Token Text="+" UId="615" />
+  <Blank UId="616" />
+  <Access Scope="GlobalVariable" UId="617">
+    <Symbol UId="618">
+      <Component Name="DB_POS" UId="619">
+        <BooleanAttribute Name="HasQuotes" UId="620">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="621" />
+      <Component Name="POS" UId="622">
+        <Token Text="[" UId="623" />
+        <Access Scope="LiteralConstant" UId="624">
+          <Constant UId="625">
+            <ConstantValue UId="627">13</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="628" />
+      </Component>
+      <Token Text="." UId="629" />
+      <Component Name="next_WT" UId="630" />
+    </Symbol>
+  </Access>
+  <Blank UId="631" />
+  <Token Text="+" UId="632" />
+  <Blank UId="633" />
+  <Access Scope="GlobalVariable" UId="634">
+    <Symbol UId="635">
+      <Component Name="DB_POS" UId="636">
+        <BooleanAttribute Name="HasQuotes" UId="637">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="638" />
+      <Component Name="POS" UId="639">
+        <Token Text="[" UId="640" />
+        <Access Scope="LiteralConstant" UId="641">
+          <Constant UId="642">
+            <ConstantValue UId="644">14</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="645" />
+      </Component>
+      <Token Text="." UId="646" />
+      <Component Name="next_WT" UId="647" />
+    </Symbol>
+  </Access>
+  <Blank UId="648" />
+  <Token Text="+" UId="649" />
+  <Blank UId="650" />
+  <Access Scope="GlobalVariable" UId="651">
+    <Symbol UId="652">
+      <Component Name="DB_POS" UId="653">
+        <BooleanAttribute Name="HasQuotes" UId="654">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="655" />
+      <Component Name="POS" UId="656">
+        <Token Text="[" UId="657" />
+        <Access Scope="LiteralConstant" UId="658">
+          <Constant UId="659">
+            <ConstantValue UId="661">15</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="662" />
+      </Component>
+      <Token Text="." UId="663" />
+      <Component Name="next_WT" UId="664" />
+    </Symbol>
+  </Access>
+  <Blank UId="665" />
+  <Token Text="+" UId="666" />
+  <Blank UId="667" />
+  <Access Scope="GlobalVariable" UId="668">
+    <Symbol UId="669">
+      <Component Name="DB_POS" UId="670">
+        <BooleanAttribute Name="HasQuotes" UId="671">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="672" />
+      <Component Name="POS" UId="673">
+        <Token Text="[" UId="674" />
+        <Access Scope="LiteralConstant" UId="675">
+          <Constant UId="676">
+            <ConstantValue UId="678">16</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="679" />
+      </Component>
+      <Token Text="." UId="680" />
+      <Component Name="next_WT" UId="681" />
+    </Symbol>
+  </Access>
+  <Blank UId="682" />
+  <Token Text="+" UId="683" />
+  <Access Scope="GlobalVariable" UId="684">
+    <Symbol UId="685">
+      <Component Name="DB_POS" UId="686">
+        <BooleanAttribute Name="HasQuotes" UId="687">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="688" />
+      <Component Name="POS" UId="689">
+        <Token Text="[" UId="690" />
+        <Access Scope="LiteralConstant" UId="691">
+          <Constant UId="692">
+            <ConstantValue UId="694">17</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="695" />
+      </Component>
+      <Token Text="." UId="696" />
+      <Component Name="next_WT" UId="697" />
+    </Symbol>
+  </Access>
+  <Blank UId="698" />
+  <Token Text="+" UId="699" />
+  <Blank UId="700" />
+  <Access Scope="GlobalVariable" UId="701">
+    <Symbol UId="702">
+      <Component Name="DB_POS" UId="703">
+        <BooleanAttribute Name="HasQuotes" UId="704">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="705" />
+      <Component Name="POS" UId="706">
+        <Token Text="[" UId="707" />
+        <Access Scope="LiteralConstant" UId="708">
+          <Constant UId="709">
+            <ConstantValue UId="711">18</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="712" />
+      </Component>
+      <Token Text="." UId="713" />
+      <Component Name="next_WT" UId="714" />
+    </Symbol>
+  </Access>
+  <NewLine UId="715" />
+  <Blank Num="4" UId="716" />
+  <Token Text="+" UId="717" />
+  <Blank UId="718" />
+  <Access Scope="GlobalVariable" UId="719">
+    <Symbol UId="720">
+      <Component Name="DB_POS" UId="721">
+        <BooleanAttribute Name="HasQuotes" UId="722">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="723" />
+      <Component Name="POS" UId="724">
+        <Token Text="[" UId="725" />
+        <Access Scope="LiteralConstant" UId="726">
+          <Constant UId="727">
+            <ConstantValue UId="729">19</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="730" />
+      </Component>
+      <Token Text="." UId="731" />
+      <Component Name="next_WT" UId="732" />
+    </Symbol>
+  </Access>
+  <Blank UId="733" />
+  <Token Text="+" UId="734" />
+  <Blank UId="735" />
+  <Access Scope="GlobalVariable" UId="736">
+    <Symbol UId="737">
+      <Component Name="DB_POS" UId="738">
+        <BooleanAttribute Name="HasQuotes" UId="739">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="740" />
+      <Component Name="POS" UId="741">
+        <Token Text="[" UId="742" />
+        <Access Scope="LiteralConstant" UId="743">
+          <Constant UId="744">
+            <ConstantValue UId="746">20</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="747" />
+      </Component>
+      <Token Text="." UId="748" />
+      <Component Name="next_WT" UId="749" />
+    </Symbol>
+  </Access>
+  <Blank UId="750" />
+  <Token Text="+" UId="751" />
+  <Blank UId="752" />
+  <Access Scope="GlobalVariable" UId="753">
+    <Symbol UId="754">
+      <Component Name="DB_POS" UId="755">
+        <BooleanAttribute Name="HasQuotes" UId="756">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="757" />
+      <Component Name="POS" UId="758">
+        <Token Text="[" UId="759" />
+        <Access Scope="LiteralConstant" UId="760">
+          <Constant UId="761">
+            <ConstantValue UId="763">21</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="764" />
+      </Component>
+      <Token Text="." UId="765" />
+      <Component Name="next_WT" UId="766" />
+    </Symbol>
+  </Access>
+  <Blank UId="767" />
+  <Token Text="+" UId="768" />
+  <Blank UId="769" />
+  <Access Scope="GlobalVariable" UId="770">
+    <Symbol UId="771">
+      <Component Name="DB_POS" UId="772">
+        <BooleanAttribute Name="HasQuotes" UId="773">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="774" />
+      <Component Name="POS" UId="775">
+        <Token Text="[" UId="776" />
+        <Access Scope="LiteralConstant" UId="777">
+          <Constant UId="778">
+            <ConstantValue UId="780">22</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="781" />
+      </Component>
+      <Token Text="." UId="782" />
+      <Component Name="next_WT" UId="783" />
+    </Symbol>
+  </Access>
+  <Blank UId="784" />
+  <Token Text="+" UId="785" />
+  <Access Scope="GlobalVariable" UId="786">
+    <Symbol UId="787">
+      <Component Name="DB_POS" UId="788">
+        <BooleanAttribute Name="HasQuotes" UId="789">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="790" />
+      <Component Name="POS" UId="791">
+        <Token Text="[" UId="792" />
+        <Access Scope="LiteralConstant" UId="793">
+          <Constant UId="794">
+            <ConstantValue UId="796">23</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="797" />
+      </Component>
+      <Token Text="." UId="798" />
+      <Component Name="next_WT" UId="799" />
+    </Symbol>
+  </Access>
+  <Blank UId="800" />
+  <Token Text="+" UId="801" />
+  <Blank UId="802" />
+  <Access Scope="GlobalVariable" UId="803">
+    <Symbol UId="804">
+      <Component Name="DB_POS" UId="805">
+        <BooleanAttribute Name="HasQuotes" UId="806">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="807" />
+      <Component Name="POS" UId="808">
+        <Token Text="[" UId="809" />
+        <Access Scope="LiteralConstant" UId="810">
+          <Constant UId="811">
+            <ConstantValue UId="813">24</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="814" />
+      </Component>
+      <Token Text="." UId="815" />
+      <Component Name="next_WT" UId="816" />
+    </Symbol>
+  </Access>
+  <NewLine UId="817" />
+  <Blank Num="4" UId="818" />
+  <Token Text=")" UId="819" />
+  <Blank UId="820" />
+  <Token Text="&gt;" UId="821" />
+  <Blank UId="822" />
+  <Access Scope="LiteralConstant" UId="823">
+    <Constant UId="824">
+      <ConstantValue UId="826">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="827" />
+  <NewLine UId="828" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Check Zustand</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="60">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="237">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>25</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="235">
+    <StlToken Text="GE_I" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE1_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="27">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE1_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="31">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_2" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>25</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>+100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="46">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="WT_DB_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="48">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="Address">
+      <Indirect Width="Block" Area="DB">
+        <Access Scope="LocalVariable">
+          <Symbol>
+            <Component Name="WT_DB_Nr" />
+          </Symbol>
+        </Access>
+      </Indirect>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="145" />
+      <LineComment>
+        <Text>"DB_WTx".in_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="52">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE1_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="56">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE1_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="96">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_2" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="59">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="147" />
+      <LineComment>
+        <Text>"DB_WTx".aus_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="62">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE1_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="67">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE1_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <LabelDeclaration>
+      <Label Name="BE_2" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>26</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="239">
+    <StlToken Text="GE_I" />
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE2_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE2_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="93">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_3" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>26</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>+100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="WT_DB_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="65">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="Address">
+      <Indirect Width="Block" Area="DB">
+        <Access Scope="LocalVariable">
+          <Symbol>
+            <Component Name="WT_DB_Nr" />
+          </Symbol>
+        </Access>
+      </Indirect>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="71">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="145" />
+      <LineComment>
+        <Text>"DB_WTx".in_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="74">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE2_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="76">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE2_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="98">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_3" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="78">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="147" />
+      <LineComment>
+        <Text>"DB_WTx".aus_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="81">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE2_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="83">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE2_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="85">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="86">
+    <LabelDeclaration>
+      <Label Name="BE_3" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="240">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>27</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="242">
+    <StlToken Text="GE_I" />
+  </StlStatement>
+  <StlStatement UId="89">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE3_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="91">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE3_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="133">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_4" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="101">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>27</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="103">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>+100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="105">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="WT_DB_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="107">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="Address">
+      <Indirect Width="Block" Area="DB">
+        <Access Scope="LocalVariable">
+          <Symbol>
+            <Component Name="WT_DB_Nr" />
+          </Symbol>
+        </Access>
+      </Indirect>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="110">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="145" />
+      <LineComment>
+        <Text>"DB_WTx".in_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="113">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE3_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="115">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE3_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="117">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_4" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="119">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="147" />
+      <LineComment>
+        <Text>"DB_WTx".aus_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="122">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE3_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="124">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE3_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="126">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="244">
+    <LabelDeclaration>
+      <Label Name="BE_4" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="128">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>28</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="100">
+    <StlToken Text="GE_I" />
+  </StlStatement>
+  <StlStatement UId="247">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE4_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="132">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE4_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="131">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_5" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="136">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>28</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="138">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>+100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="140">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="WT_DB_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="142">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="Address">
+      <Indirect Width="Block" Area="DB">
+        <Access Scope="LocalVariable">
+          <Symbol>
+            <Component Name="WT_DB_Nr" />
+          </Symbol>
+        </Access>
+      </Indirect>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="145">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="145" />
+      <LineComment>
+        <Text>"DB_WTx".in_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="148">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE4_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="150">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE4_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="152">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_5" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="154">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="147" />
+      <LineComment>
+        <Text>"DB_WTx".aus_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="157">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE4_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="159">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE4_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="161">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="162">
+    <LabelDeclaration>
+      <Label Name="BE_5" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="164">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>29</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="250">
+    <StlToken Text="GE_I" />
+  </StlStatement>
+  <StlStatement UId="165">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE5_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="167">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE5_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="169">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_6" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="171">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>29</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="173">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>+100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="175">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="WT_DB_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="177">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="Address">
+      <Indirect Width="Block" Area="DB">
+        <Access Scope="LocalVariable">
+          <Symbol>
+            <Component Name="WT_DB_Nr" />
+          </Symbol>
+        </Access>
+      </Indirect>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="180">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="145" />
+      <LineComment>
+        <Text>"DB_WTx".in_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="183">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE5_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="185">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE5_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="187">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_6" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="189">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="147" />
+      <LineComment>
+        <Text>"DB_WTx".aus_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="192">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE5_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="194">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE5_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="196">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="197">
+    <LabelDeclaration>
+      <Label Name="BE_6" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="199">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>30</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="253">
+    <StlToken Text="GE_I" />
+  </StlStatement>
+  <StlStatement UId="200">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE6_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="202">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE6_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="204">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_E" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="206">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>30</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="208">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>+100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="210">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="WT_DB_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="212">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="Address">
+      <Indirect Width="Block" Area="DB">
+        <Access Scope="LocalVariable">
+          <Symbol>
+            <Component Name="WT_DB_Nr" />
+          </Symbol>
+        </Access>
+      </Indirect>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="215">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="145" />
+      <LineComment>
+        <Text>"DB_WTx".in_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="218">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE6_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="220">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE6_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="222">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BE_E" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="224">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Bool" BitOffset="147" />
+      <LineComment>
+        <Text>"DB_WTx".aus_Anlage</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="227">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE6_outA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="229">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BE6_inA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="231">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="232">
+    <LabelDeclaration>
+      <Label Name="BE_E" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+  <StlStatement UId="43">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>in die Anlage / aus der Anlage ?</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="IF" UId="21" />
+  <Blank UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="Req_GO_Ausfahrt" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank Num="2" UId="26" />
+  <Token Text="OR" UId="27" />
+  <Blank UId="28" />
+  <Access Scope="LocalVariable" UId="29">
+    <Symbol UId="30">
+      <Component Name="BE3_outA" UId="31" />
+    </Symbol>
+  </Access>
+  <Blank Num="2" UId="32" />
+  <Token Text="OR" UId="33" />
+  <Blank UId="34" />
+  <Access Scope="LocalVariable" UId="35">
+    <Symbol UId="36">
+      <Component Name="BE4_outA" UId="37" />
+    </Symbol>
+  </Access>
+  <Blank UId="38" />
+  <Token Text="THEN" UId="39" />
+  <NewLine UId="40" />
+  <Blank Num="4" UId="41" />
+  <LineComment UId="42">
+    <Text UId="43"> Warten auf Korb</Text>
+  </LineComment>
+  <NewLine UId="44" />
+  <Blank Num="4" UId="45" />
+  <Token Text="IF" UId="46" />
+  <Blank UId="47" />
+  <Access Scope="GlobalVariable" UId="48">
+    <Symbol UId="49">
+      <Component Name="DB_BE_Stand" UId="50">
+        <BooleanAttribute Name="HasQuotes" UId="51">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="52" />
+      <Component Name="Stand" UId="53">
+        <Token Text="[" UId="54" />
+        <Access Scope="LiteralConstant" UId="55">
+          <Constant UId="56">
+            <ConstantValue UId="58">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="59" />
+      </Component>
+      <Token Text="." UId="60" />
+      <Component Name="IN_innen" UId="61" />
+    </Symbol>
+  </Access>
+  <Blank UId="62" />
+  <Token Text="AND" UId="63" />
+  <Blank UId="64" />
+  <Access Scope="LocalVariable" UId="65">
+    <Symbol UId="66">
+      <Component Name="alles_frei" UId="67" />
+    </Symbol>
+  </Access>
+  <Blank UId="68" />
+  <Token Text="THEN" UId="69" />
+  <NewLine UId="70" />
+  <Blank Num="8" UId="71" />
+  <Token Text="RETURN" UId="72" />
+  <Token Text=";" UId="73" />
+  <NewLine UId="74" />
+  <Blank Num="4" UId="75" />
+  <Token Text="END_IF" UId="76" />
+  <Token Text=";" UId="77" />
+  <NewLine UId="78" />
+  <Blank Num="4" UId="79" />
+  <LineComment UId="80">
+    <Text UId="81"> Fertigware Raus</Text>
+  </LineComment>
+  <NewLine UId="82" />
+  <Blank Num="4" UId="83" />
+  <Access Scope="LocalVariable" UId="84">
+    <Symbol UId="85">
+      <Component Name="links_ok" UId="86" />
+    </Symbol>
+  </Access>
+  <Blank UId="87" />
+  <Token Text=":=" UId="88" />
+  <Blank UId="89" />
+  <Access Scope="LocalVariable" UId="90">
+    <Symbol UId="91">
+      <Component Name="BE3_outA" UId="92" />
+    </Symbol>
+  </Access>
+  <Blank UId="93" />
+  <Token Text="AND" UId="94" />
+  <Blank UId="95" />
+  <Token Text="NOT" UId="96" />
+  <Blank UId="97" />
+  <Access Scope="LocalVariable" UId="98">
+    <Symbol UId="99">
+      <Component Name="BE4_inA" UId="100" />
+    </Symbol>
+  </Access>
+  <Blank UId="101" />
+  <Token Text="AND" UId="102" />
+  <Blank UId="103" />
+  <Token Text="NOT" UId="104" />
+  <Blank UId="105" />
+  <Access Scope="LocalVariable" UId="106">
+    <Symbol UId="107">
+      <Component Name="BE2_inA" UId="108" />
+    </Symbol>
+  </Access>
+  <Blank UId="109" />
+  <Token Text="AND" UId="110" />
+  <Blank UId="111" />
+  <Token Text="NOT" UId="112" />
+  <Blank UId="113" />
+  <Access Scope="LocalVariable" UId="114">
+    <Symbol UId="115">
+      <Component Name="BE6_inA" UId="116" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="117" />
+  <NewLine UId="118" />
+  <Blank Num="4" UId="119" />
+  <NewLine UId="120" />
+  <Blank Num="4" UId="121" />
+  <Access Scope="LocalVariable" UId="122">
+    <Symbol UId="123">
+      <Component Name="rechts_ok" UId="124" />
+    </Symbol>
+  </Access>
+  <Blank UId="125" />
+  <Token Text=":=" UId="126" />
+  <Blank UId="127" />
+  <Access Scope="LocalVariable" UId="128">
+    <Symbol UId="129">
+      <Component Name="BE4_outA" UId="130" />
+    </Symbol>
+  </Access>
+  <Blank UId="131" />
+  <Token Text="AND" UId="132" />
+  <Blank UId="133" />
+  <Token Text="NOT" UId="134" />
+  <Blank UId="135" />
+  <Access Scope="LocalVariable" UId="136">
+    <Symbol UId="137">
+      <Component Name="BE3_inA" UId="138" />
+    </Symbol>
+  </Access>
+  <Blank UId="139" />
+  <Token Text="AND" UId="140" />
+  <Blank UId="141" />
+  <Token Text="NOT" UId="142" />
+  <Blank UId="143" />
+  <Access Scope="LocalVariable" UId="144">
+    <Symbol UId="145">
+      <Component Name="BE1_inA" UId="146" />
+    </Symbol>
+  </Access>
+  <Blank UId="147" />
+  <Token Text="AND" UId="148" />
+  <Blank UId="149" />
+  <Token Text="NOT" UId="150" />
+  <Blank UId="151" />
+  <Access Scope="LocalVariable" UId="152">
+    <Symbol UId="153">
+      <Component Name="BE5_inA" UId="154" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="155" />
+  <NewLine UId="156" />
+  <Blank Num="4" UId="157" />
+  <NewLine UId="158" />
+  <Blank Num="4" UId="159" />
+  <Token Text="IF" UId="160" />
+  <Blank UId="161" />
+  <Access Scope="GlobalVariable" UId="162">
+    <Symbol UId="163">
+      <Component Name="DB_BE_Stand" UId="164">
+        <BooleanAttribute Name="HasQuotes" UId="165">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="166" />
+      <Component Name="Stand" UId="167">
+        <Token Text="[" UId="168" />
+        <Access Scope="LiteralConstant" UId="169">
+          <Constant UId="170">
+            <ConstantValue UId="172">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="173" />
+      </Component>
+      <Token Text="." UId="174" />
+      <Component Name="IN_innen" UId="175" />
+    </Symbol>
+  </Access>
+  <Blank UId="176" />
+  <Token Text="AND" UId="177" />
+  <Blank UId="178" />
+  <Token Text="(" UId="179" />
+  <Access Scope="LocalVariable" UId="180">
+    <Symbol UId="181">
+      <Component Name="links_ok" UId="182" />
+    </Symbol>
+  </Access>
+  <Blank UId="183" />
+  <Token Text="OR" UId="184" />
+  <Blank UId="185" />
+  <Access Scope="LocalVariable" UId="186">
+    <Symbol UId="187">
+      <Component Name="rechts_ok" UId="188" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="189" />
+  <Blank UId="190" />
+  <Token Text="THEN" UId="191" />
+  <NewLine UId="192" />
+  <Blank Num="8" UId="193" />
+  <Access Scope="LocalVariable" UId="194">
+    <Symbol UId="195">
+      <Component Name="Req_WR02_OUT" UId="196" />
+    </Symbol>
+  </Access>
+  <Blank UId="197" />
+  <Token Text=":=" UId="198" />
+  <Blank UId="199" />
+  <Access Scope="LocalVariable" UId="200">
+    <Symbol UId="201">
+      <Component Name="Req_WR03_OUT" UId="202" />
+    </Symbol>
+  </Access>
+  <Blank UId="203" />
+  <Token Text=":=" UId="204" />
+  <Access Scope="LiteralConstant" UId="205">
+    <Constant UId="206">
+      <ConstantValue UId="208">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="209" />
+  <NewLine UId="210" />
+  <Blank Num="8" UId="211" />
+  <Token Text="RETURN" UId="212" />
+  <Token Text=";" UId="213" />
+  <NewLine UId="214" />
+  <Blank Num="4" UId="215" />
+  <Token Text="END_IF" UId="216" />
+  <Token Text=";" UId="217" />
+  <NewLine UId="218" />
+  <Blank Num="4" UId="219" />
+  <LineComment UId="220">
+    <Text UId="221"> Leer Rein</Text>
+  </LineComment>
+  <NewLine UId="222" />
+  <Blank Num="4" UId="223" />
+  <Token Text="IF" UId="224" />
+  <Blank UId="225" />
+  <Token Text="NOT" UId="226" />
+  <Blank UId="227" />
+  <Access Scope="GlobalVariable" UId="228">
+    <Symbol UId="229">
+      <Component Name="DB_BE_Stand" UId="230">
+        <BooleanAttribute Name="HasQuotes" UId="231">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="232" />
+      <Component Name="Stand" UId="233">
+        <Token Text="[" UId="234" />
+        <Access Scope="LiteralConstant" UId="235">
+          <Constant UId="236">
+            <ConstantValue UId="238">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="239" />
+      </Component>
+      <Token Text="." UId="240" />
+      <Component Name="IN_innen" UId="241" />
+    </Symbol>
+  </Access>
+  <Blank UId="242" />
+  <Token Text="AND" UId="243" />
+  <Blank UId="244" />
+  <Access Scope="LocalVariable" UId="245">
+    <Symbol UId="246">
+      <Component Name="alles_frei" UId="247" />
+    </Symbol>
+  </Access>
+  <Blank UId="248" />
+  <Token Text="THEN" UId="249" />
+  <NewLine UId="250" />
+  <Blank Num="8" UId="251" />
+  <Access Scope="LocalVariable" UId="252">
+    <Symbol UId="253">
+      <Component Name="Req_WR02_IN" UId="254" />
+    </Symbol>
+  </Access>
+  <Blank UId="255" />
+  <Token Text=":=" UId="256" />
+  <Blank UId="257" />
+  <Access Scope="LocalVariable" UId="258">
+    <Symbol UId="259">
+      <Component Name="Req_WR03_IN" UId="260" />
+    </Symbol>
+  </Access>
+  <Blank UId="261" />
+  <Token Text=":=" UId="262" />
+  <Blank UId="263" />
+  <Access Scope="LiteralConstant" UId="264">
+    <Constant UId="265">
+      <ConstantValue UId="267">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="268" />
+  <NewLine UId="269" />
+  <Blank Num="8" UId="270" />
+  <Token Text="RETURN" UId="271" />
+  <Token Text=";" UId="272" />
+  <NewLine UId="273" />
+  <Blank Num="4" UId="274" />
+  <Token Text="END_IF" UId="275" />
+  <Token Text=";" UId="276" />
+  <NewLine UId="277" />
+  <Blank UId="278" />
+  <Token Text="END_IF" UId="279" />
+  <Token Text=";" UId="280" />
+  <NewLine Num="2" UId="281" />
+  <Blank UId="282" />
+  <Token Text="IF" UId="283" />
+  <Blank UId="284" />
+  <Access Scope="LocalVariable" UId="285">
+    <Symbol UId="286">
+      <Component Name="Req_GO_Aufgabe" UId="287" />
+    </Symbol>
+  </Access>
+  <Blank UId="288" />
+  <Token Text="OR" UId="289" />
+  <Blank UId="290" />
+  <Access Scope="LocalVariable" UId="291">
+    <Symbol UId="292">
+      <Component Name="BE3_inA" UId="293" />
+    </Symbol>
+  </Access>
+  <Blank Num="2" UId="294" />
+  <Token Text="OR" UId="295" />
+  <Blank UId="296" />
+  <Access Scope="LocalVariable" UId="297">
+    <Symbol UId="298">
+      <Component Name="BE4_inA" UId="299" />
+    </Symbol>
+  </Access>
+  <Blank Num="2" UId="300" />
+  <Token Text="THEN" UId="301" />
+  <NewLine UId="302" />
+  <Blank Num="5" UId="303" />
+  <LineComment UId="304">
+    <Text UId="305"> Warten auf Korb</Text>
+  </LineComment>
+  <NewLine UId="306" />
+  <Blank Num="5" UId="307" />
+  <Token Text="IF" UId="308" />
+  <Blank UId="309" />
+  <Access Scope="GlobalVariable" UId="310">
+    <Symbol UId="311">
+      <Component Name="DB_BE_Stand" UId="312">
+        <BooleanAttribute Name="HasQuotes" UId="313">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="314" />
+      <Component Name="Stand" UId="315">
+        <Token Text="[" UId="316" />
+        <Access Scope="LiteralConstant" UId="317">
+          <Constant UId="318">
+            <ConstantValue UId="320">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="321" />
+      </Component>
+      <Token Text="." UId="322" />
+      <Component Name="IN_aussen" UId="323" />
+    </Symbol>
+  </Access>
+  <Blank UId="324" />
+  <Token Text="AND" UId="325" />
+  <Blank UId="326" />
+  <Access Scope="LocalVariable" UId="327">
+    <Symbol UId="328">
+      <Component Name="alles_frei" UId="329" />
+    </Symbol>
+  </Access>
+  <Blank UId="330" />
+  <Token Text="THEN" UId="331" />
+  <NewLine UId="332" />
+  <Blank Num="9" UId="333" />
+  <Token Text="RETURN" UId="334" />
+  <Token Text=";" UId="335" />
+  <NewLine UId="336" />
+  <Blank Num="5" UId="337" />
+  <Token Text="END_IF" UId="338" />
+  <Token Text=";" UId="339" />
+  <NewLine UId="340" />
+  <Blank Num="5" UId="341" />
+  <LineComment UId="342">
+    <Text UId="343"> Rohware --&gt; Rein BE3 / BE4</Text>
+  </LineComment>
+  <NewLine UId="344" />
+  <Blank Num="5" UId="345" />
+  <Access Scope="LocalVariable" UId="346">
+    <Symbol UId="347">
+      <Component Name="links_ok" UId="348" />
+    </Symbol>
+  </Access>
+  <Blank UId="349" />
+  <Token Text=":=" UId="350" />
+  <Blank UId="351" />
+  <Access Scope="LocalVariable" UId="352">
+    <Symbol UId="353">
+      <Component Name="BE3_inA" UId="354" />
+    </Symbol>
+  </Access>
+  <Blank UId="355" />
+  <Token Text="AND" UId="356" />
+  <Blank UId="357" />
+  <Access Scope="GlobalVariable" UId="358">
+    <Symbol UId="359">
+      <Component Name="DB_BE_Stand" UId="360">
+        <BooleanAttribute Name="HasQuotes" UId="361">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="362" />
+      <Component Name="Stand" UId="363">
+        <Token Text="[" UId="364" />
+        <Access Scope="LiteralConstant" UId="365">
+          <Constant UId="366">
+            <ConstantValue UId="368">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="369" />
+      </Component>
+      <Token Text="." UId="370" />
+      <Component Name="IN_Freigabe" UId="371" />
+    </Symbol>
+  </Access>
+  <Blank UId="372" />
+  <Token Text="AND" UId="373" />
+  <Blank UId="374" />
+  <Token Text="NOT" UId="375" />
+  <Blank UId="376" />
+  <Access Scope="LocalVariable" UId="377">
+    <Symbol UId="378">
+      <Component Name="BE4_outA" UId="379" />
+    </Symbol>
+  </Access>
+  <NewLine UId="380" />
+  <Blank Num="5" UId="381" />
+  <Token Text="AND" UId="382" />
+  <Blank UId="383" />
+  <Token Text="(" UId="384" />
+  <Access Scope="LocalVariable" UId="385">
+    <Symbol UId="386">
+      <Component Name="BE2_inA" UId="387" />
+    </Symbol>
+  </Access>
+  <Blank UId="388" />
+  <Token Text="AND" UId="389" />
+  <Blank Num="2" UId="390" />
+  <Access Scope="GlobalVariable" UId="391">
+    <Symbol UId="392">
+      <Component Name="DB_BE_Stand" UId="393">
+        <BooleanAttribute Name="HasQuotes" UId="394">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="395" />
+      <Component Name="Stand" UId="396">
+        <Token Text="[" UId="397" />
+        <Access Scope="LiteralConstant" UId="398">
+          <Constant UId="399">
+            <ConstantValue UId="401">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="402" />
+      </Component>
+      <Token Text="." UId="403" />
+      <Component Name="IN_Freigabe" UId="404" />
+    </Symbol>
+  </Access>
+  <Blank UId="405" />
+  <Token Text="OR" UId="406" />
+  <Blank UId="407" />
+  <Token Text="NOT" UId="408" />
+  <Blank UId="409" />
+  <Access Scope="GlobalVariable" UId="410">
+    <Symbol UId="411">
+      <Component Name="DB_BE_Stand" UId="412">
+        <BooleanAttribute Name="HasQuotes" UId="413">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="414" />
+      <Component Name="Stand" UId="415">
+        <Token Text="[" UId="416" />
+        <Access Scope="LiteralConstant" UId="417">
+          <Constant UId="418">
+            <ConstantValue UId="420">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="421" />
+      </Component>
+      <Token Text="." UId="422" />
+      <Component Name="IN_Belegt" UId="423" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="424" />
+  <NewLine UId="425" />
+  <Blank Num="5" UId="426" />
+  <Token Text="AND" UId="427" />
+  <Blank UId="428" />
+  <Token Text="(" UId="429" />
+  <Access Scope="LocalVariable" UId="430">
+    <Symbol UId="431">
+      <Component Name="BE6_inA" UId="432" />
+    </Symbol>
+  </Access>
+  <Blank UId="433" />
+  <Token Text="AND" UId="434" />
+  <Blank Num="2" UId="435" />
+  <Access Scope="GlobalVariable" UId="436">
+    <Symbol UId="437">
+      <Component Name="DB_BE_Stand" UId="438">
+        <BooleanAttribute Name="HasQuotes" UId="439">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="440" />
+      <Component Name="Stand" UId="441">
+        <Token Text="[" UId="442" />
+        <Access Scope="LiteralConstant" UId="443">
+          <Constant UId="444">
+            <ConstantValue UId="446">6</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="447" />
+      </Component>
+      <Token Text="." UId="448" />
+      <Component Name="IN_Freigabe" UId="449" />
+    </Symbol>
+  </Access>
+  <Blank UId="450" />
+  <Token Text="OR" UId="451" />
+  <Blank UId="452" />
+  <Token Text="NOT" UId="453" />
+  <Blank UId="454" />
+  <Access Scope="GlobalVariable" UId="455">
+    <Symbol UId="456">
+      <Component Name="DB_BE_Stand" UId="457">
+        <BooleanAttribute Name="HasQuotes" UId="458">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="459" />
+      <Component Name="Stand" UId="460">
+        <Token Text="[" UId="461" />
+        <Access Scope="LiteralConstant" UId="462">
+          <Constant UId="463">
+            <ConstantValue UId="465">6</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="466" />
+      </Component>
+      <Token Text="." UId="467" />
+      <Component Name="IN_Belegt" UId="468" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="469" />
+  <Token Text=";" UId="470" />
+  <NewLine UId="471" />
+  <Blank Num="5" UId="472" />
+  <NewLine UId="473" />
+  <Blank Num="5" UId="474" />
+  <Access Scope="LocalVariable" UId="475">
+    <Symbol UId="476">
+      <Component Name="rechts_ok" UId="477" />
+    </Symbol>
+  </Access>
+  <Blank UId="478" />
+  <Token Text=":=" UId="479" />
+  <Blank UId="480" />
+  <Access Scope="LocalVariable" UId="481">
+    <Symbol UId="482">
+      <Component Name="BE4_inA" UId="483" />
+    </Symbol>
+  </Access>
+  <Blank UId="484" />
+  <Token Text="AND" UId="485" />
+  <Blank UId="486" />
+  <Access Scope="GlobalVariable" UId="487">
+    <Symbol UId="488">
+      <Component Name="DB_BE_Stand" UId="489">
+        <BooleanAttribute Name="HasQuotes" UId="490">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="491" />
+      <Component Name="Stand" UId="492">
+        <Token Text="[" UId="493" />
+        <Access Scope="LiteralConstant" UId="494">
+          <Constant UId="495">
+            <ConstantValue UId="497">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="498" />
+      </Component>
+      <Token Text="." UId="499" />
+      <Component Name="IN_Freigabe" UId="500" />
+    </Symbol>
+  </Access>
+  <Blank UId="501" />
+  <Token Text="AND" UId="502" />
+  <Blank UId="503" />
+  <Token Text="NOT" UId="504" />
+  <Blank UId="505" />
+  <Access Scope="LocalVariable" UId="506">
+    <Symbol UId="507">
+      <Component Name="BE3_outA" UId="508" />
+    </Symbol>
+  </Access>
+  <NewLine UId="509" />
+  <Blank Num="5" UId="510" />
+  <Token Text="AND" UId="511" />
+  <Blank UId="512" />
+  <Token Text="(" UId="513" />
+  <Access Scope="LocalVariable" UId="514">
+    <Symbol UId="515">
+      <Component Name="BE1_inA" UId="516" />
+    </Symbol>
+  </Access>
+  <Blank UId="517" />
+  <Token Text="AND" UId="518" />
+  <Blank Num="2" UId="519" />
+  <Access Scope="GlobalVariable" UId="520">
+    <Symbol UId="521">
+      <Component Name="DB_BE_Stand" UId="522">
+        <BooleanAttribute Name="HasQuotes" UId="523">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="524" />
+      <Component Name="Stand" UId="525">
+        <Token Text="[" UId="526" />
+        <Access Scope="LiteralConstant" UId="527">
+          <Constant UId="528">
+            <ConstantValue UId="530">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="531" />
+      </Component>
+      <Token Text="." UId="532" />
+      <Component Name="IN_Freigabe" UId="533" />
+    </Symbol>
+  </Access>
+  <Blank UId="534" />
+  <Token Text="OR" UId="535" />
+  <Blank UId="536" />
+  <Token Text="NOT" UId="537" />
+  <Blank UId="538" />
+  <Access Scope="GlobalVariable" UId="539">
+    <Symbol UId="540">
+      <Component Name="DB_BE_Stand" UId="541">
+        <BooleanAttribute Name="HasQuotes" UId="542">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="543" />
+      <Component Name="Stand" UId="544">
+        <Token Text="[" UId="545" />
+        <Access Scope="LiteralConstant" UId="546">
+          <Constant UId="547">
+            <ConstantValue UId="549">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="550" />
+      </Component>
+      <Token Text="." UId="551" />
+      <Component Name="IN_Belegt" UId="552" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="553" />
+  <NewLine UId="554" />
+  <Blank Num="5" UId="555" />
+  <Token Text="AND" UId="556" />
+  <Blank UId="557" />
+  <Token Text="(" UId="558" />
+  <Access Scope="LocalVariable" UId="559">
+    <Symbol UId="560">
+      <Component Name="BE5_inA" UId="561" />
+    </Symbol>
+  </Access>
+  <Blank UId="562" />
+  <Token Text="AND" UId="563" />
+  <Blank Num="2" UId="564" />
+  <Access Scope="GlobalVariable" UId="565">
+    <Symbol UId="566">
+      <Component Name="DB_BE_Stand" UId="567">
+        <BooleanAttribute Name="HasQuotes" UId="568">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="569" />
+      <Component Name="Stand" UId="570">
+        <Token Text="[" UId="571" />
+        <Access Scope="LiteralConstant" UId="572">
+          <Constant UId="573">
+            <ConstantValue UId="575">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="576" />
+      </Component>
+      <Token Text="." UId="577" />
+      <Component Name="IN_Freigabe" UId="578" />
+    </Symbol>
+  </Access>
+  <Blank UId="579" />
+  <Token Text="OR" UId="580" />
+  <Blank UId="581" />
+  <Token Text="NOT" UId="582" />
+  <Blank UId="583" />
+  <Access Scope="GlobalVariable" UId="584">
+    <Symbol UId="585">
+      <Component Name="DB_BE_Stand" UId="586">
+        <BooleanAttribute Name="HasQuotes" UId="587">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="588" />
+      <Component Name="Stand" UId="589">
+        <Token Text="[" UId="590" />
+        <Access Scope="LiteralConstant" UId="591">
+          <Constant UId="592">
+            <ConstantValue UId="594">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="595" />
+      </Component>
+      <Token Text="." UId="596" />
+      <Component Name="IN_Belegt" UId="597" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="598" />
+  <Token Text=";" UId="599" />
+  <NewLine UId="600" />
+  <Blank Num="5" UId="601" />
+  <NewLine UId="602" />
+  <Blank Num="5" UId="603" />
+  <Token Text="IF" UId="604" />
+  <Blank UId="605" />
+  <Access Scope="GlobalVariable" UId="606">
+    <Symbol UId="607">
+      <Component Name="DB_BE_Stand" UId="608">
+        <BooleanAttribute Name="HasQuotes" UId="609">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="610" />
+      <Component Name="Stand" UId="611">
+        <Token Text="[" UId="612" />
+        <Access Scope="LiteralConstant" UId="613">
+          <Constant UId="614">
+            <ConstantValue UId="616">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="617" />
+      </Component>
+      <Token Text="." UId="618" />
+      <Component Name="IN_aussen" UId="619" />
+    </Symbol>
+  </Access>
+  <Blank UId="620" />
+  <Token Text="AND" UId="621" />
+  <Blank UId="622" />
+  <Token Text="(" UId="623" />
+  <Access Scope="LocalVariable" UId="624">
+    <Symbol UId="625">
+      <Component Name="links_ok" UId="626" />
+    </Symbol>
+  </Access>
+  <Blank UId="627" />
+  <Token Text="OR" UId="628" />
+  <Blank UId="629" />
+  <Access Scope="LocalVariable" UId="630">
+    <Symbol UId="631">
+      <Component Name="rechts_ok" UId="632" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="633" />
+  <Blank UId="634" />
+  <Token Text="THEN" UId="635" />
+  <NewLine UId="636" />
+  <Blank Num="9" UId="637" />
+  <Access Scope="LocalVariable" UId="638">
+    <Symbol UId="639">
+      <Component Name="Req_WR02_IN" UId="640" />
+    </Symbol>
+  </Access>
+  <Blank UId="641" />
+  <Token Text=":=" UId="642" />
+  <Blank UId="643" />
+  <Access Scope="LocalVariable" UId="644">
+    <Symbol UId="645">
+      <Component Name="Req_WR03_IN" UId="646" />
+    </Symbol>
+  </Access>
+  <Blank UId="647" />
+  <Token Text=":=" UId="648" />
+  <Blank UId="649" />
+  <Access Scope="LiteralConstant" UId="650">
+    <Constant UId="651">
+      <ConstantValue UId="653">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="654" />
+  <NewLine UId="655" />
+  <Blank Num="9" UId="656" />
+  <Token Text="RETURN" UId="657" />
+  <Token Text=";" UId="658" />
+  <NewLine UId="659" />
+  <Blank Num="5" UId="660" />
+  <Token Text="END_IF" UId="661" />
+  <Token Text=";" UId="662" />
+  <NewLine UId="663" />
+  <Blank Num="5" UId="664" />
+  <LineComment UId="665">
+    <Text UId="666"> Leer Raus</Text>
+  </LineComment>
+  <NewLine UId="667" />
+  <Blank Num="5" UId="668" />
+  <Token Text="IF" UId="669" />
+  <Blank UId="670" />
+  <Token Text="NOT" UId="671" />
+  <Blank UId="672" />
+  <Access Scope="GlobalVariable" UId="673">
+    <Symbol UId="674">
+      <Component Name="DB_BE_Stand" UId="675">
+        <BooleanAttribute Name="HasQuotes" UId="676">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="677" />
+      <Component Name="Stand" UId="678">
+        <Token Text="[" UId="679" />
+        <Access Scope="LiteralConstant" UId="680">
+          <Constant UId="681">
+            <ConstantValue UId="683">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="684" />
+      </Component>
+      <Token Text="." UId="685" />
+      <Component Name="IN_aussen" UId="686" />
+    </Symbol>
+  </Access>
+  <Blank UId="687" />
+  <Token Text="AND" UId="688" />
+  <Blank UId="689" />
+  <Access Scope="LocalVariable" UId="690">
+    <Symbol UId="691">
+      <Component Name="alles_frei" UId="692" />
+    </Symbol>
+  </Access>
+  <Blank UId="693" />
+  <Token Text="THEN" UId="694" />
+  <NewLine UId="695" />
+  <Blank Num="9" UId="696" />
+  <Access Scope="LocalVariable" UId="697">
+    <Symbol UId="698">
+      <Component Name="Req_WR02_OUT" UId="699" />
+    </Symbol>
+  </Access>
+  <Blank UId="700" />
+  <Token Text=":=" UId="701" />
+  <Blank UId="702" />
+  <Access Scope="LocalVariable" UId="703">
+    <Symbol UId="704">
+      <Component Name="Req_WR03_OUT" UId="705" />
+    </Symbol>
+  </Access>
+  <Blank UId="706" />
+  <Token Text=":=" UId="707" />
+  <Blank UId="708" />
+  <Access Scope="LiteralConstant" UId="709">
+    <Constant UId="710">
+      <ConstantValue UId="712">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="713" />
+  <NewLine UId="714" />
+  <Blank Num="9" UId="715" />
+  <Token Text="RETURN" UId="716" />
+  <Token Text=";" UId="717" />
+  <NewLine UId="718" />
+  <Blank Num="5" UId="719" />
+  <Token Text="END_IF" UId="720" />
+  <Token Text=";" UId="721" />
+  <NewLine UId="722" />
+  <Blank UId="723" />
+  <Token Text="END_IF" UId="724" />
+  <Token Text=";" UId="725" />
+  <NewLine UId="726" />
+  <Blank UId="727" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Großoptik</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Warten auf Korb</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Token Text="IF" UId="24" />
+  <Blank UId="25" />
+  <Access Scope="LocalVariable" UId="26">
+    <Symbol UId="27">
+      <Component Name="alles_frei" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank UId="29" />
+  <Token Text="AND" UId="30" />
+  <Blank UId="31" />
+  <Token Text="(" UId="32" />
+  <Token Text="(" UId="33" />
+  <Access Scope="GlobalVariable" UId="34">
+    <Symbol UId="35">
+      <Component Name="DB_BE_Stand" UId="36">
+        <BooleanAttribute Name="HasQuotes" UId="37">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="38" />
+      <Component Name="Stand" UId="39">
+        <Token Text="[" UId="40" />
+        <Access Scope="LiteralConstant" UId="41">
+          <Constant UId="42">
+            <ConstantValue UId="44">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="45" />
+      </Component>
+      <Token Text="." UId="46" />
+      <Component Name="IN_aussen" UId="47" />
+    </Symbol>
+  </Access>
+  <Blank UId="48" />
+  <Token Text="AND" UId="49" />
+  <Blank UId="50" />
+  <Access Scope="GlobalVariable" UId="51">
+    <Symbol UId="52">
+      <Component Name="DB_BE_Stand" UId="53">
+        <BooleanAttribute Name="HasQuotes" UId="54">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="55" />
+      <Component Name="Stand" UId="56">
+        <Token Text="[" UId="57" />
+        <Access Scope="LiteralConstant" UId="58">
+          <Constant UId="59">
+            <ConstantValue UId="61">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="62" />
+      </Component>
+      <Token Text="." UId="63" />
+      <Component Name="IN_innen" UId="64" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="65" />
+  <Blank UId="66" />
+  <Token Text="OR" UId="67" />
+  <Blank UId="68" />
+  <Token Text="(" UId="69" />
+  <Access Scope="GlobalVariable" UId="70">
+    <Symbol UId="71">
+      <Component Name="DB_BE_Stand" UId="72">
+        <BooleanAttribute Name="HasQuotes" UId="73">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="74" />
+      <Component Name="Stand" UId="75">
+        <Token Text="[" UId="76" />
+        <Access Scope="LiteralConstant" UId="77">
+          <Constant UId="78">
+            <ConstantValue UId="80">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="81" />
+      </Component>
+      <Token Text="." UId="82" />
+      <Component Name="IN_aussen" UId="83" />
+    </Symbol>
+  </Access>
+  <Blank UId="84" />
+  <Token Text="AND" UId="85" />
+  <Blank UId="86" />
+  <Access Scope="GlobalVariable" UId="87">
+    <Symbol UId="88">
+      <Component Name="DB_BE_Stand" UId="89">
+        <BooleanAttribute Name="HasQuotes" UId="90">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="91" />
+      <Component Name="Stand" UId="92">
+        <Token Text="[" UId="93" />
+        <Access Scope="LiteralConstant" UId="94">
+          <Constant UId="95">
+            <ConstantValue UId="97">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="98" />
+      </Component>
+      <Token Text="." UId="99" />
+      <Component Name="IN_innen" UId="100" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="101" />
+  <Token Text=")" UId="102" />
+  <Blank UId="103" />
+  <Token Text="THEN" UId="104" />
+  <NewLine UId="105" />
+  <Blank Num="4" UId="106" />
+  <Token Text="RETURN" UId="107" />
+  <Token Text=";" UId="108" />
+  <NewLine UId="109" />
+  <Token Text="END_IF" UId="110" />
+  <Token Text=";" UId="111" />
+  <NewLine Num="2" UId="112" />
+  <LineComment UId="113">
+    <Text UId="114"> Fertigware Raus BE1</Text>
+  </LineComment>
+  <NewLine UId="115" />
+  <Token Text="IF" UId="116" />
+  <Blank UId="117" />
+  <Access Scope="GlobalVariable" UId="118">
+    <Symbol UId="119">
+      <Component Name="DB_BE_Stand" UId="120">
+        <BooleanAttribute Name="HasQuotes" UId="121">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="122" />
+      <Component Name="Stand" UId="123">
+        <Token Text="[" UId="124" />
+        <Access Scope="LiteralConstant" UId="125">
+          <Constant UId="126">
+            <ConstantValue UId="128">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="129" />
+      </Component>
+      <Token Text="." UId="130" />
+      <Component Name="IN_innen" UId="131" />
+    </Symbol>
+  </Access>
+  <Blank UId="132" />
+  <Token Text="AND" UId="133" />
+  <Blank UId="134" />
+  <Token Text="(" UId="135" />
+  <Token Text="(" UId="136" />
+  <Access Scope="LocalVariable" UId="137">
+    <Symbol UId="138">
+      <Component Name="BE1_outA" UId="139" />
+    </Symbol>
+  </Access>
+  <Blank UId="140" />
+  <Token Text="AND" UId="141" />
+  <Blank UId="142" />
+  <Token Text="NOT" UId="143" />
+  <Blank UId="144" />
+  <Access Scope="LocalVariable" UId="145">
+    <Symbol UId="146">
+      <Component Name="BE2_inA" UId="147" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="148" />
+  <Blank UId="149" />
+  <Token Text="OR" UId="150" />
+  <Blank UId="151" />
+  <Token Text="(" UId="152" />
+  <Access Scope="LocalVariable" UId="153">
+    <Symbol UId="154">
+      <Component Name="BE2_outA" UId="155" />
+    </Symbol>
+  </Access>
+  <Blank UId="156" />
+  <Token Text="AND" UId="157" />
+  <Blank UId="158" />
+  <Token Text="NOT" UId="159" />
+  <Blank UId="160" />
+  <Access Scope="LocalVariable" UId="161">
+    <Symbol UId="162">
+      <Component Name="BE1_inA" UId="163" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="164" />
+  <Token Text=")" UId="165" />
+  <Blank UId="166" />
+  <Token Text="THEN" UId="167" />
+  <NewLine UId="168" />
+  <Blank Num="4" UId="169" />
+  <Access Scope="LocalVariable" UId="170">
+    <Symbol UId="171">
+      <Component Name="Req_WR02_OUT" UId="172" />
+    </Symbol>
+  </Access>
+  <Blank UId="173" />
+  <Token Text=":=" UId="174" />
+  <Blank UId="175" />
+  <Access Scope="LiteralConstant" UId="176">
+    <Constant UId="177">
+      <ConstantValue UId="179">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="180" />
+  <NewLine UId="181" />
+  <Blank Num="4" UId="182" />
+  <Token Text="IF" UId="183" />
+  <Blank UId="184" />
+  <Access Scope="GlobalVariable" UId="185">
+    <Symbol UId="186">
+      <Component Name="DB_BE_Stand" UId="187">
+        <BooleanAttribute Name="HasQuotes" UId="188">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="189" />
+      <Component Name="Stand" UId="190">
+        <Token Text="[" UId="191" />
+        <Access Scope="LiteralConstant" UId="192">
+          <Constant UId="193">
+            <ConstantValue UId="195">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="196" />
+      </Component>
+      <Token Text="." UId="197" />
+      <Component Name="IN_aussen" UId="198" />
+    </Symbol>
+  </Access>
+  <Blank UId="199" />
+  <Token Text="AND" UId="200" />
+  <Blank UId="201" />
+  <Token Text="NOT" UId="202" />
+  <Blank UId="203" />
+  <Access Scope="GlobalVariable" UId="204">
+    <Symbol UId="205">
+      <Component Name="DB_BE_Stand" UId="206">
+        <BooleanAttribute Name="HasQuotes" UId="207">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="208" />
+      <Component Name="Stand" UId="209">
+        <Token Text="[" UId="210" />
+        <Access Scope="LiteralConstant" UId="211">
+          <Constant UId="212">
+            <ConstantValue UId="214">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="215" />
+      </Component>
+      <Token Text="." UId="216" />
+      <Component Name="IN_Belegt" UId="217" />
+    </Symbol>
+  </Access>
+  <Blank UId="218" />
+  <Token Text="AND" UId="219" />
+  <Blank UId="220" />
+  <Token Text="NOT" UId="221" />
+  <Blank UId="222" />
+  <Access Scope="GlobalVariable" UId="223">
+    <Symbol UId="224">
+      <Component Name="DB_BE_Stand" UId="225">
+        <BooleanAttribute Name="HasQuotes" UId="226">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="227" />
+      <Component Name="Stand" UId="228">
+        <Token Text="[" UId="229" />
+        <Access Scope="LiteralConstant" UId="230">
+          <Constant UId="231">
+            <ConstantValue UId="233">6</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="234" />
+      </Component>
+      <Token Text="." UId="235" />
+      <Component Name="IN_Belegt" UId="236" />
+    </Symbol>
+  </Access>
+  <Blank UId="237" />
+  <Token Text="AND" UId="238" />
+  <Blank UId="239" />
+  <Access Scope="LocalVariable" UId="240">
+    <Symbol UId="241">
+      <Component Name="Korb_in_Anlage" UId="242" />
+    </Symbol>
+  </Access>
+  <Blank UId="243" />
+  <Token Text="THEN" UId="244" />
+  <NewLine UId="245" />
+  <Blank Num="8" UId="246" />
+  <Access Scope="LocalVariable" UId="247">
+    <Symbol UId="248">
+      <Component Name="Req_WR03_IN" UId="249" />
+    </Symbol>
+  </Access>
+  <Blank UId="250" />
+  <Token Text=":=" UId="251" />
+  <Blank UId="252" />
+  <Access Scope="LiteralConstant" UId="253">
+    <Constant UId="254">
+      <ConstantValue UId="256">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="257" />
+  <NewLine UId="258" />
+  <Blank Num="4" UId="259" />
+  <Token Text="END_IF" UId="260" />
+  <Token Text=";" UId="261" />
+  <NewLine UId="262" />
+  <Blank Num="4" UId="263" />
+  <Token Text="RETURN" UId="264" />
+  <Token Text=";" UId="265" />
+  <NewLine UId="266" />
+  <Token Text="END_IF" UId="267" />
+  <Token Text=";" UId="268" />
+  <NewLine UId="269" />
+  <LineComment UId="270">
+    <Text UId="271"> Fertigware Raus BE5</Text>
+  </LineComment>
+  <NewLine UId="272" />
+  <Token Text="IF" UId="273" />
+  <Blank UId="274" />
+  <Access Scope="GlobalVariable" UId="275">
+    <Symbol UId="276">
+      <Component Name="DB_BE_Stand" UId="277">
+        <BooleanAttribute Name="HasQuotes" UId="278">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="279" />
+      <Component Name="Stand" UId="280">
+        <Token Text="[" UId="281" />
+        <Access Scope="LiteralConstant" UId="282">
+          <Constant UId="283">
+            <ConstantValue UId="285">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="286" />
+      </Component>
+      <Token Text="." UId="287" />
+      <Component Name="IN_innen" UId="288" />
+    </Symbol>
+  </Access>
+  <Blank UId="289" />
+  <Token Text="AND" UId="290" />
+  <Blank UId="291" />
+  <Token Text="(" UId="292" />
+  <Token Text="(" UId="293" />
+  <Access Scope="LocalVariable" UId="294">
+    <Symbol UId="295">
+      <Component Name="BE5_outA" UId="296" />
+    </Symbol>
+  </Access>
+  <Blank UId="297" />
+  <Token Text="AND" UId="298" />
+  <Blank UId="299" />
+  <Token Text="NOT" UId="300" />
+  <Blank UId="301" />
+  <Access Scope="LocalVariable" UId="302">
+    <Symbol UId="303">
+      <Component Name="BE6_inA" UId="304" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="305" />
+  <Blank UId="306" />
+  <Token Text="OR" UId="307" />
+  <Blank UId="308" />
+  <Token Text="(" UId="309" />
+  <Access Scope="LocalVariable" UId="310">
+    <Symbol UId="311">
+      <Component Name="BE6_outA" UId="312" />
+    </Symbol>
+  </Access>
+  <Blank UId="313" />
+  <Token Text="AND" UId="314" />
+  <Blank UId="315" />
+  <Token Text="NOT" UId="316" />
+  <Blank UId="317" />
+  <Access Scope="LocalVariable" UId="318">
+    <Symbol UId="319">
+      <Component Name="BE5_inA" UId="320" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="321" />
+  <Token Text=")" UId="322" />
+  <Blank UId="323" />
+  <Token Text="THEN" UId="324" />
+  <NewLine UId="325" />
+  <Blank Num="4" UId="326" />
+  <Access Scope="LocalVariable" UId="327">
+    <Symbol UId="328">
+      <Component Name="Req_WR03_OUT" UId="329" />
+    </Symbol>
+  </Access>
+  <Blank UId="330" />
+  <Token Text=":=" UId="331" />
+  <Blank UId="332" />
+  <Access Scope="LiteralConstant" UId="333">
+    <Constant UId="334">
+      <ConstantValue UId="336">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="337" />
+  <NewLine UId="338" />
+  <Blank Num="4" UId="339" />
+  <Token Text="IF" UId="340" />
+  <Blank UId="341" />
+  <Access Scope="GlobalVariable" UId="342">
+    <Symbol UId="343">
+      <Component Name="DB_BE_Stand" UId="344">
+        <BooleanAttribute Name="HasQuotes" UId="345">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="346" />
+      <Component Name="Stand" UId="347">
+        <Token Text="[" UId="348" />
+        <Access Scope="LiteralConstant" UId="349">
+          <Constant UId="350">
+            <ConstantValue UId="352">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="353" />
+      </Component>
+      <Token Text="." UId="354" />
+      <Component Name="IN_aussen" UId="355" />
+    </Symbol>
+  </Access>
+  <Blank UId="356" />
+  <Token Text="AND" UId="357" />
+  <Blank UId="358" />
+  <Token Text="NOT" UId="359" />
+  <Blank UId="360" />
+  <Access Scope="GlobalVariable" UId="361">
+    <Symbol UId="362">
+      <Component Name="DB_BE_Stand" UId="363">
+        <BooleanAttribute Name="HasQuotes" UId="364">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="365" />
+      <Component Name="Stand" UId="366">
+        <Token Text="[" UId="367" />
+        <Access Scope="LiteralConstant" UId="368">
+          <Constant UId="369">
+            <ConstantValue UId="371">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="372" />
+      </Component>
+      <Token Text="." UId="373" />
+      <Component Name="IN_Belegt" UId="374" />
+    </Symbol>
+  </Access>
+  <Blank UId="375" />
+  <Token Text="AND" UId="376" />
+  <Blank UId="377" />
+  <Token Text="NOT" UId="378" />
+  <Blank UId="379" />
+  <Access Scope="GlobalVariable" UId="380">
+    <Symbol UId="381">
+      <Component Name="DB_BE_Stand" UId="382">
+        <BooleanAttribute Name="HasQuotes" UId="383">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="384" />
+      <Component Name="Stand" UId="385">
+        <Token Text="[" UId="386" />
+        <Access Scope="LiteralConstant" UId="387">
+          <Constant UId="388">
+            <ConstantValue UId="390">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="391" />
+      </Component>
+      <Token Text="." UId="392" />
+      <Component Name="IN_Belegt" UId="393" />
+    </Symbol>
+  </Access>
+  <Blank UId="394" />
+  <Token Text="AND" UId="395" />
+  <Blank UId="396" />
+  <Access Scope="LocalVariable" UId="397">
+    <Symbol UId="398">
+      <Component Name="Korb_in_Anlage" UId="399" />
+    </Symbol>
+  </Access>
+  <Blank UId="400" />
+  <Token Text="THEN" UId="401" />
+  <NewLine UId="402" />
+  <Blank Num="8" UId="403" />
+  <Access Scope="LocalVariable" UId="404">
+    <Symbol UId="405">
+      <Component Name="Req_WR02_IN" UId="406" />
+    </Symbol>
+  </Access>
+  <Blank UId="407" />
+  <Token Text=":=" UId="408" />
+  <Blank UId="409" />
+  <Access Scope="LiteralConstant" UId="410">
+    <Constant UId="411">
+      <ConstantValue UId="413">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="414" />
+  <NewLine UId="415" />
+  <Blank Num="4" UId="416" />
+  <Token Text="END_IF" UId="417" />
+  <Token Text=";" UId="418" />
+  <NewLine UId="419" />
+  <Blank Num="4" UId="420" />
+  <Token Text="RETURN" UId="421" />
+  <Token Text=";" UId="422" />
+  <NewLine UId="423" />
+  <Token Text="END_IF" UId="424" />
+  <Token Text=";" UId="425" />
+  <NewLine UId="426" />
+  <LineComment UId="427">
+    <Text UId="428"> Rohware --&gt; Rein BE1 / BE2</Text>
+  </LineComment>
+  <NewLine UId="429" />
+  <Token Text="IF" UId="430" />
+  <Blank UId="431" />
+  <Access Scope="GlobalVariable" UId="432">
+    <Symbol UId="433">
+      <Component Name="DB_BE_Stand" UId="434">
+        <BooleanAttribute Name="HasQuotes" UId="435">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="436" />
+      <Component Name="Stand" UId="437">
+        <Token Text="[" UId="438" />
+        <Access Scope="LiteralConstant" UId="439">
+          <Constant UId="440">
+            <ConstantValue UId="442">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="443" />
+      </Component>
+      <Token Text="." UId="444" />
+      <Component Name="IN_aussen" UId="445" />
+    </Symbol>
+  </Access>
+  <Blank UId="446" />
+  <Token Text="AND" UId="447" />
+  <Blank UId="448" />
+  <Token Text="(" UId="449" />
+  <Token Text="(" UId="450" />
+  <Access Scope="LocalVariable" UId="451">
+    <Symbol UId="452">
+      <Component Name="BE1_inA" UId="453" />
+    </Symbol>
+  </Access>
+  <Blank UId="454" />
+  <Token Text="AND" UId="455" />
+  <Blank UId="456" />
+  <Access Scope="GlobalVariable" UId="457">
+    <Symbol UId="458">
+      <Component Name="DB_BE_Stand" UId="459">
+        <BooleanAttribute Name="HasQuotes" UId="460">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="461" />
+      <Component Name="Stand" UId="462">
+        <Token Text="[" UId="463" />
+        <Access Scope="LiteralConstant" UId="464">
+          <Constant UId="465">
+            <ConstantValue UId="467">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="468" />
+      </Component>
+      <Token Text="." UId="469" />
+      <Component Name="IN_Freigabe" UId="470" />
+    </Symbol>
+  </Access>
+  <Blank UId="471" />
+  <Token Text="AND" UId="472" />
+  <Blank UId="473" />
+  <Token Text="NOT" UId="474" />
+  <Blank UId="475" />
+  <Access Scope="LocalVariable" UId="476">
+    <Symbol UId="477">
+      <Component Name="BE2_outA" UId="478" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="479" />
+  <Blank UId="480" />
+  <Token Text="OR" UId="481" />
+  <Blank UId="482" />
+  <Token Text="(" UId="483" />
+  <Access Scope="LocalVariable" UId="484">
+    <Symbol UId="485">
+      <Component Name="BE2_inA" UId="486" />
+    </Symbol>
+  </Access>
+  <Blank UId="487" />
+  <Token Text="AND" UId="488" />
+  <Blank UId="489" />
+  <Access Scope="GlobalVariable" UId="490">
+    <Symbol UId="491">
+      <Component Name="DB_BE_Stand" UId="492">
+        <BooleanAttribute Name="HasQuotes" UId="493">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="494" />
+      <Component Name="Stand" UId="495">
+        <Token Text="[" UId="496" />
+        <Access Scope="LiteralConstant" UId="497">
+          <Constant UId="498">
+            <ConstantValue UId="500">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="501" />
+      </Component>
+      <Token Text="." UId="502" />
+      <Component Name="IN_Freigabe" UId="503" />
+    </Symbol>
+  </Access>
+  <Blank UId="504" />
+  <Token Text="AND" UId="505" />
+  <Blank UId="506" />
+  <Token Text="NOT" UId="507" />
+  <Blank UId="508" />
+  <Access Scope="LocalVariable" UId="509">
+    <Symbol UId="510">
+      <Component Name="BE1_outA" UId="511" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="512" />
+  <Token Text=")" UId="513" />
+  <Blank UId="514" />
+  <Token Text="THEN" UId="515" />
+  <NewLine UId="516" />
+  <Blank Num="4" UId="517" />
+  <Access Scope="LocalVariable" UId="518">
+    <Symbol UId="519">
+      <Component Name="Req_WR02_IN" UId="520" />
+    </Symbol>
+  </Access>
+  <Blank UId="521" />
+  <Token Text=":=" UId="522" />
+  <Blank UId="523" />
+  <Access Scope="LiteralConstant" UId="524">
+    <Constant UId="525">
+      <ConstantValue UId="527">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="528" />
+  <NewLine UId="529" />
+  <Blank Num="4" UId="530" />
+  <Token Text="IF" UId="531" />
+  <Blank UId="532" />
+  <Access Scope="GlobalVariable" UId="533">
+    <Symbol UId="534">
+      <Component Name="DB_BE_Stand" UId="535">
+        <BooleanAttribute Name="HasQuotes" UId="536">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="537" />
+      <Component Name="Stand" UId="538">
+        <Token Text="[" UId="539" />
+        <Access Scope="LiteralConstant" UId="540">
+          <Constant UId="541">
+            <ConstantValue UId="543">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="544" />
+      </Component>
+      <Token Text="." UId="545" />
+      <Component Name="IN_innen" UId="546" />
+    </Symbol>
+  </Access>
+  <Blank UId="547" />
+  <Token Text="AND" UId="548" />
+  <Blank UId="549" />
+  <Token Text="NOT" UId="550" />
+  <Blank UId="551" />
+  <Access Scope="GlobalVariable" UId="552">
+    <Symbol UId="553">
+      <Component Name="DB_BE_Stand" UId="554">
+        <BooleanAttribute Name="HasQuotes" UId="555">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="556" />
+      <Component Name="Stand" UId="557">
+        <Token Text="[" UId="558" />
+        <Access Scope="LiteralConstant" UId="559">
+          <Constant UId="560">
+            <ConstantValue UId="562">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="563" />
+      </Component>
+      <Token Text="." UId="564" />
+      <Component Name="IN_Belegt" UId="565" />
+    </Symbol>
+  </Access>
+  <Blank UId="566" />
+  <Token Text="AND" UId="567" />
+  <Blank UId="568" />
+  <Token Text="NOT" UId="569" />
+  <Blank UId="570" />
+  <Access Scope="GlobalVariable" UId="571">
+    <Symbol UId="572">
+      <Component Name="DB_BE_Stand" UId="573">
+        <BooleanAttribute Name="HasQuotes" UId="574">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="575" />
+      <Component Name="Stand" UId="576">
+        <Token Text="[" UId="577" />
+        <Access Scope="LiteralConstant" UId="578">
+          <Constant UId="579">
+            <ConstantValue UId="581">6</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="582" />
+      </Component>
+      <Token Text="." UId="583" />
+      <Component Name="IN_Belegt" UId="584" />
+    </Symbol>
+  </Access>
+  <Blank UId="585" />
+  <Token Text="THEN" UId="586" />
+  <NewLine UId="587" />
+  <Blank Num="8" UId="588" />
+  <Access Scope="LocalVariable" UId="589">
+    <Symbol UId="590">
+      <Component Name="Req_WR03_OUT" UId="591" />
+    </Symbol>
+  </Access>
+  <Blank UId="592" />
+  <Token Text=":=" UId="593" />
+  <Blank UId="594" />
+  <Access Scope="LiteralConstant" UId="595">
+    <Constant UId="596">
+      <ConstantValue UId="598">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="599" />
+  <NewLine UId="600" />
+  <Blank Num="4" UId="601" />
+  <Token Text="END_IF" UId="602" />
+  <Token Text=";" UId="603" />
+  <NewLine UId="604" />
+  <Blank Num="4" UId="605" />
+  <Token Text="RETURN" UId="606" />
+  <Token Text=";" UId="607" />
+  <NewLine UId="608" />
+  <Token Text="END_IF" UId="609" />
+  <Token Text=";" UId="610" />
+  <NewLine UId="611" />
+  <LineComment UId="612">
+    <Text UId="613"> Rohware --&gt; Rein BE5 / BE6</Text>
+  </LineComment>
+  <NewLine UId="614" />
+  <Token Text="IF" UId="615" />
+  <Blank UId="616" />
+  <Access Scope="GlobalVariable" UId="617">
+    <Symbol UId="618">
+      <Component Name="DB_BE_Stand" UId="619">
+        <BooleanAttribute Name="HasQuotes" UId="620">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="621" />
+      <Component Name="Stand" UId="622">
+        <Token Text="[" UId="623" />
+        <Access Scope="LiteralConstant" UId="624">
+          <Constant UId="625">
+            <ConstantValue UId="627">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="628" />
+      </Component>
+      <Token Text="." UId="629" />
+      <Component Name="IN_aussen" UId="630" />
+    </Symbol>
+  </Access>
+  <Blank UId="631" />
+  <Token Text="AND" UId="632" />
+  <Blank UId="633" />
+  <Token Text="(" UId="634" />
+  <Token Text="(" UId="635" />
+  <Access Scope="LocalVariable" UId="636">
+    <Symbol UId="637">
+      <Component Name="BE5_inA" UId="638" />
+    </Symbol>
+  </Access>
+  <Blank UId="639" />
+  <Token Text="AND" UId="640" />
+  <Blank UId="641" />
+  <Access Scope="GlobalVariable" UId="642">
+    <Symbol UId="643">
+      <Component Name="DB_BE_Stand" UId="644">
+        <BooleanAttribute Name="HasQuotes" UId="645">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="646" />
+      <Component Name="Stand" UId="647">
+        <Token Text="[" UId="648" />
+        <Access Scope="LiteralConstant" UId="649">
+          <Constant UId="650">
+            <ConstantValue UId="652">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="653" />
+      </Component>
+      <Token Text="." UId="654" />
+      <Component Name="IN_Freigabe" UId="655" />
+    </Symbol>
+  </Access>
+  <Blank UId="656" />
+  <Token Text="AND" UId="657" />
+  <Blank UId="658" />
+  <Token Text="NOT" UId="659" />
+  <Blank UId="660" />
+  <Access Scope="LocalVariable" UId="661">
+    <Symbol UId="662">
+      <Component Name="BE6_outA" UId="663" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="664" />
+  <Blank UId="665" />
+  <Token Text="OR" UId="666" />
+  <Blank UId="667" />
+  <Token Text="(" UId="668" />
+  <Access Scope="LocalVariable" UId="669">
+    <Symbol UId="670">
+      <Component Name="BE6_inA" UId="671" />
+    </Symbol>
+  </Access>
+  <Blank UId="672" />
+  <Token Text="AND" UId="673" />
+  <Blank UId="674" />
+  <Access Scope="GlobalVariable" UId="675">
+    <Symbol UId="676">
+      <Component Name="DB_BE_Stand" UId="677">
+        <BooleanAttribute Name="HasQuotes" UId="678">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="679" />
+      <Component Name="Stand" UId="680">
+        <Token Text="[" UId="681" />
+        <Access Scope="LiteralConstant" UId="682">
+          <Constant UId="683">
+            <ConstantValue UId="685">6</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="686" />
+      </Component>
+      <Token Text="." UId="687" />
+      <Component Name="IN_Freigabe" UId="688" />
+    </Symbol>
+  </Access>
+  <Blank UId="689" />
+  <Token Text="AND" UId="690" />
+  <Blank Num="2" UId="691" />
+  <Token Text="NOT" UId="692" />
+  <Blank UId="693" />
+  <Access Scope="LocalVariable" UId="694">
+    <Symbol UId="695">
+      <Component Name="BE5_outA" UId="696" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="697" />
+  <Token Text=")" UId="698" />
+  <Blank UId="699" />
+  <Token Text="THEN" UId="700" />
+  <NewLine UId="701" />
+  <Blank Num="4" UId="702" />
+  <Access Scope="LocalVariable" UId="703">
+    <Symbol UId="704">
+      <Component Name="Req_WR03_IN" UId="705" />
+    </Symbol>
+  </Access>
+  <Blank UId="706" />
+  <Token Text=":=" UId="707" />
+  <Blank UId="708" />
+  <Access Scope="LiteralConstant" UId="709">
+    <Constant UId="710">
+      <ConstantValue UId="712">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="713" />
+  <NewLine UId="714" />
+  <Blank Num="4" UId="715" />
+  <Token Text="IF" UId="716" />
+  <Blank UId="717" />
+  <Access Scope="GlobalVariable" UId="718">
+    <Symbol UId="719">
+      <Component Name="DB_BE_Stand" UId="720">
+        <BooleanAttribute Name="HasQuotes" UId="721">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="722" />
+      <Component Name="Stand" UId="723">
+        <Token Text="[" UId="724" />
+        <Access Scope="LiteralConstant" UId="725">
+          <Constant UId="726">
+            <ConstantValue UId="728">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="729" />
+      </Component>
+      <Token Text="." UId="730" />
+      <Component Name="IN_innen" UId="731" />
+    </Symbol>
+  </Access>
+  <Blank UId="732" />
+  <Token Text="AND" UId="733" />
+  <Blank UId="734" />
+  <Token Text="NOT" UId="735" />
+  <Blank UId="736" />
+  <Access Scope="GlobalVariable" UId="737">
+    <Symbol UId="738">
+      <Component Name="DB_BE_Stand" UId="739">
+        <BooleanAttribute Name="HasQuotes" UId="740">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="741" />
+      <Component Name="Stand" UId="742">
+        <Token Text="[" UId="743" />
+        <Access Scope="LiteralConstant" UId="744">
+          <Constant UId="745">
+            <ConstantValue UId="747">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="748" />
+      </Component>
+      <Token Text="." UId="749" />
+      <Component Name="IN_Belegt" UId="750" />
+    </Symbol>
+  </Access>
+  <Blank UId="751" />
+  <Token Text="AND" UId="752" />
+  <Blank UId="753" />
+  <Token Text="NOT" UId="754" />
+  <Blank UId="755" />
+  <Access Scope="GlobalVariable" UId="756">
+    <Symbol UId="757">
+      <Component Name="DB_BE_Stand" UId="758">
+        <BooleanAttribute Name="HasQuotes" UId="759">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="760" />
+      <Component Name="Stand" UId="761">
+        <Token Text="[" UId="762" />
+        <Access Scope="LiteralConstant" UId="763">
+          <Constant UId="764">
+            <ConstantValue UId="766">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="767" />
+      </Component>
+      <Token Text="." UId="768" />
+      <Component Name="IN_Belegt" UId="769" />
+    </Symbol>
+  </Access>
+  <Blank UId="770" />
+  <Token Text="THEN" UId="771" />
+  <NewLine UId="772" />
+  <Blank Num="8" UId="773" />
+  <Access Scope="LocalVariable" UId="774">
+    <Symbol UId="775">
+      <Component Name="Req_WR02_OUT" UId="776" />
+    </Symbol>
+  </Access>
+  <Blank UId="777" />
+  <Token Text=":=" UId="778" />
+  <Blank UId="779" />
+  <Access Scope="LiteralConstant" UId="780">
+    <Constant UId="781">
+      <ConstantValue UId="783">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="784" />
+  <NewLine UId="785" />
+  <Blank Num="4" UId="786" />
+  <Token Text="END_IF" UId="787" />
+  <Token Text=";" UId="788" />
+  <NewLine UId="789" />
+  <Blank Num="4" UId="790" />
+  <Token Text="RETURN" UId="791" />
+  <Token Text=";" UId="792" />
+  <NewLine UId="793" />
+  <Token Text="END_IF" UId="794" />
+  <Token Text=";" UId="795" />
+  <NewLine Num="2" UId="796" />
+  <LineComment UId="797">
+    <Text UId="798"> Beide drin </Text>
+  </LineComment>
+  <NewLine UId="799" />
+  <Token Text="IF" UId="800" />
+  <Blank UId="801" />
+  <Access Scope="GlobalVariable" UId="802">
+    <Symbol UId="803">
+      <Component Name="DB_BE_Stand" UId="804">
+        <BooleanAttribute Name="HasQuotes" UId="805">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="806" />
+      <Component Name="Stand" UId="807">
+        <Token Text="[" UId="808" />
+        <Access Scope="LiteralConstant" UId="809">
+          <Constant UId="810">
+            <ConstantValue UId="812">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="813" />
+      </Component>
+      <Token Text="." UId="814" />
+      <Component Name="IN_innen" UId="815" />
+    </Symbol>
+  </Access>
+  <Blank UId="816" />
+  <Token Text="AND" UId="817" />
+  <Blank UId="818" />
+  <Access Scope="GlobalVariable" UId="819">
+    <Symbol UId="820">
+      <Component Name="DB_BE_Stand" UId="821">
+        <BooleanAttribute Name="HasQuotes" UId="822">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="823" />
+      <Component Name="Stand" UId="824">
+        <Token Text="[" UId="825" />
+        <Access Scope="LiteralConstant" UId="826">
+          <Constant UId="827">
+            <ConstantValue UId="829">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="830" />
+      </Component>
+      <Token Text="." UId="831" />
+      <Component Name="IN_innen" UId="832" />
+    </Symbol>
+  </Access>
+  <Blank UId="833" />
+  <Token Text="THEN" UId="834" />
+  <NewLine UId="835" />
+  <Blank Num="4" UId="836" />
+  <Token Text="IF" UId="837" />
+  <Blank UId="838" />
+  <Token Text="NOT" UId="839" />
+  <Blank UId="840" />
+  <Access Scope="GlobalVariable" UId="841">
+    <Symbol UId="842">
+      <Component Name="DB_BE_Stand" UId="843">
+        <BooleanAttribute Name="HasQuotes" UId="844">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="845" />
+      <Component Name="Stand" UId="846">
+        <Token Text="[" UId="847" />
+        <Access Scope="LiteralConstant" UId="848">
+          <Constant UId="849">
+            <ConstantValue UId="851">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="852" />
+      </Component>
+      <Token Text="." UId="853" />
+      <Component Name="IN_Belegt" UId="854" />
+    </Symbol>
+  </Access>
+  <Blank UId="855" />
+  <Token Text="AND" UId="856" />
+  <Blank UId="857" />
+  <Token Text="NOT" UId="858" />
+  <Blank UId="859" />
+  <Access Scope="GlobalVariable" UId="860">
+    <Symbol UId="861">
+      <Component Name="DB_BE_Stand" UId="862">
+        <BooleanAttribute Name="HasQuotes" UId="863">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="864" />
+      <Component Name="Stand" UId="865">
+        <Token Text="[" UId="866" />
+        <Access Scope="LiteralConstant" UId="867">
+          <Constant UId="868">
+            <ConstantValue UId="870">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="871" />
+      </Component>
+      <Token Text="." UId="872" />
+      <Component Name="IN_Belegt" UId="873" />
+    </Symbol>
+  </Access>
+  <Blank UId="874" />
+  <Token Text="AND" UId="875" />
+  <Blank UId="876" />
+  <Token Text="NOT" UId="877" />
+  <Blank UId="878" />
+  <Access Scope="GlobalVariable" UId="879">
+    <Symbol UId="880">
+      <Component Name="DB_BE_Stand" UId="881">
+        <BooleanAttribute Name="HasQuotes" UId="882">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="883" />
+      <Component Name="Stand" UId="884">
+        <Token Text="[" UId="885" />
+        <Access Scope="LiteralConstant" UId="886">
+          <Constant UId="887">
+            <ConstantValue UId="889">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="890" />
+      </Component>
+      <Token Text="." UId="891" />
+      <Component Name="IN_Belegt" UId="892" />
+    </Symbol>
+  </Access>
+  <Blank UId="893" />
+  <Token Text="AND" UId="894" />
+  <Blank UId="895" />
+  <Token Text="NOT" UId="896" />
+  <Blank UId="897" />
+  <Access Scope="GlobalVariable" UId="898">
+    <Symbol UId="899">
+      <Component Name="DB_BE_Stand" UId="900">
+        <BooleanAttribute Name="HasQuotes" UId="901">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="902" />
+      <Component Name="Stand" UId="903">
+        <Token Text="[" UId="904" />
+        <Access Scope="LiteralConstant" UId="905">
+          <Constant UId="906">
+            <ConstantValue UId="908">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="909" />
+      </Component>
+      <Token Text="." UId="910" />
+      <Component Name="IN_Belegt" UId="911" />
+    </Symbol>
+  </Access>
+  <Blank UId="912" />
+  <Token Text="THEN" UId="913" />
+  <NewLine UId="914" />
+  <Blank Num="8" UId="915" />
+  <Access Scope="LocalVariable" UId="916">
+    <Symbol UId="917">
+      <Component Name="Req_WR02_OUT" UId="918" />
+    </Symbol>
+  </Access>
+  <Blank UId="919" />
+  <Token Text=":=" UId="920" />
+  <Blank UId="921" />
+  <Access Scope="LiteralConstant" UId="922">
+    <Constant UId="923">
+      <ConstantValue UId="925">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="926" />
+  <NewLine UId="927" />
+  <Blank Num="8" UId="928" />
+  <Token Text="RETURN" UId="929" />
+  <Token Text=";" UId="930" />
+  <NewLine UId="931" />
+  <Blank Num="4" UId="932" />
+  <Token Text="END_IF" UId="933" />
+  <Token Text=";" UId="934" />
+  <NewLine UId="935" />
+  <Blank Num="4" UId="936" />
+  <Token Text="IF" UId="937" />
+  <Blank UId="938" />
+  <Token Text="NOT" UId="939" />
+  <Blank UId="940" />
+  <Access Scope="GlobalVariable" UId="941">
+    <Symbol UId="942">
+      <Component Name="DB_BE_Stand" UId="943">
+        <BooleanAttribute Name="HasQuotes" UId="944">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="945" />
+      <Component Name="Stand" UId="946">
+        <Token Text="[" UId="947" />
+        <Access Scope="LiteralConstant" UId="948">
+          <Constant UId="949">
+            <ConstantValue UId="951">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="952" />
+      </Component>
+      <Token Text="." UId="953" />
+      <Component Name="IN_Belegt" UId="954" />
+    </Symbol>
+  </Access>
+  <Blank UId="955" />
+  <Token Text="AND" UId="956" />
+  <Blank UId="957" />
+  <Token Text="NOT" UId="958" />
+  <Blank UId="959" />
+  <Access Scope="GlobalVariable" UId="960">
+    <Symbol UId="961">
+      <Component Name="DB_BE_Stand" UId="962">
+        <BooleanAttribute Name="HasQuotes" UId="963">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="964" />
+      <Component Name="Stand" UId="965">
+        <Token Text="[" UId="966" />
+        <Access Scope="LiteralConstant" UId="967">
+          <Constant UId="968">
+            <ConstantValue UId="970">6</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="971" />
+      </Component>
+      <Token Text="." UId="972" />
+      <Component Name="IN_Belegt" UId="973" />
+    </Symbol>
+  </Access>
+  <Blank UId="974" />
+  <Token Text="AND" UId="975" />
+  <Blank UId="976" />
+  <Token Text="NOT" UId="977" />
+  <Blank UId="978" />
+  <Access Scope="GlobalVariable" UId="979">
+    <Symbol UId="980">
+      <Component Name="DB_BE_Stand" UId="981">
+        <BooleanAttribute Name="HasQuotes" UId="982">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="983" />
+      <Component Name="Stand" UId="984">
+        <Token Text="[" UId="985" />
+        <Access Scope="LiteralConstant" UId="986">
+          <Constant UId="987">
+            <ConstantValue UId="989">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="990" />
+      </Component>
+      <Token Text="." UId="991" />
+      <Component Name="IN_Belegt" UId="992" />
+    </Symbol>
+  </Access>
+  <Blank UId="993" />
+  <Token Text="AND" UId="994" />
+  <Blank UId="995" />
+  <Token Text="NOT" UId="996" />
+  <Blank UId="997" />
+  <Access Scope="GlobalVariable" UId="998">
+    <Symbol UId="999">
+      <Component Name="DB_BE_Stand" UId="1000">
+        <BooleanAttribute Name="HasQuotes" UId="1001">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1002" />
+      <Component Name="Stand" UId="1003">
+        <Token Text="[" UId="1004" />
+        <Access Scope="LiteralConstant" UId="1005">
+          <Constant UId="1006">
+            <ConstantValue UId="1008">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1009" />
+      </Component>
+      <Token Text="." UId="1010" />
+      <Component Name="IN_Belegt" UId="1011" />
+    </Symbol>
+  </Access>
+  <Blank UId="1012" />
+  <Token Text="THEN" UId="1013" />
+  <NewLine UId="1014" />
+  <Blank Num="8" UId="1015" />
+  <Access Scope="LocalVariable" UId="1016">
+    <Symbol UId="1017">
+      <Component Name="Req_WR03_OUT" UId="1018" />
+    </Symbol>
+  </Access>
+  <Blank UId="1019" />
+  <Token Text=":=" UId="1020" />
+  <Blank UId="1021" />
+  <Access Scope="LiteralConstant" UId="1022">
+    <Constant UId="1023">
+      <ConstantValue UId="1025">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1026" />
+  <NewLine UId="1027" />
+  <Blank Num="8" UId="1028" />
+  <Token Text="RETURN" UId="1029" />
+  <Token Text=";" UId="1030" />
+  <NewLine UId="1031" />
+  <Blank Num="4" UId="1032" />
+  <Token Text="END_IF" UId="1033" />
+  <Token Text=";" UId="1034" />
+  <NewLine UId="1035" />
+  <Token Text="END_IF" UId="1036" />
+  <Token Text=";" UId="1037" />
+  <NewLine Num="2" UId="1038" />
+  <LineComment UId="1039">
+    <Text UId="1040"> Beide draussen und min. 1 Korb in Anlage</Text>
+  </LineComment>
+  <NewLine UId="1041" />
+  <Token Text="IF" UId="1042" />
+  <Blank UId="1043" />
+  <Access Scope="GlobalVariable" UId="1044">
+    <Symbol UId="1045">
+      <Component Name="E_T_Frg_BE" UId="1046">
+        <BooleanAttribute Name="HasQuotes" UId="1047">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="1048" />
+  <Token Text="AND" UId="1049" />
+  <Blank UId="1050" />
+  <Access Scope="GlobalVariable" UId="1051">
+    <Symbol UId="1052">
+      <Component Name="DB_BE_Stand" UId="1053">
+        <BooleanAttribute Name="HasQuotes" UId="1054">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1055" />
+      <Component Name="Stand" UId="1056">
+        <Token Text="[" UId="1057" />
+        <Access Scope="LiteralConstant" UId="1058">
+          <Constant UId="1059">
+            <ConstantValue UId="1061">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1062" />
+      </Component>
+      <Token Text="." UId="1063" />
+      <Component Name="IN_aussen" UId="1064" />
+    </Symbol>
+  </Access>
+  <Blank UId="1065" />
+  <Token Text="AND" UId="1066" />
+  <Blank UId="1067" />
+  <Access Scope="GlobalVariable" UId="1068">
+    <Symbol UId="1069">
+      <Component Name="DB_BE_Stand" UId="1070">
+        <BooleanAttribute Name="HasQuotes" UId="1071">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1072" />
+      <Component Name="Stand" UId="1073">
+        <Token Text="[" UId="1074" />
+        <Access Scope="LiteralConstant" UId="1075">
+          <Constant UId="1076">
+            <ConstantValue UId="1078">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1079" />
+      </Component>
+      <Token Text="." UId="1080" />
+      <Component Name="IN_aussen" UId="1081" />
+    </Symbol>
+  </Access>
+  <Blank UId="1082" />
+  <Token Text="AND" UId="1083" />
+  <Blank UId="1084" />
+  <Access Scope="LocalVariable" UId="1085">
+    <Symbol UId="1086">
+      <Component Name="Korb_in_Anlage" UId="1087" />
+    </Symbol>
+  </Access>
+  <Blank UId="1088" />
+  <Token Text="THEN" UId="1089" />
+  <NewLine UId="1090" />
+  <Blank Num="4" UId="1091" />
+  <Token Text="IF" UId="1092" />
+  <Blank UId="1093" />
+  <Token Text="NOT" UId="1094" />
+  <Blank UId="1095" />
+  <Access Scope="GlobalVariable" UId="1096">
+    <Symbol UId="1097">
+      <Component Name="DB_BE_Stand" UId="1098">
+        <BooleanAttribute Name="HasQuotes" UId="1099">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1100" />
+      <Component Name="Stand" UId="1101">
+        <Token Text="[" UId="1102" />
+        <Access Scope="LiteralConstant" UId="1103">
+          <Constant UId="1104">
+            <ConstantValue UId="1106">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1107" />
+      </Component>
+      <Token Text="." UId="1108" />
+      <Component Name="IN_Belegt" UId="1109" />
+    </Symbol>
+  </Access>
+  <Blank UId="1110" />
+  <Token Text="AND" UId="1111" />
+  <Blank UId="1112" />
+  <Token Text="NOT" UId="1113" />
+  <Blank UId="1114" />
+  <Access Scope="GlobalVariable" UId="1115">
+    <Symbol UId="1116">
+      <Component Name="DB_BE_Stand" UId="1117">
+        <BooleanAttribute Name="HasQuotes" UId="1118">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1119" />
+      <Component Name="Stand" UId="1120">
+        <Token Text="[" UId="1121" />
+        <Access Scope="LiteralConstant" UId="1122">
+          <Constant UId="1123">
+            <ConstantValue UId="1125">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1126" />
+      </Component>
+      <Token Text="." UId="1127" />
+      <Component Name="IN_Belegt" UId="1128" />
+    </Symbol>
+  </Access>
+  <Blank UId="1129" />
+  <Token Text="AND" UId="1130" />
+  <Blank UId="1131" />
+  <Token Text="NOT" UId="1132" />
+  <Blank UId="1133" />
+  <Access Scope="GlobalVariable" UId="1134">
+    <Symbol UId="1135">
+      <Component Name="DB_BE_Stand" UId="1136">
+        <BooleanAttribute Name="HasQuotes" UId="1137">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1138" />
+      <Component Name="Stand" UId="1139">
+        <Token Text="[" UId="1140" />
+        <Access Scope="LiteralConstant" UId="1141">
+          <Constant UId="1142">
+            <ConstantValue UId="1144">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1145" />
+      </Component>
+      <Token Text="." UId="1146" />
+      <Component Name="IN_Belegt" UId="1147" />
+    </Symbol>
+  </Access>
+  <Blank UId="1148" />
+  <Token Text="AND" UId="1149" />
+  <Blank UId="1150" />
+  <Token Text="NOT" UId="1151" />
+  <Blank UId="1152" />
+  <Access Scope="GlobalVariable" UId="1153">
+    <Symbol UId="1154">
+      <Component Name="DB_BE_Stand" UId="1155">
+        <BooleanAttribute Name="HasQuotes" UId="1156">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1157" />
+      <Component Name="Stand" UId="1158">
+        <Token Text="[" UId="1159" />
+        <Access Scope="LiteralConstant" UId="1160">
+          <Constant UId="1161">
+            <ConstantValue UId="1163">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1164" />
+      </Component>
+      <Token Text="." UId="1165" />
+      <Component Name="IN_Belegt" UId="1166" />
+    </Symbol>
+  </Access>
+  <Blank UId="1167" />
+  <Token Text="THEN" UId="1168" />
+  <NewLine UId="1169" />
+  <Blank Num="8" UId="1170" />
+  <Access Scope="LocalVariable" UId="1171">
+    <Symbol UId="1172">
+      <Component Name="Req_WR02_IN" UId="1173" />
+    </Symbol>
+  </Access>
+  <Blank UId="1174" />
+  <Token Text=":=" UId="1175" />
+  <Blank UId="1176" />
+  <Access Scope="LiteralConstant" UId="1177">
+    <Constant UId="1178">
+      <ConstantValue UId="1180">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1181" />
+  <NewLine UId="1182" />
+  <Blank Num="8" UId="1183" />
+  <Token Text="RETURN" UId="1184" />
+  <Token Text=";" UId="1185" />
+  <NewLine UId="1186" />
+  <Blank Num="4" UId="1187" />
+  <Token Text="END_IF" UId="1188" />
+  <Token Text=";" UId="1189" />
+  <NewLine UId="1190" />
+  <Blank Num="4" UId="1191" />
+  <Token Text="IF" UId="1192" />
+  <Blank UId="1193" />
+  <Token Text="NOT" UId="1194" />
+  <Blank UId="1195" />
+  <Access Scope="GlobalVariable" UId="1196">
+    <Symbol UId="1197">
+      <Component Name="DB_BE_Stand" UId="1198">
+        <BooleanAttribute Name="HasQuotes" UId="1199">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1200" />
+      <Component Name="Stand" UId="1201">
+        <Token Text="[" UId="1202" />
+        <Access Scope="LiteralConstant" UId="1203">
+          <Constant UId="1204">
+            <ConstantValue UId="1206">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1207" />
+      </Component>
+      <Token Text="." UId="1208" />
+      <Component Name="IN_Belegt" UId="1209" />
+    </Symbol>
+  </Access>
+  <Blank UId="1210" />
+  <Token Text="AND" UId="1211" />
+  <Blank UId="1212" />
+  <Token Text="NOT" UId="1213" />
+  <Blank UId="1214" />
+  <Access Scope="GlobalVariable" UId="1215">
+    <Symbol UId="1216">
+      <Component Name="DB_BE_Stand" UId="1217">
+        <BooleanAttribute Name="HasQuotes" UId="1218">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1219" />
+      <Component Name="Stand" UId="1220">
+        <Token Text="[" UId="1221" />
+        <Access Scope="LiteralConstant" UId="1222">
+          <Constant UId="1223">
+            <ConstantValue UId="1225">6</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1226" />
+      </Component>
+      <Token Text="." UId="1227" />
+      <Component Name="IN_Belegt" UId="1228" />
+    </Symbol>
+  </Access>
+  <Blank UId="1229" />
+  <Token Text="AND" UId="1230" />
+  <Blank UId="1231" />
+  <Token Text="NOT" UId="1232" />
+  <Blank UId="1233" />
+  <Access Scope="GlobalVariable" UId="1234">
+    <Symbol UId="1235">
+      <Component Name="DB_BE_Stand" UId="1236">
+        <BooleanAttribute Name="HasQuotes" UId="1237">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1238" />
+      <Component Name="Stand" UId="1239">
+        <Token Text="[" UId="1240" />
+        <Access Scope="LiteralConstant" UId="1241">
+          <Constant UId="1242">
+            <ConstantValue UId="1244">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1245" />
+      </Component>
+      <Token Text="." UId="1246" />
+      <Component Name="IN_Belegt" UId="1247" />
+    </Symbol>
+  </Access>
+  <Blank UId="1248" />
+  <Token Text="AND" UId="1249" />
+  <Blank UId="1250" />
+  <Token Text="NOT" UId="1251" />
+  <Blank UId="1252" />
+  <Access Scope="GlobalVariable" UId="1253">
+    <Symbol UId="1254">
+      <Component Name="DB_BE_Stand" UId="1255">
+        <BooleanAttribute Name="HasQuotes" UId="1256">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1257" />
+      <Component Name="Stand" UId="1258">
+        <Token Text="[" UId="1259" />
+        <Access Scope="LiteralConstant" UId="1260">
+          <Constant UId="1261">
+            <ConstantValue UId="1263">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1264" />
+      </Component>
+      <Token Text="." UId="1265" />
+      <Component Name="IN_Belegt" UId="1266" />
+    </Symbol>
+  </Access>
+  <Blank UId="1267" />
+  <Token Text="THEN" UId="1268" />
+  <NewLine UId="1269" />
+  <Blank Num="8" UId="1270" />
+  <Access Scope="LocalVariable" UId="1271">
+    <Symbol UId="1272">
+      <Component Name="Req_WR03_IN" UId="1273" />
+    </Symbol>
+  </Access>
+  <Blank UId="1274" />
+  <Token Text=":=" UId="1275" />
+  <Blank UId="1276" />
+  <Access Scope="LiteralConstant" UId="1277">
+    <Constant UId="1278">
+      <ConstantValue UId="1280">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1281" />
+  <NewLine UId="1282" />
+  <Blank Num="8" UId="1283" />
+  <Token Text="RETURN" UId="1284" />
+  <Token Text=";" UId="1285" />
+  <NewLine UId="1286" />
+  <Blank Num="4" UId="1287" />
+  <Token Text="END_IF" UId="1288" />
+  <Token Text=";" UId="1289" />
+  <NewLine UId="1290" />
+  <Token Text="END_IF" UId="1291" />
+  <Token Text=";" UId="1292" />
+  <NewLine UId="1293" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Schmalware (kurz oder lang)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Anforderung WR02 /WR03 in Automatik</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

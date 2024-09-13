@@ -1,0 +1,1375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp" />
+  <Section Name="Constant">
+    <Member Name="Ventilator_aus" Datatype="Int">
+      <StartValue>10</StartValue>
+    </Member>
+    <Member Name="AUS" Datatype="USInt" />
+    <Member Name="Hand_EIN" Datatype="USInt">
+      <StartValue>1</StartValue>
+    </Member>
+    <Member Name="Hand_AUS" Datatype="USInt">
+      <StartValue>2</StartValue>
+    </Member>
+    <Member Name="Auto_EIN" Datatype="USInt">
+      <StartValue>3</StartValue>
+    </Member>
+    <Member Name="Auto_AUS" Datatype="USInt">
+      <StartValue>4</StartValue>
+    </Member>
+    <Member Name="STOERUNG" Datatype="USInt">
+      <StartValue>5</StartValue>
+    </Member>
+  </Section>
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>Peripherie</Name>
+      <Namespace />
+      <Number>1090</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>true</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Deckel Säurebecken</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="Call" UId="24">
+    <CallInfo UId="25" BlockType="FB" Name="Deckel">
+      <Instance Scope="GlobalVariable" UId="26">
+        <Component Name="Deckel_CM01" UId="27">
+          <BooleanAttribute Name="HasQuotes" UId="28">true</BooleanAttribute>
+        </Component>
+      </Instance>
+      <Token Text="(" UId="29" />
+      <Token Text=")" UId="30" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="31" />
+  <NewLine UId="32" />
+  <Access Scope="Call" UId="33">
+    <CallInfo UId="34" BlockType="FB" Name="Deckel">
+      <Instance Scope="GlobalVariable" UId="35">
+        <Component Name="Deckel_CM02" UId="36">
+          <BooleanAttribute Name="HasQuotes" UId="37">true</BooleanAttribute>
+        </Component>
+      </Instance>
+      <Token Text="(" UId="38" />
+      <Token Text=")" UId="39" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="40" />
+  <NewLine UId="41" />
+  <LineComment UId="42">
+    <Text UId="43"> Schnelllauftor</Text>
+  </LineComment>
+  <NewLine UId="44" />
+  <Access Scope="Call" UId="45">
+    <CallInfo UId="46" BlockType="FB" Name="RT">
+      <Instance Scope="GlobalVariable" UId="47">
+        <Component Name="Tor" UId="48">
+          <BooleanAttribute Name="HasQuotes" UId="49">true</BooleanAttribute>
+        </Component>
+      </Instance>
+      <Token Text="(" UId="50" />
+      <Token Text=")" UId="51" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="52" />
+  <NewLine UId="53" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Diverses</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22">Ansteuerung</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="GlobalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="Panel" UId="26">
+        <BooleanAttribute Name="HasQuotes" UId="27">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="28" />
+      <Component Name="Ventilator" UId="29" />
+      <Token Text="." UId="30" />
+      <Component Name="laeuft" UId="31" />
+    </Symbol>
+  </Access>
+  <Blank UId="32" />
+  <Token Text=":=" UId="33" />
+  <Blank UId="34" />
+  <Token Text="(" UId="35" />
+  <Access Scope="GlobalVariable" UId="36">
+    <Symbol UId="37">
+      <Component Name="Panel" UId="38">
+        <BooleanAttribute Name="HasQuotes" UId="39">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="40" />
+      <Component Name="Ventilator" UId="41" />
+      <Token Text="." UId="42" />
+      <Component Name="Auto" UId="43" />
+    </Symbol>
+  </Access>
+  <Blank UId="44" />
+  <Token Text="OR" UId="45" />
+  <Blank UId="46" />
+  <Access Scope="GlobalVariable" UId="47">
+    <Symbol UId="48">
+      <Component Name="Panel" UId="49">
+        <BooleanAttribute Name="HasQuotes" UId="50">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="51" />
+      <Component Name="Ventilator" UId="52" />
+      <Token Text="." UId="53" />
+      <Component Name="Ein" UId="54" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="55" />
+  <NewLine UId="56" />
+  <Token Text="AND" UId="57" />
+  <Blank UId="58" />
+  <Access Scope="GlobalVariable" UId="59">
+    <Symbol UId="60">
+      <Component Name="DB_PNOZ_IN_Out" UId="61">
+        <BooleanAttribute Name="HasQuotes" UId="62">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="63" />
+      <Component Name="In" UId="64" />
+      <Token Text="." UId="65" />
+      <Component Name="PNOZ_OK" UId="66" />
+    </Symbol>
+  </Access>
+  <Blank UId="67" />
+  <Token Text="AND" UId="68" />
+  <Blank UId="69" />
+  <Access Scope="GlobalVariable" UId="70">
+    <Symbol UId="71">
+      <Component Name="DB_PNOZ_IN_Out" UId="72">
+        <BooleanAttribute Name="HasQuotes" UId="73">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="74" />
+      <Component Name="In" UId="75" />
+      <Token Text="." UId="76" />
+      <Component Name="Abluft_ok" UId="77" />
+    </Symbol>
+  </Access>
+  <Blank UId="78" />
+  <Token Text="AND" UId="79" />
+  <Blank UId="80" />
+  <Access Scope="GlobalVariable" UId="81">
+    <Symbol UId="82">
+      <Component Name="FU_In_Out" UId="83">
+        <BooleanAttribute Name="HasQuotes" UId="84">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="85" />
+      <Component Name="FU" UId="86">
+        <Token Text="[" UId="87" />
+        <Access Scope="LiteralConstant" UId="88">
+          <Constant UId="89">
+            <ConstantValue UId="91">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="92" />
+      </Component>
+      <Token Text="." UId="93" />
+      <Component Name="PE" UId="94" />
+      <Token Text="." UId="95" />
+      <Component Name="Statusbyte" UId="96" />
+      <Token Text="." UId="97" />
+      <Component Name="Bereit" UId="98" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="99" />
+  <NewLine UId="100" />
+  <Blank Num="4" UId="101" />
+  <NewLine UId="102" />
+  <Token Text="IF" UId="103" />
+  <Blank UId="104" />
+  <Access Scope="GlobalVariable" UId="105">
+    <Symbol UId="106">
+      <Component Name="Panel" UId="107">
+        <BooleanAttribute Name="HasQuotes" UId="108">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="109" />
+      <Component Name="Ventilator" UId="110" />
+      <Token Text="." UId="111" />
+      <Component Name="laeuft" UId="112" />
+    </Symbol>
+  </Access>
+  <Blank UId="113" />
+  <Token Text="THEN" UId="114" />
+  <NewLine UId="115" />
+  <Blank Num="4" UId="116" />
+  <Access Scope="GlobalVariable" UId="117">
+    <Symbol UId="118">
+      <Component Name="A_Frg_FU_Vent" UId="119">
+        <BooleanAttribute Name="HasQuotes" UId="120">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="121" />
+  <Token Text=":=" UId="122" />
+  <Blank UId="123" />
+  <Access Scope="LiteralConstant" UId="124">
+    <Constant UId="125">
+      <ConstantValue UId="127">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="128" />
+  <NewLine UId="129" />
+  <Token Text="ELSIF" UId="130" />
+  <Blank UId="131" />
+  <Access Scope="GlobalVariable" UId="132">
+    <Symbol UId="133">
+      <Component Name="Panel" UId="134">
+        <BooleanAttribute Name="HasQuotes" UId="135">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="136" />
+      <Component Name="Ventilator" UId="137" />
+      <Token Text="." UId="138" />
+      <Component Name="speed" UId="139" />
+    </Symbol>
+  </Access>
+  <Blank UId="140" />
+  <Token Text="&lt;" UId="141" />
+  <Blank UId="142" />
+  <Access Scope="LocalConstant" UId="143">
+    <Constant Name="Ventilator_aus" UId="144" />
+  </Access>
+  <Blank UId="147" />
+  <Token Text="THEN" UId="148" />
+  <NewLine UId="149" />
+  <Blank Num="4" UId="150" />
+  <Access Scope="GlobalVariable" UId="151">
+    <Symbol UId="152">
+      <Component Name="A_Frg_FU_Vent" UId="153">
+        <BooleanAttribute Name="HasQuotes" UId="154">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="155" />
+  <Token Text=":=" UId="156" />
+  <Blank UId="157" />
+  <Access Scope="LiteralConstant" UId="158">
+    <Constant UId="159">
+      <ConstantValue UId="161">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="162" />
+  <NewLine UId="163" />
+  <Token Text="END_IF" UId="164" />
+  <Token Text=";" UId="165" />
+  <NewLine Num="2" UId="166" />
+  <Access Scope="GlobalVariable" UId="167">
+    <Symbol UId="168">
+      <Component Name="FU_In_Out" UId="169">
+        <BooleanAttribute Name="HasQuotes" UId="170">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="171" />
+      <Component Name="FU" UId="172">
+        <Token Text="[" UId="173" />
+        <Access Scope="LiteralConstant" UId="174">
+          <Constant UId="175">
+            <ConstantValue UId="177">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="178" />
+      </Component>
+      <Token Text="." UId="179" />
+      <Component Name="PA" UId="180" />
+      <Token Text="." UId="181" />
+      <Component Name="Steuerwort" UId="182" />
+      <Token Text="." UId="183" />
+      <Component Name="FrgHalt" UId="184" />
+    </Symbol>
+  </Access>
+  <Blank UId="185" />
+  <Token Text=":=" UId="186" />
+  <Blank UId="187" />
+  <Access Scope="GlobalVariable" UId="188">
+    <Symbol UId="189">
+      <Component Name="A_Frg_FU_Vent" UId="190">
+        <BooleanAttribute Name="HasQuotes" UId="191">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="192" />
+  <NewLine UId="193" />
+  <Access Scope="GlobalVariable" UId="194">
+    <Symbol UId="195">
+      <Component Name="FU_In_Out" UId="196">
+        <BooleanAttribute Name="HasQuotes" UId="197">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="198" />
+      <Component Name="FU" UId="199">
+        <Token Text="[" UId="200" />
+        <Access Scope="LiteralConstant" UId="201">
+          <Constant UId="202">
+            <ConstantValue UId="204">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="205" />
+      </Component>
+      <Token Text="." UId="206" />
+      <Component Name="PA" UId="207" />
+      <Token Text="." UId="208" />
+      <Component Name="Steuerwort" UId="209" />
+      <Token Text="." UId="210" />
+      <Component Name="FrgStop" UId="211" />
+    </Symbol>
+  </Access>
+  <Blank UId="212" />
+  <Token Text=":=" UId="213" />
+  <Blank UId="214" />
+  <Access Scope="GlobalVariable" UId="215">
+    <Symbol UId="216">
+      <Component Name="A_Frg_FU_Vent" UId="217">
+        <BooleanAttribute Name="HasQuotes" UId="218">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="219" />
+  <NewLine UId="220" />
+  <Access Scope="GlobalVariable" UId="221">
+    <Symbol UId="222">
+      <Component Name="FU_In_Out" UId="223">
+        <BooleanAttribute Name="HasQuotes" UId="224">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="225" />
+      <Component Name="FU" UId="226">
+        <Token Text="[" UId="227" />
+        <Access Scope="LiteralConstant" UId="228">
+          <Constant UId="229">
+            <ConstantValue UId="231">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="232" />
+      </Component>
+      <Token Text="." UId="233" />
+      <Component Name="PA" UId="234" />
+      <Token Text="." UId="235" />
+      <Component Name="Steuerwort" UId="236" />
+      <Token Text="." UId="237" />
+      <Component Name="RegSp" UId="238" />
+    </Symbol>
+  </Access>
+  <Blank UId="239" />
+  <Token Text=":=" UId="240" />
+  <Blank UId="241" />
+  <Token Text="NOT" UId="242" />
+  <Blank UId="243" />
+  <Access Scope="GlobalVariable" UId="244">
+    <Symbol UId="245">
+      <Component Name="FU_In_Out" UId="246">
+        <BooleanAttribute Name="HasQuotes" UId="247">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="248" />
+      <Component Name="FU" UId="249">
+        <Token Text="[" UId="250" />
+        <Access Scope="LiteralConstant" UId="251">
+          <Constant UId="252">
+            <ConstantValue UId="254">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="255" />
+      </Component>
+      <Token Text="." UId="256" />
+      <Component Name="PA" UId="257" />
+      <Token Text="." UId="258" />
+      <Component Name="Steuerwort" UId="259" />
+      <Token Text="." UId="260" />
+      <Component Name="FrgHalt" UId="261" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="262" />
+  <NewLine Num="2" UId="263" />
+  <LineComment UId="264">
+    <Text UId="265"> Geschwindigkeitsvorgabe</Text>
+  </LineComment>
+  <NewLine UId="266" />
+  <Token Text="IF" UId="267" />
+  <Blank UId="268" />
+  <Access Scope="GlobalVariable" UId="269">
+    <Symbol UId="270">
+      <Component Name="Panel" UId="271">
+        <BooleanAttribute Name="HasQuotes" UId="272">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="273" />
+      <Component Name="Ventilator" UId="274" />
+      <Token Text="." UId="275" />
+      <Component Name="laeuft" UId="276" />
+    </Symbol>
+  </Access>
+  <Blank UId="277" />
+  <Token Text="THEN" UId="278" />
+  <NewLine UId="279" />
+  <Blank Num="4" UId="280" />
+  <Token Text="IF" UId="281" />
+  <Blank UId="282" />
+  <Access Scope="GlobalVariable" UId="283">
+    <Symbol UId="284">
+      <Component Name="Panel" UId="285">
+        <BooleanAttribute Name="HasQuotes" UId="286">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="287" />
+      <Component Name="Ventilator" UId="288" />
+      <Token Text="." UId="289" />
+      <Component Name="Ein" UId="290" />
+    </Symbol>
+  </Access>
+  <Blank UId="291" />
+  <Token Text="THEN" UId="292" />
+  <NewLine UId="293" />
+  <Blank Num="8" UId="294" />
+  <Access Scope="GlobalVariable" UId="295">
+    <Symbol UId="296">
+      <Component Name="FU_In_Out" UId="297">
+        <BooleanAttribute Name="HasQuotes" UId="298">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="299" />
+      <Component Name="FU" UId="300">
+        <Token Text="[" UId="301" />
+        <Access Scope="LiteralConstant" UId="302">
+          <Constant UId="303">
+            <ConstantValue UId="305">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="306" />
+      </Component>
+      <Token Text="." UId="307" />
+      <Component Name="PA" UId="308" />
+      <Token Text="." UId="309" />
+      <Component Name="Speed" UId="310" />
+    </Symbol>
+  </Access>
+  <Blank UId="311" />
+  <Token Text=":=" UId="312" />
+  <Blank UId="313" />
+  <Access Scope="GlobalVariable" UId="314">
+    <Symbol UId="315">
+      <Component Name="Panel" UId="316">
+        <BooleanAttribute Name="HasQuotes" UId="317">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="318" />
+      <Component Name="Ventilator" UId="319" />
+      <Token Text="." UId="320" />
+      <Component Name="SW_Hand" UId="321" />
+    </Symbol>
+  </Access>
+  <Blank UId="322" />
+  <Token Text="*" UId="323" />
+  <Blank UId="324" />
+  <Access Scope="LiteralConstant" UId="325">
+    <Constant UId="326">
+      <ConstantValue UId="328">150</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="329" />
+  <NewLine UId="330" />
+  <Blank Num="4" UId="331" />
+  <Token Text="ELSE" UId="332" />
+  <NewLine UId="333" />
+  <Blank Num="8" UId="334" />
+  <Token Text="IF" UId="335" />
+  <Blank UId="336" />
+  <Access Scope="GlobalVariable" UId="337">
+    <Symbol UId="338">
+      <Component Name="Uhrzeit" UId="339">
+        <BooleanAttribute Name="HasQuotes" UId="340">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="341" />
+      <Component Name="AZ_aktiv" UId="342" />
+    </Symbol>
+  </Access>
+  <Blank UId="343" />
+  <Token Text="THEN" UId="344" />
+  <NewLine UId="345" />
+  <Blank Num="12" UId="346" />
+  <Access Scope="GlobalVariable" UId="347">
+    <Symbol UId="348">
+      <Component Name="FU_In_Out" UId="349">
+        <BooleanAttribute Name="HasQuotes" UId="350">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="351" />
+      <Component Name="FU" UId="352">
+        <Token Text="[" UId="353" />
+        <Access Scope="LiteralConstant" UId="354">
+          <Constant UId="355">
+            <ConstantValue UId="357">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="358" />
+      </Component>
+      <Token Text="." UId="359" />
+      <Component Name="PA" UId="360" />
+      <Token Text="." UId="361" />
+      <Component Name="Speed" UId="362" />
+    </Symbol>
+  </Access>
+  <Blank UId="363" />
+  <Token Text=":=" UId="364" />
+  <Blank UId="365" />
+  <Access Scope="GlobalVariable" UId="366">
+    <Symbol UId="367">
+      <Component Name="Panel" UId="368">
+        <BooleanAttribute Name="HasQuotes" UId="369">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="370" />
+      <Component Name="Ventilator" UId="371" />
+      <Token Text="." UId="372" />
+      <Component Name="SW_Auto_AZ" UId="373" />
+    </Symbol>
+  </Access>
+  <Blank UId="374" />
+  <Token Text="*" UId="375" />
+  <Blank UId="376" />
+  <Access Scope="LiteralConstant" UId="377">
+    <Constant UId="378">
+      <ConstantValue UId="380">150</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="381" />
+  <NewLine UId="382" />
+  <Blank Num="8" UId="383" />
+  <Token Text="ELSE" UId="384" />
+  <NewLine UId="385" />
+  <Blank Num="12" UId="386" />
+  <Access Scope="GlobalVariable" UId="387">
+    <Symbol UId="388">
+      <Component Name="FU_In_Out" UId="389">
+        <BooleanAttribute Name="HasQuotes" UId="390">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="391" />
+      <Component Name="FU" UId="392">
+        <Token Text="[" UId="393" />
+        <Access Scope="LiteralConstant" UId="394">
+          <Constant UId="395">
+            <ConstantValue UId="397">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="398" />
+      </Component>
+      <Token Text="." UId="399" />
+      <Component Name="PA" UId="400" />
+      <Token Text="." UId="401" />
+      <Component Name="Speed" UId="402" />
+    </Symbol>
+  </Access>
+  <Blank UId="403" />
+  <Token Text=":=" UId="404" />
+  <Blank UId="405" />
+  <Access Scope="GlobalVariable" UId="406">
+    <Symbol UId="407">
+      <Component Name="Panel" UId="408">
+        <BooleanAttribute Name="HasQuotes" UId="409">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="410" />
+      <Component Name="Ventilator" UId="411" />
+      <Token Text="." UId="412" />
+      <Component Name="SW_Auto_aAZ" UId="413" />
+    </Symbol>
+  </Access>
+  <Blank UId="414" />
+  <Token Text="*" UId="415" />
+  <Blank UId="416" />
+  <Access Scope="LiteralConstant" UId="417">
+    <Constant UId="418">
+      <ConstantValue UId="420">150</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="421" />
+  <NewLine UId="422" />
+  <Blank Num="8" UId="423" />
+  <Token Text="END_IF" UId="424" />
+  <Token Text=";" UId="425" />
+  <NewLine UId="426" />
+  <Blank Num="4" UId="427" />
+  <Token Text="END_IF" UId="428" />
+  <Token Text=";" UId="429" />
+  <NewLine UId="430" />
+  <Token Text="ELSE" UId="431" />
+  <NewLine UId="432" />
+  <Blank Num="4" UId="433" />
+  <Access Scope="GlobalVariable" UId="434">
+    <Symbol UId="435">
+      <Component Name="FU_In_Out" UId="436">
+        <BooleanAttribute Name="HasQuotes" UId="437">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="438" />
+      <Component Name="FU" UId="439">
+        <Token Text="[" UId="440" />
+        <Access Scope="LiteralConstant" UId="441">
+          <Constant UId="442">
+            <ConstantValue UId="444">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="445" />
+      </Component>
+      <Token Text="." UId="446" />
+      <Component Name="PA" UId="447" />
+      <Token Text="." UId="448" />
+      <Component Name="Speed" UId="449" />
+    </Symbol>
+  </Access>
+  <Blank UId="450" />
+  <Token Text=":=" UId="451" />
+  <Blank UId="452" />
+  <Access Scope="LiteralConstant" UId="453">
+    <Constant UId="454">
+      <ConstantValue UId="456">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="457" />
+  <NewLine UId="458" />
+  <Token Text="END_IF" UId="459" />
+  <Token Text=";" UId="460" />
+  <NewLine Num="2" UId="461" />
+  <LineComment UId="462">
+    <Text UId="463"> --&gt; Panel</Text>
+  </LineComment>
+  <NewLine UId="464" />
+  <Access Scope="GlobalVariable" UId="465">
+    <Symbol UId="466">
+      <Component Name="Panel" UId="467">
+        <BooleanAttribute Name="HasQuotes" UId="468">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="469" />
+      <Component Name="Ventilator" UId="470" />
+      <Token Text="." UId="471" />
+      <Component Name="betriebsbereit" UId="472" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="473" />
+  <Blank UId="474" />
+  <Access Scope="GlobalVariable" UId="475">
+    <Symbol UId="476">
+      <Component Name="FU_In_Out" UId="477">
+        <BooleanAttribute Name="HasQuotes" UId="478">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="479" />
+      <Component Name="FU" UId="480">
+        <Token Text="[" UId="481" />
+        <Access Scope="LiteralConstant" UId="482">
+          <Constant UId="483">
+            <ConstantValue UId="485">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="486" />
+      </Component>
+      <Token Text="." UId="487" />
+      <Component Name="PE" UId="488" />
+      <Token Text="." UId="489" />
+      <Component Name="Statusbyte" UId="490" />
+      <Token Text="." UId="491" />
+      <Component Name="Bereit" UId="492" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="493" />
+  <NewLine UId="494" />
+  <Access Scope="GlobalVariable" UId="495">
+    <Symbol UId="496">
+      <Component Name="Panel" UId="497">
+        <BooleanAttribute Name="HasQuotes" UId="498">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="499" />
+      <Component Name="Ventilator" UId="500" />
+      <Token Text="." UId="501" />
+      <Component Name="Stoerung" UId="502" />
+    </Symbol>
+  </Access>
+  <Blank UId="503" />
+  <Token Text=":=" UId="504" />
+  <Blank UId="505" />
+  <Access Scope="GlobalVariable" UId="506">
+    <Symbol UId="507">
+      <Component Name="FU_In_Out" UId="508">
+        <BooleanAttribute Name="HasQuotes" UId="509">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="510" />
+      <Component Name="FU" UId="511">
+        <Token Text="[" UId="512" />
+        <Access Scope="LiteralConstant" UId="513">
+          <Constant UId="514">
+            <ConstantValue UId="516">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="517" />
+      </Component>
+      <Token Text="." UId="518" />
+      <Component Name="PE" UId="519" />
+      <Token Text="." UId="520" />
+      <Component Name="Statusbyte" UId="521" />
+      <Token Text="." UId="522" />
+      <Component Name="Stoer" UId="523" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="524" />
+  <NewLine UId="525" />
+  <LineComment UId="526">
+    <Text UId="527"> SEW: 100% == 3000 U/min == 15000 Digits</Text>
+  </LineComment>
+  <NewLine UId="528" />
+  <Access Scope="GlobalVariable" UId="529">
+    <Symbol UId="530">
+      <Component Name="Panel" UId="531">
+        <BooleanAttribute Name="HasQuotes" UId="532">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="533" />
+      <Component Name="Ventilator" UId="534" />
+      <Token Text="." UId="535" />
+      <Component Name="speed" UId="536" />
+    </Symbol>
+  </Access>
+  <Blank UId="537" />
+  <Token Text=":=" UId="538" />
+  <Blank UId="539" />
+  <Access Scope="GlobalVariable" UId="540">
+    <Symbol UId="541">
+      <Component Name="FU_In_Out" UId="542">
+        <BooleanAttribute Name="HasQuotes" UId="543">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="544" />
+      <Component Name="FU" UId="545">
+        <Token Text="[" UId="546" />
+        <Access Scope="LiteralConstant" UId="547">
+          <Constant UId="548">
+            <ConstantValue UId="550">7</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="551" />
+      </Component>
+      <Token Text="." UId="552" />
+      <Component Name="PE" UId="553" />
+      <Token Text="." UId="554" />
+      <Component Name="Speed" UId="555" />
+    </Symbol>
+  </Access>
+  <Blank UId="556" />
+  <Token Text="/" UId="557" />
+  <Blank UId="558" />
+  <Access Scope="LiteralConstant" UId="559">
+    <Constant UId="560">
+      <ConstantValue UId="562">150</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="563" />
+  <Blank UId="564" />
+  <LineComment UId="565">
+    <Text UId="566"> in [%]</Text>
+  </LineComment>
+  <NewLine Num="2" UId="567" />
+  <Access Scope="Call" UId="568">
+    <CallInfo UId="569" BlockType="FC">
+      <Instance Scope="GlobalVariable" UId="571">
+        <Component Name="Status_E0A" UId="570" />
+      </Instance>
+      <Token Text="(" UId="572" />
+      <Parameter Name="Hand" UId="573">
+        <Token Text=":=" UId="574" />
+        <Blank UId="575" />
+        <Access Scope="GlobalVariable" UId="576">
+          <Symbol UId="577">
+            <Component Name="Panel" UId="578">
+              <BooleanAttribute Name="HasQuotes" UId="579">true</BooleanAttribute>
+            </Component>
+            <Token Text="." UId="580" />
+            <Component Name="Ventilator" UId="581" />
+            <Token Text="." UId="582" />
+            <Component Name="Ein" UId="583" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="584" />
+      <NewLine UId="585" />
+      <Blank Num="13" UId="586" />
+      <Parameter Name="Auto" UId="587">
+        <Token Text=":=" UId="588" />
+        <Blank UId="589" />
+        <Access Scope="GlobalVariable" UId="590">
+          <Symbol UId="591">
+            <Component Name="Panel" UId="592">
+              <BooleanAttribute Name="HasQuotes" UId="593">true</BooleanAttribute>
+            </Component>
+            <Token Text="." UId="594" />
+            <Component Name="Ventilator" UId="595" />
+            <Token Text="." UId="596" />
+            <Component Name="Auto" UId="597" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="598" />
+      <NewLine UId="599" />
+      <Blank Num="13" UId="600" />
+      <Parameter Name="SonderModus_PumpeSpuelen" UId="601">
+        <Token Text=":=" UId="602" />
+        <Access Scope="LiteralConstant" UId="603">
+          <Constant UId="604">
+            <ConstantValue UId="606">FALSE</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="607" />
+      <NewLine UId="608" />
+      <Blank Num="13" UId="609" />
+      <Parameter Name="Stoerung" UId="610">
+        <Token Text=":=" UId="611" />
+        <Access Scope="GlobalVariable" UId="612">
+          <Symbol UId="613">
+            <Component Name="FU_In_Out" UId="614">
+              <BooleanAttribute Name="HasQuotes" UId="615">true</BooleanAttribute>
+            </Component>
+            <Token Text="." UId="616" />
+            <Component Name="FU" UId="617">
+              <Token Text="[" UId="618" />
+              <Access Scope="LiteralConstant" UId="619">
+                <Constant UId="620">
+                  <ConstantValue UId="622">7</ConstantValue>
+                </Constant>
+              </Access>
+              <Token Text="]" UId="623" />
+            </Component>
+            <Token Text="." UId="624" />
+            <Component Name="PE" UId="625" />
+            <Token Text="." UId="626" />
+            <Component Name="Statusbyte" UId="627" />
+            <Token Text="." UId="628" />
+            <Component Name="Stoer" UId="629" />
+          </Symbol>
+        </Access>
+        <Blank UId="630" />
+        <Token Text="OR" UId="631" />
+        <Blank UId="632" />
+        <Token Text="NOT" UId="633" />
+        <Blank UId="634" />
+        <Access Scope="GlobalVariable" UId="635">
+          <Symbol UId="636">
+            <Component Name="FU_In_Out" UId="637">
+              <BooleanAttribute Name="HasQuotes" UId="638">true</BooleanAttribute>
+            </Component>
+            <Token Text="." UId="639" />
+            <Component Name="FU" UId="640">
+              <Token Text="[" UId="641" />
+              <Access Scope="LiteralConstant" UId="642">
+                <Constant UId="643">
+                  <ConstantValue UId="645">7</ConstantValue>
+                </Constant>
+              </Access>
+              <Token Text="]" UId="646" />
+            </Component>
+            <Token Text="." UId="647" />
+            <Component Name="PE" UId="648" />
+            <Token Text="." UId="649" />
+            <Component Name="Statusbyte" UId="650" />
+            <Token Text="." UId="651" />
+            <Component Name="Bereit" UId="652" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="653" />
+      <NewLine UId="654" />
+      <Blank Num="13" UId="655" />
+      <Parameter Name="Ausgang" UId="656">
+        <Token Text=":=" UId="657" />
+        <Blank UId="658" />
+        <Access Scope="GlobalVariable" UId="659">
+          <Symbol UId="660">
+            <Component Name="A_Frg_FU_Vent" UId="661">
+              <BooleanAttribute Name="HasQuotes" UId="662">true</BooleanAttribute>
+            </Component>
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="663" />
+      <NewLine UId="664" />
+      <Blank Num="13" UId="665" />
+      <Parameter Name="StatusByte" UId="666">
+        <Token Text="=&gt;" UId="667" />
+        <Blank UId="668" />
+        <Access Scope="GlobalVariable" UId="669">
+          <Symbol UId="670">
+            <Component Name="Panel" UId="671">
+              <BooleanAttribute Name="HasQuotes" UId="672">true</BooleanAttribute>
+            </Component>
+            <Token Text="." UId="673" />
+            <Component Name="Ventilator" UId="674" />
+            <Token Text="." UId="675" />
+            <Component Name="Status" UId="676" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="677" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="678" />
+  <NewLine UId="679" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Frequenzumrichter [7]</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Sperrluftventilator</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Filterpumpen Säure</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="Call" UId="24">
+    <CallInfo UId="25" BlockType="FB" Name="FP_Saeure.GP0x">
+      <Instance Scope="GlobalVariable" UId="26">
+        <Component Name="FP_CM01.GP01" UId="27" />
+      </Instance>
+      <Token Text="(" UId="28" />
+      <Token Text=")" UId="29" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="30" />
+  <NewLine UId="31" />
+  <Access Scope="Call" UId="32">
+    <CallInfo UId="33" BlockType="FB" Name="FP_Saeure.GP0x">
+      <Instance Scope="GlobalVariable" UId="34">
+        <Component Name="FP_CM02.GP04" UId="35" />
+      </Instance>
+      <Token Text="(" UId="36" />
+      <Token Text=")" UId="37" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="38" />
+  <NewLine Num="2" UId="39" />
+  <LineComment UId="40">
+    <Text UId="41"> Umwälzpumpen Säure</Text>
+  </LineComment>
+  <NewLine UId="42" />
+  <Access Scope="Call" UId="43">
+    <CallInfo UId="44" BlockType="FB" Name="UP_Saeure.GP0x">
+      <Instance Scope="GlobalVariable" UId="45">
+        <Component Name="UP_CM01.GP02" UId="46" />
+      </Instance>
+      <Token Text="(" UId="47" />
+      <Token Text=")" UId="48" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="49" />
+  <NewLine UId="50" />
+  <Access Scope="Call" UId="51">
+    <CallInfo UId="52" BlockType="FB" Name="UP_Saeure.GP0x">
+      <Instance Scope="GlobalVariable" UId="53">
+        <Component Name="UP_CM02.GP05" UId="54" />
+      </Instance>
+      <Token Text="(" UId="55" />
+      <Token Text=")" UId="56" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="57" />
+  <NewLine Num="2" UId="58" />
+  <LineComment UId="59">
+    <Text UId="60"> Umwälzpumpen Spüle</Text>
+  </LineComment>
+  <NewLine UId="61" />
+  <Access Scope="Call" UId="62">
+    <CallInfo UId="63" BlockType="FB" Name="UP_Spuele.GP0x">
+      <Instance Scope="GlobalVariable" UId="64">
+        <Component Name="UP_CM03.GP03" UId="65" />
+      </Instance>
+      <Token Text="(" UId="66" />
+      <Token Text=")" UId="67" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="68" />
+  <NewLine UId="69" />
+  <Access Scope="Call" UId="70">
+    <CallInfo UId="71" BlockType="FB" Name="UP_Spuele.GP0x">
+      <Instance Scope="GlobalVariable" UId="72">
+        <Component Name="UP_CM04.GP06" UId="73" />
+      </Instance>
+      <Token Text="(" UId="74" />
+      <Token Text=")" UId="75" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="76" />
+  <NewLine Num="2" UId="77" />
+  <LineComment UId="78">
+    <Text UId="79"> Versorgung GP13 / GP10</Text>
+  </LineComment>
+  <NewLine UId="80" />
+  <Access Scope="Call" UId="81">
+    <CallInfo UId="82" BlockType="FB" Name="Pu_Versorgung.GP0x">
+      <Instance Scope="GlobalVariable" UId="83">
+        <Component Name="Pu_GP01.GP13" UId="84" />
+      </Instance>
+      <Token Text="(" UId="85" />
+      <Token Text=")" UId="86" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="87" />
+  <NewLine UId="88" />
+  <Access Scope="Call" UId="89">
+    <CallInfo UId="90" BlockType="FB" Name="Pu_Versorgung.GP0x">
+      <Instance Scope="GlobalVariable" UId="91">
+        <Component Name="Pu_GP02.GP10" UId="92" />
+      </Instance>
+      <Token Text="(" UId="93" />
+      <Token Text=")" UId="94" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="95" />
+  <NewLine Num="2" UId="96" />
+  <LineComment UId="97">
+    <Text UId="98"> Entleeren Ver-/Entsorgung GP12 / GP07</Text>
+  </LineComment>
+  <NewLine UId="99" />
+  <Access Scope="Call" UId="100">
+    <CallInfo UId="101" BlockType="FB" Name="Pu_Entl.GP0x">
+      <Instance Scope="GlobalVariable" UId="102">
+        <Component Name="Pu_GP01.GP12" UId="103" />
+      </Instance>
+      <Token Text="(" UId="104" />
+      <Token Text=")" UId="105" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="106" />
+  <NewLine UId="107" />
+  <Access Scope="Call" UId="108">
+    <CallInfo UId="109" BlockType="FB" Name="Pu_Entl.GP0x">
+      <Instance Scope="GlobalVariable" UId="110">
+        <Component Name="Pu_GP02.GP07" UId="111" />
+      </Instance>
+      <Token Text="(" UId="112" />
+      <Token Text=")" UId="113" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="114" />
+  <NewLine Num="2" UId="115" />
+  <LineComment UId="116">
+    <Text UId="117"> Entleeren Pumpensümpfe GP08 / GP09</Text>
+  </LineComment>
+  <NewLine UId="118" />
+  <Access Scope="Call" UId="119">
+    <CallInfo UId="120" BlockType="FB" Name="Pu_Entl.GP0x">
+      <Instance Scope="GlobalVariable" UId="121">
+        <Component Name="Pu_CL01.GP08" UId="122" />
+      </Instance>
+      <Token Text="(" UId="123" />
+      <Token Text=")" UId="124" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="125" />
+  <NewLine UId="126" />
+  <Access Scope="Call" UId="127">
+    <CallInfo UId="128" BlockType="FB" Name="Pu_Entl.GP0x">
+      <Instance Scope="GlobalVariable" UId="129">
+        <Component Name="Pu_CL02.GP09" UId="130" />
+      </Instance>
+      <Token Text="(" UId="131" />
+      <Token Text=")" UId="132" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="133" />
+  <NewLine Num="2" UId="134" />
+  <LineComment UId="135">
+    <Text UId="136"> Pumpe GP11 Entleeren Behälter CM05</Text>
+  </LineComment>
+  <NewLine UId="137" />
+  <Access Scope="Call" UId="138">
+    <CallInfo UId="139" BlockType="FB" Name="Pu_CM05.GP11">
+      <Instance Scope="GlobalVariable" UId="140">
+        <Component Name="Pu_CM05.GP11_DB" UId="141" />
+      </Instance>
+      <Token Text="(" UId="142" />
+      <Token Text=")" UId="143" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="144" />
+  <NewLine Num="2" UId="145" />
+  <LineComment UId="146">
+    <Text UId="147"> Status Ventile</Text>
+  </LineComment>
+  <NewLine UId="148" />
+  <Access Scope="Call" UId="149">
+    <CallInfo UId="150" BlockType="FB" Name="Ventil_Stati">
+      <Instance Scope="GlobalVariable" UId="151">
+        <Component Name="Ventil_Stati_DB" UId="152">
+          <BooleanAttribute Name="HasQuotes" UId="153">true</BooleanAttribute>
+        </Component>
+      </Instance>
+      <Token Text="(" UId="154" />
+      <Token Text=")" UId="155" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="156" />
+  <NewLine UId="157" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Pumpen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> nur Handbetrieb</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="GlobalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="A_CM05.GP14" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank UId="27" />
+  <Token Text=":=" UId="28" />
+  <Blank UId="29" />
+  <Access Scope="GlobalVariable" UId="30">
+    <Symbol UId="31">
+      <Component Name="Panel" UId="32">
+        <BooleanAttribute Name="HasQuotes" UId="33">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="34" />
+      <Component Name="Pu_Entleeren" UId="35" />
+      <Token Text="." UId="36" />
+      <Component Name="Ein" UId="37" />
+    </Symbol>
+  </Access>
+  <Blank UId="38" />
+  <Token Text="AND" UId="39" />
+  <Blank UId="40" />
+  <Token Text="NOT" UId="41" />
+  <Blank UId="42" />
+  <Access Scope="GlobalVariable" UId="43">
+    <Symbol UId="44">
+      <Component Name="E_Niv_max_CM05.BL01" UId="45" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="46" />
+  <NewLine UId="47" />
+  <LineComment UId="48">
+    <Text UId="49"> Pumpe Ausschalten</Text>
+  </LineComment>
+  <NewLine UId="50" />
+  <Token Text="IF" UId="51" />
+  <Blank UId="52" />
+  <Access Scope="GlobalVariable" UId="53">
+    <Symbol UId="54">
+      <Component Name="E_Niv_max_CM05.BL01" UId="55" />
+    </Symbol>
+  </Access>
+  <Blank UId="56" />
+  <Token Text="THEN" UId="57" />
+  <NewLine UId="58" />
+  <Blank Num="4" UId="59" />
+  <Access Scope="GlobalVariable" UId="60">
+    <Symbol UId="61">
+      <Component Name="Panel" UId="62">
+        <BooleanAttribute Name="HasQuotes" UId="63">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="64" />
+      <Component Name="Pu_Entleeren" UId="65" />
+      <Token Text="." UId="66" />
+      <Component Name="Ein" UId="67" />
+    </Symbol>
+  </Access>
+  <Blank UId="68" />
+  <Token Text=":=" UId="69" />
+  <Blank UId="70" />
+  <Access Scope="LiteralConstant" UId="71">
+    <Constant UId="72">
+      <ConstantValue UId="74">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="75" />
+  <NewLine UId="76" />
+  <Token Text="END_IF" UId="77" />
+  <Token Text=";" UId="78" />
+  <NewLine UId="79" />
+  <LineComment UId="80">
+    <Text UId="81"> --&gt; Visu</Text>
+  </LineComment>
+  <NewLine UId="82" />
+  <Token Text="IF" UId="83" />
+  <Blank UId="84" />
+  <Access Scope="GlobalVariable" UId="85">
+    <Symbol UId="86">
+      <Component Name="A_CM05.GP14" UId="87" />
+    </Symbol>
+  </Access>
+  <Blank UId="88" />
+  <Token Text="THEN" UId="89" />
+  <NewLine UId="90" />
+  <Blank Num="4" UId="91" />
+  <Access Scope="GlobalVariable" UId="92">
+    <Symbol UId="93">
+      <Component Name="Panel" UId="94">
+        <BooleanAttribute Name="HasQuotes" UId="95">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="96" />
+      <Component Name="Pu_Entleeren" UId="97" />
+      <Token Text="." UId="98" />
+      <Component Name="Status" UId="99" />
+    </Symbol>
+  </Access>
+  <Blank UId="100" />
+  <Token Text=":=" UId="101" />
+  <Blank UId="102" />
+  <Access Scope="LocalConstant" UId="103">
+    <Constant Name="Hand_EIN" UId="104" />
+  </Access>
+  <Token Text=";" UId="107" />
+  <NewLine UId="108" />
+  <Token Text="ELSE" UId="109" />
+  <NewLine UId="110" />
+  <Blank Num="4" UId="111" />
+  <Access Scope="GlobalVariable" UId="112">
+    <Symbol UId="113">
+      <Component Name="Panel" UId="114">
+        <BooleanAttribute Name="HasQuotes" UId="115">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="116" />
+      <Component Name="Pu_Entleeren" UId="117" />
+      <Token Text="." UId="118" />
+      <Component Name="Status" UId="119" />
+    </Symbol>
+  </Access>
+  <Blank UId="120" />
+  <Token Text=":=" UId="121" />
+  <Blank UId="122" />
+  <Access Scope="LocalConstant" UId="123">
+    <Constant Name="AUS" UId="124" />
+  </Access>
+  <Token Text=";" UId="127" />
+  <NewLine UId="128" />
+  <Token Text="END_IF" UId="129" />
+  <Token Text=";" UId="130" />
+  <NewLine UId="131" />
+  <Blank Num="4" UId="132" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>entsprechende Ventile / Kugelhähne müssen per Hand geöffnet werden
+Verriegelung mit Max-Niveau Behälter CM05</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Pumpe  GP14 Entleeren Becken CM01..CM04</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Anlagenperipherie</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

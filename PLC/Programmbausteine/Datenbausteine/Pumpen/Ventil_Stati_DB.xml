@@ -1,0 +1,659 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <InstanceOfName>Ventil_Stati</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Param" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="TO" Datatype="Time" />
+    </Member>
+    <Member Name="Mld" Datatype="Struct" Remanence="Retain">
+      <Member Name="TO_auf_CM01.QM18" Datatype="Bool" />
+      <Member Name="TO_zu_CM01.QM18" Datatype="Bool" />
+      <Member Name="SF_CM01.QM18" Datatype="Bool" />
+      <Member Name="TO_auf_CM01.QM19" Datatype="Bool" />
+      <Member Name="TO_zu_CM01.QM19" Datatype="Bool" />
+      <Member Name="SF_CM01.QM19" Datatype="Bool" />
+      <Member Name="TO_auf_CM01.QM20" Datatype="Bool" />
+      <Member Name="TO_zu_CM01.QM20" Datatype="Bool" />
+      <Member Name="SF_CM01.QM20" Datatype="Bool" />
+      <Member Name="TO_auf_CM01.QM25" Datatype="Bool" />
+      <Member Name="TO_zu_CM01.QM25" Datatype="Bool" />
+      <Member Name="SF_CM01.QM25" Datatype="Bool" />
+      <Member Name="TO_auf_CM01.QM26" Datatype="Bool" />
+      <Member Name="TO_zu_CM01.QM26" Datatype="Bool" />
+      <Member Name="SF_CM01.QM26" Datatype="Bool" />
+      <Member Name="TO_auf_CM01.QM27" Datatype="Bool" />
+      <Member Name="TO_zu_CM01.QM27" Datatype="Bool" />
+      <Member Name="SF_CM01.QM27" Datatype="Bool" />
+      <Member Name="TO_auf_CM02.QM55" Datatype="Bool" />
+      <Member Name="TO_zu_CM02.QM55" Datatype="Bool" />
+      <Member Name="SF_CM02.QM55" Datatype="Bool" />
+      <Member Name="TO_auf_CM02.QM56" Datatype="Bool" />
+      <Member Name="TO_zu_CM02.QM56" Datatype="Bool" />
+      <Member Name="SF_CM02.QM56" Datatype="Bool" />
+      <Member Name="TO_auf_CM02.QM57" Datatype="Bool" />
+      <Member Name="TO_zu_CM02.QM57" Datatype="Bool" />
+      <Member Name="SF_CM02.QM57" Datatype="Bool" />
+      <Member Name="TO_auf_CM02.QM62" Datatype="Bool" />
+      <Member Name="TO_zu_CM02.QM62" Datatype="Bool" />
+      <Member Name="SF_CM02.QM62" Datatype="Bool" />
+      <Member Name="TO_auf_CM02.QM63" Datatype="Bool" />
+      <Member Name="TO_zu_CM02.QM63" Datatype="Bool" />
+      <Member Name="SF_CM02.QM63" Datatype="Bool" />
+      <Member Name="TO_auf_CM02.QM64" Datatype="Bool" />
+      <Member Name="TO_zu_CM02.QM64" Datatype="Bool" />
+      <Member Name="SF_CM02.QM64" Datatype="Bool" />
+      <Member Name="TO_auf_HQ01.QM21" Datatype="Bool" />
+      <Member Name="TO_zu_HQ01.QM21" Datatype="Bool" />
+      <Member Name="SF_HQ01.QM21" Datatype="Bool" />
+      <Member Name="TO_auf_HQ01.QM22" Datatype="Bool" />
+      <Member Name="TO_zu_HQ01.QM22" Datatype="Bool" />
+      <Member Name="SF_HQ01.QM22" Datatype="Bool" />
+      <Member Name="TO_auf_HQ01.QM23" Datatype="Bool" />
+      <Member Name="TO_zu_HQ01.QM23" Datatype="Bool" />
+      <Member Name="SF_HQ01.QM23" Datatype="Bool" />
+      <Member Name="TO_auf_HQ01.QM24" Datatype="Bool" />
+      <Member Name="TO_zu_HQ01.QM24" Datatype="Bool" />
+      <Member Name="SF_HQ01.QM24" Datatype="Bool" />
+      <Member Name="TO_auf_HQ01.LV01" Datatype="Bool" />
+      <Member Name="TO_zu_HQ01.LV01" Datatype="Bool" />
+      <Member Name="SF_HQ01.LV01" Datatype="Bool" />
+      <Member Name="TO_auf_HQ02.QM58" Datatype="Bool" />
+      <Member Name="TO_zu_HQ02.QM58" Datatype="Bool" />
+      <Member Name="SF_HQ02.QM58" Datatype="Bool" />
+      <Member Name="TO_auf_HQ02.QM59" Datatype="Bool" />
+      <Member Name="TO_zu_HQ02.QM59" Datatype="Bool" />
+      <Member Name="SF_HQ02.QM59" Datatype="Bool" />
+      <Member Name="TO_auf_HQ02.QM60" Datatype="Bool" />
+      <Member Name="TO_zu_HQ02.QM60" Datatype="Bool" />
+      <Member Name="SF_HQ02.QM60" Datatype="Bool" />
+      <Member Name="TO_auf_HQ02.QM61" Datatype="Bool" />
+      <Member Name="TO_zu_HQ02.QM61" Datatype="Bool" />
+      <Member Name="SF_HQ02.QM61" Datatype="Bool" />
+      <Member Name="TO_auf_HQ02.LV02" Datatype="Bool" />
+      <Member Name="TO_zu_HQ02.LV02" Datatype="Bool" />
+      <Member Name="SF_HQ02.LV02" Datatype="Bool" />
+      <Member Name="TO_auf_CM03.QM33" Datatype="Bool" />
+      <Member Name="TO_zu_CM03.QM33" Datatype="Bool" />
+      <Member Name="SF_CM03.QM33" Datatype="Bool" />
+      <Member Name="TO_auf_CM03.QM34" Datatype="Bool" />
+      <Member Name="TO_zu_CM03.QM34" Datatype="Bool" />
+      <Member Name="SF_CM03.QM34" Datatype="Bool" />
+      <Member Name="TO_auf_CM04.QM72" Datatype="Bool" />
+      <Member Name="TO_zu_CM04.QM72" Datatype="Bool" />
+      <Member Name="SF_CM04.QM72" Datatype="Bool" />
+      <Member Name="TO_auf_CM04.QM73" Datatype="Bool" />
+      <Member Name="TO_zu_CM04.QM73" Datatype="Bool" />
+      <Member Name="SF_CM04.QM73" Datatype="Bool" />
+      <Member Name="TO_auf_CM05.QM61" Datatype="Bool" />
+      <Member Name="TO_zu_CM05.QM61" Datatype="Bool" />
+      <Member Name="SF_CM05.QM61" Datatype="Bool" />
+      <Member Name="TO_auf_CM05.QM64" Datatype="Bool" />
+      <Member Name="TO_zu_CM05.QM64" Datatype="Bool" />
+      <Member Name="SF_CM05.QM64" Datatype="Bool" />
+      <Member Name="TO_auf_GP01.QM14" Datatype="Bool" />
+      <Member Name="TO_zu_GP01.QM14" Datatype="Bool" />
+      <Member Name="SF_GP01.QM14" Datatype="Bool" />
+      <Member Name="TO_auf_GP01.QM15" Datatype="Bool" />
+      <Member Name="TO_zu_GP01.QM15" Datatype="Bool" />
+      <Member Name="SF_GP01.QM15" Datatype="Bool" />
+      <Member Name="TO_auf_GP01.QM16" Datatype="Bool" />
+      <Member Name="TO_zu_GP01.QM16" Datatype="Bool" />
+      <Member Name="SF_GP01.QM16" Datatype="Bool" />
+      <Member Name="TO_auf_GP01.QM17" Datatype="Bool" />
+      <Member Name="TO_zu_GP01.QM17" Datatype="Bool" />
+      <Member Name="SF_GP01.QM17" Datatype="Bool" />
+      <Member Name="TO_auf_GP01.QM18" Datatype="Bool" />
+      <Member Name="TO_zu_GP01.QM18" Datatype="Bool" />
+      <Member Name="SF_GP01.QM18" Datatype="Bool" />
+      <Member Name="TO_auf_GP01.QM19" Datatype="Bool" />
+      <Member Name="TO_zu_GP01.QM19" Datatype="Bool" />
+      <Member Name="SF_GP01.QM19" Datatype="Bool" />
+      <Member Name="TO_auf_GP01.QM20" Datatype="Bool" />
+      <Member Name="TO_zu_GP01.QM20" Datatype="Bool" />
+      <Member Name="SF_GP01.QM20" Datatype="Bool" />
+      <Member Name="TO_auf_GP01.QM21" Datatype="Bool" />
+      <Member Name="TO_zu_GP01.QM21" Datatype="Bool" />
+      <Member Name="SF_GP01.QM21" Datatype="Bool" />
+      <Member Name="TO_auf_GP01.QM22" Datatype="Bool" />
+      <Member Name="TO_zu_GP01.QM22" Datatype="Bool" />
+      <Member Name="SF_GP01.QM22" Datatype="Bool" />
+      <Member Name="TO_auf_GP02.QM38" Datatype="Bool" />
+      <Member Name="TO_zu_GP02.QM38" Datatype="Bool" />
+      <Member Name="SF_GP02.QM38" Datatype="Bool" />
+      <Member Name="TO_auf_GP02.QM39" Datatype="Bool" />
+      <Member Name="TO_zu_GP02.QM39" Datatype="Bool" />
+      <Member Name="SF_GP02.QM39" Datatype="Bool" />
+      <Member Name="TO_auf_GP02.QM40" Datatype="Bool" />
+      <Member Name="TO_zu_GP02.QM40" Datatype="Bool" />
+      <Member Name="SF_GP02.QM40" Datatype="Bool" />
+      <Member Name="TO_auf_GP02.QM41" Datatype="Bool" />
+      <Member Name="TO_zu_GP02.QM41" Datatype="Bool" />
+      <Member Name="SF_GP02.QM41" Datatype="Bool" />
+      <Member Name="TO_auf_GP02.QM42" Datatype="Bool" />
+      <Member Name="TO_zu_GP02.QM42" Datatype="Bool" />
+      <Member Name="SF_GP02.QM42" Datatype="Bool" />
+      <Member Name="TO_auf_GP02.QM43" Datatype="Bool" />
+      <Member Name="TO_zu_GP02.QM43" Datatype="Bool" />
+      <Member Name="SF_GP02.QM43" Datatype="Bool" />
+      <Member Name="TO_auf_GP02.QM44" Datatype="Bool" />
+      <Member Name="TO_zu_GP02.QM44" Datatype="Bool" />
+      <Member Name="SF_GP02.QM44" Datatype="Bool" />
+      <Member Name="TO_auf_GP02.QM45" Datatype="Bool" />
+      <Member Name="TO_zu_GP02.QM45" Datatype="Bool" />
+      <Member Name="SF_GP02.QM45" Datatype="Bool" />
+      <Member Name="TO_auf_GP02.QM46" Datatype="Bool" />
+      <Member Name="TO_zu_GP02.QM46" Datatype="Bool" />
+      <Member Name="SF_GP02.QM46" Datatype="Bool" />
+    </Member>
+    <Member Name="IEC_Timer" Datatype="Struct">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="TO_auf_CM01.QM18" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM01.QM18" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM01.QM19" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM01.QM19" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM01.QM20" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM01.QM20" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM01.QM25" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM01.QM25" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM01.QM26" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM01.QM26" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM01.QM27" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM01.QM27" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM02.QM55" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM02.QM55" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM02.QM56" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM02.QM56" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM02.QM57" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM02.QM57" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM02.QM62" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM02.QM62" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM02.QM63" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM02.QM63" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM02.QM64" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM02.QM64" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_HQ01.QM21" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_HQ01.QM21" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_HQ01.QM22" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_HQ01.QM22" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_HQ01.QM23" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_HQ01.QM23" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_HQ01.QM24" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_HQ01.QM24" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_HQ01.LV01" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_HQ01.LV01" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_HQ02.QM58" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_HQ02.QM58" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_HQ02.QM59" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_HQ02.QM59" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_HQ02.QM60" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_HQ02.QM60" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_HQ02.QM61" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_HQ02.QM61" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_HQ02.LV02" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_HQ02.LV02" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM03.QM33" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM03.QM33" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM03.QM34" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM03.QM34" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM04.QM72" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM04.QM72" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM04.QM73" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM04.QM73" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM05.QM61" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM05.QM61" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_CM05.QM64" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_CM05.QM64" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP01.QM14" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP01.QM14" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP01.QM15" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP01.QM15" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP01.QM16" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP01.QM16" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP01.QM17" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP01.QM17" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP01.QM18" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP01.QM18" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP01.QM19" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP01.QM19" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP01.QM20" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP01.QM20" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP01.QM21" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP01.QM21" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP01.QM22" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP01.QM22" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP02.QM38" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP02.QM38" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP02.QM39" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP02.QM39" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP02.QM40" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP02.QM40" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP02.QM41" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP02.QM41" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP02.QM42" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP02.QM42" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP02.QM43" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP02.QM43" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP02.QM44" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP02.QM44" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP02.QM45" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP02.QM45" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_auf_GP02.QM46" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_zu_GP02.QM46" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>Ventil_Stati_DB</Name>
+      <Namespace />
+      <Number>1095</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

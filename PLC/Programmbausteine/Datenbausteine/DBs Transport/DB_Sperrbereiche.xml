@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Anzahl" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Anzahl der definierten Sperrbereiche</MultiLanguageText>
+      </Comment>
+      <StartValue>4</StartValue>
+    </Member>
+    <Member Name="resD" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="resw" Datatype="Int" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="DG1_aktiv" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="DG1_Quit" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="DG1_FP_Taste" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="DG1_Req" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="DG2_aktiv" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="DG2_Quit" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="DG2_FP_Taste" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="DG2_Req" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Sperre_links" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Sperre_rechts" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="res3" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="res4" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="res5" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="res6" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="res7" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="res8" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Bereich" Datatype="Array[1..5] of Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Feldlänge anpassen</MultiLanguageText>
+      </Comment>
+      <Member Name="aktiv" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Bereich ist gesperrt</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="min_Inc" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">untere Grenze Sperrbereich</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>1242</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>4938</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>1242</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>4130</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>0</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="max_Inc" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">obere Grenze Sperrbereich</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>3372</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>7901</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>4100</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>8654</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>0</StartValue>
+        </Subelement>
+      </Member>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_Sperrbereiche</Name>
+      <Namespace />
+      <Number>68</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

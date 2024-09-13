@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="nicht_Hupe_Rot" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Standardmässig immer Rot, einschalten wenn nicht gewünscht</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Hupe_Gelb" Datatype="Bool" />
+    <Member Name="Hupe_Blau" Datatype="Bool" />
+    <Member Name="Hupe_Dauer_Rot" Datatype="Bool" />
+    <Member Name="Hupe_Dauer_Gelb" Datatype="Bool" />
+    <Member Name="Hupe_Dauer_Blau" Datatype="Bool" />
+    <Member Name="nicht_La_Rot" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Standardmässig immer Rot, einschalten wenn nicht gewünscht</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="La_Gelb" Datatype="Bool" />
+    <Member Name="La_Blau" Datatype="Bool" />
+    <Member Name="La_Quit_Err" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>Alarm_Parameter</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

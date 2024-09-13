@@ -1,0 +1,2944 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="Checksum" Datatype="Word" />
+    <Member Name="ReturnValue" Datatype="Int" />
+    <Member Name="count" Datatype="Byte" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>Komm_PNOZ</Name>
+      <Namespace />
+      <Number>360</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="27">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="activate" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_T_ErrQ" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="activate" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Aktivierung der Kommunikation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="132">
+    <LineComment>
+      <Text> Set Header   (Kap. 5.5)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="134">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#05</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="136">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Header" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="138">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="139">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#15</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="141">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Header" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="143">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="144">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#00</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="146">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Header" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="148">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="149">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#26</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> Anzahl Nutzdaten +5  = 38 dez</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="152">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Header" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>3</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="154">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="155">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#5C</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> Anforderungs-Nr</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="158">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Header" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>4</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="160">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="161">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#00</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="163">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Header" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>5</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+      <LineComment>
+        <Text> Control Byte Bit 0..2 Watchdog</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="166">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="167">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#00</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="169">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Header" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>6</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="171">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="172">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#00</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> immer 0x00</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="175">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Header" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>7</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="177">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="178">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#10</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="180">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Endekennung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="182">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="183">
+    <LineComment>
+      <Text> Set Vitual OUTput - je nach Projekt</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="185">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_T_Q_Not-Halt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="25">
+    <LineComment>
+      <Text> alle Schütze müssen abgefallen sein</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_RM_NH_Dkl" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_RM_NH_FP_CM01.GP01" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="31">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_RM_NH_FP_CM01.GP04" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_RM_NH_Pumpen" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="188">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="T_NH_Quitt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="221">
+    <LineComment>
+      <Text> Freigabe Automatik</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_Frg_Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Frg_Automatik" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="222">
+    <StlToken Text="CLR" />
+  </StlStatement>
+  <StlStatement UId="223">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="VirtualOutput" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>16</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="225">
+    <LineComment>
+      <Text> ...</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="227">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="VirtualOutput" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>127</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="229">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="230">
+    <LineComment>
+      <Text> Berechnung der Checksumme (4+ .. 39)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="232">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="233">
+    <StlToken Text="LAR1" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>ARef</ConstantType>
+        <ConstantValue>P#48.0</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> fix 44 (IN) + 4</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="236">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="237">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Header" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>4</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+      <LineComment>
+        <Text>Start</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="240">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Checksum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="242">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="243">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>35</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> fix: 39 - 4</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="246">
+    <LabelDeclaration>
+      <Label Name="T_CS" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="249">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="250">
+    <StlToken Text="ADDAR1" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>ARef</ConstantType>
+        <ConstantValue>P#1.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="252">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Checksum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="254">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Byte" Area="DB" Register="AR1" BitOffset="0" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="256">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="257">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Checksum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="259">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="260">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+      <LineComment>
+        <Text>Schleifenzähler</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="263">
+    <StlToken Text="LOOP" />
+    <Access Scope="Label">
+      <Label Name="T_CS" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="265">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="266">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#00</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="268">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Checksum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="270">
+    <StlToken Text="AW" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Word</ConstantType>
+        <ConstantValue>16#00FF</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="272">
+    <StlToken Text="SUB_I" />
+  </StlStatement>
+  <StlStatement UId="273">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="Out" />
+        <Component Name="Checksum" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="275">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="276">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>siehe Handbuch
+"PNOZmulti_2_Com_Interf_Man_1002971-de-03.pdf"</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>OUTPUT --> PNOZ</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="277">
+    <LineComment>
+      <Text> Sende-/Empfangsdaten umkopieren</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="279">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="280">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="NDR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="282">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="NDR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="284">
+    <StlToken Text="JCN" />
+    <Access Scope="Label">
+      <Label Name="Send" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="286">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="287">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <Instruction Name="BLKMOV" Version="1.1">
+        <TemplateValue Name="blk_type" Type="Type">Variant</TemplateValue>
+        <Parameter Name="SRCBLK">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Receive" />
+              <Component Name="In" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="RET_VAL">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="ReturnValue" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="DSTBLK">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_IN_Out" />
+              <Component Name="In" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </Instruction>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="26">
+    <LabelDeclaration>
+      <Label Name="Send" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Busy" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="no_Send_DATA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="293">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="294">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <Instruction Name="BLKMOV" Version="1.1">
+        <TemplateValue Name="blk_type" Type="Type">Variant</TemplateValue>
+        <Parameter Name="SRCBLK">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_IN_Out" />
+              <Component Name="Out" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="RET_VAL">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="ReturnValue" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="DSTBLK">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Send" />
+              <Component Name="Out" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </Instruction>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="33">
+    <LabelDeclaration>
+      <Label Name="no_Send_DATA" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Umkopieren</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="302">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="303">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="305">
+    <StlToken Text="JL" />
+    <Access Scope="Label">
+      <Label Name="LSTX" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="307">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="OFF" />
+      <LineComment>
+        <Text> 0: Aus</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="310">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="CONN" />
+      <LineComment>
+        <Text> 1: Verbindungsaufbau</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="313">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="WRIT" />
+      <LineComment>
+        <Text> 2: Schreiben</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="316">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="READ" />
+      <LineComment>
+        <Text> 3: Lesen</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="319">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="DISC" />
+      <LineComment>
+        <Text> 4:Verbindungsabbau</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="322">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ERR" />
+      <LineComment>
+        <Text> 5: Fehler</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="325">
+    <LabelDeclaration>
+      <Label Name="LSTX" />
+    </LabelDeclaration>
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="328">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="329">
+    <LineComment>
+      <Text>*</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="331">
+    <LineComment>
+      <Text> wait for user input (activate / deactivate communication)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="333">
+    <LineComment>
+      <Text> - if activate change for 0 to 1 </Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="335">
+    <LineComment>
+      <Text>    =&gt; status is set to 1 (connect) and all status-values are set to default</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="337">
+    <LineComment>
+      <Text> - if activate change for 1 to 0 </Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="339">
+    <LineComment>
+      <Text>    =&gt; status is set to 4 (disconnect)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="341">
+    <LineComment>
+      <Text>-</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="343">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="344">
+    <LabelDeclaration>
+      <Label Name="OFF" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="activate" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="347">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="established" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="349">
+    <StlToken Text="JCN" />
+    <Access Scope="Label">
+      <Label Name="OFF1" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="351">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="352">
+    <LineComment>
+      <Text> Aktivieren</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="354">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="355">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="established" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="357">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="358">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> Verbindungsaufbau</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="361">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="363">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="364">
+    <LineComment>
+      <Text> init</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="366">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="367">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="Request" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="369">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="371">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="373">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="374">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Request" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="376">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="378">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="380">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="381">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="EN_R" />
+      </Symbol>
+      <LineComment>
+        <Text> immer 1</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="384">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="NDR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="386">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="388">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="389">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="DISCONNECT" />
+        <Component Name="Request" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="391">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="DISCONNECT" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="393">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="DISCONNECT" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="395">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="396">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="398">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="399">
+    <LineComment>
+      <Text> Deaktivieren</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="401">
+    <LabelDeclaration>
+      <Label Name="OFF1" />
+    </LabelDeclaration>
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="activate" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="404">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="established" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="406">
+    <StlToken Text="JCN" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="408">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="409">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="410">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="established" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="412">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="414">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="416">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="NDR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="418">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="419">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>4</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> Verbindungsabbau</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="422">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="424">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="425">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="427">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Sprungverteiler</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="428">
+    <LabelDeclaration>
+      <Label Name="CONN" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="431">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="ID" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="433">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Connection_Param" />
+        <Component Name="local_device_id" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="435">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="22">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <Instruction Name="TCON" Version="4.0">
+        <TemplateValue Name="con_type" Type="Type">Variant</TemplateValue>
+        <TemplateValue Name="id_type" Type="Type">CONN_OUC</TemplateValue>
+        <Instance Scope="GlobalVariable">
+          <Component Name="TCON_DI" />
+        </Instance>
+        <Parameter Name="REQ">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="CONNECT" />
+              <Component Name="Request" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ID">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="CONNECT" />
+              <Component Name="ID" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="DONE">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="CONNECT" />
+              <Component Name="Done" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="BUSY">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="CONNECT" />
+              <Component Name="Busy" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ERROR">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="CONNECT" />
+              <Component Name="Error" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="STATUS">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="CONNECT" />
+              <Component Name="Status" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="CONNECT">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="PNOZ_Connection_DB" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </Instruction>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="482">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="483">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="484">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="Request" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="486">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="487">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="489">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="491">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Request" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="493">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="to_S" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="495">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="496">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="498">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Word</ConstantType>
+        <ConstantValue>16#80A3</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Verbindung gibt's schon</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="501">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="502">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="504">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="DISCONNECT" />
+        <Component Name="Request" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="506">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="to_D" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="508">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="509">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="511">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="to_E" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="513">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="514">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="516">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="517">
+    <LabelDeclaration>
+      <Label Name="to_S" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> --&gt; Senden</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="521">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="523">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="525">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="526">
+    <LabelDeclaration>
+      <Label Name="to_D" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>4</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> --&gt; Verbindungsabbau</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="530">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="532">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="534">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="535">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="536">
+    <LabelDeclaration>
+      <Label Name="to_E" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>5</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> --&gt; Fehler</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="540">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="542">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="543">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="545">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>call FB65 (TCON) as long as status = 1 (connect)
+ - if connection_1 is established (TCON_DONE=1) change to status=2 (send)
+ - if an error occurs (TCON_ERR=1) change to status=5 (error)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Verbindungsaufbau</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="1C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="546">
+    <LabelDeclaration>
+      <Label Name="WRIT" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>43</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>fix PNOZ</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="550">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Length" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="552">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="553">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="ID" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="555">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="ID" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="557">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <Instruction Name="TSEND" Version="4.0">
+        <TemplateValue Name="data_type" Type="Type">Variant</TemplateValue>
+        <TemplateValue Name="len_type" Type="Type">UDInt</TemplateValue>
+        <TemplateValue Name="id_type" Type="Type">CONN_OUC</TemplateValue>
+        <Instance Scope="GlobalVariable">
+          <Component Name="TSEND_DI" />
+        </Instance>
+        <Parameter Name="REQ">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="SEND" />
+              <Component Name="Request" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ID">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="SEND" />
+              <Component Name="ID" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="LEN">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="SEND" />
+              <Component Name="Length" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="DONE">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="SEND" />
+              <Component Name="Done" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="BUSY">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="SEND" />
+              <Component Name="Busy" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ERROR">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="SEND" />
+              <Component Name="Error" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="STATUS">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="SEND" />
+              <Component Name="Status" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="DATA">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Send" />
+              <Component Name="Out" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </Instruction>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="570">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="571">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="572">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Request" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="574">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="575">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="577">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="579">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="EN_R" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="581">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="toRV" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="583">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="584">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Word</ConstantType>
+        <ConstantValue>16#80A1</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Kommunikationsfehler</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="587">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="589">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="590">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="591">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Word</ConstantType>
+        <ConstantValue>16#80C4</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Temporärer Kommunikationsfehler</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="594">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="595">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="596">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="598">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Request" />
+      </Symbol>
+      <LineComment>
+        <Text> --&gt; nochmal versuchen</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="601">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="603">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="604">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="606">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="SDER" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="608">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="609">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="611">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="612">
+    <LabelDeclaration>
+      <Label Name="toRV" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="615">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="617">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="619">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="620">
+    <LabelDeclaration>
+      <Label Name="SDER" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>5</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="623">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="625">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="627">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>call FB63 (TSEND) as long as status = 2 (send)
+ - if send is complete (TSEND_DONE=1) change to status=3 (receive)
+ - if an error occurs (TSEND_ERR=1)
+   - if TSEND_STATUS='80A1' or '80C4' stay at status=2 and try to send again
+   - if TSEND_STATUS&lt;&gt;'80A1' or '80C4' change to status=5 (error)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Schreiben --> PNOZ</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="21" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="628">
+    <LabelDeclaration>
+      <Label Name="READ" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>43</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>fix PNOZ</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="632">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="Length" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="634">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="635">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="ID" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="637">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="ID" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="639">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <Instruction Name="TRCV" Version="4.0">
+        <TemplateValue Name="ptr_type" Type="Type">Variant</TemplateValue>
+        <TemplateValue Name="value_type" Type="Type">UDInt</TemplateValue>
+        <TemplateValue Name="id_type" Type="Type">CONN_OUC</TemplateValue>
+        <TemplateValue Name="card" Type="Cardinality">1</TemplateValue>
+        <Instance Scope="GlobalVariable">
+          <Component Name="TRCV_DI" />
+        </Instance>
+        <Parameter Name="EN_R">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="RECEIVE" />
+              <Component Name="EN_R" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ID">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="RECEIVE" />
+              <Component Name="ID" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="LEN">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="RECEIVE" />
+              <Component Name="Length" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ADHOC">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="RECEIVE" />
+              <Component Name="ADHOC" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="NDR">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="RECEIVE" />
+              <Component Name="NDR" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="BUSY">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="RECEIVE" />
+              <Component Name="Busy" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ERROR">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="RECEIVE" />
+              <Component Name="Error" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="STATUS">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="RECEIVE" />
+              <Component Name="Status" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="RCVD_LEN">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="RECEIVE" />
+              <Component Name="Receive_Length" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="DATA">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Receive" />
+              <Component Name="In" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </Instruction>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="653">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="654">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="NDR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="656">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="toSD" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="658">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="659">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Word</ConstantType>
+        <ConstantValue>16#80A1</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Kommunikationsfehler</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="662">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="664">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="665">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="666">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Word</ConstantType>
+        <ConstantValue>16#80C4</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Temporärer Kommunikationsfehler</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="669">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="670">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="671">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="673">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="675">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="toSD" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="677">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="678">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="RECEIVE" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="680">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="RVER" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="682">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="683">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="685">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="686">
+    <LabelDeclaration>
+      <Label Name="toSD" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="689">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="691">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="692">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="SEND" />
+        <Component Name="Request" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="694">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="696">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="697">
+    <LabelDeclaration>
+      <Label Name="RVER" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>5</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="700">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="702">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="704">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="22" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>call FB64 (TRCV) as long as status = 3 (receive)
+ - if new data is received (TSEND_NDR=1) change to status=2 (receive)
+   and increment send_values
+ - if an error occurs (TRCV_ERR=1)
+   - if TRCV_STATUS='80A1' or '80C4' change to status=2 and try to send
+   - if TRCV_STATUS&lt;&gt;'80A1' or '80C4' change to status=5 (error)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Lesen &lt;-- PNOZ</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="26" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="705">
+    <LabelDeclaration>
+      <Label Name="DISC" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="CONNECT" />
+        <Component Name="ID" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="708">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="DISCONNECT" />
+        <Component Name="ID" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <Instruction Name="TDISCON" Version="2.1">
+        <TemplateValue Name="id_type" Type="Type">CONN_OUC</TemplateValue>
+        <Instance Scope="GlobalVariable">
+          <Component Name="TDISCON_DI" />
+        </Instance>
+        <Parameter Name="REQ">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="DISCONNECT" />
+              <Component Name="Request" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ID">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="DISCONNECT" />
+              <Component Name="ID" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="DONE">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="DISCONNECT" />
+              <Component Name="Done" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="BUSY">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="DISCONNECT" />
+              <Component Name="Busy" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ERROR">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="DISCONNECT" />
+              <Component Name="Error" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="STATUS">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_PNOZ_Comm" />
+              <Component Name="DISCONNECT" />
+              <Component Name="Status" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </Instruction>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="721">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="722">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="723">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="DISCONNECT" />
+        <Component Name="Request" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="725">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="726">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="DISCONNECT" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="728">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="DISCONNECT" />
+        <Component Name="Done" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="730">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="activate" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="732">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="established" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="734">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="to_O" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="736">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="737">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="DISCONNECT" />
+        <Component Name="Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="739">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="toE" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="741">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="742">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="744">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="745">
+    <LabelDeclaration>
+      <Label Name="to_O" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> --&gt; OFF</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="749">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="751">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="753">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="754">
+    <LabelDeclaration>
+      <Label Name="toE" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>5</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> --&gt; Fehler</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="758">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="760">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="762">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="27" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="28" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>call FB66 (TDISCON) as long as status = 4 (disconnect)
+ - if connection_1 is disconnected (TDISCON_DONE=1) change to status=0 (init)
+ - if an error occurs (TDISCON_ERR=1) change to status=5 (error)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="29" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Verbindungsabbau</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="23">
+    <LabelDeclaration>
+      <Label Name="ERR" />
+    </LabelDeclaration>
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="771">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="activate" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="773">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="connection" />
+        <Component Name="established" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="775">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="776">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text> --&gt; OFF</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="779">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_Comm" />
+        <Component Name="Global_Status" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="785">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <LabelDeclaration>
+      <Label Name="ende" />
+    </LabelDeclaration>
+    <StlToken Text="BE" />
+  </StlStatement>
+  <StlStatement UId="22">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Fehler</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="30" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="31" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Kommunikation Pilz-PNOZ &lt;--&gt; PLC</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

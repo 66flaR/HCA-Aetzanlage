@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="MLD" Datatype="Array[0..&quot;Anzahl_Alarm_Woerter&quot;] of Word" Remanence="Retain" />
+    <Member Name="AM_MLD" Datatype="Array[0..&quot;Anzahl_Alarm_Woerter&quot;] of Word" Remanence="Retain" />
+    <Member Name="Para_Mld" Datatype="Array[0..&quot;Anzahl_Alarm_Woerter&quot;] of &quot;Alarm_Parameter_Wort&quot;" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Struct = Meldewort, Array = ParaByte für MeldeBit (siehe FC5)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="WrnM" Datatype="Array[0..1] of Word" Remanence="Retain" />
+    <Member Name="Edit" Datatype="Struct" Remanence="Retain">
+      <Member Name="Edit_Meld" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">aktuell zu editierende Meldung</MultiLanguageText>
+        </Comment>
+        <StartValue>1</StartValue>
+      </Member>
+      <Member Name="Edit_Meld_old" Datatype="Int" />
+      <Member Name="Edit_Meldewort" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">betroffenes Meldewort</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Edit_Meldebit" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">betroffenes Meldebit</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="AM_Edit" Datatype="Bool" />
+      <Member Name="Uebernehmen" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Änderungen Übernehmen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Uebernommen" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Änderungen für ausgewählte Meldung übernommen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Verwerfen" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Änderungen verwerfen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Editiert" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Alarm wurde geändert</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Par" Datatype="&quot;Alarm_Parameter&quot;" />
+    </Member>
+    <Member Name="auto_aus" Datatype="Bool" Remanence="Retain" />
+    <Member Name="stop_request" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Sammelbit_St" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Sammelbit_Wrn" Datatype="Bool" Remanence="Retain" />
+    <Member Name="M_Q_Hupe_Rot" Datatype="Bool" Remanence="Retain" />
+    <Member Name="M_Q_Hupe_Gelb" Datatype="Bool" Remanence="Retain" />
+    <Member Name="M_Q_Hupe_Blau" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Hupe_Dauer_Rot" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Hupe_Dauer_Gelb" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Hupe_Dauer_Blau" Datatype="Bool" Remanence="Retain" />
+    <Member Name="IN_Quitt_Hupe" Datatype="Bool" Remanence="Retain" />
+    <Member Name="AM_T_Hupe" Datatype="Bool" Remanence="Retain" />
+    <Member Name="La_Quit_Err" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Lampe Fehlerquittung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Lampe_Rot" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Lampe_Gelb" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Lampe_Blau" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Zeit_Auto_Quitt_Hupe_Rot" Datatype="Time_Of_Day" Remanence="Retain">
+      <StartValue>TOD#00:00:05</StartValue>
+    </Member>
+    <Member Name="Zeit_Auto_Quitt_Hupe_Gelb" Datatype="Time_Of_Day" Remanence="Retain">
+      <StartValue>TOD#00:00:05</StartValue>
+    </Member>
+    <Member Name="Zeit_Auto_Quitt_Hupe_Blau" Datatype="Time_Of_Day" Remanence="Retain">
+      <StartValue>TOD#00:00:05</StartValue>
+    </Member>
+    <Member Name="Timer_Hupe_Rot" Datatype="TON_TIME" Version="1.0" Remanence="Retain" />
+    <Member Name="Timer_Hupe_Gelb" Datatype="TON_TIME" Version="1.0" Remanence="Retain" />
+    <Member Name="Timer_Hupe_Blau" Datatype="TON_TIME" Version="1.0" Remanence="Retain" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>DB_Alarme</Name>
+      <Namespace />
+      <Number>1201</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

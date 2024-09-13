@@ -1,0 +1,47 @@
+﻿FUNCTION "AZ_on_off" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Time_to_on : Int;   // Zeitpunkt der Einschaltung relativ zu AZ-Beginn (min)
+      Time_to_off : Int;   // Zeitpunkt der Ausschaltung relativ zu AZ-Ende (min)
+   END_VAR
+
+   VAR_OUTPUT 
+      on : Bool;
+   END_VAR
+
+
+BEGIN
+	//-----------------------------------------------------
+	//Ist gerade Arbeitszeit?
+	//-----------------------------------------------------
+	#on := "Uhrzeit".AZ_aktiv;
+	
+	IF "Uhrzeit".AZ_aktiv = true THEN
+	    //-----------------------------------------------------
+	    //Behandlung während Arbeitszeit
+	    //-----------------------------------------------------
+	    IF #Time_to_off < 0 AND ((#Time_to_off * -1) >= "Uhrzeit".Time_to_off) THEN
+	        #on := FALSE;
+	    END_IF;
+	    
+	    IF #Time_to_on >= 0 AND (#Time_to_on > ("Uhrzeit".Time_to_on * -1)) THEN
+	        #on := FALSE;
+	    END_IF;
+	    
+	ELSE
+	    //-----------------------------------------------------
+	    //Behandlung außerhalb Arbeitszeit
+	    //-----------------------------------------------------
+	    IF #Time_to_on < 0 AND ((#Time_to_on * -1) >= "Uhrzeit".Time_to_on) THEN
+	        #on := TRUE;
+	    END_IF;
+	    
+	    IF #Time_to_off >= 0 AND (#Time_to_off > ("Uhrzeit".Time_to_off * -1)) THEN
+	        #on := TRUE;
+	    END_IF;
+	    
+	END_IF;
+	
+END_FUNCTION
+

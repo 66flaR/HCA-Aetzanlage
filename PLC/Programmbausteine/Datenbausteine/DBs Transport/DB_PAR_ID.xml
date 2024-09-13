@@ -1,0 +1,1017 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>MS</HeaderAuthor>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Anz" Datatype="Int" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="Offset" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Beginn Daten</MultiLanguageText>
+      </Comment>
+      <StartValue>50</StartValue>
+    </Member>
+    <Member Name="Leng" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Länge Daten</MultiLanguageText>
+      </Comment>
+      <StartValue>10</StartValue>
+    </Member>
+    <Member Name="resd" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resd1" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resd2" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resd3" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resd4" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resd5" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resd6" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resd7" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resd8" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resd9" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resd10" Datatype="DWord" Remanence="Retain">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="Par_Config" Datatype="Array[1..30] of Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Feldlänge anpassen Anzahl Positionen</MultiLanguageText>
+      </Comment>
+      <Member Name="PAR1" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Beginn</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#01</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PAR2" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PAR3" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PAR4" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PAR5" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PAR6" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PAR7" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PAR8" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PAR9" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PAR10" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_PAR_ID</Name>
+      <Namespace />
+      <Number>55</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

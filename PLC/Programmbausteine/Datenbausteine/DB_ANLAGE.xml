@@ -1,0 +1,1479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>MS</HeaderAuthor>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="BA" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Betriebsarten</MultiLanguageText>
+      </Comment>
+      <Member Name="Not_Aus" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Not-Aus ist betätigt</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="free0" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">sonst Anlage vom PC bedienen, nur bei BA-Schalter auf Auto</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="free1" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">sonst Automatikbetrieb ist nicht freigegeben</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Tippbetrieb" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Tippbetrieb</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Handbetrieb" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Handbetrieb</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Automat_ein" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Automatikbetrieb möglich</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Automat_aus" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Automatikbetrieb nicht möglich</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Anlauf_Auto" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Anlauf Automatik für Scanvorgang WT-Positionen auf letzte Automatikposition</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Einfahr_Stop" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Stoppt die Einfahrt von WT in die Anlage(Feierabendprogramm)</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Mess_on" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Einmessung aktiv</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Taktwechsel" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Taktwechsel durchführen</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="SIM_HISPEED" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Simulation erfolgt mit doppelter Geschwindigkeit</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Simulation" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Simulation eingeschaltet</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="COM_RST" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Complete Restart</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="FP_Automat_ein" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Flankenmerker positive Flanke Taste Automat ein</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="newConfig" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">neue Konfiguration (Daten neu verteilen)</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="config" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Anlagenkonfiguration</MultiLanguageText>
+      </Comment>
+      <Member Name="ANZ_FW" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl der Transportwagen in der Anlage</MultiLanguageText>
+        </Comment>
+        <StartValue>1</StartValue>
+      </Member>
+      <Member Name="ANZ_QT" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl der Quertransporte in der Anlage</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="ANZ_Reihen" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl der Reihen in der Anlage</MultiLanguageText>
+        </Comment>
+        <StartValue>1</StartValue>
+      </Member>
+      <Member Name="ANZ_Pos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl der Positionen</MultiLanguageText>
+        </Comment>
+        <StartValue>30</StartValue>
+      </Member>
+      <Member Name="ANZ_WT" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl der vorhandenen WT-Datenbausteine</MultiLanguageText>
+        </Comment>
+        <StartValue>12</StartValue>
+      </Member>
+      <Member Name="ANZ_POS_per_Cyc" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl der bearbeiteten Positionen pro Zyklus</MultiLanguageText>
+        </Comment>
+        <StartValue>6</StartValue>
+      </Member>
+      <Member Name="maxWT_loop" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* im freien System Anzahl der Befehle der größten Technologieschleife</MultiLanguageText>
+        </Comment>
+        <StartValue>5</StartValue>
+      </Member>
+      <Member Name="Anz_Opt_Pos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl der in die Optimierungsrechnung eingehenden Positionen</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Anz_GR" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl der Gleichrichter</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Anz_TR" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl der Temperaturregler</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Anz_DZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl der Dosierzähler</MultiLanguageText>
+        </Comment>
+        <StartValue>2</StartValue>
+      </Member>
+      <Member Name="Anz_DP" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl Dosierpumpen</MultiLanguageText>
+        </Comment>
+        <StartValue>8</StartValue>
+      </Member>
+      <Member Name="AnaEventInt" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Analogevent Intervall</MultiLanguageText>
+        </Comment>
+        <StartValue>600</StartValue>
+      </Member>
+      <Member Name="Taktzeit_typ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* typische Taktzeit für Expoberechnung in getakteten Positionen</MultiLanguageText>
+        </Comment>
+        <StartValue>480</StartValue>
+      </Member>
+      <Member Name="Transzeit_typ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* typische Zeit für einen Austauschvorgang</MultiLanguageText>
+        </Comment>
+        <StartValue>60</StartValue>
+      </Member>
+      <Member Name="Reihen_Cnfg" Datatype="Struct">
+        <Member Name="EndePos_R1" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">* Reihendefinition, letzte Position in Reihe 1 (immer niedriger als EndePos_R2)</MultiLanguageText>
+          </Comment>
+          <StartValue>30</StartValue>
+        </Member>
+        <Member Name="EndePos_R2" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">* Reihendefinition, letzte Position in Reihe 2 (immer niedriger als EndePos_R3)</MultiLanguageText>
+          </Comment>
+          <StartValue>0</StartValue>
+        </Member>
+        <Member Name="EndePos_R3" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">* Reihendefinition, letzte Position in Reihe 3 (immer niedriger als EndePos_R4)</MultiLanguageText>
+          </Comment>
+          <StartValue>0</StartValue>
+        </Member>
+        <Member Name="EndePos_R4" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">* Reihendefinition, letzte Position in Reihe 4 (immer niedriger als EndePos_R5)</MultiLanguageText>
+          </Comment>
+          <StartValue>0</StartValue>
+        </Member>
+        <Member Name="EndePos_R5" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">* Reihendefinition, letzte Position in Reihe 5</MultiLanguageText>
+          </Comment>
+          <StartValue>0</StartValue>
+        </Member>
+      </Member>
+      <Member Name="akt_FW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Old_Hour_Event" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="PC_exist" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* PC-Daten schreiben (es existiert ein EventAbnehmer [FC7])</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Diag_exist" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Diagrammdaten schreiben (Diagrammdaten werden am PC aufgezeichnet)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Anl_getaktet" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* 0=Anlage fährt Auftragsorientiert 1=Anlage wird mit Ketten gesteuert</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="HW_exist" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Höhenwechsel in der Anlage vorhanden</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="Pos_absolut" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Positionsbestimmung absolut für OB100-Init-Pos (wirkt nicht mehr am FW)</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="Opti_exist" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Optimierung vorhanden</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="AL_Einfahrt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ware aufgeben!!</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Al_Ausfahrt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Beladestand räumen!!</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Weg_Zeit_aus" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Weg-Zeit-Events nicht schreiben</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="EntmFromOpt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Entmetallisierungs-WT werden von der Optimierung berechnet</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="M_Q_Hupe" Datatype="Bool">
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="HW_Auto_search" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW sucht automatisch nach einer möglichen Höhenwechselposition</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="FP_Taste_Reset" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Time_from_PC" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Zeit wird vom PC gestellt (keine autom. Sommerzeit)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FP_Stop_Taktende" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Flankenmerker Stop bei Taktende erreicht</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Temp_MW_aktiv" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Event mittlere Temperatur (Event 18) aktiv</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FP_Einrichten" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="FP_Hand" Datatype="Bool">
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="FP_Automatik" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="FP_In_Quitt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Flankenmerker Fehlerquittung</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Hub_absolut" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Hubsesorik Absolutgeber</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Battf" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Batteriefehler OB81 (Durch Hardwareschalter an SPS "BATT_INDIC") quittierbar</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="RESET_STATUS" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Wiederanlaufmerker nach Reset</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="WT_Typ_Afg" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* WT-Typ wird bei Aufgabe vergeben</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="TypChckDetail" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* WT-Typ wird ohne Maske B#16#F0 geprüft</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="QT_Trocken_chk" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* einschalten, wenn Prüfung auf bit "immer schnell"</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="FB9_Takt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FB9 aufrufen obwohl Anlage getaktet</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Use_FB_Ana" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* 1=FB110 verwenden 0=klassische Analogwerterfassung FC110</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Check_Profibus" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Profibusteilnehmer überwachen! OB86,OB100,DB203,FC203</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="NormalB" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0: 151 / 161  1: nur 151</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res6" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ReqUmsTakt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Anforderung Umschaltung auf getaktet</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="IN" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Hardwareeingänge Anlage</MultiLanguageText>
+      </Comment>
+      <Member Name="S_Not_Aus" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Not-Aus ok</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="S_St_Spng" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Steuerspannung ein</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="Quitt_Err" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Fehlerquittung</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Quitt_Hupe" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Hupenquittierung</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Reset" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Reset Anlagenschalter</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Reparatur" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Reparaturbetrieb</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Lamp_Test" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Lampentest</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="BA_Tipp" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BA Umschalter Tipp</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="BA_Hand" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BA Umschalter Hand</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="BA_Auto" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BA Umschalter Auto</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Stop_Anlage" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Anlage hält am Takt- bzw. Schichtende an</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Automat_aus" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Taste Automatikbetrieb verbieten</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Automat_ein" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Taste Automatikbetrieb erlauben</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Quit_Err_Galva" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Fehlerquittung per Galva</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res4" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="UT_Req" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Anforderung Umlufttrockner</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ReqEventTakt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Anforderung EventTakt</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="GR_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Rückmeldung Event erfolgt</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="TR_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Rückmeldung Event erfolgt</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="pH_LF_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Rückmeldung Event erfolgt</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="DP_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Rückmeldung Event erfolgt</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res11" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res12" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res13" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="PC_offline" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">PC-Komunikation ist unterbrochen</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="AMS_Restart" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">alle anstehenden Fehler neu senden</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Watch_Profibus" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Profibusüberwachung eingeschaltet</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res17" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res18" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res19" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res20" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="AMS_Reset" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">AMS-Reset durchführen (Resetknopf während nicht Tipp)</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="OUT" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Hardwareausgänge Anlage</MultiLanguageText>
+      </Comment>
+      <Member Name="Stoerung_Opt" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Stoerung_Aku" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="MD_Auto" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Fehler_Quitt" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res1" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res2" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res3" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="FW_QT_Auto" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">mind. ein FW/QT hat seinen Automatikbefehl noch nicht beendet</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="TW_abgelehnt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Taktwechsel wurde abgelehnt (durch Fehlerquittung löschen)</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="WT_in_Anlage" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res7" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res8" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res9" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res10" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res11" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res12" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res13" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res14" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res15" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res16" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res17" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res18" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res19" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res20" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="AnzUT_Req" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Anzahl der UT Anforderungen</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+    </Member>
+    <Member Name="config2" Datatype="Struct" Remanence="Retain">
+      <Member Name="Anzahl_HW" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Anzahl Höhenwechsel (Definition im DB53)</MultiLanguageText>
+        </Comment>
+        <StartValue>1</StartValue>
+      </Member>
+      <Member Name="Woscha_DB_1" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Datenbaustein für Wochenschaltuhr 1</MultiLanguageText>
+        </Comment>
+        <StartValue>8</StartValue>
+      </Member>
+      <Member Name="Woscha_DB_2" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Datenbaustein für Wochenschaltuhr 2</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Woscha_DB_3" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Datenbaustein für Wochenschaltuhr 3</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Woscha_DB_4" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Datenbaustein für Wochenschaltuhr 4</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW4" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Anlagentakte" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Anzahl Takte, welche WT durch die Anlage läuft</MultiLanguageText>
+        </Comment>
+        <StartValue>3</StartValue>
+      </Member>
+      <Member Name="resW6" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW7" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW8" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW9" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW10" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW11" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW12" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW13" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW14" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW15" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW16" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW17" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW18" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW19" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW1" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>1</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>30</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>10</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW2" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW3" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW4" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW5" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW6" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW7" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW8" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW9" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW10" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW11" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW12" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW13" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW14" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="FW15" Datatype="Struct" Remanence="Retain">
+      <Member Name="FW_min" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich min</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="FW_max" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* FW Bereich max</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="RefPos" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzposition (bei Absolutpositionierung 0)</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="resW" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="QT1" Datatype="Struct" Remanence="Retain">
+      <Member Name="PosR1" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe1: Positionsnummer der ersten QT-Pos (bei Rückwärtsfahrt letzte Pos)</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR2" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe2: Positionsnummer der zweiten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR3" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe3: Positionsnummer der dritten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR4" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe4: Positionsnummer der vierten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR5" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe5: Positionsnummer der fünften QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="RefReihe" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzreihe nur angeben wenn mitfahrende Sensoren!!</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Ketten_DB" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Eintrag == 0 --&gt; QT besitzt keine Kette</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="QT2" Datatype="Struct" Remanence="Retain">
+      <Member Name="PosR1" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe1: Positionsnummer der ersten QT-Pos (bei Rückwärtsfahrt letzte Pos)</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR2" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe2: Positionsnummer der zweiten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR3" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe3: Positionsnummer der dritten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR4" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe4: Positionsnummer der vierten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR5" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe5: Positionsnummer der fünften QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="RefReihe" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzreihe nur angeben wenn mitfahrende Sensoren!!</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Ketten_DB" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Eintrag == 0 --&gt; QT besitzt keine Kette</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="QT3" Datatype="Struct" Remanence="Retain">
+      <Member Name="PosR1" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe1: Positionsnummer der ersten QT-Pos (bei Rückwärtsfahrt letzte Pos)</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR2" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe2: Positionsnummer der zweiten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR3" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe3: Positionsnummer der dritten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR4" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe4: Positionsnummer der vierten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR5" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe5: Positionsnummer der fünften QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="RefReihe" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzreihe nur angeben wenn mitfahrende Sensoren!!</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Ketten_DB" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Eintrag == 0 --&gt; QT besitzt keine Kette</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="QT4" Datatype="Struct" Remanence="Retain">
+      <Member Name="PosR1" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe1: Positionsnummer der ersten QT-Pos (bei Rückwärtsfahrt letzte Pos)</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR2" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe2: Positionsnummer der zweiten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR3" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe3: Positionsnummer der dritten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR4" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe4: Positionsnummer der vierten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR5" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe5: Positionsnummer der fünften QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="RefReihe" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzreihe nur angeben wenn mitfahrende Sensoren!!</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Ketten_DB" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Eintrag == 0 --&gt; QT besitzt keine Kette</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="QT5" Datatype="Struct" Remanence="Retain">
+      <Member Name="PosR1" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe1: Positionsnummer der ersten QT-Pos (bei Rückwärtsfahrt letzte Pos)</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR2" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe2: Positionsnummer der zweiten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR3" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe3: Positionsnummer der dritten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR4" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe4: Positionsnummer der vierten QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosR5" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* QT-Reihe5: Positionsnummer der fünften QT-Pos</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="RefReihe" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Referenzreihe nur angeben wenn mitfahrende Sensoren!!</MultiLanguageText>
+        </Comment>
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="T_Nr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Timer1</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="Ketten_DB" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">* Eintrag == 0 --&gt; QT besitzt keine Kette</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_ANLAGE</Name>
+      <Namespace />
+      <Number>1</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

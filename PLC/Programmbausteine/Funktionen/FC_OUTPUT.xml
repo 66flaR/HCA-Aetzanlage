@@ -1,0 +1,2776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>RE</HeaderAuthor>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="Frg_Heben_li" Datatype="Bool" />
+    <Member Name="Frg_Heben_re" Datatype="Bool" />
+    <Member Name="Frg_Senken_li" Datatype="Bool" />
+    <Member Name="Frg_Senken_re" Datatype="Bool" />
+    <Member Name="Returnwert" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Rückgabewert SFC</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="RetVal" Datatype="Int" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>FC_OUTPUT</Name>
+      <Namespace />
+      <Number>211</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Simulation" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="33">
+    <LineComment>
+      <Text>Warnung</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="65">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Alarme" />
+        <Component Name="Lampe_Gelb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="68">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="Lamp_Test" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="75">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_Wrn" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="80">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_Wrn(2)" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="158">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_Wrn_Geb.G" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="29">
+    <LineComment>
+      <Text> Störung</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Alarme" />
+        <Component Name="Lampe_Rot" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="60">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="Lamp_Test" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="69">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_Al" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="74">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_Al(2)" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="86">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_Al_Geb.G" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="25">
+    <LineComment>
+      <Text>Hupe</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="OUT" />
+        <Component Name="Stoerung_Aku" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="27">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Hupe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="84">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Hupe(2)" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Hupe_Geb.G" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="166">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <LineComment>
+      <Text>Fertigmeldung 1 WT will raus: CMD = 25</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT1" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>25</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="147">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="177">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT1" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="161">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="169">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT2" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="171">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="287">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT2" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="168">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="167">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="178">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT3" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="180">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>25</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="182">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="289">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT3" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="176">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="172">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="173">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT4" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="175">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="291">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT4" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="183">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="184">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="185">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT5" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="187">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>25</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="189">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="293">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT5" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="190">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="191">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="192">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT6" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="245">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="295">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT6" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="246">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="249">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="250">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT7" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="253">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>25</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="255">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="297">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT7" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="256">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="257">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="258">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT8" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="260">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="299">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT8" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="261">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="262">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="263">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT9" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="265">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>25</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="267">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="301">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT9" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="268">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="269">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="270">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT10" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="272">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="303">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT10" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="273">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="274">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="275">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT11" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="277">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>25</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="279">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="305">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT11" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="280">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="281">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="282">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_WT12" />
+        <Component Name="akt_CMD" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="284">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="307">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_WT12" />
+              <Component Name="POS" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="285">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="193">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Clock_1Hz" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="195">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_Auftrag_DB" />
+        <Component Name="Frg_Ausfahrt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="198">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="Lamp_Test" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="162">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_fertig" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="71">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_fertig(2)" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="31">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_fertig_Geb.G" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="OUT" />
+        <Component Name="Fehler_Quitt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="Lamp_Test" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_LED_Q_Err" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="197">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="201">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="LED" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="204">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="203">
+    <LabelDeclaration>
+      <Label Name="LED" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="MobilePanel" />
+        <Component Name="Drucktaster_K2_LED" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="56">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="54">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="In" />
+        <Component Name="PNOZ_OK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="53">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_LED_Q_NH" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="157">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="45">
+    <LineComment>
+      <Text> Meldung Automatik</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="46">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="OUT" />
+        <Component Name="MD_Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="48">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="Lamp_Test" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_Automatik" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="144">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_Automatik(2)" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="154">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_Automatik_Geb.G" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="77">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="121">
+    <LineComment>
+      <Text> Turmleuchte Tür</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="87">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_Wrn_Gas_ok" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="135">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_TL_T_Vorarlarm_Gas" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="134">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_TL_T_Vorarlarm_Gas(2)" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="139">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="138">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_Al_Gas_ok" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="133">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_TL_T_Hauptalarm_Gas" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="141">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_TL_T_Hauptalarm_Gas(2)" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="145">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="140">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_Al_Gas_ok" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="149">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_TL_T_Hupe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="151">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_TL_T_Hupe(2)" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="132">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="47">
+    <LineComment>
+      <Text> Koppelsignale</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="100">
+    <LineComment>
+      <Text> --&gt; AWA</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="102">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="103">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_KS_in_Betrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="90">
+    <LineComment>
+      <Text> --&gt; Wäscher</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="109">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_Niv_max_CM05.BL01" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="107">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_Niv_Uel_CM05.BL12" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="106">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_KS_CM05_nicht_Voll" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="112">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="89">
+    <LineComment>
+      <Text> Werkschutz</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="92">
+    <LineComment>
+      <Text> 14x Leckage</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="214">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="FP_CM02.GP04" />
+        <Component Name="Mld" />
+        <Component Name="Leckage" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="216">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_CL01.GP08" />
+        <Component Name="Mld" />
+        <Component Name="Leckage" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="212">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_CL02.GP09" />
+        <Component Name="Mld" />
+        <Component Name="Leckage" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="219">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_GP01.GP12" />
+        <Component Name="Mld" />
+        <Component Name="Leckage" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="222">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_GP02.GP07" />
+        <Component Name="Mld" />
+        <Component Name="Leckage" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="224">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_GP01.GP13" />
+        <Component Name="Mld" />
+        <Component Name="Leckage_Pumpe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="229">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_GP01.GP13" />
+        <Component Name="Mld" />
+        <Component Name="Leckage_PFA_Uebergang" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="230">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_GP01.GP13" />
+        <Component Name="Mld" />
+        <Component Name="Leckage_Doppelrohr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="231">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_GP01.GP13" />
+        <Component Name="Mld" />
+        <Component Name="Leckage_Uml_Tunnel" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="232">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_GP02.GP10" />
+        <Component Name="Mld" />
+        <Component Name="Leckage_Pumpe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="233">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_GP02.GP10" />
+        <Component Name="Mld" />
+        <Component Name="Leckage_PFA_Uebergang" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="235">
+    <StlToken Text="ON" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_LS_GP02.BL26" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="248">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_GP02.GP10" />
+        <Component Name="Mld" />
+        <Component Name="Leckage_Doppelschlauch" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="236">
+    <StlToken Text="ON" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_LS_GP02.BL33" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="93">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_WS_Leckage" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="225">
+    <LineComment>
+      <Text> 3x Überlauf</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="148">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="UP_CM01.GP02" />
+        <Component Name="Mld" />
+        <Component Name="Niv_Ueberlauf" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="226">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="UP_CM02.GP05" />
+        <Component Name="Mld" />
+        <Component Name="Niv_Ueberlauf" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="237">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Pu_CM05.GP11_DB" />
+        <Component Name="Mld" />
+        <Component Name="Uel_CM05.BL05" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="95">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_WS_Ueberlauf" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="210">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="206">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Alarme" />
+        <Component Name="Lampe_Rot" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="97">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Mld_WS_SSt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="113">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="99">
+    <LineComment>
+      <Text> LED Türen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="116">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="In" />
+        <Component Name="Tuer_VS_ok" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="123">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Clock_1Hz" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="115">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_LED_Tuer_VS" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="125">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="119">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_PNOZ_IN_Out" />
+        <Component Name="In" />
+        <Component Name="Tuer_RS_ok" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="129">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Clock_1Hz" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="118">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_LED_Tuer_RS" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="110">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Lampen
+</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Ausgabe </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="184">
+    <LineComment>
+      <Text> Reparaturbetrieb</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="180">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="Reparatur" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="99">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="BA_Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="182">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_RepB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="179">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <LineComment>
+      <Text>--------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="22">
+    <LineComment>
+      <Text>FW1</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="23">
+    <LineComment>
+      <Text>--------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <LineComment>
+      <Text> FU Fahrt: FU[10]</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FB_FU_OUT_TW" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="DI_FU_Fahrt" />
+        </Instance>
+        <Parameter Name="Req_High" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_1" />
+              <Component Name="OUT" />
+              <Component Name="VOR" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Req_Low" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_1" />
+              <Component Name="OUT" />
+              <Component Name="RUECK" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Reglersperre" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>10</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="RegSp" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Freigabe_Stopp" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>10</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="FrgStop" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Freigabe_Halt" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>10</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="FrgHalt" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Break_ok" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_POS_1" />
+              <Component Name="IN" />
+              <Component Name="Break_on" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="SollSpeed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_POS_1" />
+              <Component Name="OUT" />
+              <Component Name="SollSpeed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Ist_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_POS_1" />
+              <Component Name="IN" />
+              <Component Name="IstSpeed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="PAW_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>10</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Speed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="PEW_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>10</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PE" />
+              <Component Name="Speed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="59">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="48">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="VOR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="73">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="RUECK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="50">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Frg_FU_Fahrt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="47">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="76">
+    <LineComment>
+      <Text> FU Hub links: FU[11]</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="127">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="HEBEN_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="130">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Heb_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="132">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="SENKEN_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="135">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Snk_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="196">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="197">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="HEBEN_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="165">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_RepB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="191">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_Frg_Heb_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="194">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Frg_Heben_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="206">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="205">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="SENKEN_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="209">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_RepB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="201">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_Frg_Snk_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="203">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Frg_Senken_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="79">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="81">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FB_FU_OUT_TW" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="DI_FU_Hub_links" />
+        </Instance>
+        <Parameter Name="Req_High" Section="Input" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Frg_Heben_li" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Req_Low" Section="Input" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Frg_Senken_li" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Reglersperre" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>11</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="RegSp" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Freigabe_Stopp" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>11</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="FrgStop" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Freigabe_Halt" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>11</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="FrgHalt" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Break_ok" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_HUB_links" />
+              <Component Name="IN" />
+              <Component Name="Break_on" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="SollSpeed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_HUB_links" />
+              <Component Name="OUT" />
+              <Component Name="SollSpeed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Ist_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_HUB_links" />
+              <Component Name="IN" />
+              <Component Name="IstSpeed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="PAW_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>11</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Speed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="PEW_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>11</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PE" />
+              <Component Name="Speed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="78">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="137">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="HEBEN_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="112">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="SENKEN_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="95">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Frg_FU_Hub_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="141">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="189">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="144">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="BEREIT" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="147">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="Unten_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="178">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="T_ErrQuitt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="115">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_WZ_Tara_li_1" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="118">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_WZ_Tara_li_2" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="121">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_WZ_Tara_li_3" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="124">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_WZ_Tara_li_4" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="44">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="49">
+    <LineComment>
+      <Text> FU Hub rechts: FU[12]</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="54">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="HEBEN_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="58">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Heb_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="63">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="SENKEN_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="71">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Snk_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="212">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="213">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="HEBEN_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="215">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_RepB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="217">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_Frg_Heb_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="219">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Frg_Heben_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="221">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="222">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="SENKEN_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="224">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_RepB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="226">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="E_Frg_Snk_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="228">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Frg_Senken_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="80">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="82">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FB_FU_OUT_TW" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="DI_FU_Hub_rechts" />
+        </Instance>
+        <Parameter Name="Req_High" Section="Input" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Frg_Heben_re" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Req_Low" Section="Input" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Frg_Senken_re" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Reglersperre" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>12</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="RegSp" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Freigabe_Stopp" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>12</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="FrgStop" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Freigabe_Halt" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>12</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="FrgHalt" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Break_ok" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_HUB_rechts" />
+              <Component Name="IN" />
+              <Component Name="Break_on" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="SollSpeed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_HUB_rechts" />
+              <Component Name="OUT" />
+              <Component Name="SollSpeed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Ist_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_FW_HUB_rechts" />
+              <Component Name="IN" />
+              <Component Name="IstSpeed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="PAW_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>12</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Speed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="PEW_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>12</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PE" />
+              <Component Name="Speed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="154">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="155">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="HEBEN_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="158">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="SENKEN_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="161">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Frg_FU_Hub_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="163">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="142">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="167">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="169">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="BEREIT" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="190">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="Unten_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="192">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="T_ErrQuitt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="162">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_WZ_Tara_re_1" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="173">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_WZ_Tara_re_2" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="175">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_WZ_Tara_re_3" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="177">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_WZ_Tara_re_4" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="117">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Transportsystem</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>FW</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <LineComment>
+      <Text> QF 1 FU[8]</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FB_FU_OUT_TW" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="DI_FU_WR02" />
+        </Instance>
+        <Parameter Name="Req_High" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_QF_WR02_03" />
+              <Component Name="Out" />
+              <Component Name="WR02_einfahren" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Req_Low" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_QF_WR02_03" />
+              <Component Name="Out" />
+              <Component Name="WR02_ausfahren" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Reglersperre" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>8</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="RegSp" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Freigabe_Stopp" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>8</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="FrgStop" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Freigabe_Halt" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>8</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="FrgHalt" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Break_ok" Section="InOut" Type="Bool" />
+        <Parameter Name="SollSpeed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_QF_WR02_03" />
+              <Component Name="Out" />
+              <Component Name="Soll_speed_WR02" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Ist_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_QF_WR02_03" />
+              <Component Name="In" />
+              <Component Name="FU_speed_WR02" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="PAW_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>8</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Speed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="PEW_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>8</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PE" />
+              <Component Name="Speed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_QF_WR02_03" />
+        <Component Name="Out" />
+        <Component Name="WR02_einfahren" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_QF_WR02_03" />
+        <Component Name="Out" />
+        <Component Name="WR02_ausfahren" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Frg_FU_QF_WR02" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="72">
+    <LineComment>
+      <Text> QF 2 FU[9]</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="74">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="75">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FB_FU_OUT_TW" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="DI_FU_WR03" />
+        </Instance>
+        <Parameter Name="Req_High" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_QF_WR02_03" />
+              <Component Name="Out" />
+              <Component Name="WR03_einfahren" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Req_Low" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_QF_WR02_03" />
+              <Component Name="Out" />
+              <Component Name="WR03_ausfahren" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Reglersperre" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>9</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="RegSp" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Freigabe_Stopp" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>9</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="FrgStop" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Freigabe_Halt" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>9</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Steuerwort" />
+              <Component Name="FrgHalt" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Break_ok" Section="InOut" Type="Bool" />
+        <Parameter Name="SollSpeed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_QF_WR02_03" />
+              <Component Name="Out" />
+              <Component Name="Soll_speed_WR03" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Ist_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DI_QF_WR02_03" />
+              <Component Name="In" />
+              <Component Name="FU_speed_WR03" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="PAW_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>9</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PA" />
+              <Component Name="Speed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="PEW_Speed" Section="InOut" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="FU_In_Out" />
+              <Component Name="FU" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>9</ConstantValue>
+                  </Constant>
+                </Access>
+              </Component>
+              <Component Name="PE" />
+              <Component Name="Speed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="99">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="58">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_QF_WR02_03" />
+        <Component Name="Out" />
+        <Component Name="WR03_einfahren" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="60">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_QF_WR02_03" />
+        <Component Name="Out" />
+        <Component Name="WR03_ausfahren" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="A_Frg_FU_QF_WR03" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>WR02/03</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Be- und Entladestände (QF1 / QF2)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="21">
+    <LineComment>
+      <Text> Ausgänge</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Output_Peripherie" BlockType="FC" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Schreiben der physikalischen Ausgänge</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

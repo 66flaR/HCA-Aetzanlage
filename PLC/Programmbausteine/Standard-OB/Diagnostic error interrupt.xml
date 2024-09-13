@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.OB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Temp">
+    <Member Name="EV_CLASS" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">16#39: Event class 3, Entering event state, Internal fault event</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="FLT_ID" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Fault identifier</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="PRIORITY" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Priority of OB Execution</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB_NUMBR" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">OB number</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="RESERVED_1" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Reserved for system</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="IO_FLAG" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">16#54:input, 16#55:output, 16#0:not available</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="MDL_ADDR" Datatype="Word">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Hardware identifier</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="MDL_DEFECT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Module defective</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="INT_FAULT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Internal fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="EXT_FAULT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">External fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="PNT_INFO" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Channel fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="EXT_VOLTAGE" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">External voltage low</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="FLD_CONNCTR" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Field wiring connector missing</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="NO_CONFIG" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Module has no configuration data</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="CONFIG_ERR" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Module has configuration error</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="MDL_TYPE" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Type of module</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="SUB_MDL_ERR" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Sub-Module is missing or has error</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="COMM_FAULT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Communication fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="MDL_STOP" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Module is stopped</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="WTCH_DOG_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Watch dog timer stopped module</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="INT_PS_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Internal power supply fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="PRIM_BATT_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Primary battery is in fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="BCKUP_BATT_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Backup battery is in fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="RESERVED_2" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Reserved for system</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="RACK_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Rack fault, only for bus interface module</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="PROC_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Processor fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="EPROM_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">EPROM fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="RAM_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">RAM fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ADU_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">ADU fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="FUSE_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Fuse fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="HW_INTR_FLT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Hardware interrupt input in fault</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="RESERVED_3" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Reserved for system</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="DATE_TIME" Datatype="Date_And_Time">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Date and time OB82 started</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>Diagnostic error interrupt</Name>
+      <Namespace />
+      <Number>82</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+      <SecondaryType>DiagnosticErrorInterrupt</SecondaryType>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5" /></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.OB>
+</Document>

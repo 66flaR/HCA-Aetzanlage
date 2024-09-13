@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Fertig" Datatype="Bool" />
+    <Member Name="Abholbar" Datatype="Bool" />
+    <Member Name="Sperre" Datatype="Bool" />
+    <Member Name="CheckSperre" Datatype="Bool" />
+    <Member Name="WT_151" Datatype="Bool" />
+    <Member Name="Wt_Typ" Datatype="Byte" />
+    <Member Name="Wt_Cmd" Datatype="Byte" />
+    <Member Name="Oldest" Datatype="Real" />
+  </Section>
+</Sections></Interface>
+      <Name>UDT_Auftrag_Pos</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

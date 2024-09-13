@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.OB ID="0">
+    <AttributeList>
+      <HeaderAuthor>RE</HeaderAuthor>
+      <HeaderVersion>0.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Temp">
+    <Member Name="OB86_EV_CLASS" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">16#38/39 Event class 3</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB86_FLT_ID" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">16#C1/C4/C5, Fault identification code</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB86_PRIORITY" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">26/28 (Priority of 1 is lowest)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB86_OB_NUMBR" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">86 (Organization block 86, OB86)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB86_RESERVED_1" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Reserved for system</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB86_RESERVED_2" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Reserved for system</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB86_MDL_ADDR" Datatype="Word">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Depending on fault identification code</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB86_Z23" Datatype="DWord">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">see Context Help OB86</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB86_DATE_TIME" Datatype="Date_And_Time">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Date and time OB86 started</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="E_Param" Datatype="DWord" />
+    <Member Name="RetVal" Datatype="Int" />
+    <Member Name="DP_Slave_Nr" Datatype="Int" />
+    <Member Name="Status" Datatype="Array[0..1023] of Bool" />
+    <Member Name="Count" Datatype="Int" />
+    <Member Name="Station_OK" Datatype="Bool" />
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>Rack or station failure</Name>
+      <Namespace />
+      <Number>86</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+      <SecondaryType>RackOrStationFailure</SecondaryType>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="Watch_Profibus" />
+      </Symbol>
+      <LineComment>
+        <Text>keine Überwachung Profibus!</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="27">
+    <LineComment>
+      <Text>DP-Slave Nummer</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OB86_Z23" SliceAccessModifier="w0" />
+      </Symbol>
+      <LineComment>
+        <Text>Nr. der DP Station (Bit 0-7 in OB86_Z23)</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="44">
+    <StlToken Text="AW" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>w#16#3ff</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_Slave_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="35">
+    <LineComment>
+      <Text>Fehler kommt/geht</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OB86_EV_CLASS" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#39</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>kommendes Ereignis</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="43">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="kommt" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="45">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="46">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OB86_EV_CLASS" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="48">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>16#38</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>gehendes Ereignis</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="51">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="52">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="geht" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="54">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="55">
+    <StlToken Text="BE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Wird bei DP-Stationsausfall und Rackfehler aktiviert</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="56">
+    <LabelDeclaration>
+      <Label Name="kommt" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OB86_FLT_ID" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="59">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Word</ConstantType>
+        <ConstantValue>16#Cb</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Ausfall einer DP-Station Code C4 Profinet CB</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="62">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="63">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="64">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="65">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_Slave_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="69">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="71">
+    <StlToken Text="LAR1_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="72">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP_Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="74">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="76">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Indirect Width="Byte" Area="DB" Register="AR1" BitOffset="0" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="78">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="79">
+    <StlToken Text="BE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Fehler kommt</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="80">
+    <LabelDeclaration>
+      <Label Name="geht" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OB86_FLT_ID" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="83">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Word</ConstantType>
+        <ConstantValue>16#Cb</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Ausfall einer DP-Station gehendes Ereignis</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="86">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Station_OK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="22">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="123">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_Slave_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="127">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="129">
+    <StlToken Text="LAR1_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="130">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP_Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="132">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="138">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Indirect Width="Byte" Area="DB" Register="AR1" BitOffset="0" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="29">
+    <LineComment>
+      <Text> Check ob gestört</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <Instruction Name="DeviceStates" Version="1.2">
+        <Parameter Name="LADDR">
+          <Access Scope="GlobalConstant">
+            <Constant Name="Local~PROFINET_IO-System" />
+          </Access>
+        </Parameter>
+        <Parameter Name="MODE">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>UInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+          <LineComment>
+            <Text> 2: IO-Devices/DP-Slaves gestört</Text>
+          </LineComment>
+        </Parameter>
+        <Parameter Name="Ret_Val">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="RetVal" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="STATE">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Status" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </Instruction>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="51">
+    <LineComment>
+      <Text>------------------------------------------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="53">
+    <LineComment>
+      <Text>Ergebnis abspeichern</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="55">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="59">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="60">
+    <StlToken Text="L" />
+    <Access Scope="AddressConstant">
+      <Constant Name="Status" Scope="local" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="62">
+    <StlToken Text="LAR1_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="63">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="65">
+    <LabelDeclaration>
+      <Label Name="retS" />
+    </LabelDeclaration>
+    <StlToken Text="ADDAR1" />
+  </StlStatement>
+  <StlStatement UId="67">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="68">
+    <StlToken Text="AN" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="Local" Register="AR1" BitOffset="0" />
+      <LineComment>
+        <Text>Laufendes Bit für Bus-Adresse</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="71">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="notS" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="73">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="74">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="76">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP_Error" />
+        <Component Name="HiAdr" />
+      </Symbol>
+      <LineComment>
+        <Text>höchste Adresse speichern</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="79">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="88">
+    <StlToken Text="LAR2_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="89">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP_Error" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Byte" Area="DB" Register="AR2" BitOffset="0" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="44">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="84">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="notS" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="91">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Station gestört</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="93">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Indirect Width="Byte" Area="DB" Register="AR2" BitOffset="0" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="95">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="96">
+    <LabelDeclaration>
+      <Label Name="notS" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="99">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="101">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="103">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1023</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="105">
+    <StlToken Text="LT_D" />
+  </StlStatement>
+  <StlStatement UId="106">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>ARef</ConstantType>
+        <ConstantValue>P#0.1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="108">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="retS" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="110">
+    <LineComment>
+      <Text>------------------------------------------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="148">
+    <StlToken Text="BE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Fehler geht</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="12" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="13" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text> "Loss Of Rack Fault"</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.OB>
+</Document>

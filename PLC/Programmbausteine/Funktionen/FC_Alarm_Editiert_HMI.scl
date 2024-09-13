@@ -1,0 +1,23 @@
+﻿FUNCTION "FC_Alarm_Editiert_HMI" : Bool
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      IN1 : "Alarm_Parameter";
+      IN2 : "Alarm_Parameter";
+   END_VAR
+
+
+BEGIN
+	#FC_Alarm_Editiert_HMI :=
+	#IN1.Hupe_Blau       <> #IN2.Hupe_Blau OR
+	#IN1.Hupe_Dauer_Blau <> #IN2.Hupe_Dauer_Blau OR
+	#IN1.Hupe_Dauer_Gelb <> #IN2.Hupe_Dauer_Gelb OR
+	#IN1.Hupe_Dauer_Rot  <> #IN2.Hupe_Dauer_Rot OR
+	#IN1.Hupe_Gelb       <> #IN2.Hupe_Gelb OR
+	#IN1.La_Blau         <> #IN2.La_Blau OR
+	#IN1.La_Gelb         <> #IN2.La_Gelb OR
+	#IN1.La_Quit_Err <> #IN2.La_Quit_Err OR
+	#IN1.nicht_Hupe_Rot  <> #IN2.nicht_Hupe_Rot OR
+	#IN1.nicht_La_Rot    <> #IN2.nicht_La_Rot;
+END_FUNCTION
+

@@ -1,0 +1,1734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="IW" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Analogwerte</MultiLanguageText>
+      </Comment>
+      <Member Name="LF_CM01.BN01" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Leitfähigkeit Bypass Filterpumpe</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LF_CM01.BN02" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Leitfähigkeit Düsen Umwälzung</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LF_CM02.BN03" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Leitfähigkeit Bypass Filterpumpe</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LF_CM02.BN04" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Leitfähigkeit Düsen Umwälzung</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="p_HQ01.BP01" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Druck Beutelfiltergehäuse</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="p_HQ02.BP02" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Druck Beutelfiltergehäuse</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="p_CM01.BP03" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Druck Filterpumpe</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="p_CM01.BP04" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Druck Umwälzpumpe</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="p_CM03.BP05" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Druck Umwäzpumpe</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="p_CM02.BP06" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Druck Filterpumpe</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="p_CM02.BP07" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Druck Umwälzpumpe</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="p_CM04.BP08" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Druck Umwäzpumpe</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="p_CM05.BP09" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Druck Pumpe Entleerung Sammeltank</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Dfl_GP01.BF01" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Durchfluss Versorgung Frischsäure</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Dfl_GP02.BF02" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Durchfluss Entsorgung Altsäure</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_GP01.BL30" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Füllstand Versorgung Frischsäure</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_GP02.BL31" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Füllstand Entsorgung Altsäure</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="pH_BE" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">SRM_Auf_BG-QM43</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Deckel" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Deckel Säurebecken</MultiLanguageText>
+      </Comment>
+      <Member Name="CM01" Datatype="Struct">
+        <Member Name="Auto" Datatype="Bool" />
+        <Member Name="Hand" Datatype="Bool" />
+        <Member Name="Tipp" Datatype="Bool" />
+        <Member Name="links_auf" Datatype="Bool" />
+        <Member Name="links_zu" Datatype="Bool" />
+        <Member Name="rechts_auf" Datatype="Bool" />
+        <Member Name="rechts_zu" Datatype="Bool" />
+        <Member Name="SRM_links_auf" Datatype="Bool" />
+        <Member Name="SRM_links_zu" Datatype="Bool" />
+        <Member Name="SRM_rechts_auf" Datatype="Bool" />
+        <Member Name="SRM_rechts_zu" Datatype="Bool" />
+        <Member Name="S_links_auf" Datatype="Bool">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">CM01.BG01</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="S_links_zu" Datatype="Bool">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">CM01.BG02</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="S_rechts_auf" Datatype="Bool">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">CM01.BG03</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="S_rechts_zu" Datatype="Bool">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">CM01.BG04</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Ist_Pos_links" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">0% = auf; 100% = zu</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Ist_Pos_rechts" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">0% = auf; 100% = zu</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="CM02" Datatype="Struct">
+        <Member Name="Auto" Datatype="Bool" />
+        <Member Name="Hand" Datatype="Bool" />
+        <Member Name="Tipp" Datatype="Bool" />
+        <Member Name="links_auf" Datatype="Bool" />
+        <Member Name="links_zu" Datatype="Bool" />
+        <Member Name="rechts_auf" Datatype="Bool" />
+        <Member Name="rechts_zu" Datatype="Bool" />
+        <Member Name="SRM_links_auf" Datatype="Bool" />
+        <Member Name="SRM_links_zu" Datatype="Bool" />
+        <Member Name="SRM_rechts_auf" Datatype="Bool" />
+        <Member Name="SRM_rechts_zu" Datatype="Bool" />
+        <Member Name="S_links_auf" Datatype="Bool">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">CM02.BG01</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="S_links_zu" Datatype="Bool">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">CM02.BG02</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="S_rechts_auf" Datatype="Bool">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">CM02.BG03</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="S_rechts_zu" Datatype="Bool">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">CM02.BG04</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Ist_Pos_links" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">0% = auf; 100% = zu</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Ist_Pos_rechts" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">0% = auf; 100% = zu</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+    </Member>
+    <Member Name="RT" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Schnelllauftor</MultiLanguageText>
+      </Comment>
+      <Member Name="K_Auto" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Knauf Auto</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="T_auf" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Taste RT auf</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="T_zu" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Taste RT zu</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="MSS_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Motorschutzschalter o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="S_offen" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Schnelllauftor offen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="S_geschlossen" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Schnelllauftor geschlossen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Schnelllauftor o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="Ventilator" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">FU[7]</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="laeuft" Datatype="Bool" />
+      <Member Name="betriebsbereit" Datatype="Bool" />
+      <Member Name="Stoerung" Datatype="Bool" />
+      <Member Name="Status" Datatype="USInt" />
+      <Member Name="SW_Hand" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_AZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_aAZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="speed" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="CM01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">HF-Becken 1</MultiLanguageText>
+      </Comment>
+      <Member Name="Betrieb" Datatype="Bool" />
+      <Member Name="Wartung" Datatype="Bool" />
+      <Member Name="Niv_TGS" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL04</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Min" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL03</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_max" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL02</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Uel" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL01</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="NSP_Auto" Datatype="Bool" />
+      <Member Name="GW_LF_FP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BN01</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GW_LF_UP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BN02</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GW_p_FP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BP03</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GW_p_UP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BP04</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Proz" Datatype="USInt" />
+      <Member Name="Sollwert_LF" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Dosierung</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Dosierung_LF" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0 = WT, 1= LF</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="CM02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">HF-Becken 2</MultiLanguageText>
+      </Comment>
+      <Member Name="Betrieb" Datatype="Bool" />
+      <Member Name="Wartung" Datatype="Bool" />
+      <Member Name="Niv_TGS" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL11</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Min" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL10</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_max" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL09</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Uel" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL08</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="NSP_Auto" Datatype="Bool" />
+      <Member Name="GW_LF_FP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BN03</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GW_LF_UP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BN04</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GW_p_FP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BP06</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GW_p_UP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BP07</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Proz" Datatype="USInt" />
+      <Member Name="Sollwert_LF" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Dosierung</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Dosierung_LF" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0 = WT, 1= LF</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="CM03" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Spülbecken 1</MultiLanguageText>
+      </Comment>
+      <Member Name="Betrieb" Datatype="Bool" />
+      <Member Name="Wartung" Datatype="Bool" />
+      <Member Name="Niv_TGS" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL07</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Min" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL06</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GW_p_UP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BP05</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Proz" Datatype="USInt" />
+      <Member Name="SPR_Auto" Datatype="Bool" />
+      <Member Name="SPR_Start_Test" Datatype="Bool" />
+      <Member Name="SPR_Stopp_Test" Datatype="Bool" />
+      <Member Name="SPR_Zeit_Test" Datatype="Int" />
+    </Member>
+    <Member Name="CM04" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Spülbecken 2</MultiLanguageText>
+      </Comment>
+      <Member Name="Betrieb" Datatype="Bool" />
+      <Member Name="Wartung" Datatype="Bool" />
+      <Member Name="Niv_TGS" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL14</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Min" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL13</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GW_p_UP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BP08</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Proz" Datatype="USInt" />
+      <Member Name="SPR_Auto" Datatype="Bool" />
+      <Member Name="SPR_Start_Test" Datatype="Bool" />
+      <Member Name="SPR_Stopp_Test" Datatype="Bool" />
+      <Member Name="SPR_Zeit_Test" Datatype="Int" />
+      <Member Name="NSP_Auto" Datatype="Bool" />
+      <Member Name="NSP_Zeit" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">pro Korb</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="NSP_Start_Test" Datatype="Bool" />
+      <Member Name="NSP_Stopp_Test" Datatype="Bool" />
+      <Member Name="NSP_Zeit_Tes" Datatype="Int" />
+    </Member>
+    <Member Name="CM05" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Abwassersammler</MultiLanguageText>
+      </Comment>
+      <Member Name="Betrieb" Datatype="Bool" />
+      <Member Name="Wartung" Datatype="Bool" />
+      <Member Name="Niv_TGS" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL03</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Min" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL02</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_max" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL01</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Uel" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL05</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="AWA_Bereit" Datatype="Bool" />
+      <Member Name="Frg_Abpumpen" Datatype="Bool" />
+      <Member Name="GW_p_Pu" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BP09</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Proz" Datatype="USInt" />
+    </Member>
+    <Member Name="HQ01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Filtereinheit</MultiLanguageText>
+      </Comment>
+      <Member Name="Niv_Leckage" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL05</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GW_p_FG" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BP01</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="S_FG_zu" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG06</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="S_Dkl_FG_li" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG07</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="S_Dkl_FG_re" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG08</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Quitt_FW" Datatype="Bool" />
+      <Member Name="Quitt_FW_erlaubt" Datatype="Bool" />
+      <Member Name="WarnGr_FW" Datatype="Real" />
+      <Member Name="Wechsel_FW" Datatype="Real" />
+    </Member>
+    <Member Name="HQ02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Filtereinheit</MultiLanguageText>
+      </Comment>
+      <Member Name="Niv_Leckage" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL12</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GW_p_FG" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BP02</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="S_FG_zu" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG09</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="S_Dkl_FG_li" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG10</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="S_Dkl_FG_re" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG1</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Quitt_FW" Datatype="Bool" />
+      <Member Name="Quitt_FW_erlaubt" Datatype="Bool" />
+      <Member Name="WarnGr_FW" Datatype="Real" />
+      <Member Name="Wechsel_FW" Datatype="Real" />
+    </Member>
+    <Member Name="GP01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">HF-Versorgung</MultiLanguageText>
+      </Comment>
+      <Member Name="Versorgung" Datatype="Bool" />
+      <Member Name="Entsorgung" Datatype="Bool" />
+      <Member Name="Niv_leer" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL17</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_max" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL20</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="IBC_vorhanden" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG21</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Tür_zu_vorn" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG44</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Tür_zu_seitlich" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG43</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_PuSu" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL18</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_Pumpe" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL15</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_Doppelrohr_BL19" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL19</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_PFA_Übergang" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL16</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_Uml_Tunnel" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL34</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Proz" Datatype="USInt" />
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="GP02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">HF-Entsorgung</MultiLanguageText>
+      </Comment>
+      <Member Name="Versorgung" Datatype="Bool" />
+      <Member Name="Entsorgung" Datatype="Bool" />
+      <Member Name="Niv_leer" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL24</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_max" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL23</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="IBC_vorhanden" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG22</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Tür_zu_seitlich" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BG45</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_PuSu" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL18</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_Pumpe" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL27</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_PFA_Übergang" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL25</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_Doppelrohr_BL26" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL26</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_Doppelschlauch_BL32" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL32</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_Doppelschlauch_BL33" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">BL33</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Proz" Datatype="USInt" />
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="Havarie_GP0x" Datatype="Struct" Remanence="Retain">
+      <Member Name="Soll_Spuelen_CM0x" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[l]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Ist_Spuelen_CM0x" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[l]</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="CL0x" Datatype="Struct" Remanence="Retain">
+      <Member Name="LS_CL01.BL28" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Leckage OK Übergabestation CL01 CL01.BL28</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_CL02.BL29" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Leckage OK Pumpensumpf Säurebecken CL02 CL02.BL29</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Niv_Proz_CL01" Datatype="USInt" />
+      <Member Name="Niv_Proz_CL02" Datatype="USInt" />
+    </Member>
+    <Member Name="FP_CM01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP01</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="betriebsbereit" Datatype="Bool" />
+      <Member Name="Stoerung" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Sp_Filter" Datatype="Struct">
+        <Member Name="Zeit_leeren_Saure" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Zeit_leeren_CM05" Datatype="Int" />
+        <Member Name="Zeit_Spülen" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Wartezeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Zeit_füllen" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Drucktest_Pumpe" Datatype="Struct">
+        <Member Name="Solldruck" Datatype="Real" />
+        <Member Name="Sollzeit" Datatype="Int" />
+        <Member Name="Restzeit" Datatype="Int" />
+        <Member Name="Schritt" Datatype="USInt" />
+      </Member>
+      <Member Name="Drucktest_Filter" Datatype="Struct">
+        <Member Name="Solldruck" Datatype="Real" />
+        <Member Name="Sollzeit" Datatype="Int" />
+        <Member Name="Restzeit" Datatype="Int" />
+        <Member Name="Schritt" Datatype="USInt" />
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=normal, 1=Filterwechsel, 2=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+      <Member Name="Status_FW" Datatype="USInt" />
+      <Member Name="SW_Hand" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_AZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_aAZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="speed" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="UP_CM01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP02</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="betriebsbereit" Datatype="Bool" />
+      <Member Name="Stoerung" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Drucktest" Datatype="Struct">
+        <Member Name="Solldruck" Datatype="Real" />
+        <Member Name="Sollzeit" Datatype="Int" />
+        <Member Name="Restzeit" Datatype="Int" />
+        <Member Name="Schritt" Datatype="USInt" />
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=normal, 1=Ents GP02, 2= Ents GP01, 3=Ents. CM05, 4=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+      <Member Name="SW_Hand" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_AZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_aAZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="speed" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="UP_CM03" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP03</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="betriebsbereit" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="Stoerung" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Drucktest" Datatype="Struct">
+        <Member Name="Solldruck" Datatype="Real" />
+        <Member Name="Sollzeit" Datatype="Int" />
+        <Member Name="Restzeit" Datatype="Int" />
+        <Member Name="Schritt" Datatype="USInt" />
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=normal, 1=Ents. CM05, 2=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+      <Member Name="SW_Hand" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_AZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_aAZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="speed" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="FP_CM02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP04</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="betriebsbereit" Datatype="Bool" />
+      <Member Name="Stoerung" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Sp_Filter" Datatype="Struct">
+        <Member Name="Zeit_leeren_Saure" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Zeit_leeren_CM05" Datatype="Int" />
+        <Member Name="Zeit_Spülen" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Wartezeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Zeit_füllen" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Drucktest_Pumpe" Datatype="Struct">
+        <Member Name="Solldruck" Datatype="Real" />
+        <Member Name="Sollzeit" Datatype="Int" />
+        <Member Name="Restzeit" Datatype="Int" />
+        <Member Name="Schritt" Datatype="USInt" />
+      </Member>
+      <Member Name="Drucktest_Filter" Datatype="Struct">
+        <Member Name="Solldruck" Datatype="Real" />
+        <Member Name="Sollzeit" Datatype="Int" />
+        <Member Name="Restzeit" Datatype="Int" />
+        <Member Name="Schritt" Datatype="USInt" />
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=normal, 1=Filterwechse, 2=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+      <Member Name="Status_FW" Datatype="USInt" />
+      <Member Name="SW_Hand" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_AZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_aAZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="speed" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="UP_CM02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP05</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="betriebsbereit" Datatype="Bool" />
+      <Member Name="Stoerung" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Drucktest" Datatype="Struct">
+        <Member Name="Solldruck" Datatype="Real" />
+        <Member Name="Sollzeit" Datatype="Int" />
+        <Member Name="Restzeit" Datatype="Int" />
+        <Member Name="Schritt" Datatype="USInt" />
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=normal, 1=Ents GP02, 2= Ents GP01, 3=Ents. CM05, 4=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+      <Member Name="SW_Hand" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_AZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_aAZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="speed" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="UP_CM04" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP06</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="betriebsbereit" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="Stoerung" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Drucktest" Datatype="Struct">
+        <Member Name="Solldruck" Datatype="Real" />
+        <Member Name="Sollzeit" Datatype="Int" />
+        <Member Name="Restzeit" Datatype="Int" />
+        <Member Name="Schritt" Datatype="USInt" />
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=normal, 1=Ents. CM05, 2=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+      <Member Name="SW_Hand" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_AZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SW_Auto_aAZ" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="speed" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">[%]</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Pu_CM05" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP11</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Drucktest" Datatype="Struct">
+        <Member Name="Solldruck" Datatype="Real" />
+        <Member Name="Sollzeit" Datatype="Int" />
+        <Member Name="Restzeit" Datatype="Int" />
+        <Member Name="Schritt" Datatype="USInt" />
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=Entl., 1=Kreislauf, 2=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="Pu_CL01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP08</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=Ents. CM05, 1=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="Pu_CL02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP09</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=Ents. CM05, 1=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="Pu_Entl_GP01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP12</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=Ents. CM05, 1=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="Pu_Vers_GP01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP13</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=Vers UVGP01, 1=Ents CM05, 2=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="Pu_Entl_GP02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP07</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=Ents. CM05, 1=Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="Pu_Vers_GP02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP10</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+      <Member Name="Sp_Ventil" Datatype="Struct">
+        <Member Name="Sollzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Restzeit" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">[s]</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="BA" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=Vers UVGP01, 1=Ents CM05,2= Spülen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="Pu_Entleeren" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">GP14</MultiLanguageText>
+      </Comment>
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Status" Datatype="USInt" />
+    </Member>
+    <Member Name="Ventil" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">0 = Aus, 1= aktiv, 2=Störung</MultiLanguageText>
+      </Comment>
+      <Member Name="CM01.QM18" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Saugleitung Filterpumpe GP01 Säure 01 CM01.QM18</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM01.QM19" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Filterpumpe GP01 Säure 01 CM01.QM19</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM01.QM20" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Umwälzpumpe GP02 Säure 01 CM01.QM20</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="HQ01.QM21" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">EingangSäureleitung Filtereinheit HQ02 Säure 01 CM01.QM21</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="HQ01.LV01" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Entlüftungs-/ Überdruckventil Beutelfilter Säure 01 HQ01.LV01</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="HQ01.QM22" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Filtereinheit HQ01 Säure 01 HQ01.QM22</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="HQ01.QM23" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Säureleitung Filtereinheit HQ01 Säure 01 HQ01.QM23</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="HQ01.QM24" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Spülleitung Filtereinheit HQ01 Säure 01 zu Sammeltank HQ01.QM24</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM01.QM25" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Saugleitung Umwälzpumpe GP02 Säure 01 CM01.QM25</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM01.QM26" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Druckleitung Umwälzpumpe GP02 Säure 01 CM01.QM26</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM01.QM27" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Spülleitung Umwälzpumpe GP02 Säure 01 zu Sammeltank CM01.QM27</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM03.QM33" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Saugleitung Umwälzpumpe GP03 Spülbecken 1 CM03.QM33</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM03.QM34" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Druckleitung Umwälzpumpe GP03 Spülbecken 1 CM03.QM34</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM03.QM36" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Umwälzpumpe GP03 Spülbecken 1 CM03.QM36</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM03.QM37" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Spülleitung Umwälzpumpe GP03 Spülbecken 1 CM03.QM37</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM02.QM55" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Saugleitung Filterpumpe GP04 Säure 02 CM02.QM55</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM02.QM56" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Filterpumpe GP04 Säure 02 CM02.QM56</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM02.QM57" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Umwälzpumpe GP05 Säure 02 CM02.QM57</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="HQ02.QM58" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Filtereinheit HQ02 Säure 02 CM02.QM58</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="HQ02.LV02" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Entlüftungs-/ Überdruckventil Beutelfilter Säure 02 HQ02.LV02</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="HQ02.QM59" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Säureleitung Filtereinheit HQ02 Säure 02 HQ02.QM59</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="HQ02.QM60" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Säureleitung Filtereinheit HQ02 Säure 02 HQ02.QM60</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="HQ02.QM61" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Spülleitung Filtereinheit HQ02 Säure 02 zu Sammeltank HQ02.QM61</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM02.QM62" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Saugleitung Umwälzpumpe GP05 Säure 02 CM02.QM62</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM02.QM63" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Druckleitung Umwälzpumpe GP05 Säure 02 CM02.QM63</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM02.QM64" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Spülleitung Umwälzpumpe GP05 Säure 02 zu Sammeltank CM02.QM64</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM04.QM72" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Saugleitung Umwälzpumpe GP06 Spülbecken 2 CM04.QM72</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM04.QM73" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Druckleitung Umwälzpumpe GP06 Spülbecken 2 CM04.QM73</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM04.QM75" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Umwälzpumpe GP06 Spülbecken 2 CM04.QM75</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM04.QM76" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Spülleitung Umwälzpumpe GP06 Spülbecken 2 CM04.QM76</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM04.QM77" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Frischwasserzufuhr Nachdosierung Spülbecken 2 CM04.QM77</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CL01.QM51" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zuleitung VE-Wasser-Spülung Pumpe GP08 CL01.QM51</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CL02.QM52" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zuleitung VE-Wasser-Spülung Pumpe GP09 CL02.QM52</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM05.QM61" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Saugseite Förderpumpe Entleerung GP11 Sammeltank CM05 CM05.QM61</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM05.QM62" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Förderpumpe GP11 Sammeltank CM05 CM05.QM62</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM05.QM63" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Spülleitung Förderpumpe GP11 Sammeltank CM05 CM05.QM63</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM05.QM64" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Druckseite Förderpumpe Entleerung GP11 Sammeltank CM05 CM05.QM64</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM03.QM35" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">VE-Wasserleitung Spritzregister Spülbecken 1 CM03.QM35</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CM04.QM74" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">VE-Wasserleitung Spritzregister Spülbecken 2 CM04.QM74</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP01.QM14" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">PFA Schlauchleitung Anbindung IBC Quick Connect Entsorgung GP01.QM14</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP01.QM15" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Saugleitung Membranpumpe GP13 Versorgung Frischsäure GP01.QM15</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP01.QM16" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Membranpumpe GP13 Versorgung Frischsäure GP01.QM16</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP01.QM17" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Spülleitung Membranpumpe GP13 Versorgung zu Sammeltank GP01.QM17</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP01.QM18" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Druckleitung Membranpumpe GP13 Versorgung zu UV-GP01 GP01.QM18</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP01.QM19" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verriegelung UV-GP01 Versorgungsleitung zu Säure CM2 GP01.QM19</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP01.QM20" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verriegelung UV-GP01 Versorgungsleitung zu Säure CM1 GP01.QM20</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP01.QM21" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verriegelung UV-GP01 Versorgungsleitung zur Entsorgung GP02 GP01.QM21</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP01.QM22" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verriegelung UV-GP01 Versorgungsleitung zur Versorgung GP01 GP01.QM22</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP01.QM23" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">VE-Wasser-Spülung GP12 zu Auffangwanne GP01.QM23</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP02.QM37" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">VE-Wasser-Ventil Leckagesumpf Entsorgung Altsäure GP02.QM37</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP02.QM38" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Saugleitung Membranpumpe GP10 Versorgung aus GP02 GP02.QM38</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP02.QM39" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Eingang Spülleitung Membranpumpe GP10 Versorgung aus GP02 GP02.QM39</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP02.QM40" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Druckleitung Membranpumpe GP10 zu Sammeltank CM05 GP02.QM40</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP02.QM41" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verriegelung UV-GP02 Versorgungsleitung zu UV-GP01 GP02.QM41</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP02.QM42" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausgang Spülleitung Membranpumpe GP10 zu Sammeltank CM05 GP02.QM42</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP02.QM43" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verriegelung UV-GP02 Entsorgungsleitung zu Entsorgung GP02 GP02.QM43</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP02.QM44" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verriegelung UV-GP02 Entsorgungsleitung zu Versorgung GP01 GP02.QM44</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP02.QM45" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verriegelung UV-GP02 Entsorgungsleitung von Säurebecken CM01 GP02.QM45</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GP02.QM46" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verriegelung UV-GP02 Entsorgungsleitung von Säurebecken CM02 GP02.QM46</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Betriebsart" Datatype="Struct" Remanence="Retain">
+      <Member Name="Tipp" Datatype="Bool" />
+      <Member Name="Hand" Datatype="Bool" />
+      <Member Name="Automatik" Datatype="Bool" />
+      <Member Name="Anzeige" Datatype="USInt" />
+    </Member>
+    <Member Name="QF" Datatype="Struct" Remanence="Retain">
+      <Member Name="WR02" Datatype="Struct">
+        <Member Name="Auto" Datatype="Bool" />
+        <Member Name="Hand" Datatype="Bool" />
+        <Member Name="Tipp" Datatype="Bool" />
+        <Member Name="T_einfahren" Datatype="Bool" />
+        <Member Name="T_ausfahren" Datatype="Bool" />
+        <Member Name="S_Pos_Ue" Datatype="Bool" />
+        <Member Name="S_Pos_BE" Datatype="Bool" />
+        <Member Name="S_BK_vl" Datatype="Bool" />
+        <Member Name="S_BK_vr" Datatype="Bool" />
+        <Member Name="S_BK_hl" Datatype="Bool" />
+        <Member Name="S_BK_hr" Datatype="Bool" />
+        <Member Name="A_einfahren" Datatype="Bool" />
+        <Member Name="A_ausfahren" Datatype="Bool" />
+      </Member>
+      <Member Name="WR03" Datatype="Struct">
+        <Member Name="Auto" Datatype="Bool" />
+        <Member Name="Hand" Datatype="Bool" />
+        <Member Name="Tipp" Datatype="Bool" />
+        <Member Name="T_einfahren" Datatype="Bool" />
+        <Member Name="T_ausfahren" Datatype="Bool" />
+        <Member Name="S_Pos_Ue" Datatype="Bool" />
+        <Member Name="S_Pos_BE" Datatype="Bool" />
+        <Member Name="S_BK_vl" Datatype="Bool" />
+        <Member Name="S_BK_vr" Datatype="Bool" />
+        <Member Name="S_BK_hl" Datatype="Bool" />
+        <Member Name="S_BK_hr" Datatype="Bool" />
+        <Member Name="A_einfahren" Datatype="Bool" />
+        <Member Name="A_ausfahren" Datatype="Bool" />
+      </Member>
+      <Member Name="P25_kurz_fertig" Datatype="Bool" />
+      <Member Name="P25_lang_fertig" Datatype="Bool" />
+      <Member Name="P26_fertig" Datatype="Bool" />
+      <Member Name="P27_fertig" Datatype="Bool" />
+      <Member Name="P28_fertig" Datatype="Bool" />
+      <Member Name="P29_kurz_fertig" Datatype="Bool" />
+      <Member Name="P29_lang_fertig" Datatype="Bool" />
+      <Member Name="P30_fertig" Datatype="Bool" />
+    </Member>
+    <Member Name="TW" Datatype="Struct" Remanence="Retain">
+      <Member Name="Knauf_Auto" Datatype="Bool" />
+      <Member Name="T_Halt" Datatype="Bool" />
+      <Member Name="T_vor" Datatype="Bool" />
+      <Member Name="T_rueck" Datatype="Bool" />
+      <Member Name="T_heben" Datatype="Bool" />
+      <Member Name="T_senken" Datatype="Bool" />
+      <Member Name="T_heben_li" Datatype="Bool" />
+      <Member Name="T_senken_li" Datatype="Bool" />
+      <Member Name="T_heben_re" Datatype="Bool" />
+      <Member Name="T_senken_re" Datatype="Bool" />
+    </Member>
+    <Member Name="Aufgabe" Datatype="Struct" Remanence="Retain">
+      <Member Name="Anf_GO" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Beide QF nach aussen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Freigabe" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Datenübernahme</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="KS_vl_erlaubt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">B/E 1</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="KS_vr_erlaubt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">B/E 2</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GO_li_erlaubt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">B/E 3</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="GO_re_erlaubt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">B/E 4</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="KS_hl_erlaubt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">B/E 5</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="KS_hr_erlaubt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">B/E 6</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_v_erlaubt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">B/E 1</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LS_h_erlaubt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">B/E 5</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Betriebsmodus" Datatype="Struct" Remanence="Retain">
+      <Member Name="Normal" Datatype="Bool" />
+      <Member Name="Kombi" Datatype="Bool" />
+      <Member Name="Wechsel_erlaubt" Datatype="Bool" />
+      <Member Name="Korb_151" Datatype="Bool" />
+      <Member Name="Korb_161" Datatype="Bool" />
+      <Member Name="Anzeige" Datatype="USInt" />
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Panel</Name>
+      <Namespace />
+      <Number>1070</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

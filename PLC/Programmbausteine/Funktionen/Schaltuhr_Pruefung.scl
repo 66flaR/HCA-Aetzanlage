@@ -1,0 +1,142 @@
+﻿FUNCTION "Schaltuhr_Pruefung" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Uebernehmen : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      "Array" : Array[0..30] of Struct   // Array mit die Minuten von Sonntag 00:00 (Ein- und Ausschaltung)
+         Min : DInt;
+      END_STRUCT;
+      Error : Bool;
+      Start_Aus : Bool;   // =1 heißt dass der erste State eine Ausschaltung ist
+   END_VAR
+
+   VAR_TEMP 
+      i : Int;
+      j : Int;
+      pruef : Int;
+      anfang : Int;
+   END_VAR
+
+
+BEGIN
+	
+	IF #Uebernehmen = true THEN
+	    
+	    #j := 0; // Wochenschaltpunkte.
+	    #pruef := 0; //Prüfparameter, muss immer 0 oder 1 sein, 0 am Ende.
+	    #anfang := 0;//Anfangsparameter: -1 heißt mit Ausschaltung anfangen, 1 heißt mit Einschaltung anfangen
+	    #Start_Aus := false;
+	    #Error := false;
+	    FILL_BLK(IN:=dint#0,
+	             COUNT:=31,
+	             OUT=>#Array[0].Min);
+	    
+	FOR #i := 1 TO 7 DO //Sonntag bis Samstag
+	    
+	//--------------------------
+	//1te Spur am Tag
+	//--------------------------
+	  //Begin ---------------------------------------------------------------------------------------
+	  IF "DB_Schaltuhr".Tag_aktiv[#i].AZ_Begin1_aktiv=true THEN //Wenn Zeit aktiv
+	    
+	    #Array[#j].Min := TOD_TO_DINT(DTL_TO_TOD("DB_Schaltuhr".Tag[#i].AZ_Begin1))/60000+(#i-1)*1440; //Kopiere im Array
+	    #j := #j+1; //Array+1
+	    #pruef := #pruef + 1;
+	    
+	    IF #anfang = 0 THEN 
+	      #anfang := 1;
+	    END_IF;
+	    
+	    IF #pruef <> 1 THEN
+	      #Error := true;
+	    END_IF;
+	    
+	  END_IF;
+	  //Ende ------------------------------------------------------------------------------------------
+	  
+	  //Begin ---------------------------------------------------------------------------------------
+	  IF "DB_Schaltuhr".Tag_aktiv[#i].AZ_Ende1_aktiv=true THEN//Wenn Zeit aktiv
+	    
+	      #Array[#j].Min := TOD_TO_DINT(DTL_TO_TOD("DB_Schaltuhr".Tag[#i].AZ_Ende1))/60000+(#i-1)*1440;//Kopiere im Array
+	   #j := #j+1;//Array+1
+	   #pruef := #pruef - 1;
+	   
+	   IF #anfang = 0 THEN
+	     #anfang := -1;
+	     #pruef := 0; //Pruefparameter wieder auf Null
+	   END_IF;
+	    
+	   IF #pruef <> 0 THEN
+	      #Error := true;
+	   END_IF;
+	    
+	  END_IF;
+	  //Ende ------------------------------------------------------------------------------------------
+	  
+	//--------------------------
+	//2te Spur am Tag
+	//--------------------------
+	  //Begin ---------------------------------------------------------------------------------------
+	    IF "DB_Schaltuhr".Tag_aktiv[#i].AZ_Begin2_aktiv = true THEN //Wenn Zeit aktiv
+	    
+	        #Array[#j].Min := TOD_TO_DINT(DTL_TO_TOD("DB_Schaltuhr".Tag[#i].AZ_Begin2))/60000+(#i-1)*1440; //Kopiere im Array
+	    #j := #j + 1; //Array+1
+	    #pruef := #pruef + 1;
+	    
+	    IF #anfang = 0 THEN
+	        #anfang := 1;
+	    END_IF;
+	    
+	    IF #pruef <> 1 THEN
+	        #Error := true;
+	    END_IF;
+	    
+	    END_IF;
+	    //Ende ------------------------------------------------------------------------------------------
+	    
+	    //Begin ---------------------------------------------------------------------------------------
+	    IF "DB_Schaltuhr".Tag_aktiv[#i].AZ_Ende2_aktiv = true THEN//Wenn Zeit aktiv
+	    
+	        #Array[#j].Min := TOD_TO_DINT(DTL_TO_TOD("DB_Schaltuhr".Tag[#i].AZ_Ende2))/60000+(#i-1)* 1440;//Kopiere im Array
+	    #j := #j + 1;//Array+1
+	    #pruef := #pruef - 1;
+	    
+	    IF #anfang = 0 THEN
+	        #anfang := -1;
+	        #pruef := 0; //Pruefparameter wieder auf Null
+	    END_IF;
+	    
+	    IF #pruef <> 0 THEN
+	        #Error := true;
+	    END_IF;
+	    
+	    END_IF;
+	    //Ende ------------------------------------------------------------------------------------------
+	
+	 END_FOR;
+	 
+	//Array schließen ----------------------------
+	#Array[#j].Min := -1; //Ende des Arrays
+	
+	//Plausibilitätsprüfung
+	FOR #i:=0 TO #j-2 DO
+	  IF #Array[#i+1].Min<=#Array[#i].Min THEN
+	    #Error:=true;
+	    END_IF;
+	  END_FOR;
+	
+	  IF #anfang = 1 AND #pruef <> 0 OR #anfang = -1 AND #pruef <> 1 OR #anfang=0 THEN //Letzte prüfung
+	      #Error := true;
+	    END_IF;
+	    
+	  IF #anfang = -1 THEN //Start mit Ausschaltung
+	      #Start_Aus := true;
+	  END_IF;
+	
+	END_IF;
+	
+END_FUNCTION
+

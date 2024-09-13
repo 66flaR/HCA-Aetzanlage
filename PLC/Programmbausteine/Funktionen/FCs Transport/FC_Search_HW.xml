@@ -1,0 +1,1076 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>MS</HeaderAuthor>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="SO_li" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Sensor Oben aktiv --&gt; kein HW notwendig</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="SO_re" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Sensor Oben aktiv --&gt; kein HW notwendig</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut">
+    <Member Name="IstPos" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Istposition des FW in Inkrementen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ZielPos" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Position an der ein Höhenwechsel erfolgt (ohne HW:=tmp.FW_ZIEL_POS)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Bereich_Ziel" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Zielbereich für Positionierung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Bereich_langsam" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bereich für Langsamfahrt</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="FW_Ebene_li" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aktuelle FW-Ebene</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Zielebene_li" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Ebene die FW im Ziel einnehmen soll</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="HW_akt_li" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">ist dieses Bit gesetzt wurde bereits eine HW-Pos ermittelt</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="FW_Ebene_re" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aktuelle FW-Ebene</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Zielebene_re" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Ebene die FW im Ziel einnehmen soll</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="HW_akt_re" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">ist dieses Bit gesetzt wurde bereits eine HW-Pos ermittelt</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="count" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Loopcounter</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="fwd" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">FW bewegt sich in Richtung höhere Position</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="HW_Mitte" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Höhenwechselposition erreicht</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="HW_Pos" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">an dieser Stelle gilt eine andere Ebene</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>FC_Search_HW</Name>
+      <Namespace />
+      <Number>14</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>sucht in Fahrtrichtung nach einem notwendigen Höhenwechsel
+und gibt die Höhenwechselposition und die Zielebene zurück
+</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <LineComment>
+      <Text>Initialisierung</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="FW_Ebene_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Zielebene_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="47">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="FW_Ebene_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="49">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Zielebene_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SO_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="52">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SO_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="31">
+    <LineComment>
+      <Text>existiert ein Höhenwechsel</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="ON" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="config" />
+        <Component Name="HW_exist" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="HW_akt_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="51">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="HW_akt_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ZielPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="43">
+    <StlToken Text="GT_D" />
+  </StlStatement>
+  <StlStatement UId="44">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="fwd" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="46">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Ist kein Höhenwechsel notwendig wird die aktuelle FW-Ebene als Zielebene und 
+die 
+Tmp.FW_ZIEL_POS als Ziel zurückgegeben.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Initialisierung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="47">
+    <LineComment>
+      <Text>FW hat Ziel bereits erreicht</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="49">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ZielPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="51">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Bereich_Ziel" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="53">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="54">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="56">
+    <StlToken Text="GT_D" />
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="chk" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="59">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ZielPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="61">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Bereich_Ziel" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="63">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="64">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="66">
+    <StlToken Text="LT_D" />
+  </StlStatement>
+  <StlStatement UId="67">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="chk" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="69">
+    <StlToken Text="BE" />
+  </StlStatement>
+  <StlStatement UId="71">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="72">
+    <LabelDeclaration>
+      <Label Name="chk" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="75">
+    <LabelDeclaration>
+      <Label Name="retH" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="78">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_HW" />
+        <Component Name="Anzahl" />
+      </Symbol>
+      <LineComment>
+        <Text>HW-Eintrag Länge</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="81">
+    <StlToken Text="GE_I" />
+  </StlStatement>
+  <StlStatement UId="82">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="84">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="fwd" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="86">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="88">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="fwdH" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="90">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="92">
+    <StlToken Text="SUB_I" />
+  </StlStatement>
+  <StlStatement UId="93">
+    <LabelDeclaration>
+      <Label Name="fwdH" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_HW" />
+        <Component Name="lengHW" />
+      </Symbol>
+      <LineComment>
+        <Text>HW-Eintrag Länge</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="97">
+    <StlToken Text="MUL_I" />
+  </StlStatement>
+  <StlStatement UId="98">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_HW" />
+        <Component Name="Offset" />
+      </Symbol>
+      <LineComment>
+        <Text>HW-Einträge Offset</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="101">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="102">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="104">
+    <StlToken Text="LAR2_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="105">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_HW" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="106">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="22">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR2" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Pos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="111">
+    <StlToken Text="EQ_D" />
+  </StlStatement>
+  <StlStatement UId="112">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="115">
+    <LineComment>
+      <Text>HW Mitte?</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="117">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR2" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Pos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="120">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="122">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="123">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="124">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="125">
+    <StlToken Text="RND" />
+  </StlStatement>
+  <StlStatement UId="126">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Bereich_Ziel" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="128">
+    <StlToken Text="LE_D" />
+  </StlStatement>
+  <StlStatement UId="129">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="HW_Mitte" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="131">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="fnd" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="133">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="134">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="fwd" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="136">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="vor" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="138">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="139">
+    <LineComment>
+      <Text>FW hat HW-Pos bereits hinter sich</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="141">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="143">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR2" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Pos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="146">
+    <StlToken Text="LE_D" />
+  </StlStatement>
+  <StlStatement UId="147">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="nexH" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="149">
+    <LineComment>
+      <Text>Ziel liegt noch vor HW</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="151">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ZielPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="153">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR2" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Pos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="156">
+    <StlToken Text="GE_D" />
+  </StlStatement>
+  <StlStatement UId="157">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="159">
+    <LineComment>
+      <Text>Höhenwechsel liegt auf dem Weg</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="161">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="fnd" />
+      <LineComment>
+        <Text>Höhenwechel gefunden</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="164">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="165">
+    <LabelDeclaration>
+      <Label Name="vor" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+  <StlStatement UId="167">
+    <LineComment>
+      <Text>FW hat HW-Pos bereits hinter sich</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="169">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="171">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR2" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Pos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="174">
+    <StlToken Text="GE_D" />
+  </StlStatement>
+  <StlStatement UId="175">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="nexH" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="177">
+    <LineComment>
+      <Text>Ziel liegt noch vor HW</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="179">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ZielPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="181">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR2" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Pos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="184">
+    <StlToken Text="LE_D" />
+  </StlStatement>
+  <StlStatement UId="185">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="187">
+    <LineComment>
+      <Text>Höhenwechsel liegt auf dem Weg</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="189">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="fnd" />
+      <LineComment>
+        <Text>Höhenwechel gefunden</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="192">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="193">
+    <LabelDeclaration>
+      <Label Name="nexH" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="196">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="198">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="199">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="retH" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="201">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="202">
+    <LineComment>
+      <Text>HW-gefunden</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="110">
+    <LabelDeclaration>
+      <Label Name="fnd" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SO_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="205">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="fnd_re" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="204">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="fwd" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="207">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="fwrd" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="43">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Byte" Area="DB" Register="AR2" BitOffset="32" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Ebene_rck</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="212">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Zielebene_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="214">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="HWT" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="216">
+    <LabelDeclaration>
+      <Label Name="fwrd" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Byte" Area="DB" Register="AR2" BitOffset="40" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Ebene_vor</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="220">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Zielebene_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="222">
+    <LabelDeclaration>
+      <Label Name="HWT" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="FW_Ebene_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="225">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="226">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="fnd_re" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="228">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="HW_akt_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="230">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR2" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Pos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="233">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ZielPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="144">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="237">
+    <LabelDeclaration>
+      <Label Name="fnd_re" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SO_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="239">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="118">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="fwd" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="145">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="fwrd_re" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="155">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Byte" Area="DB" Register="AR2" BitOffset="32" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Ebene_rck</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="182">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Zielebene_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="209">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="HWT_re" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="211">
+    <LabelDeclaration>
+      <Label Name="fwrd_re" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Byte" Area="DB" Register="AR2" BitOffset="40" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Ebene_vor</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="231">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Zielebene_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="244">
+    <LabelDeclaration>
+      <Label Name="HWT_re" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="FW_Ebene_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="247">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="248">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="250">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="HW_akt_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="252">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR2" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_HW".HW[x].Pos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="255">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ZielPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="235">
+    <StlToken Text="BE" />
+  </StlStatement>
+  <StlStatement UId="243">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Suche nach HW-Pos</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Scanning</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="D" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="E" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>ermittelt ggf. HW-Pos</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

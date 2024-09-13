@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.OB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Temp">
+    <Member Name="EV_CLASS" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">16#29: Event class 2, Entering event state, Internal fault event</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="SW_FLT" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">16#42:reading, 16#43:writing</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="PRIORITY" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Priority of OB Execution</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB_NUMBR" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">OB number</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="BLK_TYPE" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">16#88:OB, 16#8C:FC, 16#8E:FB: Type of block causing the error</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="MEM_AREA" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Memory area and access type</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="MEM_ADDR" Datatype="Word">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Memory address where access error occured</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="BLK_NUM" Datatype="Word">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Block number in which error occured</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="PRG_ADDR" Datatype="Word">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Program address where error occured</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="DATE_TIME" Datatype="Date_And_Time">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Date and time OB started</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>IO access error</Name>
+      <Namespace />
+      <Number>122</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+      <SecondaryType>IOAccessError</SecondaryType>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5" /></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.OB>
+</Document>

@@ -1,0 +1,1530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="In" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="Auto" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Paneltaste</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Ein" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Paneltaste</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Leckage_ok" Datatype="Bool" />
+      <Member Name="Frg_Niv_CM05" Datatype="Bool" />
+      <Member Name="Betriebsart" Datatype="USInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Paneltaste</MultiLanguageText>
+        </Comment>
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="Param" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="Spülzeit" Datatype="Time" />
+    </Member>
+    <Member Name="Zst" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="Niveau" Datatype="USInt" />
+      <Member Name="Status_GP0x" Datatype="USInt" />
+      <Member Name="Restzeit_Spülen" Datatype="Time" />
+      <Member Name="TON_Spülventil_auf" Datatype="Bool" />
+      <Member Name="Spuelen" Datatype="Bool" />
+      <Member Name="Abpumpen" Datatype="Bool" />
+      <Member Name="Bedienung_Erlaubt" Datatype="Bool" />
+    </Member>
+    <Member Name="Mld" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="Leckage" Datatype="Bool" />
+      <Member Name="Niv_Sensorfehler" Datatype="Bool" />
+      <Member Name="n_Auto" Datatype="Bool" />
+    </Member>
+    <Member Name="Out" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="GP0x_Ein" Datatype="Bool" />
+      <Member Name="Spülventil" Datatype="Bool" />
+    </Member>
+    <Member Name="IEC_Timer" Datatype="Struct">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="Leckage_ok" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="Spülventil_auf" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="Spülen" Datatype="TP_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="Leckage_niO" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+    </Member>
+    <Member Name="R_TRIG_Hand_EIN" Datatype="R_TRIG" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="Spülzeit" Datatype="Time" />
+    <Member Name="Leckage_ok_verz" Datatype="Bool" />
+    <Member Name="posFl_Hand" Datatype="Bool" />
+  </Section>
+  <Section Name="Constant">
+    <Member Name="Niv_TLS" Datatype="USInt">
+      <StartValue>2</StartValue>
+    </Member>
+    <Member Name="Niv_Min" Datatype="USInt">
+      <StartValue>2</StartValue>
+    </Member>
+    <Member Name="Niv_max" Datatype="USInt">
+      <StartValue>20</StartValue>
+    </Member>
+    <Member Name="Zeit_Ventil_auf" Datatype="Time">
+      <StartValue>T#1s</StartValue>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Pu_Entl.GP0x</Name>
+      <Namespace />
+      <Number>1009</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Funktionen:  Entleeren /  Spülen</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Leckage o.k. verzögert</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="IEC_Timer" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Leckage_ok" UId="28" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="29">
+    <Instruction UId="30">
+      <Token Text="(" UId="31" />
+      <Parameter Name="IN" UId="32">
+        <Blank UId="33" />
+        <Token Text=":=" UId="34" />
+        <Blank UId="35" />
+        <Access Scope="LocalVariable" UId="36">
+          <Symbol UId="37">
+            <Component Name="In" UId="38" />
+            <Token Text="." UId="39" />
+            <Component Name="Leckage_ok" UId="40" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="41" />
+      <NewLine UId="42" />
+      <Blank Num="22" UId="43" />
+      <Parameter Name="PT" UId="44">
+        <Blank UId="45" />
+        <Token Text=":=" UId="46" />
+        <Blank UId="47" />
+        <Access Scope="TypedConstant" UId="48">
+          <Constant UId="49">
+            <ConstantValue UId="50">T#120s</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="51" />
+      <NewLine UId="52" />
+      <Blank Num="22" UId="53" />
+      <Parameter Name="Q" UId="54">
+        <Blank UId="55" />
+        <Token Text="=&gt;" UId="56" />
+        <Blank UId="57" />
+        <Access Scope="LocalVariable" UId="58">
+          <Symbol UId="59">
+            <Component Name="Leckage_ok_verz" UId="60" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="61" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="62" />
+  <NewLine Num="2" UId="63" />
+  <LineComment UId="64">
+    <Text UId="65"> Timer Spülventil AUF</Text>
+  </LineComment>
+  <NewLine UId="66" />
+  <Access Scope="LocalVariable" UId="67">
+    <Symbol UId="68">
+      <Component Name="IEC_Timer" UId="69" />
+      <Token Text="." UId="70" />
+      <Component Name="Spülventil_auf" UId="71" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="72">
+    <Instruction UId="73">
+      <Token Text="(" UId="74" />
+      <Parameter Name="IN" UId="75">
+        <Blank UId="76" />
+        <Token Text=":=" UId="77" />
+        <Blank UId="78" />
+        <Access Scope="LocalVariable" UId="79">
+          <Symbol UId="80">
+            <Component Name="Out" UId="81" />
+            <Token Text="." UId="82" />
+            <Component Name="Spülventil" UId="83" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="84" />
+      <NewLine UId="85" />
+      <Blank Num="27" UId="86" />
+      <Parameter Name="PT" UId="87">
+        <Blank UId="88" />
+        <Token Text=":=" UId="89" />
+        <Blank UId="90" />
+        <Access Scope="LocalConstant" UId="91">
+          <Constant Name="Zeit_Ventil_auf" UId="92" />
+        </Access>
+      </Parameter>
+      <Token Text="," UId="95" />
+      <NewLine UId="96" />
+      <Blank Num="27" UId="97" />
+      <Parameter Name="Q" UId="98">
+        <Blank UId="99" />
+        <Token Text="=&gt;" UId="100" />
+        <Blank UId="101" />
+        <Access Scope="LocalVariable" UId="102">
+          <Symbol UId="103">
+            <Component Name="Zst" UId="104" />
+            <Token Text="." UId="105" />
+            <Component Name="TON_Spülventil_auf" UId="106" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="107" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="108" />
+  <NewLine UId="109" />
+  <Blank UId="110" />
+  <NewLine UId="111" />
+  <Blank UId="112" />
+  <LineComment UId="113">
+    <Text UId="114"> positive Flanke "Hand Ein"</Text>
+  </LineComment>
+  <NewLine UId="115" />
+  <Access Scope="LocalVariable" UId="116">
+    <Symbol UId="117">
+      <Component Name="R_TRIG_Hand_EIN" UId="118" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="119">
+    <Instruction UId="120">
+      <Token Text="(" UId="121" />
+      <Parameter Name="CLK" UId="122">
+        <Blank UId="123" />
+        <Token Text=":=" UId="124" />
+        <Blank UId="125" />
+        <Access Scope="LocalVariable" UId="126">
+          <Symbol UId="127">
+            <Component Name="In" UId="128" />
+            <Token Text="." UId="129" />
+            <Component Name="Ein" UId="130" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="131" />
+      <NewLine UId="132" />
+      <Blank Num="17" UId="133" />
+      <Parameter Name="Q" UId="134">
+        <Blank UId="135" />
+        <Token Text="=&gt;" UId="136" />
+        <Blank UId="137" />
+        <Access Scope="LocalVariable" UId="138">
+          <Symbol UId="139">
+            <Component Name="posFl_Hand" UId="140" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="141" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="142" />
+  <NewLine Num="2" UId="143" />
+  <Access Scope="LocalVariable" UId="144">
+    <Symbol UId="145">
+      <Component Name="IEC_Timer" UId="146" />
+      <Token Text="." UId="147" />
+      <Component Name="Spülen" UId="148" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="149">
+    <Instruction UId="150">
+      <Token Text="(" UId="151" />
+      <Parameter Name="IN" UId="152">
+        <Blank UId="153" />
+        <Token Text=":=" UId="154" />
+        <Blank UId="155" />
+        <Access Scope="LocalVariable" UId="156">
+          <Symbol UId="157">
+            <Component Name="posFl_Hand" UId="158" />
+          </Symbol>
+        </Access>
+        <Blank UId="159" />
+        <Token Text="AND" UId="160" />
+        <Blank UId="161" />
+        <Access Scope="LocalVariable" UId="162">
+          <Symbol UId="163">
+            <Component Name="In" UId="164" />
+            <Token Text="." UId="165" />
+            <Component Name="Betriebsart" UId="166" />
+          </Symbol>
+        </Access>
+        <Blank UId="167" />
+        <Token Text="=" UId="168" />
+        <Blank UId="169" />
+        <Access Scope="LiteralConstant" UId="170">
+          <Constant UId="171">
+            <ConstantValue UId="173">1</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="174" />
+      <NewLine UId="175" />
+      <Blank Num="18" UId="176" />
+      <Parameter Name="PT" UId="177">
+        <Blank UId="178" />
+        <Token Text=":=" UId="179" />
+        <Blank UId="180" />
+        <Access Scope="LocalVariable" UId="181">
+          <Symbol UId="182">
+            <Component Name="Param" UId="183" />
+            <Token Text="." UId="184" />
+            <Component Name="Spülzeit" UId="185" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="186" />
+      <NewLine UId="187" />
+      <Blank Num="18" UId="188" />
+      <Parameter Name="Q" UId="189">
+        <Blank UId="190" />
+        <Token Text="=&gt;" UId="191" />
+        <Blank UId="192" />
+        <Access Scope="LocalVariable" UId="193">
+          <Symbol UId="194">
+            <Component Name="Zst" UId="195" />
+            <Token Text="." UId="196" />
+            <Component Name="Spuelen" UId="197" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="198" />
+      <NewLine UId="199" />
+      <Blank Num="18" UId="200" />
+      <Parameter Name="ET" UId="201">
+        <Blank UId="202" />
+        <Token Text="=&gt;" UId="203" />
+        <Blank UId="204" />
+        <Access Scope="LocalVariable" UId="205">
+          <Symbol UId="206">
+            <Component Name="Spülzeit" UId="207" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="208" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="209" />
+  <NewLine UId="210" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Panelbedienung und Sensoren --> Input()</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Input</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Zielbehälter nicht voll</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Token Text="IF" UId="24" />
+  <Blank UId="25" />
+  <Access Scope="LocalVariable" UId="26">
+    <Symbol UId="27">
+      <Component Name="In" UId="28" />
+      <Token Text="." UId="29" />
+      <Component Name="Frg_Niv_CM05" UId="30" />
+    </Symbol>
+  </Access>
+  <Blank UId="31" />
+  <Token Text="THEN" UId="32" />
+  <NewLine UId="33" />
+  <Blank Num="4" UId="34" />
+  <Token Text="CASE" UId="35" />
+  <Blank UId="36" />
+  <Access Scope="LocalVariable" UId="37">
+    <Symbol UId="38">
+      <Component Name="In" UId="39" />
+      <Token Text="." UId="40" />
+      <Component Name="Betriebsart" UId="41" />
+    </Symbol>
+  </Access>
+  <Blank UId="42" />
+  <Token Text="OF" UId="43" />
+  <NewLine UId="44" />
+  <Blank Num="8" UId="45" />
+  <Access Scope="LiteralConstant" UId="46">
+    <Constant UId="47">
+      <ConstantValue UId="49">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="50" />
+  <Blank Num="2" UId="51" />
+  <LineComment UId="52">
+    <Text UId="53"> Entleeren</Text>
+  </LineComment>
+  <NewLine UId="54" />
+  <Blank Num="12" UId="55" />
+  <NewLine UId="56" />
+  <Blank Num="12" UId="57" />
+  <LineComment UId="58">
+    <Text UId="59"> Spülventil zu</Text>
+  </LineComment>
+  <NewLine UId="60" />
+  <Blank Num="12" UId="61" />
+  <Access Scope="LocalVariable" UId="62">
+    <Symbol UId="63">
+      <Component Name="Out" UId="64" />
+      <Token Text="." UId="65" />
+      <Component Name="Spülventil" UId="66" />
+    </Symbol>
+  </Access>
+  <Blank UId="67" />
+  <Token Text=":=" UId="68" />
+  <Blank UId="69" />
+  <Access Scope="LiteralConstant" UId="70">
+    <Constant UId="71">
+      <ConstantValue UId="73">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="74" />
+  <NewLine UId="75" />
+  <Blank Num="12" UId="76" />
+  <Access Scope="LocalVariable" UId="77">
+    <Symbol UId="78">
+      <Component Name="Zst" UId="79" />
+      <Token Text="." UId="80" />
+      <Component Name="Restzeit_Spülen" UId="81" />
+    </Symbol>
+  </Access>
+  <Blank UId="82" />
+  <Token Text=":=" UId="83" />
+  <Blank UId="84" />
+  <Access Scope="TypedConstant" UId="85">
+    <Constant UId="86">
+      <ConstantValue UId="87">T#0s</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="88" />
+  <NewLine UId="89" />
+  <Blank Num="12" UId="90" />
+  <NewLine UId="91" />
+  <Blank Num="12" UId="92" />
+  <LineComment UId="93">
+    <Text UId="94"> Wenn Leckage oder einmalig per Hand</Text>
+  </LineComment>
+  <NewLine UId="95" />
+  <Blank Num="12" UId="96" />
+  <Token Text="IF" UId="97" />
+  <Blank UId="98" />
+  <Access Scope="LocalVariable" UId="99">
+    <Symbol UId="100">
+      <Component Name="In" UId="101" />
+      <Token Text="." UId="102" />
+      <Component Name="Auto" UId="103" />
+    </Symbol>
+  </Access>
+  <Blank UId="104" />
+  <Token Text="AND" UId="105" />
+  <Blank UId="106" />
+  <Token Text="NOT" UId="107" />
+  <Blank UId="108" />
+  <Access Scope="LocalVariable" UId="109">
+    <Symbol UId="110">
+      <Component Name="In" UId="111" />
+      <Token Text="." UId="112" />
+      <Component Name="Leckage_ok" UId="113" />
+    </Symbol>
+  </Access>
+  <Blank UId="114" />
+  <Token Text="OR" UId="115" />
+  <Blank UId="116" />
+  <Access Scope="LocalVariable" UId="117">
+    <Symbol UId="118">
+      <Component Name="posFl_Hand" UId="119" />
+    </Symbol>
+  </Access>
+  <Blank UId="120" />
+  <Token Text="THEN" UId="121" />
+  <NewLine UId="122" />
+  <Blank Num="16" UId="123" />
+  <Access Scope="LocalVariable" UId="124">
+    <Symbol UId="125">
+      <Component Name="Zst" UId="126" />
+      <Token Text="." UId="127" />
+      <Component Name="Abpumpen" UId="128" />
+    </Symbol>
+  </Access>
+  <Blank UId="129" />
+  <Token Text=":=" UId="130" />
+  <Blank UId="131" />
+  <Access Scope="LiteralConstant" UId="132">
+    <Constant UId="133">
+      <ConstantValue UId="135">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="136" />
+  <NewLine UId="137" />
+  <Blank Num="12" UId="138" />
+  <Token Text="ELSIF" UId="139" />
+  <Blank UId="140" />
+  <Access Scope="LocalVariable" UId="141">
+    <Symbol UId="142">
+      <Component Name="Leckage_ok_verz" UId="143" />
+    </Symbol>
+  </Access>
+  <Blank UId="144" />
+  <Token Text="THEN" UId="145" />
+  <NewLine UId="146" />
+  <Blank Num="16" UId="147" />
+  <Access Scope="LocalVariable" UId="148">
+    <Symbol UId="149">
+      <Component Name="Zst" UId="150" />
+      <Token Text="." UId="151" />
+      <Component Name="Abpumpen" UId="152" />
+    </Symbol>
+  </Access>
+  <Blank UId="153" />
+  <Token Text=":=" UId="154" />
+  <Blank UId="155" />
+  <Access Scope="LiteralConstant" UId="156">
+    <Constant UId="157">
+      <ConstantValue UId="159">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="160" />
+  <NewLine UId="161" />
+  <Blank Num="12" UId="162" />
+  <Token Text="END_IF" UId="163" />
+  <Token Text=";" UId="164" />
+  <NewLine UId="165" />
+  <Blank Num="12" UId="166" />
+  <NewLine UId="167" />
+  <Blank Num="8" UId="168" />
+  <Access Scope="LiteralConstant" UId="169">
+    <Constant UId="170">
+      <ConstantValue UId="172">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="173" />
+  <Blank UId="174" />
+  <LineComment UId="175">
+    <Text UId="176"> Spülen - nur Hand</Text>
+  </LineComment>
+  <NewLine UId="177" />
+  <Blank Num="12" UId="178" />
+  <Token Text="IF" UId="179" />
+  <Blank UId="180" />
+  <Access Scope="LocalVariable" UId="181">
+    <Symbol UId="182">
+      <Component Name="In" UId="183" />
+      <Token Text="." UId="184" />
+      <Component Name="Ein" UId="185" />
+    </Symbol>
+  </Access>
+  <Blank UId="186" />
+  <Token Text="THEN" UId="187" />
+  <NewLine UId="188" />
+  <Blank Num="16" UId="189" />
+  <Token Text="IF" UId="190" />
+  <Blank UId="191" />
+  <Access Scope="LocalVariable" UId="192">
+    <Symbol UId="193">
+      <Component Name="posFl_Hand" UId="194" />
+    </Symbol>
+  </Access>
+  <Blank UId="195" />
+  <Token Text="THEN" UId="196" />
+  <NewLine UId="197" />
+  <Blank Num="20" UId="198" />
+  <Access Scope="LocalVariable" UId="199">
+    <Symbol UId="200">
+      <Component Name="Out" UId="201" />
+      <Token Text="." UId="202" />
+      <Component Name="Spülventil" UId="203" />
+    </Symbol>
+  </Access>
+  <Blank UId="204" />
+  <Token Text=":=" UId="205" />
+  <Blank UId="206" />
+  <Access Scope="LiteralConstant" UId="207">
+    <Constant UId="208">
+      <ConstantValue UId="210">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="211" />
+  <NewLine UId="212" />
+  <Blank Num="16" UId="213" />
+  <Token Text="ELSIF" UId="214" />
+  <Blank UId="215" />
+  <Token Text="NOT" UId="216" />
+  <Blank UId="217" />
+  <Access Scope="LocalVariable" UId="218">
+    <Symbol UId="219">
+      <Component Name="Zst" UId="220" />
+      <Token Text="." UId="221" />
+      <Component Name="Spuelen" UId="222" />
+    </Symbol>
+  </Access>
+  <Blank UId="223" />
+  <Token Text="AND" UId="224" />
+  <Blank UId="225" />
+  <Access Scope="LocalVariable" UId="226">
+    <Symbol UId="227">
+      <Component Name="Zst" UId="228" />
+      <Token Text="." UId="229" />
+      <Component Name="TON_Spülventil_auf" UId="230" />
+    </Symbol>
+  </Access>
+  <Blank UId="231" />
+  <Token Text="THEN" UId="232" />
+  <NewLine UId="233" />
+  <Blank Num="20" UId="234" />
+  <Access Scope="LocalVariable" UId="235">
+    <Symbol UId="236">
+      <Component Name="Out" UId="237" />
+      <Token Text="." UId="238" />
+      <Component Name="Spülventil" UId="239" />
+    </Symbol>
+  </Access>
+  <Blank UId="240" />
+  <Token Text=":=" UId="241" />
+  <Blank UId="242" />
+  <Access Scope="LiteralConstant" UId="243">
+    <Constant UId="244">
+      <ConstantValue UId="246">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="247" />
+  <NewLine UId="248" />
+  <Blank Num="16" UId="249" />
+  <Token Text="END_IF" UId="250" />
+  <Token Text=";" UId="251" />
+  <NewLine UId="252" />
+  <Blank Num="16" UId="253" />
+  <Access Scope="LocalVariable" UId="254">
+    <Symbol UId="255">
+      <Component Name="Zst" UId="256" />
+      <Token Text="." UId="257" />
+      <Component Name="Restzeit_Spülen" UId="258" />
+    </Symbol>
+  </Access>
+  <Blank UId="259" />
+  <Token Text=":=" UId="260" />
+  <Blank UId="261" />
+  <Access Scope="LocalVariable" UId="262">
+    <Symbol UId="263">
+      <Component Name="Param" UId="264" />
+      <Token Text="." UId="265" />
+      <Component Name="Spülzeit" UId="266" />
+    </Symbol>
+  </Access>
+  <Blank UId="267" />
+  <Token Text="-" UId="268" />
+  <Blank UId="269" />
+  <Access Scope="LocalVariable" UId="270">
+    <Symbol UId="271">
+      <Component Name="Spülzeit" UId="272" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="273" />
+  <NewLine UId="274" />
+  <Blank Num="12" UId="275" />
+  <Token Text="ELSE" UId="276" />
+  <NewLine UId="277" />
+  <Blank Num="16" UId="278" />
+  <Access Scope="LocalVariable" UId="279">
+    <Symbol UId="280">
+      <Component Name="Zst" UId="281" />
+      <Token Text="." UId="282" />
+      <Component Name="Spuelen" UId="283" />
+    </Symbol>
+  </Access>
+  <Blank UId="284" />
+  <Token Text=":=" UId="285" />
+  <Blank UId="286" />
+  <Access Scope="LiteralConstant" UId="287">
+    <Constant UId="288">
+      <ConstantValue UId="290">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="291" />
+  <NewLine UId="292" />
+  <Blank Num="16" UId="293" />
+  <Access Scope="LocalVariable" UId="294">
+    <Symbol UId="295">
+      <Component Name="Out" UId="296" />
+      <Token Text="." UId="297" />
+      <Component Name="Spülventil" UId="298" />
+    </Symbol>
+  </Access>
+  <Blank UId="299" />
+  <Token Text=":=" UId="300" />
+  <Blank UId="301" />
+  <Access Scope="LiteralConstant" UId="302">
+    <Constant UId="303">
+      <ConstantValue UId="305">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="306" />
+  <NewLine UId="307" />
+  <Blank Num="16" UId="308" />
+  <Access Scope="LocalVariable" UId="309">
+    <Symbol UId="310">
+      <Component Name="Zst" UId="311" />
+      <Token Text="." UId="312" />
+      <Component Name="Restzeit_Spülen" UId="313" />
+    </Symbol>
+  </Access>
+  <Blank UId="314" />
+  <Token Text=":=" UId="315" />
+  <Blank UId="316" />
+  <Access Scope="TypedConstant" UId="317">
+    <Constant UId="318">
+      <ConstantValue UId="319">T#0s</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="320" />
+  <NewLine UId="321" />
+  <Blank Num="12" UId="322" />
+  <Token Text="END_IF" UId="323" />
+  <Token Text=";" UId="324" />
+  <NewLine UId="325" />
+  <Blank Num="12" UId="326" />
+  <NewLine UId="327" />
+  <Blank Num="12" UId="328" />
+  <LineComment UId="329">
+    <Text UId="330"> Wenn Leckage </Text>
+  </LineComment>
+  <NewLine UId="331" />
+  <Blank Num="12" UId="332" />
+  <Token Text="IF" UId="333" />
+  <Blank UId="334" />
+  <Access Scope="LocalVariable" UId="335">
+    <Symbol UId="336">
+      <Component Name="Leckage_ok_verz" UId="337" />
+    </Symbol>
+  </Access>
+  <Blank UId="338" />
+  <Token Text="OR" UId="339" />
+  <Blank UId="340" />
+  <Token Text="(" UId="341" />
+  <Token Text="NOT" UId="342" />
+  <Blank UId="343" />
+  <Access Scope="LocalVariable" UId="344">
+    <Symbol UId="345">
+      <Component Name="In" UId="346" />
+      <Token Text="." UId="347" />
+      <Component Name="Auto" UId="348" />
+    </Symbol>
+  </Access>
+  <Blank UId="349" />
+  <Token Text="AND" UId="350" />
+  <Blank UId="351" />
+  <Token Text="NOT" UId="352" />
+  <Blank UId="353" />
+  <Access Scope="LocalVariable" UId="354">
+    <Symbol UId="355">
+      <Component Name="In" UId="356" />
+      <Token Text="." UId="357" />
+      <Component Name="Ein" UId="358" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="359" />
+  <Blank UId="360" />
+  <Token Text="THEN" UId="361" />
+  <NewLine UId="362" />
+  <Blank Num="16" UId="363" />
+  <Access Scope="LocalVariable" UId="364">
+    <Symbol UId="365">
+      <Component Name="Zst" UId="366" />
+      <Token Text="." UId="367" />
+      <Component Name="Abpumpen" UId="368" />
+    </Symbol>
+  </Access>
+  <Blank UId="369" />
+  <Token Text=":=" UId="370" />
+  <Blank UId="371" />
+  <Access Scope="LiteralConstant" UId="372">
+    <Constant UId="373">
+      <ConstantValue UId="375">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="376" />
+  <NewLine UId="377" />
+  <Blank Num="12" UId="378" />
+  <Token Text="ELSIF" UId="379" />
+  <Blank UId="380" />
+  <Token Text="NOT" UId="381" />
+  <Blank UId="382" />
+  <Access Scope="LocalVariable" UId="383">
+    <Symbol UId="384">
+      <Component Name="In" UId="385" />
+      <Token Text="." UId="386" />
+      <Component Name="Leckage_ok" UId="387" />
+    </Symbol>
+  </Access>
+  <Blank UId="388" />
+  <Token Text="THEN" UId="389" />
+  <NewLine UId="390" />
+  <Blank Num="16" UId="391" />
+  <Access Scope="LocalVariable" UId="392">
+    <Symbol UId="393">
+      <Component Name="Zst" UId="394" />
+      <Token Text="." UId="395" />
+      <Component Name="Abpumpen" UId="396" />
+    </Symbol>
+  </Access>
+  <Blank UId="397" />
+  <Token Text=":=" UId="398" />
+  <Blank UId="399" />
+  <Access Scope="LiteralConstant" UId="400">
+    <Constant UId="401">
+      <ConstantValue UId="403">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="404" />
+  <NewLine UId="405" />
+  <Blank Num="12" UId="406" />
+  <Token Text="END_IF" UId="407" />
+  <Token Text=";" UId="408" />
+  <NewLine UId="409" />
+  <Blank Num="4" UId="410" />
+  <Token Text="END_CASE" UId="411" />
+  <Token Text=";" UId="412" />
+  <NewLine UId="413" />
+  <Blank Num="4" UId="414" />
+  <NewLine UId="415" />
+  <Blank Num="4" UId="416" />
+  <LineComment UId="417">
+    <Text UId="418"> Pumpe an    </Text>
+  </LineComment>
+  <NewLine UId="419" />
+  <Blank Num="4" UId="420" />
+  <Access Scope="LocalVariable" UId="421">
+    <Symbol UId="422">
+      <Component Name="Out" UId="423" />
+      <Token Text="." UId="424" />
+      <Component Name="GP0x_Ein" UId="425" />
+    </Symbol>
+  </Access>
+  <Blank UId="426" />
+  <Token Text=":=" UId="427" />
+  <Blank UId="428" />
+  <Access Scope="LocalVariable" UId="429">
+    <Symbol UId="430">
+      <Component Name="Zst" UId="431" />
+      <Token Text="." UId="432" />
+      <Component Name="Abpumpen" UId="433" />
+    </Symbol>
+  </Access>
+  <Blank UId="434" />
+  <Token Text="AND" UId="435" />
+  <Blank UId="436" />
+  <Token Text="(" UId="437" />
+  <Access Scope="LocalVariable" UId="438">
+    <Symbol UId="439">
+      <Component Name="In" UId="440" />
+      <Token Text="." UId="441" />
+      <Component Name="Auto" UId="442" />
+    </Symbol>
+  </Access>
+  <Blank UId="443" />
+  <Token Text="OR" UId="444" />
+  <Blank UId="445" />
+  <Access Scope="LocalVariable" UId="446">
+    <Symbol UId="447">
+      <Component Name="In" UId="448" />
+      <Token Text="." UId="449" />
+      <Component Name="Ein" UId="450" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="451" />
+  <Token Text=";" UId="452" />
+  <NewLine UId="453" />
+  <Token Text="ELSE" UId="454" />
+  <NewLine UId="455" />
+  <Blank Num="4" UId="456" />
+  <Access Scope="LocalVariable" UId="457">
+    <Symbol UId="458">
+      <Component Name="Out" UId="459" />
+      <Token Text="." UId="460" />
+      <Component Name="Spülventil" UId="461" />
+    </Symbol>
+  </Access>
+  <Blank UId="462" />
+  <Token Text=":=" UId="463" />
+  <Blank UId="464" />
+  <Access Scope="LiteralConstant" UId="465">
+    <Constant UId="466">
+      <ConstantValue UId="468">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="469" />
+  <NewLine UId="470" />
+  <Blank Num="4" UId="471" />
+  <Access Scope="LocalVariable" UId="472">
+    <Symbol UId="473">
+      <Component Name="Zst" UId="474" />
+      <Token Text="." UId="475" />
+      <Component Name="Restzeit_Spülen" UId="476" />
+    </Symbol>
+  </Access>
+  <Blank UId="477" />
+  <Token Text=":=" UId="478" />
+  <Blank UId="479" />
+  <Access Scope="TypedConstant" UId="480">
+    <Constant UId="481">
+      <ConstantValue UId="482">T#0s</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="483" />
+  <NewLine UId="484" />
+  <Blank Num="4" UId="485" />
+  <Access Scope="LocalVariable" UId="486">
+    <Symbol UId="487">
+      <Component Name="Out" UId="488" />
+      <Token Text="." UId="489" />
+      <Component Name="GP0x_Ein" UId="490" />
+    </Symbol>
+  </Access>
+  <Blank UId="491" />
+  <Token Text=":=" UId="492" />
+  <Blank UId="493" />
+  <Access Scope="LiteralConstant" UId="494">
+    <Constant UId="495">
+      <ConstantValue UId="497">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="498" />
+  <NewLine UId="499" />
+  <Token Text="END_IF" UId="500" />
+  <Token Text=";" UId="501" />
+  <NewLine UId="502" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Ansteuerung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <NewLine UId="21" />
+  <LineComment UId="22">
+    <Text UId="23"> Meldung Leckage verzögert</Text>
+  </LineComment>
+  <NewLine UId="24" />
+  <Access Scope="LocalVariable" UId="25">
+    <Symbol UId="26">
+      <Component Name="IEC_Timer" UId="27" />
+      <Token Text="." UId="28" />
+      <Component Name="Leckage_niO" UId="29" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="30">
+    <Instruction UId="31">
+      <Token Text="(" UId="32" />
+      <Parameter Name="IN" UId="33">
+        <Blank UId="34" />
+        <Token Text=":=" UId="35" />
+        <Blank UId="36" />
+        <Token Text="NOT" UId="37" />
+        <Blank UId="38" />
+        <Access Scope="LocalVariable" UId="39">
+          <Symbol UId="40">
+            <Component Name="In" UId="41" />
+            <Token Text="." UId="42" />
+            <Component Name="Leckage_ok" UId="43" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="44" />
+      <NewLine UId="45" />
+      <Blank Num="16" UId="46" />
+      <Parameter Name="PT" UId="47">
+        <Blank UId="48" />
+        <Token Text=":=" UId="49" />
+        <Blank UId="50" />
+        <Access Scope="TypedConstant" UId="51">
+          <Constant UId="52">
+            <ConstantValue UId="53">T#30s</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="54" />
+      <NewLine UId="55" />
+      <Blank Num="16" UId="56" />
+      <Parameter Name="Q" UId="57">
+        <Blank UId="58" />
+        <Token Text="=&gt;" UId="59" />
+        <Blank UId="60" />
+        <Access Scope="LocalVariable" UId="61">
+          <Symbol UId="62">
+            <Component Name="Mld" UId="63" />
+            <Token Text="." UId="64" />
+            <Component Name="Leckage" UId="65" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="66" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="67" />
+  <NewLine Num="2" UId="68" />
+  <LineComment UId="69">
+    <Text UId="70"> nicht in Automatik</Text>
+  </LineComment>
+  <NewLine UId="71" />
+  <Access Scope="LocalVariable" UId="72">
+    <Symbol UId="73">
+      <Component Name="Mld" UId="74" />
+      <Token Text="." UId="75" />
+      <Component Name="n_Auto" UId="76" />
+    </Symbol>
+  </Access>
+  <Blank UId="77" />
+  <Token Text=":=" UId="78" />
+  <Blank UId="79" />
+  <Token Text="NOT" UId="80" />
+  <Blank UId="81" />
+  <Access Scope="LocalVariable" UId="82">
+    <Symbol UId="83">
+      <Component Name="In" UId="84" />
+      <Token Text="." UId="85" />
+      <Component Name="Auto" UId="86" />
+    </Symbol>
+  </Access>
+  <Blank UId="87" />
+  <Token Text="AND" UId="88" />
+  <Blank UId="89" />
+  <Access Scope="GlobalVariable" UId="90">
+    <Symbol UId="91">
+      <Component Name="DB_ANLAGE" UId="92">
+        <BooleanAttribute Name="HasQuotes" UId="93">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="94" />
+      <Component Name="BA" UId="95" />
+      <Token Text="." UId="96" />
+      <Component Name="Automat_ein" UId="97" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="98" />
+  <NewLine UId="99" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Überwachung / Meldungen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Status Pumpe</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="Call" UId="24">
+    <CallInfo UId="25" BlockType="FC">
+      <Instance Scope="GlobalVariable" UId="27">
+        <Component Name="Status_E0A" UId="26" />
+      </Instance>
+      <Token Text="(" UId="28" />
+      <Parameter Name="Hand" UId="29">
+        <Blank UId="30" />
+        <Token Text=":=" UId="31" />
+        <Blank UId="32" />
+        <Access Scope="LocalVariable" UId="33">
+          <Symbol UId="34">
+            <Component Name="In" UId="35" />
+            <Token Text="." UId="36" />
+            <Component Name="Ein" UId="37" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="38" />
+      <NewLine UId="39" />
+      <Blank Num="13" UId="40" />
+      <Parameter Name="Auto" UId="41">
+        <Blank UId="42" />
+        <Token Text=":=" UId="43" />
+        <Blank UId="44" />
+        <Access Scope="LocalVariable" UId="45">
+          <Symbol UId="46">
+            <Component Name="In" UId="47" />
+            <Token Text="." UId="48" />
+            <Component Name="Auto" UId="49" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="50" />
+      <NewLine UId="51" />
+      <Blank Num="13" UId="52" />
+      <Parameter Name="SonderModus_PumpeSpuelen" UId="53">
+        <Token Text=":=" UId="54" />
+        <Access Scope="LiteralConstant" UId="55">
+          <Constant UId="56">
+            <ConstantValue UId="58">FALSE</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="59" />
+      <NewLine UId="60" />
+      <Blank Num="13" UId="61" />
+      <Parameter Name="Stoerung" UId="62">
+        <Blank UId="63" />
+        <Token Text=":=" UId="64" />
+        <Blank UId="65" />
+        <Access Scope="LiteralConstant" UId="66">
+          <Constant UId="67">
+            <ConstantValue UId="69">FALSE</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="70" />
+      <NewLine UId="71" />
+      <Blank Num="13" UId="72" />
+      <Parameter Name="Ausgang" UId="73">
+        <Blank UId="74" />
+        <Token Text=":=" UId="75" />
+        <Blank UId="76" />
+        <Access Scope="LocalVariable" UId="77">
+          <Symbol UId="78">
+            <Component Name="Out" UId="79" />
+            <Token Text="." UId="80" />
+            <Component Name="GP0x_Ein" UId="81" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="82" />
+      <NewLine UId="83" />
+      <Blank Num="13" UId="84" />
+      <Parameter Name="StatusByte" UId="85">
+        <Blank UId="86" />
+        <Token Text="=&gt;" UId="87" />
+        <Blank UId="88" />
+        <Access Scope="LocalVariable" UId="89">
+          <Symbol UId="90">
+            <Component Name="Zst" UId="91" />
+            <Token Text="." UId="92" />
+            <Component Name="Status_GP0x" UId="93" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="94" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="95" />
+  <NewLine UId="96" />
+  <LineComment UId="97">
+    <Text UId="98"> Anzeige Füllstand</Text>
+  </LineComment>
+  <NewLine UId="99" />
+  <Access Scope="Call" UId="100">
+    <CallInfo UId="101" BlockType="FC">
+      <Instance Scope="GlobalVariable" UId="103">
+        <Component Name="Niv_Visu" UId="102" />
+      </Instance>
+      <Token Text="(" UId="104" />
+      <Parameter Name="Niv_1" UId="105">
+        <Blank UId="106" />
+        <Token Text=":=" UId="107" />
+        <Blank UId="108" />
+        <Access Scope="LiteralConstant" UId="109">
+          <Constant UId="110">
+            <ConstantValue UId="112">TRUE</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="113" />
+      <NewLine UId="114" />
+      <Blank Num="11" UId="115" />
+      <Parameter Name="Niv_2" UId="116">
+        <Blank UId="117" />
+        <Token Text=":=" UId="118" />
+        <Blank UId="119" />
+        <Token Text="NOT" UId="120" />
+        <Blank UId="121" />
+        <Access Scope="LocalVariable" UId="122">
+          <Symbol UId="123">
+            <Component Name="In" UId="124" />
+            <Token Text="." UId="125" />
+            <Component Name="Leckage_ok" UId="126" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="127" />
+      <NewLine UId="128" />
+      <Blank Num="11" UId="129" />
+      <Parameter Name="Niv_3" UId="130">
+        <Blank UId="131" />
+        <Token Text=":=" UId="132" />
+        <Blank UId="133" />
+        <Access Scope="LiteralConstant" UId="134">
+          <Constant UId="135">
+            <ConstantValue UId="137">FALSE</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="138" />
+      <NewLine UId="139" />
+      <Blank Num="11" UId="140" />
+      <Parameter Name="Niv_4" UId="141">
+        <Blank UId="142" />
+        <Token Text=":=" UId="143" />
+        <Blank UId="144" />
+        <Access Scope="LiteralConstant" UId="145">
+          <Constant UId="146">
+            <ConstantValue UId="148">FALSE</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="149" />
+      <NewLine UId="150" />
+      <Blank Num="11" UId="151" />
+      <Parameter Name="Niv_5" UId="152">
+        <Blank UId="153" />
+        <Token Text=":=" UId="154" />
+        <Blank UId="155" />
+        <Access Scope="LiteralConstant" UId="156">
+          <Constant UId="157">
+            <ConstantValue UId="159">FALSE</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="160" />
+      <NewLine UId="161" />
+      <Blank Num="11" UId="162" />
+      <Parameter Name="Niv_6" UId="163">
+        <Blank UId="164" />
+        <Token Text=":=" UId="165" />
+        <Blank UId="166" />
+        <Access Scope="LiteralConstant" UId="167">
+          <Constant UId="168">
+            <ConstantValue UId="170">FALSE</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="171" />
+      <NewLine UId="172" />
+      <Blank Num="11" UId="173" />
+      <Parameter Name="Wert_1" UId="174">
+        <Blank UId="175" />
+        <Token Text=":=" UId="176" />
+        <Blank UId="177" />
+        <Access Scope="LocalConstant" UId="178">
+          <Constant Name="Niv_Min" UId="179" />
+        </Access>
+      </Parameter>
+      <Token Text="," UId="182" />
+      <NewLine UId="183" />
+      <Blank Num="11" UId="184" />
+      <Parameter Name="Wert_2" UId="185">
+        <Blank UId="186" />
+        <Token Text=":=" UId="187" />
+        <Blank UId="188" />
+        <Access Scope="LocalConstant" UId="189">
+          <Constant Name="Niv_max" UId="190" />
+        </Access>
+      </Parameter>
+      <Token Text="," UId="193" />
+      <NewLine UId="194" />
+      <Blank Num="11" UId="195" />
+      <Parameter Name="Wert_3" UId="196">
+        <Blank UId="197" />
+        <Token Text=":=" UId="198" />
+        <Blank UId="199" />
+        <Access Scope="LiteralConstant" UId="200">
+          <Constant UId="201">
+            <ConstantValue UId="203">0</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="204" />
+      <NewLine UId="205" />
+      <Blank Num="11" UId="206" />
+      <Parameter Name="Wert_4" UId="207">
+        <Blank UId="208" />
+        <Token Text=":=" UId="209" />
+        <Blank UId="210" />
+        <Access Scope="LiteralConstant" UId="211">
+          <Constant UId="212">
+            <ConstantValue UId="214">0</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="215" />
+      <NewLine UId="216" />
+      <Blank Num="11" UId="217" />
+      <Parameter Name="Wert_5" UId="218">
+        <Blank UId="219" />
+        <Token Text=":=" UId="220" />
+        <Blank UId="221" />
+        <Access Scope="LiteralConstant" UId="222">
+          <Constant UId="223">
+            <ConstantValue UId="225">0</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="226" />
+      <NewLine UId="227" />
+      <Blank Num="11" UId="228" />
+      <Parameter Name="Wert_6" UId="229">
+        <Blank UId="230" />
+        <Token Text=":=" UId="231" />
+        <Blank UId="232" />
+        <Access Scope="LiteralConstant" UId="233">
+          <Constant UId="234">
+            <ConstantValue UId="236">0</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="237" />
+      <NewLine UId="238" />
+      <Blank Num="11" UId="239" />
+      <Parameter Name="Niveau" UId="240">
+        <Blank UId="241" />
+        <Token Text="=&gt;" UId="242" />
+        <Blank UId="243" />
+        <Access Scope="LocalVariable" UId="244">
+          <Symbol UId="245">
+            <Component Name="Zst" UId="246" />
+            <Token Text="." UId="247" />
+            <Component Name="Niveau" UId="248" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="249" />
+      <NewLine UId="250" />
+      <Blank Num="11" UId="251" />
+      <Parameter Name="Niv_Err" UId="252">
+        <Blank UId="253" />
+        <Token Text="=&gt;" UId="254" />
+        <Blank UId="255" />
+        <Access Scope="LocalVariable" UId="256">
+          <Symbol UId="257">
+            <Component Name="Mld" UId="258" />
+            <Token Text="." UId="259" />
+            <Component Name="Niv_Sensorfehler" UId="260" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="261" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="262" />
+  <NewLine Num="2" UId="263" />
+  <Access Scope="LocalVariable" UId="264">
+    <Symbol UId="265">
+      <Component Name="Zst" UId="266" />
+      <Token Text="." UId="267" />
+      <Component Name="Bedienung_Erlaubt" UId="268" />
+    </Symbol>
+  </Access>
+  <Blank UId="269" />
+  <Token Text=":=" UId="270" />
+  <Blank UId="271" />
+  <Token Text="NOT" UId="272" />
+  <Blank UId="273" />
+  <Access Scope="LocalVariable" UId="274">
+    <Symbol UId="275">
+      <Component Name="In" UId="276" />
+      <Token Text="." UId="277" />
+      <Component Name="Ein" UId="278" />
+    </Symbol>
+  </Access>
+  <Blank UId="279" />
+  <Token Text="AND" UId="280" />
+  <Blank UId="281" />
+  <Token Text="NOT" UId="282" />
+  <Blank UId="283" />
+  <Access Scope="LocalVariable" UId="284">
+    <Symbol UId="285">
+      <Component Name="In" UId="286" />
+      <Token Text="." UId="287" />
+      <Component Name="Auto" UId="288" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="289" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>--> Visu</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Pumpe Abpumpen Sump</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

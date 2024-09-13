@@ -1,0 +1,13 @@
+﻿FUNCTION "Taktmerker" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	(* Systemtakt (MB50 Clock_Byte) 
+	auf positive Flanke (Impuls) in MB52
+	Altmerkerbyte MB51 *)
+	
+	"MB_Imp_ClockByte" := ("Clock_Byte" XOR "MB_SystemAltTakt") AND "Clock_Byte";
+	"MB_SystemAltTakt" := "Clock_Byte";
+END_FUNCTION
+

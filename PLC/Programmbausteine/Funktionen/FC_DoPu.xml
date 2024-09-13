@@ -1,0 +1,5447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="Pumpleistung" Datatype="Real" />
+    <Member Name="Handzugabe" Datatype="Real" />
+    <Member Name="Autozugabe" Datatype="Real" />
+    <Member Name="Restdosierwert" Datatype="Real" />
+    <Member Name="Doswert" Datatype="Real" />
+    <Member Name="Kalibrierwert" Datatype="Real" />
+    <Member Name="Kali_Count" Datatype="DInt" />
+    <Member Name="Adr_PC_DB" Datatype="DWord" />
+    <Member Name="Param" Datatype="DWord" />
+    <Member Name="leng_Platz" Datatype="Int" />
+    <Member Name="Adr_Basis" Datatype="Int" />
+    <Member Name="Adr_Pumpe" Datatype="Int" />
+    <Member Name="count" Datatype="Int" />
+    <Member Name="T_Impuls" Datatype="Int" />
+    <Member Name="T_Pause" Datatype="Int" />
+    <Member Name="AnzI" Datatype="Int" />
+    <Member Name="Anz_DP" Datatype="Int" />
+    <Member Name="DP_Nr" Datatype="Byte" />
+    <Member Name="BA" Datatype="USInt" />
+    <Member Name="LZ_NR" Datatype="Byte" />
+    <Member Name="ON" Datatype="Bool" />
+    <Member Name="Hand" Datatype="Bool" />
+    <Member Name="AUTO" Datatype="Bool" />
+    <Member Name="Kalibrierung" Datatype="Bool" />
+    <Member Name="DP_An" Datatype="Bool" />
+    <Member Name="EvtA" Datatype="Bool" />
+    <Member Name="EvtH" Datatype="Bool" />
+    <Member Name="Add" Datatype="Bool" />
+    <Member Name="Check" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Kontrollpumpe aktiviert</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Stoerung" Datatype="Bool" />
+    <Member Name="New_Err" Datatype="Bool" />
+    <Member Name="Kali_Start" Datatype="Bool" />
+    <Member Name="Kali_Stop" Datatype="Bool" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>FC_DoPu</Name>
+      <Namespace />
+      <Number>85</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="pH_LF_ok" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="config" />
+        <Component Name="Anz_DP" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="31">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="CheckPU" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="LT_I" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Check" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="JCN" />
+    <Access Scope="Label">
+      <Label Name="Cok" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="config" />
+        <Component Name="Anz_DP" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="43">
+    <StlToken Text="LE_I" />
+  </StlStatement>
+  <StlStatement UId="44">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Cok" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="46">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Check" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="48">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="50">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="CheckPU" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="52">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="53">
+    <LabelDeclaration>
+      <Label Name="Cok" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="leng_Pos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="56">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="leng_Platz" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="58">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="Offset" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="60">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Adr_Basis" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="62">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="63">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Imp_1Hz" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="65">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="Sekunden_Takt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="67">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="68">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="70">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="72">
+    <StlToken Text="LT_I" />
+  </StlStatement>
+  <StlStatement UId="73">
+    <StlToken Text="A_BRACK" />
+  </StlStatement>
+  <StlStatement UId="74">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="Anz_DP" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="76">
+    <StlToken Text="LE_I" />
+  </StlStatement>
+  <StlStatement UId="77">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="78">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="go" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="80">
+    <LineComment>
+      <Text>-----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="82">
+    <LineComment>
+      <Text>Initialisierung nach einem Umlauf</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="84">
+    <LineComment>
+      <Text>-----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="86">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="Sekunden_Takt" />
+      </Symbol>
+      <LineComment>
+        <Text>kein Umlaufstart</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="89">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Out" />
+      <LineComment>
+        <Text>zur Dosierung springen</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="92">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="Sekunden_Takt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="94">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="95">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="config" />
+        <Component Name="Anz_DP" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="97">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="99">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="100">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="AM_Minute" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="102">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Uhrzeit" />
+        <Component Name="aktDatum" />
+        <Component Name="MINUTE" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="104">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="105">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="Minuten_Takt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="107">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="AM_Minute" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="109">
+    <StlToken Text="JCN" />
+    <Access Scope="Label">
+      <Label Name="go" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="111">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="MinCount" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="113">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="115">
+    <StlToken Text="LE_I" />
+  </StlStatement>
+  <StlStatement UId="116">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="HandeventTakt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="118">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>15</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="120">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="stEv" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="122">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="MinCount" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="124">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="126">
+    <LabelDeclaration>
+      <Label Name="stEv" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="MinCount" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="129">
+    <LineComment>
+      <Text>-----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="131">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="132">
+    <LabelDeclaration>
+      <Label Name="go" />
+    </LabelDeclaration>
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Check" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="135">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="137">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="nC1" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="139">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="CheckPU" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="141">
+    <LabelDeclaration>
+      <Label Name="nC1" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="leng_Platz" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="144">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="145">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Adr_Basis" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="147">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="148">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Adr_Pumpe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="151">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="153">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FC_Blk_Move" BlockType="FC">
+        <Parameter Name="Quelle" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Adr_Pumpe" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Ziel" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Adr_Basis" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Laenge" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="leng_Platz" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="_InputBlockDB" Section="Input" Type="DB_ANY">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_DP" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="159">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="DZ" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="161">
+    <LineComment>
+      <Text>-----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="163">
+    <LineComment>
+      <Text>Ende der Bearbeitung einer Pumpe</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="165">
+    <LineComment>
+      <Text>-----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="150">
+    <LabelDeclaration>
+      <Label Name="EndP" />
+    </LabelDeclaration>
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FC_Blk_Move" BlockType="FC">
+        <Parameter Name="Quelle" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Adr_Basis" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Ziel" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Adr_Pumpe" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Laenge" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="leng_Platz" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="_InputBlockDB" Section="Input" Type="DB_ANY">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_DP" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="176">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="177">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Check" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="179">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Out" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="181">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="182">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="184">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="186">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="188">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Out" />
+    </Access>
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Initialisierung und Schleifensteuerung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="190">
+    <LabelDeclaration>
+      <Label Name="DZ" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="193">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="LaZa_Nr" />
+      </Symbol>
+      <LineComment>
+        <Text>externe Ansteuerung</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="196">
+    <StlToken Text="GE_I" />
+  </StlStatement>
+  <StlStatement UId="197">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="EndP" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="199">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="config" />
+        <Component Name="Anz_DZ" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="201">
+    <StlToken Text="GT_I" />
+  </StlStatement>
+  <StlStatement UId="202">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="EndP" />
+      <LineComment>
+        <Text>kein Dosierzähler zugeordnet</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="205">
+    <StlToken Text="CAC" />
+  </StlStatement>
+  <StlStatement UId="206">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="208">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Zaehler" />
+        <Component Name="leng_Pos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="210">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="211">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Zaehler" />
+        <Component Name="Offset" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="213">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="214">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Korr. f. Pointer</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="217">
+    <StlToken Text="LAR1_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Zaehler" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="218">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="216" />
+      <LineComment>
+        <Text>LaZa_Event</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="221">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Start" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="223">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="EndP" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="225">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Dosierzählerdaten holen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="226">
+    <LabelDeclaration>
+      <Label Name="Out" />
+    </LabelDeclaration>
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Imp_10Hz" />
+      </Symbol>
+      <LineComment>
+        <Text>1/10sec Takt</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="230">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="231">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="232">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Check" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="234">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="CheckPU" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="236">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="retP" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="238">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="config" />
+        <Component Name="Anz_DP" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="240">
+    <LabelDeclaration>
+      <Label Name="retP" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="243">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="leng_Platz" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="245">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="246">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Adr_Basis" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="248">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="249">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Adr_Pumpe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="251">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="252">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="254">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="256">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Panel_DP" />
+        <Component Name="Length" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="258">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="259">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Panel_DP" />
+        <Component Name="Offset" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="261">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="262">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Adr_PC_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="267">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="269">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FC_Blk_Move" BlockType="FC">
+        <Parameter Name="Quelle" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Adr_Pumpe" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Ziel" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Adr_Basis" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Laenge" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="leng_Platz" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="_InputBlockDB" Section="Input" Type="DB_ANY">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_DP" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="275">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Pump" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="277">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <LabelDeclaration>
+      <Label Name="nexP" />
+    </LabelDeclaration>
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FC_Blk_Move" BlockType="FC">
+        <Parameter Name="Quelle" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Adr_Basis" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Ziel" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Adr_Pumpe" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Laenge" Section="Input" Type="Int">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="leng_Platz" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="_InputBlockDB" Section="Input" Type="DB_ANY">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="DB_DP" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="287">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="288">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Check" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="290">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Chk1" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="292">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="293">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="295">
+    <StlToken Text="LOOP" />
+    <Access Scope="Label">
+      <Label Name="retP" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="297">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="298">
+    <LabelDeclaration>
+      <Label Name="Chk1" />
+    </LabelDeclaration>
+    <StlToken Text="CLR" />
+  </StlStatement>
+  <StlStatement UId="300">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="Minuten_Takt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="302">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="HandeventTakt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="304">
+    <StlToken Text="BE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Ausgabe Dosierung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="305">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="307">
+    <LineComment>
+      <Text>Daten aus PC-DB holen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="309">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="311">
+    <LabelDeclaration>
+      <Label Name="Pump" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Adr_PC_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="314">
+    <StlToken Text="LAR1_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="315">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Panel_DP" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="317">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="48" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Ein</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="320">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ON" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="322">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="49" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Auto</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="325">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="AUTO" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="327">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="50" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Kalibrierung</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="330">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kalibrierung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="332">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="53" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Hand</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="335">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="337">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="54" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].ON</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="340">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="342">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="56" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Kali_Start</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="345">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Start" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="347">
+    <StlToken Text="A" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="57" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Kali_Stop</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="350">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Stop" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="352">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="353">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Word" Area="DB" Register="AR1" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Impulsdauer</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="356">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="T_Impuls" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="358">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Word" Area="DB" Register="AR1" BitOffset="16" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Impulspause</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="361">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="T_Pause" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="363">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="64" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Pumpleistung</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="366">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Pumpleistung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="368">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="128" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Zugabe_Auto</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="371">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Autozugabe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="373">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="160" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].RestDosierWert</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="376">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Restdosierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="378">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="192" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Kalibrierwert</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="381">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kalibrierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="383">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="288" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Kali_Count</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="386">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="388">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="389">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="96" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Handzugabe</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="392">
+    <LineComment>
+      <Text>      L     "DB_DP".DP[0].DosMenge_Hand</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="394">
+    <LineComment>
+      <Text>      -R    </Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="396">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Handzugabe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="398">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="399">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="ZeitBasis" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="401">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Minute</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="404">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="405">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>60.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="407">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Korr" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="409">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="ZeitBasis" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="411">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="413">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="414">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>3600.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="416">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Korr" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="418">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="okTB" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="420">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="421">
+    <LabelDeclaration>
+      <Label Name="Korr" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Pumpleistung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="424">
+    <StlToken Text="CAC" />
+  </StlStatement>
+  <StlStatement UId="425">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="426">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Pumpleistung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="428">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="429">
+    <LabelDeclaration>
+      <Label Name="okTB" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ON" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="432">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="AUTO" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="434">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="436">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kalibrierung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="438">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Strg" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="440">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Stoerung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="442">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="443">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_OFF" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="445">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="447">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="448">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="450">
+    <LineComment>
+      <Text>Kalibrierung</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="452">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="454">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kalibrierung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="456">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Kal" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="458">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>DInt</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="460">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="462">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="PuHA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="464">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="465">
+    <LabelDeclaration>
+      <Label Name="Kal" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Typ" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="468">
+    <StlToken Text="JL" />
+    <Access Scope="Label">
+      <Label Name="Lst" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="470">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="KMPZ" />
+      <LineComment>
+        <Text>0 Menge pro Zeit</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="473">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="KMPI" />
+      <LineComment>
+        <Text>1 Menge pro Impuls</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="476">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Lst" />
+      <LineComment>
+        <Text>2  </Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="479">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Lst" />
+      <LineComment>
+        <Text>3</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="482">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Lst" />
+      <LineComment>
+        <Text>4</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="485">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Lst" />
+      <LineComment>
+        <Text>5  </Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="488">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="KMPM" />
+      <LineComment>
+        <Text>6 Menge pro Minute</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="491">
+    <LabelDeclaration>
+      <Label Name="Lst" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="494">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="496">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="497">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Add" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="499">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="KRun" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="501">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="502">
+    <LabelDeclaration>
+      <Label Name="KMPZ" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Stop" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="505">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Stop" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="507">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>DInt</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="509">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="SKC1" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="511">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Start" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="513">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="KSTR" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="515">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Start" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="517">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kalibrierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="519">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>10.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="521">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="522">
+    <StlToken Text="TRUNC" />
+  </StlStatement>
+  <StlStatement UId="523">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="SKC1" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="525">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="526">
+    <LabelDeclaration>
+      <Label Name="KSTR" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="529">
+    <StlToken Text="ADD" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="531">
+    <LabelDeclaration>
+      <Label Name="SKC1" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="534">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="KRun" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="536">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="537">
+    <LabelDeclaration>
+      <Label Name="KMPM" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="540">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="T_Pause" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="542">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="543">
+    <LabelDeclaration>
+      <Label Name="KMPI" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Stop" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="546">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Stop" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="548">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>DInt</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="550">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="SKC2" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="552">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Start" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="554">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="KMSR" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="556">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Start" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="558">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kalibrierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="560">
+    <StlToken Text="TRUNC" />
+  </StlStatement>
+  <StlStatement UId="561">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="SKC2" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="563">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="564">
+    <LabelDeclaration>
+      <Label Name="KMSR" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Dosi_akt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="567">
+    <StlToken Text="Fall" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="AM_Dosi" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="569">
+    <StlToken Text="JCN" />
+    <Access Scope="Label">
+      <Label Name="KMZ1" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="571">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="573">
+    <StlToken Text="ADD" />
+    <Access Scope="TypedConstant">
+      <Constant>
+        <ConstantValue>DINT#-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="575">
+    <LabelDeclaration>
+      <Label Name="SKC2" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="578">
+    <LabelDeclaration>
+      <Label Name="KMZ1" />
+    </LabelDeclaration>
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="KRun" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="581">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="582">
+    <LabelDeclaration>
+      <Label Name="KRun" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="585">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="587">
+    <StlToken Text="LT_D" />
+  </StlStatement>
+  <StlStatement UId="588">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="SKC2" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="590">
+    <StlToken Text="GT_D" />
+  </StlStatement>
+  <StlStatement UId="591">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_OFF" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="593">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="595">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="nEvt" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="597">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="598">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="600">
+    <LineComment>
+      <Text>Handevent bei Typ 2</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="602">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="604">
+    <LabelDeclaration>
+      <Label Name="PuHA" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="HandeventTakt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="607">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Meldung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="609">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="610">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="612">
+    <LineComment>
+      <Text>Automatikintervall zählen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="614">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="616">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Start" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="618">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="noIV" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="620">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Start" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="622">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="623">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Restdosierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="625">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Autozugabe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="627">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="628">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Restdosierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="630">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="631">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Typ" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="633">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="635">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="636">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Meldung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="638">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="639">
+    <LabelDeclaration>
+      <Label Name="noIV" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+  <StlStatement UId="641">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="643">
+    <LineComment>
+      <Text>Doswert für 100ms bzw. Impuls berechnen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="645">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="647">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Typ" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="649">
+    <StlToken Text="JL" />
+    <Access Scope="Label">
+      <Label Name="list" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="651">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="MPZ" />
+      <LineComment>
+        <Text>0 Menge pro Zeit</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="654">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="MPI" />
+      <LineComment>
+        <Text>1 Menge pro Impuls</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="657">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="MPH" />
+      <LineComment>
+        <Text>2 Handzugabe ohne Pumpe</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="660">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="MxP" />
+      <LineComment>
+        <Text>3 externer Impuls</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="663">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="list" />
+      <LineComment>
+        <Text>4</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="666">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="H2O" />
+      <LineComment>
+        <Text>5 Wassermengenzähler</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="669">
+    <LabelDeclaration>
+      <Label Name="list" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="672">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="674">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="675">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Add" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="677">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="DosA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="679">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="680">
+    <LabelDeclaration>
+      <Label Name="MPZ" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Pumpleistung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="683">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>10.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="685">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="686">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="688">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="690">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Add" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="692">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="DosA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="694">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="695">
+    <LabelDeclaration>
+      <Label Name="MPI" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Dosi_akt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="698">
+    <StlToken Text="Fall" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="AM_Dosi" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="700">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Add" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="702">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Pumpleistung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="704">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="706">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="DosA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="708">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="709">
+    <LabelDeclaration>
+      <Label Name="MxP" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Imp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="712">
+    <StlToken Text="Rise" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="AM_Dosi" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="714">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Add" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="716">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Pumpleistung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="718">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="720">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="DosA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="722">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="723">
+    <LabelDeclaration>
+      <Label Name="MPH" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="726">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Add" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="728">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="730">
+    <StlToken Text="JCN" />
+    <Access Scope="Label">
+      <Label Name="noH" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="732">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Meldung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="734">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Handzugabe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="736">
+    <LabelDeclaration>
+      <Label Name="noH" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="739">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="DosA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="741">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="742">
+    <LabelDeclaration>
+      <Label Name="H2O" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Restdosierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="745">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="747">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="748">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Add" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="750">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="list" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="752">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="753">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="755">
+    <LineComment>
+      <Text>Dosmenge aufaddieren</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="757">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="759">
+    <LabelDeclaration>
+      <Label Name="DosA" />
+    </LabelDeclaration>
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Add" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="762">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="nDos" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="764">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="765">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="767">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="DAut" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="769">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Handzugabe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="771">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="773">
+    <StlToken Text="SUB_R" />
+  </StlStatement>
+  <StlStatement UId="774">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Handzugabe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="776">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="777">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Typ" />
+      </Symbol>
+      <LineComment>
+        <Text>bei man. Dosierzugabe</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="780">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>wird auch der Restdosierwert reduziert</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="783">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="784">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="DAut" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="786">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="DosC" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="788">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="789">
+    <LabelDeclaration>
+      <Label Name="DAut" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Restdosierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="792">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="794">
+    <StlToken Text="SUB_R" />
+  </StlStatement>
+  <StlStatement UId="795">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Restdosierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="797">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="799">
+    <StlToken Text="GE_R" />
+  </StlStatement>
+  <StlStatement UId="800">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="DosC" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="802">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Restdosierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="804">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="805">
+    <LineComment>
+      <Text>Mengenzählung für PVS</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="807">
+    <LabelDeclaration>
+      <Label Name="DosC" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="810">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="DosH" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="812">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DosMenge_Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="814">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="816">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="817">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DosMenge_Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="819">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="DB88" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="821">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="822">
+    <LabelDeclaration>
+      <Label Name="DosH" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DosMenge_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="825">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="827">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="828">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DosMenge_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="830">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="831">
+    <LineComment>
+      <Text>Datenerfassung DB88----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="833">
+    <LineComment>
+      <Text>Offset Ladungszähler</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="835">
+    <LabelDeclaration>
+      <Label Name="DB88" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Zaehler" />
+        <Component Name="Anz_Beck" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="838">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>4</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="840">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="841">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="843">
+    <StlToken Text="LAR1_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="844">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="845">
+    <LineComment>
+      <Text>Adresse Pumpe</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="847">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="849">
+    <StlToken Text="DEC" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="851">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>8</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="853">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="854">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="856">
+    <StlToken Text="ADDAR1" />
+  </StlStatement>
+  <StlStatement UId="857">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="858">
+    <LineComment>
+      <Text>je nach Betriebsart Zelle aufaddieren</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="860">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="862">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Add" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="864">
+    <StlToken Text="ADDAR1" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>ARef</ConstantType>
+        <ConstantValue>P#4.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="866">
+    <LabelDeclaration>
+      <Label Name="Add" />
+    </LabelDeclaration>
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Dosi_Overview" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="869">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="0" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="871">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="873">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="874">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="0" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="876">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="877">
+    <LabelDeclaration>
+      <Label Name="nDos" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+  <StlStatement UId="879">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="881">
+    <LineComment>
+      <Text>Betriebsart Dosierpumpe</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="883">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="885">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="886">
+    <LineComment>
+      <Text>Handzugabe (immer erlaubt)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="888">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="890">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="892">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="BAA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="894">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Handzugabe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="896">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="898">
+    <StlToken Text="LT_R" />
+  </StlStatement>
+  <StlStatement UId="899">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Niv" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="901">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_OFF" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="903">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="delH" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="905">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="907">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="909">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Evts" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="911">
+    <LabelDeclaration>
+      <Label Name="delH" />
+    </LabelDeclaration>
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="914">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="916">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="918">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="920">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Handzugabe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="922">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="923">
+    <LineComment>
+      <Text>Pumpe AUS</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="925">
+    <LabelDeclaration>
+      <Label Name="BAA" />
+    </LabelDeclaration>
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ON" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="928">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="AUTO" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="930">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Niv" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="932">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="934">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Evts" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="936">
+    <LineComment>
+      <Text>Pumpe EIN</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="938">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ON" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="940">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="AUTO" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="942">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_OFF" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="944">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="946">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Evts" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="948">
+    <LineComment>
+      <Text>Automatik</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="950">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="952">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Restdosierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="954">
+    <StlToken Text="NE_R" />
+  </StlStatement>
+  <StlStatement UId="955">
+    <StlToken Text="A_BRACK" />
+  </StlStatement>
+  <StlStatement UId="956">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Doswert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="958">
+    <StlToken Text="GE_R" />
+  </StlStatement>
+  <StlStatement UId="959">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="960">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_OFF" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="962">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="964">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="965">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="967">
+    <LineComment>
+      <Text>Fehler-Event senden</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="969">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="971">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="AMS_Restart" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="973">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="AM_Strg" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="975">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="976">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="AUTO" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="978">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="980">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Strg" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="982">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="New_Err" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="984">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Strg" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="986">
+    <StlToken Text="X" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="AM_Strg" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="988">
+    <StlToken Text="JCN" />
+    <Access Scope="Label">
+      <Label Name="ok" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="990">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="991">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="993">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="995">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="LaZa_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="997">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="LZ_NR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1014">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="New_Err" />
+      </Symbol>
+      <LineComment>
+        <Text>neuer Alarm --&gt; Hupe an</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1017">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="config" />
+        <Component Name="M_Q_Hupe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1019">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1020">
+    <LabelDeclaration>
+      <Label Name="ok" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DP_Strg" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1023">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="AM_Strg" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1025">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1026">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1028">
+    <LineComment>
+      <Text>Event senden</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1030">
+    <LineComment>
+      <Text>-------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1032">
+    <LabelDeclaration>
+      <Label Name="Evts" />
+    </LabelDeclaration>
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="Minuten_Takt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1035">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="HEv" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1037">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Rest_EventTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1039">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="EventTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1041">
+    <StlToken Text="GT_I" />
+  </StlStatement>
+  <StlStatement UId="1042">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="HEv" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1044">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Rest_EventTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1046">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1048">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Rest_EventTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1050">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1051">
+    <LineComment>
+      <Text>Handevents</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1053">
+    <LabelDeclaration>
+      <Label Name="HEv" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1056">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DosMenge_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1058">
+    <StlToken Text="NE_R" />
+  </StlStatement>
+  <StlStatement UId="1059">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1061">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="EvtH" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1063">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1064">
+    <LineComment>
+      <Text>Automatikevents</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1066">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Rest_EventTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1068">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="EventTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1070">
+    <StlToken Text="GE_R" />
+  </StlStatement>
+  <StlStatement UId="1071">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1073">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1075">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="EvtA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1077">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1078">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1080">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DosMenge_Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1082">
+    <StlToken Text="EQ_R" />
+  </StlStatement>
+  <StlStatement UId="1083">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="EvtA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1085">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1086">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="EvtA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1088">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Auto" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1090">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="EvtH" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1092">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Hand" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1094">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="nEvt" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1096">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1097">
+    <LabelDeclaration>
+      <Label Name="Auto" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1100">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1102">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DosMenge_Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1104">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Param" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1106">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1108">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DosMenge_Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1110">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1112">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Rest_EventTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1114">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Evt" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1116">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1117">
+    <LabelDeclaration>
+      <Label Name="Hand" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1120">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="BA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1122">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DosMenge_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1124">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Param" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1126">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1128">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="DosMenge_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1130">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1131">
+    <LabelDeclaration>
+      <Label Name="Evt" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1134">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="22">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1152">
+    <LabelDeclaration>
+      <Label Name="nEvt" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+  <StlStatement UId="1154">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>  Dosierung melden</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="1155">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Typ" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1157">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Impulspumpe</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1160">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="1161">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Imp" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1163">
+    <StlToken Text="CAC" />
+  </StlStatement>
+  <StlStatement UId="1164">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Handzugabe</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1167">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="1168">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="HP" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1170">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1171">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1173">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Dosi_akt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1175">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Data" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1177">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1178">
+    <LabelDeclaration>
+      <Label Name="Imp" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="RestZeit" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1181">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1183">
+    <StlToken Text="LE_I" />
+  </StlStatement>
+  <StlStatement UId="1184">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1186">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="OnOf" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1188">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1189">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1191">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Dosi_akt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1193">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="OnOf" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1195">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1196">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="RestZeit" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1198">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1200">
+    <StlToken Text="LE_I" />
+  </StlStatement>
+  <StlStatement UId="1201">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Data" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1203">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1204">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="RestZeit" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1206">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1208">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="RestZeit" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1210">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Data" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1212">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1213">
+    <LabelDeclaration>
+      <Label Name="OnOf" />
+    </LabelDeclaration>
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Dosi_akt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1216">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Dosi_akt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1218">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="T_Impuls" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1220">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="On" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1222">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="T_Pause" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1224">
+    <LabelDeclaration>
+      <Label Name="On" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="RestZeit" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1227">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1229">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="RestZeit" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1231">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Data" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1233">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1234">
+    <LineComment>
+      <Text>Handzugabe wird durch Event gefordert</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1236">
+    <LabelDeclaration>
+      <Label Name="HP" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Restdosierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1239">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Param" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1241">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1243">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="1244">
+    <StlToken Text="ON" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="AUTO" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1246">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ON" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1248">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Meldung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1250">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1251">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Meldung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1253">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Data" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1255">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="Meldung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1257">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1258">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1260">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1262">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_DP" />
+        <Component Name="DP" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="LaZa_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1264">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="LZ_NR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1280">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1281">
+    <LabelDeclaration>
+      <Label Name="Data" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Adr_PC_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1284">
+    <StlToken Text="LAR1_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="1285">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Panel_DP" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1287">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1289">
+    <StlToken Text="Assign" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="53" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Hand</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1292">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Start" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1294">
+    <StlToken Text="Assign" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="56" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Kali_Start</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1297">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Stop" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1299">
+    <StlToken Text="Assign" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="57" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Kali_Stop</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1302">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="DP_An" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1304">
+    <StlToken Text="Assign" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="54" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].ON</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1307">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Stoerung" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1309">
+    <StlToken Text="Assign" />
+    <Access Scope="Address">
+      <Indirect Width="Bit" Area="DB" Register="AR1" BitOffset="55" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].STM</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1312">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Kali_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1314">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="288" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Kali_Count</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1317">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1318">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Handzugabe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1320">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="96" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].Handzugabe</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1323">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Restdosierwert" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1325">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="160" />
+      <LineComment>
+        <Text>"DB_PC_DP".DoPu[1].RestDosierWert</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1328">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1329">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="nexP" />
+    </Access>
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Pumpe ansteuern</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="1C" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="1D" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Dosierpumpensteuerung</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

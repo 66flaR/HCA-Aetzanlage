@@ -1,0 +1,802 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Anzahl" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Anzahl der BE-/Entladestände</MultiLanguageText>
+      </Comment>
+      <StartValue>6</StartValue>
+    </Member>
+    <Member Name="leng" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Länge einer Struktur</MultiLanguageText>
+      </Comment>
+      <StartValue>12</StartValue>
+    </Member>
+    <Member Name="Offset" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Beginn des Datenfeldes</MultiLanguageText>
+      </Comment>
+      <StartValue>10</StartValue>
+    </Member>
+    <Member Name="Next" Datatype="Byte" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">nächster Wt für die Anlage</MultiLanguageText>
+      </Comment>
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="Entm" Datatype="Byte" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">nächster Wt für die Entmetallisierung</MultiLanguageText>
+      </Comment>
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="AnfQ" Datatype="Byte" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Anforderung Quelle</MultiLanguageText>
+      </Comment>
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="AnfZ" Datatype="Byte" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Anforderung Ziel</MultiLanguageText>
+      </Comment>
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="Stand" Datatype="Array[1..6] of Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Feldlänge anpassen</MultiLanguageText>
+      </Comment>
+      <Member Name="Pos_Nr" Datatype="USInt">
+        <Subelement Path="1">
+          <StartValue>25</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>26</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>27</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>28</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>29</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>30</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Aufgabe_erlaubt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Aufgabe ist möglich</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="kein_WT" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Stand ist leer (WT ist weder physikalisch noch logisch vorhanden)</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="WT_aufgegeben" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Warenträger ist aufgegeben</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="verriegelt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Bedienung durch FW möglich</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="gelb" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="rot" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Charge_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Behandlung war fehlerfrei</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Charge_nok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Behandlung war gestört</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="IN_innen" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Wagen angedockt</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="IN_aussen" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Wagen im Beladebereich</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="IN_Belegt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">WT auf Wagen</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="IN_Freigabe" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Freigabetaste (wennvorhanden über Flankenmerker Bit4.0)</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="OUT_Sperre_in" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Einfahrsperre</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="OUT_Sperre_FW" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Überfahrsperre</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="OUT_Sperre_out" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausfahrsperre</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="OUT_FW_kommt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Meldung FW kommt</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Del_Count" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Sekundenzähler zum löschen der WT-Info</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>16#05</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#1E</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="AM_Freigabe" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Altmerker Freigabetaste</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="AM_Wagen" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Altmerker Wagen vorhanden</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="res3" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Trommel_BE" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Trommelstand</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Gestell_BE" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Gestellstand</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Ausf_Ware" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausfahrt Ware erlaubt</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Ausf_Entm" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausfahrt entmetallisierte Gestelle</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="last_WT_Trommel" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">letzter WT war / ist Trommel</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Anf_Pos" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Position die BE-Anfordert</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="last_WT" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">letzte WT-Nr-lang</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>0</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Del_All" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0=Programm löschen 1=gesamten WT löschen</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Auto_Delete" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">automatisches löschen fertiger WT</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Afg_WT_Nr" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Aufgabe auch bei WT_Nr_lang&lt;&gt;0 erlaubt</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="res1" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="res2" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="res4" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="res5" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="schnell" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="resB" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+    </Member>
+    <Member Name="Langware_vorn" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Langware_hinten" Datatype="Bool" Remanence="Retain" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_BE_Stand</Name>
+      <Namespace />
+      <Number>4</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

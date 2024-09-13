@@ -1,0 +1,790 @@
+﻿FUNCTION "Alarme" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      i : SInt;
+      La_Rot : Bool;
+      La_Gelb : Bool;
+      La_Blau : Bool;
+      Hupe_Quitt_Rot : Bool;
+      Hupe_Quitt_Gelb : Bool;
+      Hupe_Quitt_Blau : Bool;
+      temp_S5Time : S5Time;
+      b_TO_Komm_Pnoz : Bool;
+      b_VEW_niO : Bool;
+   END_VAR
+
+
+BEGIN
+	
+	REGION ErrorAcknowledge
+	    IF "DB_ANLAGE".IN.Quitt_Err THEN
+	        "DB_Alarme".Sammelbit_St := FALSE;
+	        "DB_Alarme".auto_aus := FALSE;
+	        "DB_Alarme".stop_request := FALSE;
+	        FOR #i := 0 TO "Anzahl_Alarm_Woerter" DO
+	            "DB_Alarme".MLD[#i] := 0;
+	        END_FOR;
+	    END_IF;
+	END_REGION
+	
+	REGION Alarms
+	    "DB_Alarme".MLD[0].%X0 := "Analogwerte"."LF_CM01.BN01".Drahtbruch;
+	    "DB_Alarme".MLD[0].%X1 := "Analogwerte"."LF_CM01.BN01".ungueltig;
+	    "DB_Alarme".MLD[0].%X2 := "Analogwerte"."LF_CM01.BN02".Drahtbruch;
+	    "DB_Alarme".MLD[0].%X3 := "Analogwerte"."LF_CM01.BN02".ungueltig;
+	    "DB_Alarme".MLD[0].%X4 := "Analogwerte"."LF_CM02.BN03".Drahtbruch;
+	    "DB_Alarme".MLD[0].%X5 := "Analogwerte"."LF_CM02.BN03".ungueltig;
+	    "DB_Alarme".MLD[0].%X6 := "Analogwerte"."LF_CM02.BN04".Drahtbruch;
+	    "DB_Alarme".MLD[0].%X7 := "Analogwerte"."LF_CM02.BN04".ungueltig;
+	    "DB_Alarme".MLD[0].%X8 := "Analogwerte"."p_HQ01.BP01".Drahtbruch;
+	    "DB_Alarme".MLD[0].%X9 := "Analogwerte"."p_HQ01.BP01".ungueltig;
+	    "DB_Alarme".MLD[0].%X10 := "Analogwerte"."p_HQ02.BP02".Drahtbruch;
+	    "DB_Alarme".MLD[0].%X11 := "Analogwerte"."p_HQ02.BP02".ungueltig;
+	    "DB_Alarme".MLD[0].%X12 := "Analogwerte"."p_CM01.BP03".Drahtbruch;
+	    "DB_Alarme".MLD[0].%X13 := "Analogwerte"."p_CM01.BP03".ungueltig;
+	    "DB_Alarme".MLD[0].%X14 := "Analogwerte"."p_CM01.BP04".Drahtbruch;
+	    "DB_Alarme".MLD[0].%X15 := "Analogwerte"."p_CM01.BP04".ungueltig;
+	    
+	    "DB_Alarme".MLD[1].%X0 := "Analogwerte"."p_CM03.BP05".Drahtbruch;
+	    "DB_Alarme".MLD[1].%X1 := "Analogwerte"."p_CM03.BP05".ungueltig;
+	    "DB_Alarme".MLD[1].%X2 := "Analogwerte"."p_CM02.BP06".Drahtbruch;
+	    "DB_Alarme".MLD[1].%X3 := "Analogwerte"."p_CM02.BP06".ungueltig;
+	    "DB_Alarme".MLD[1].%X4 := "Analogwerte"."p_CM02.BP07".Drahtbruch;
+	    "DB_Alarme".MLD[1].%X5 := "Analogwerte"."p_CM02.BP07".ungueltig;
+	    "DB_Alarme".MLD[1].%X6 := "Analogwerte"."p_CM04.BP08".Drahtbruch;
+	    "DB_Alarme".MLD[1].%X7 := "Analogwerte"."p_CM04.BP08".ungueltig;
+	    "DB_Alarme".MLD[1].%X8 := "Analogwerte"."p_CM05.BP09".Drahtbruch;
+	    "DB_Alarme".MLD[1].%X9 := "Analogwerte"."p_CM05.BP09".ungueltig;
+	  
+	    "DB_Alarme".MLD[1].%X10 := "Analogwerte"."Dfl_GP01.BF01".Drahtbruch;
+	    "DB_Alarme".MLD[1].%X11 := "Analogwerte"."Dfl_GP01.BF01".ungueltig;
+	    "DB_Alarme".MLD[1].%X12 := "Analogwerte"."Dfl_GP02.BF02".Drahtbruch;
+	    "DB_Alarme".MLD[1].%X13 := "Analogwerte"."Dfl_GP02.BF02".ungueltig;
+	   
+	    "DB_Alarme".MLD[1].%X14 := "Analogwerte"."Niv_GP01.BL30".Drahtbruch;
+	    "DB_Alarme".MLD[1].%X15 := "Analogwerte"."Niv_GP01.BL30".ungueltig AND "E_S_IBC_GP01.BG21";
+	    
+	    "DB_Alarme".MLD[2].%X0 := "Analogwerte"."Niv_GP02.BL31".Drahtbruch;
+	    "DB_Alarme".MLD[2].%X1 := "Analogwerte"."Niv_GP02.BL31".ungueltig AND "E_S_IBC_GP02.BG22";
+	    "DB_Alarme".MLD[2].%X2 := "Analogwerte".pH_WR01.Drahtbruch;
+	    "DB_Alarme".MLD[2].%X3 := "Analogwerte".pH_WR01.ungueltig;
+	    "DB_Alarme".MLD[2].%X4 := "Analogwerte".WZ_1_1.Drahtbruch AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X5 := "Analogwerte".WZ_1_1.ungueltig AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X6 := "Analogwerte".WZ_1_2.Drahtbruch AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X7 := "Analogwerte".WZ_1_2.ungueltig AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X8 := "Analogwerte".WZ_1_3.Drahtbruch AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X9 := "Analogwerte".WZ_1_3.ungueltig AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X10 := "Analogwerte".WZ_1_4.Drahtbruch AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X11 := "Analogwerte".WZ_1_4.ungueltig AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X12 := "Analogwerte".WZ_2_1.Drahtbruch AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X13 := "Analogwerte".WZ_2_1.ungueltig AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X14 := "Analogwerte".WZ_2_2.Drahtbruch AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[2].%X15 := "Analogwerte".WZ_2_2.ungueltig AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    
+	    "DB_Alarme".MLD[3].%X0 := "Analogwerte".WZ_2_3.Drahtbruch AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[3].%X1 := "Analogwerte".WZ_2_3.ungueltig AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[3].%X2 := "Analogwerte".WZ_2_4.Drahtbruch AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[3].%X3 := "Analogwerte".WZ_2_4.ungueltig AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[3].%X4 := "Analogwerte".Last_1.Drahtbruch AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[3].%X5 := "Analogwerte".Last_1.ungueltig AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[3].%X6 := "Analogwerte".Last_2.Drahtbruch AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[3].%X7 := "Analogwerte".Last_2.ungueltig AND NOT "DI_FW_1".ErrIn.Alarm.NotHalt;
+	    "DB_Alarme".MLD[3].%X8 := "DB_Temporaer".Drucksensoren_deaktiviert; //20.01.22
+	    "DB_Alarme".MLD[3].%X9 := FALSE;
+	    "DB_Alarme".MLD[3].%X10 := FALSE;
+	    "DB_Alarme".MLD[3].%X11 := NOT "E_Normal-Vers";
+	    "DB_Alarme".MLD[3].%X12 := "DB_NSP".NSP[1].AM_AL_min;
+	    "DB_Alarme".MLD[3].%X13 := "DB_NSP".NSP[13].AM_AL_min;
+	    "DB_Alarme".MLD[3].%X14 := "DB_NSP".NSP[19].AM_AL_min;
+	    "DB_Alarme".MLD[3].%X15 := NOT "E_kein_NB_AblW";
+	    
+	    "DB_Alarme".MLD[4].%X0 := "Tor".Mld.n_Auto;
+	    "DB_Alarme".MLD[4].%X1 := "Tor".Mld.TO_auf;
+	    "DB_Alarme".MLD[4].%X2 := "Tor".Mld.TO_zu;
+	    "DB_Alarme".MLD[4].%X3 := "Tor".Mld.MSS;
+	    "DB_Alarme".MLD[4].%X4 := "Tor".Mld.nok;
+	    "DB_Alarme".MLD[4].%X5 := "DB_Schaltuhr".nichtOK;
+	    "DB_Alarme".MLD[4].%X6 := "Deckel_CM01".Mld.TO_links_auf;
+	    "DB_Alarme".MLD[4].%X7 := "Deckel_CM01".Mld.TO_links_zu;
+	    "DB_Alarme".MLD[4].%X8 := "Deckel_CM01".Mld.TO_rechts_auf;
+	    "DB_Alarme".MLD[4].%X9 := "Deckel_CM01".Mld.TO_rechts_zu;
+	    "DB_Alarme".MLD[4].%X10 := "Deckel_CM01".Mld.Si_24VDC_links;
+	    "DB_Alarme".MLD[4].%X11 := "Deckel_CM01".Mld.Si_24VDC_rechts;
+	    "DB_Alarme".MLD[4].%X12 := "Deckel_CM01".Mld.n_Auto;
+	    "DB_Alarme".MLD[4].%X13 := "Deckel_CM01".Mld.SF_gleich_li_auf;
+	    "DB_Alarme".MLD[4].%X14 := "Deckel_CM01".Mld.SF_gleich_li_zu;
+	    "DB_Alarme".MLD[4].%X15 := "Deckel_CM01".Mld.SF_gleich_re_auf;
+	    
+	    "DB_Alarme".MLD[5].%X0 := "Deckel_CM01".Mld.SF_gleich_re_zu;
+	    "DB_Alarme".MLD[5].%X1 := "Deckel_CM02".Mld.TO_links_auf;
+	    "DB_Alarme".MLD[5].%X2 := "Deckel_CM02".Mld.TO_links_zu;
+	    "DB_Alarme".MLD[5].%X3 := "Deckel_CM02".Mld.TO_rechts_auf;
+	    "DB_Alarme".MLD[5].%X4 := "Deckel_CM02".Mld.TO_rechts_zu;
+	    "DB_Alarme".MLD[5].%X5 := "Deckel_CM02".Mld.Si_24VDC_links;
+	    "DB_Alarme".MLD[5].%X6 := "Deckel_CM02".Mld.Si_24VDC_rechts;
+	    "DB_Alarme".MLD[5].%X7 := "Deckel_CM02".Mld.n_Auto;
+	    "DB_Alarme".MLD[5].%X8 := "Deckel_CM02".Mld.SF_gleich_li_auf;
+	    "DB_Alarme".MLD[5].%X9 := "Deckel_CM02".Mld.SF_gleich_li_zu;
+	    "DB_Alarme".MLD[5].%X10 := "Deckel_CM02".Mld.SF_gleich_re_auf;
+	    "DB_Alarme".MLD[5].%X11 := "Deckel_CM02".Mld.SF_gleich_re_zu;
+	    "DB_Alarme".MLD[5].%X12 := NOT "E_Wrn_Gas_ok";
+	    "DB_Alarme".MLD[5].%X13 := NOT "E_Al_Gas_ok";
+	    "DB_Alarme".MLD[5].%X14 := NOT "E_StrWae_Abluft_ok";
+	    "DB_Alarme".MLD[5].%X15 := NOT "DB_PNOZ_IN_Out".In.Abluft_ok OR NOT "E_Frg_AbLW";
+	    
+	    "DB_Alarme".MLD[6].%X0 := NOT "DB_PNOZ_IN_Out".In.PNOZ_OK AND "DB_PNOZ_IN_Out".In."NH-T_SS_ok" AND "DB_PNOZ_IN_Out".In."NH-T_Filter_ok" AND
+	    "DB_PNOZ_IN_Out".In."NH-T_Vers_ok" AND "DB_PNOZ_IN_Out".In."NH-T_Ents_ok" AND "DB_PNOZ_IN_Out".In."NH-T_Vent_ok"  AND "DB_PNOZ_IN_Out".In.NH_MP_ok;
+	    
+	    "DB_Alarme".MLD[6].%X1 := NOT "DB_PNOZ_IN_Out".In."NH-T_SS_ok";
+	    "DB_Alarme".MLD[6].%X2 := NOT "DB_PNOZ_IN_Out".In."NH-T_Filter_ok";
+	    "DB_Alarme".MLD[6].%X3 := NOT "DB_PNOZ_IN_Out".In."NH-T_Vers_ok";
+	    "DB_Alarme".MLD[6].%X4 := NOT "DB_PNOZ_IN_Out".In."NH-T_Ents_ok";
+	    "DB_Alarme".MLD[6].%X5 := NOT "DB_PNOZ_IN_Out".In."NH-T_Vent_ok";
+	    "DB_Alarme".MLD[6].%X6 := NOT "DB_PNOZ_IN_Out".In.NH_Frg_TW_QF AND "DB_PNOZ_IN_Out".In.PNOZ_OK;
+	    "DB_Alarme".MLD[6].%X7 := NOT "DB_PNOZ_IN_Out".In.NH_MP_ok;
+	    "DB_Alarme".MLD[6].%X8 := NOT "DB_PNOZ_IN_Out".In.Tuer_VS_ok;
+	    "DB_Alarme".MLD[6].%X9 := NOT "DB_PNOZ_IN_Out".In.Tuer_RS_ok;
+	    #temp_S5Time := S_ODT(T_NO := "T-TO-Komm-PNOZ", S := NOT "DB_PNOZ_Comm".RECEIVE.NDR, TV := S5t#1s, Q => #b_TO_Komm_Pnoz);
+	    "DB_Alarme".MLD[6].%X10 := #b_TO_Komm_Pnoz;
+	    #temp_S5Time := S_ODT(T_NO := "T_VEW_niO", S := NOT "E_VEW_ok", TV := S5t#5s, Q => #b_VEW_niO);
+	    "DB_Alarme".MLD[6].%X11 := #b_VEW_niO;
+	    "DB_Alarme".MLD[6].%X12 := NOT "E_DL_keine_Warnung" AND "E_DL_min_ok";
+	    "DB_Alarme".MLD[6].%X13 := NOT "E_DL_min_ok";
+	    "DB_Alarme".MLD[6].%X14 := "E_Not-Strom";
+	    "DB_Alarme".MLD[6].%X15 := NOT "E_UeSp_ok";
+	    
+	    "DB_Alarme".MLD[7].%X0 := NOT "E_Si_230VAC_Bel";
+	    "DB_Alarme".MLD[7].%X1 := "FP_CM01.GP01".Mld.GW_p_FP;
+	    "DB_Alarme".MLD[7].%X2 := "FP_CM01.GP01".Mld.GW_LF_FP;
+	    "DB_Alarme".MLD[7].%X3 := "FP_CM01.GP01".Mld.GW_p_FG;
+	    "DB_Alarme".MLD[7].%X4 := "FP_CM01.GP01".Mld.FG_links_nicht_zu;
+	    "DB_Alarme".MLD[7].%X5 := "FP_CM01.GP01".Mld.FG_rechts_nicht_zu;
+	    "DB_Alarme".MLD[7].%X6 := "FP_CM01.GP01".Mld.Einhausung_nicht_zu;
+	    "DB_Alarme".MLD[7].%X7 := "FP_CM01.GP01".Mld.FU_nicht_bereit;
+	    "DB_Alarme".MLD[7].%X8 := "FP_CM01.GP01".Mld.FU_Stoerung;
+	    "DB_Alarme".MLD[7].%X9 := "FP_CM01.GP01".Mld.FG_Spülen_Ende;
+	    "DB_Alarme".MLD[7].%X10 := "FP_CM01.GP01".Mld.n_Auto;
+	    "DB_Alarme".MLD[7].%X11 := "FP_CM02.GP04".Mld.Leckage;
+	    "DB_Alarme".MLD[7].%X12 := "FP_CM02.GP04".Mld.GW_p_FP;
+	    "DB_Alarme".MLD[7].%X13 := "FP_CM02.GP04".Mld.GW_LF_FP;
+	    "DB_Alarme".MLD[7].%X14 := "FP_CM02.GP04".Mld.GW_p_FG;
+	    "DB_Alarme".MLD[7].%X15 := "FP_CM02.GP04".Mld.FG_links_nicht_zu;
+	    
+	    "DB_Alarme".MLD[8].%X0 := "FP_CM02.GP04".Mld.FG_rechts_nicht_zu;
+	    "DB_Alarme".MLD[8].%X1 := "FP_CM02.GP04".Mld.Einhausung_nicht_zu;
+	    "DB_Alarme".MLD[8].%X2 := "FP_CM02.GP04".Mld.FU_nicht_bereit;
+	    "DB_Alarme".MLD[8].%X3 := "FP_CM02.GP04".Mld.FU_Stoerung;
+	    "DB_Alarme".MLD[8].%X4 := "FP_CM02.GP04".Mld.FG_Spülen_Ende;
+	    "DB_Alarme".MLD[8].%X5 := "FP_CM02.GP04".Mld.n_Auto;
+	    "DB_Alarme".MLD[8].%X6 := "UP_CM01.GP02".Mld.Niv_TLS;
+	    "DB_Alarme".MLD[8].%X7 := "UP_CM01.GP02".Mld.Niv_Ueberlauf;
+	    "DB_Alarme".MLD[8].%X8 := "UP_CM01.GP02".Mld.Niv_Sensorfehler;
+	    "DB_Alarme".MLD[8].%X9 := "UP_CM01.GP02".Mld.GW_p_UP;
+	    "DB_Alarme".MLD[8].%X10 := "UP_CM01.GP02".Mld.GW_LF_UP;
+	    "DB_Alarme".MLD[8].%X11 := "UP_CM01.GP02".Mld.FU_nicht_bereit;
+	    "DB_Alarme".MLD[8].%X12 := "UP_CM01.GP02".Mld.FU_Stoerung;
+	    "DB_Alarme".MLD[8].%X13 := "UP_CM01.GP02".Mld.n_Auto;
+	    "DB_Alarme".MLD[8].%X14 := "UP_CM02.GP05".Mld.Niv_TLS;
+	    "DB_Alarme".MLD[8].%X15 := "UP_CM02.GP05".Mld.Niv_Ueberlauf;
+	    
+	    "DB_Alarme".MLD[9].%X0 := "UP_CM02.GP05".Mld.Niv_Sensorfehler;
+	    "DB_Alarme".MLD[9].%X1 := "UP_CM02.GP05".Mld.GW_p_UP;
+	    "DB_Alarme".MLD[9].%X2 := "UP_CM02.GP05".Mld.GW_LF_UP;
+	    "DB_Alarme".MLD[9].%X3 := "UP_CM02.GP05".Mld.FU_nicht_bereit;
+	    "DB_Alarme".MLD[9].%X4 := "UP_CM02.GP05".Mld.FU_Stoerung;
+	    "DB_Alarme".MLD[9].%X5 := "UP_CM02.GP05".Mld.n_Auto;
+	    "DB_Alarme".MLD[9].%X6 := "UP_CM03.GP03".Mld.Niv_TLS;
+	    "DB_Alarme".MLD[9].%X7 := "UP_CM03.GP03".Mld.Niv_Sensorfehler;
+	    "DB_Alarme".MLD[9].%X8 := "UP_CM03.GP03".Mld.GW_p_UP;
+	    "DB_Alarme".MLD[9].%X9 := "UP_CM03.GP03".Mld.FU_nicht_bereit;
+	    "DB_Alarme".MLD[9].%X10 := "UP_CM03.GP03".Mld.FU_Stoerung;
+	    "DB_Alarme".MLD[9].%X11 := "UP_CM03.GP03".Mld.n_Auto;
+	    "DB_Alarme".MLD[9].%X12 := "UP_CM04.GP06".Mld.Niv_TLS;
+	    "DB_Alarme".MLD[9].%X13 := "UP_CM04.GP06".Mld.Niv_Sensorfehler;
+	    "DB_Alarme".MLD[9].%X14 := "UP_CM04.GP06".Mld.GW_p_UP;
+	    "DB_Alarme".MLD[9].%X15 := "UP_CM04.GP06".Mld.FU_nicht_bereit;
+	    
+	    "DB_Alarme".MLD[10].%X0 := "UP_CM04.GP06".Mld.FU_Stoerung;
+	    "DB_Alarme".MLD[10].%X1 := "UP_CM04.GP06".Mld.n_Auto;
+	    "DB_Alarme".MLD[10].%X2 := "Pu_CM05.GP11_DB".Mld.MSS;
+	    "DB_Alarme".MLD[10].%X3 := "Pu_CM05.GP11_DB".Mld."TLS_CM05.BL03";
+	    "DB_Alarme".MLD[10].%X4 := "Pu_CM05.GP11_DB".Mld."Uel_CM05.BL05";
+	    "DB_Alarme".MLD[10].%X5 := "Pu_CM05.GP11_DB".Mld.AWA_niO;
+	    "DB_Alarme".MLD[10].%X6 := "Pu_CM05.GP11_DB".Mld.keine_Frg_AWA;
+	    "DB_Alarme".MLD[10].%X7 := "Pu_CM05.GP11_DB".Mld.Niv_Sensorfehler;
+	    "DB_Alarme".MLD[10].%X8 := "Pu_CM05.GP11_DB".Mld.GW_p;
+	    "DB_Alarme".MLD[10].%X9 := "Pu_CM05.GP11_DB".Mld.n_Auto;
+	    "DB_Alarme".MLD[10].%X10 := "Pu_CL01.GP08".Mld.Leckage;
+	    "DB_Alarme".MLD[10].%X11 := "Pu_CL01.GP08".Mld.Niv_Sensorfehler;
+	    "DB_Alarme".MLD[10].%X12 := "Pu_CL01.GP08".Mld.n_Auto;
+	    "DB_Alarme".MLD[10].%X13 := FALSE;
+	    "DB_Alarme".MLD[10].%X14 := "Pu_CL02.GP09".Mld.Leckage;
+	    "DB_Alarme".MLD[10].%X15 := "Pu_CL02.GP09".Mld.Niv_Sensorfehler;
+	    
+	    "DB_Alarme".MLD[11].%X0 := "Pu_CL02.GP09".Mld.n_Auto;
+	    "DB_Alarme".MLD[11].%X1 := FALSE;
+	    "DB_Alarme".MLD[11].%X2 := "Pu_GP01.GP12".Mld.Leckage;
+	    "DB_Alarme".MLD[11].%X3 := "Pu_GP01.GP12".Mld.Niv_Sensorfehler;
+	    "DB_Alarme".MLD[11].%X4 := "Pu_GP01.GP12".Mld.n_Auto;
+	    "DB_Alarme".MLD[11].%X5 := FALSE;
+	    "DB_Alarme".MLD[11].%X6 := "Pu_GP02.GP07".Mld.Leckage;
+	    "DB_Alarme".MLD[11].%X7 := "Pu_GP02.GP07".Mld.Niv_Sensorfehler;
+	    "DB_Alarme".MLD[11].%X8 := "Pu_GP02.GP07".Mld.n_Auto;
+	    "DB_Alarme".MLD[11].%X9 := "Pu_GP02.GP10".Mld.Leckage_Doppelschlauch;
+	    "DB_Alarme".MLD[11].%X10 := "Pu_GP01.GP13".Mld.Leckage_Pumpe;
+	    "DB_Alarme".MLD[11].%X11 := "Pu_GP01.GP13".Mld.Leckage_PFA_Uebergang;
+	    "DB_Alarme".MLD[11].%X12 := "Pu_GP01.GP13".Mld.Leckage_Doppelrohr;
+	    "DB_Alarme".MLD[11].%X13 := "Pu_GP01.GP13".Mld.Leckage_Uml_Tunnel;
+	    "DB_Alarme".MLD[11].%X14 := "Pu_GP01.GP13".Mld.Niv_Sensorfehler;
+	    "DB_Alarme".MLD[11].%X15 := "Pu_GP01.GP13".Mld.GW_Dfl;
+	    
+	    "DB_Alarme".MLD[12].%X0 := "Pu_GP01.GP13".Mld.Leermeldung;
+	    "DB_Alarme".MLD[12].%X1 := "Pu_GP01.GP13".Mld.Vollmeldung;
+	    "DB_Alarme".MLD[12].%X2 := "Pu_GP01.GP13".Mld.n_Auto;
+	    "DB_Alarme".MLD[12].%X3 := "Pu_GP02.GP10".Mld.Leckage_Pumpe;
+	    "DB_Alarme".MLD[12].%X4 := "Pu_GP02.GP10".Mld.Leckage_PFA_Uebergang;
+	    "DB_Alarme".MLD[12].%X5 := NOT "E_LS_GP02.BL26";
+	    "DB_Alarme".MLD[12].%X6 := NOT "E_LS_GP02.BL33";
+	    "DB_Alarme".MLD[12].%X7 := "Pu_GP02.GP10".Mld.Niv_Sensorfehler;
+	    "DB_Alarme".MLD[12].%X8 := "Pu_GP02.GP10".Mld.GW_Dfl;
+	    "DB_Alarme".MLD[12].%X9 := "Pu_GP02.GP10".Mld.Leermeldung;
+	    "DB_Alarme".MLD[12].%X10 := "Pu_GP02.GP10".Mld.Vollmeldung;
+	    "DB_Alarme".MLD[12].%X11 := "Pu_GP02.GP10".Mld.n_Auto;
+	    "DB_Alarme".MLD[12].%X12 := "Pu_GP01.GP13".Mld.Radarsonde_niO;
+	    "DB_Alarme".MLD[12].%X13 := "Pu_GP02.GP10".Mld.Radarsonde_niO;
+	    "DB_Alarme".MLD[12].%X14 := "UP_CM01.GP02".Mld.GW_Dfl;
+	    "DB_Alarme".MLD[12].%X15 := "UP_CM02.GP05".Mld.GW_Dfl;
+	    
+	    "DB_Alarme".MLD[13].%X0 := "Ventil_Stati_DB".Mld."TO_auf_CM01.QM18";
+	    "DB_Alarme".MLD[13].%X1 := "Ventil_Stati_DB".Mld."TO_zu_CM01.QM18";
+	    "DB_Alarme".MLD[13].%X2 := "Ventil_Stati_DB".Mld."SF_CM01.QM18";
+	    "DB_Alarme".MLD[13].%X3 := "Ventil_Stati_DB".Mld."TO_auf_CM01.QM19";
+	    "DB_Alarme".MLD[13].%X4 := "Ventil_Stati_DB".Mld."TO_zu_CM01.QM19";
+	    "DB_Alarme".MLD[13].%X5 := "Ventil_Stati_DB".Mld."SF_CM01.QM19";
+	    "DB_Alarme".MLD[13].%X6 := "Ventil_Stati_DB".Mld."TO_auf_CM01.QM20";
+	    "DB_Alarme".MLD[13].%X7 := "Ventil_Stati_DB".Mld."TO_zu_CM01.QM20";
+	    "DB_Alarme".MLD[13].%X8 := "Ventil_Stati_DB".Mld."SF_CM01.QM20";
+	    "DB_Alarme".MLD[13].%X9 := "Ventil_Stati_DB".Mld."TO_auf_CM01.QM25";
+	    "DB_Alarme".MLD[13].%X10 := "Ventil_Stati_DB".Mld."TO_zu_CM01.QM25";
+	    "DB_Alarme".MLD[13].%X11 := "Ventil_Stati_DB".Mld."SF_CM01.QM25";
+	    "DB_Alarme".MLD[13].%X12 := "Ventil_Stati_DB".Mld."TO_auf_CM01.QM26";
+	    "DB_Alarme".MLD[13].%X13 := "Ventil_Stati_DB".Mld."TO_zu_CM01.QM26";
+	    "DB_Alarme".MLD[13].%X14 := "Ventil_Stati_DB".Mld."SF_CM01.QM26";
+	    "DB_Alarme".MLD[13].%X15 := "Ventil_Stati_DB".Mld."TO_auf_CM01.QM27";
+	    
+	    "DB_Alarme".MLD[14].%X0 := "Ventil_Stati_DB".Mld."TO_zu_CM01.QM27";
+	    "DB_Alarme".MLD[14].%X1 := "Ventil_Stati_DB".Mld."SF_CM01.QM27";
+	    "DB_Alarme".MLD[14].%X2 := "Ventil_Stati_DB".Mld."TO_auf_CM02.QM55";
+	    "DB_Alarme".MLD[14].%X3 := "Ventil_Stati_DB".Mld."TO_zu_CM02.QM55";
+	    "DB_Alarme".MLD[14].%X4 := "Ventil_Stati_DB".Mld."SF_CM02.QM55";
+	    "DB_Alarme".MLD[14].%X5 := "Ventil_Stati_DB".Mld."TO_auf_CM02.QM56";
+	    "DB_Alarme".MLD[14].%X6 := "Ventil_Stati_DB".Mld."TO_zu_CM02.QM56";
+	    "DB_Alarme".MLD[14].%X7 := "Ventil_Stati_DB".Mld."SF_CM02.QM56";
+	    "DB_Alarme".MLD[14].%X8 := "Ventil_Stati_DB".Mld."TO_auf_CM02.QM57";
+	    "DB_Alarme".MLD[14].%X9 := "Ventil_Stati_DB".Mld."TO_zu_CM02.QM57";
+	    "DB_Alarme".MLD[14].%X10 := "Ventil_Stati_DB".Mld."SF_CM02.QM57";
+	    "DB_Alarme".MLD[14].%X11 := "Ventil_Stati_DB".Mld."TO_auf_CM02.QM62";
+	    "DB_Alarme".MLD[14].%X12 := "Ventil_Stati_DB".Mld."TO_zu_CM02.QM62";
+	    "DB_Alarme".MLD[14].%X13 := "Ventil_Stati_DB".Mld."SF_CM02.QM62";
+	    "DB_Alarme".MLD[14].%X14 := "Ventil_Stati_DB".Mld."TO_auf_CM02.QM63";
+	    "DB_Alarme".MLD[14].%X15 := "Ventil_Stati_DB".Mld."TO_zu_CM02.QM63";
+	    
+	    "DB_Alarme".MLD[15].%X0 := "Ventil_Stati_DB".Mld."SF_CM02.QM63";
+	    "DB_Alarme".MLD[15].%X1 := "Ventil_Stati_DB".Mld."TO_auf_CM02.QM64";
+	    "DB_Alarme".MLD[15].%X2 := "Ventil_Stati_DB".Mld."TO_zu_CM02.QM64";
+	    "DB_Alarme".MLD[15].%X3 := "Ventil_Stati_DB".Mld."SF_CM02.QM64";
+	    "DB_Alarme".MLD[15].%X4 := "Ventil_Stati_DB".Mld."TO_auf_HQ01.QM21";
+	    "DB_Alarme".MLD[15].%X5 := "Ventil_Stati_DB".Mld."TO_zu_HQ01.QM21";
+	    "DB_Alarme".MLD[15].%X6 := "Ventil_Stati_DB".Mld."SF_HQ01.QM21";
+	    "DB_Alarme".MLD[15].%X7 := "Ventil_Stati_DB".Mld."TO_auf_HQ01.QM22";
+	    "DB_Alarme".MLD[15].%X8 := "Ventil_Stati_DB".Mld."TO_zu_HQ01.QM22";
+	    "DB_Alarme".MLD[15].%X9 := "Ventil_Stati_DB".Mld."SF_HQ01.QM22";
+	    "DB_Alarme".MLD[15].%X10 := "Ventil_Stati_DB".Mld."TO_auf_HQ01.QM23";
+	    "DB_Alarme".MLD[15].%X11 := "Ventil_Stati_DB".Mld."TO_zu_HQ01.QM23";
+	    "DB_Alarme".MLD[15].%X12 := "Ventil_Stati_DB".Mld."SF_HQ01.QM23";
+	    "DB_Alarme".MLD[15].%X13 := "Ventil_Stati_DB".Mld."TO_auf_HQ01.QM24";
+	    "DB_Alarme".MLD[15].%X14 := "Ventil_Stati_DB".Mld."TO_zu_HQ01.QM24";
+	    "DB_Alarme".MLD[15].%X15 := "Ventil_Stati_DB".Mld."SF_HQ01.QM24";
+	    
+	    "DB_Alarme".MLD[16].%X0 := "Ventil_Stati_DB".Mld."TO_auf_HQ01.LV01";
+	    "DB_Alarme".MLD[16].%X1 := "Ventil_Stati_DB".Mld."TO_zu_HQ01.LV01";
+	    "DB_Alarme".MLD[16].%X2 := "Ventil_Stati_DB".Mld."SF_HQ01.LV01";
+	    "DB_Alarme".MLD[16].%X3 := "Ventil_Stati_DB".Mld."TO_auf_HQ02.QM58";
+	    "DB_Alarme".MLD[16].%X4 := "Ventil_Stati_DB".Mld."TO_zu_HQ02.QM58";
+	    "DB_Alarme".MLD[16].%X5 := "Ventil_Stati_DB".Mld."SF_HQ02.QM58";
+	    "DB_Alarme".MLD[16].%X6 := "Ventil_Stati_DB".Mld."TO_auf_HQ02.QM59";
+	    "DB_Alarme".MLD[16].%X7 := "Ventil_Stati_DB".Mld."TO_zu_HQ02.QM59";
+	    "DB_Alarme".MLD[16].%X8 := "Ventil_Stati_DB".Mld."SF_HQ02.QM59";
+	    "DB_Alarme".MLD[16].%X9 := "Ventil_Stati_DB".Mld."TO_auf_HQ02.QM60";
+	    "DB_Alarme".MLD[16].%X10 := "Ventil_Stati_DB".Mld."TO_zu_HQ02.QM60";
+	    "DB_Alarme".MLD[16].%X11 := "Ventil_Stati_DB".Mld."SF_HQ02.QM60";
+	    "DB_Alarme".MLD[16].%X12 := "Ventil_Stati_DB".Mld."TO_auf_HQ02.QM61";
+	    "DB_Alarme".MLD[16].%X13 := "Ventil_Stati_DB".Mld."TO_zu_HQ02.QM61";
+	    "DB_Alarme".MLD[16].%X14 := "Ventil_Stati_DB".Mld."SF_HQ02.QM61";
+	    "DB_Alarme".MLD[16].%X15 := "Ventil_Stati_DB".Mld."TO_auf_HQ02.LV02";
+	    
+	    "DB_Alarme".MLD[17].%X0 := "Ventil_Stati_DB".Mld."TO_zu_HQ02.LV02";
+	    "DB_Alarme".MLD[17].%X1 := "Ventil_Stati_DB".Mld."SF_HQ02.LV02";
+	    "DB_Alarme".MLD[17].%X2 := "Ventil_Stati_DB".Mld."TO_auf_CM03.QM33";
+	    "DB_Alarme".MLD[17].%X3 := "Ventil_Stati_DB".Mld."TO_zu_CM03.QM33";
+	    "DB_Alarme".MLD[17].%X4 := "Ventil_Stati_DB".Mld."SF_CM03.QM33";
+	    "DB_Alarme".MLD[17].%X5 := "Ventil_Stati_DB".Mld."TO_auf_CM03.QM34";
+	    "DB_Alarme".MLD[17].%X6 := "Ventil_Stati_DB".Mld."TO_zu_CM03.QM34";
+	    "DB_Alarme".MLD[17].%X7 := "Ventil_Stati_DB".Mld."SF_CM03.QM34";
+	    "DB_Alarme".MLD[17].%X8 := "Ventil_Stati_DB".Mld."TO_auf_CM04.QM72";
+	    "DB_Alarme".MLD[17].%X9 := "Ventil_Stati_DB".Mld."TO_zu_CM04.QM72";
+	    "DB_Alarme".MLD[17].%X10 := "Ventil_Stati_DB".Mld."SF_CM04.QM72";
+	    "DB_Alarme".MLD[17].%X11 := "Ventil_Stati_DB".Mld."TO_auf_CM04.QM73";
+	    "DB_Alarme".MLD[17].%X12 := "Ventil_Stati_DB".Mld."TO_zu_CM04.QM73";
+	    "DB_Alarme".MLD[17].%X13 := "Ventil_Stati_DB".Mld."SF_CM04.QM73";
+	    "DB_Alarme".MLD[17].%X14 := "Ventil_Stati_DB".Mld."TO_auf_CM05.QM61";
+	    "DB_Alarme".MLD[17].%X15 := "Ventil_Stati_DB".Mld."TO_zu_CM05.QM61";
+	    
+	    "DB_Alarme".MLD[18].%X0 := "Ventil_Stati_DB".Mld."SF_CM05.QM61";
+	    "DB_Alarme".MLD[18].%X1 := "Ventil_Stati_DB".Mld."TO_auf_CM05.QM64";
+	    "DB_Alarme".MLD[18].%X2 := "Ventil_Stati_DB".Mld."TO_zu_CM05.QM64";
+	    "DB_Alarme".MLD[18].%X3 := "Ventil_Stati_DB".Mld."SF_CM05.QM64";
+	    "DB_Alarme".MLD[18].%X4 := "Ventil_Stati_DB".Mld."TO_auf_GP01.QM15";
+	    "DB_Alarme".MLD[18].%X5 := "Ventil_Stati_DB".Mld."TO_zu_GP01.QM15";
+	    "DB_Alarme".MLD[18].%X6 := "Ventil_Stati_DB".Mld."SF_GP01.QM15";
+	    "DB_Alarme".MLD[18].%X7 := "Ventil_Stati_DB".Mld."TO_auf_GP01.QM16";
+	    "DB_Alarme".MLD[18].%X8 := "Ventil_Stati_DB".Mld."TO_zu_GP01.QM16";
+	    "DB_Alarme".MLD[18].%X9 := "Ventil_Stati_DB".Mld."SF_GP01.QM16";
+	    "DB_Alarme".MLD[18].%X10 := "Ventil_Stati_DB".Mld."TO_auf_GP01.QM17";
+	    "DB_Alarme".MLD[18].%X11 := "Ventil_Stati_DB".Mld."TO_zu_GP01.QM17";
+	    "DB_Alarme".MLD[18].%X12 := "Ventil_Stati_DB".Mld."SF_GP01.QM17";
+	    "DB_Alarme".MLD[18].%X13 := "Ventil_Stati_DB".Mld."TO_auf_GP01.QM18";
+	    "DB_Alarme".MLD[18].%X14 := "Ventil_Stati_DB".Mld."TO_zu_GP01.QM18";
+	    "DB_Alarme".MLD[18].%X15 := "Ventil_Stati_DB".Mld."SF_GP01.QM18";
+	    
+	    "DB_Alarme".MLD[19].%X0 := "Ventil_Stati_DB".Mld."TO_auf_GP01.QM19";
+	    "DB_Alarme".MLD[19].%X1 := "Ventil_Stati_DB".Mld."TO_zu_GP01.QM19";
+	    "DB_Alarme".MLD[19].%X2 := "Ventil_Stati_DB".Mld."SF_GP01.QM19";
+	    "DB_Alarme".MLD[19].%X3 := "Ventil_Stati_DB".Mld."TO_auf_GP01.QM20";
+	    "DB_Alarme".MLD[19].%X4 := "Ventil_Stati_DB".Mld."TO_zu_GP01.QM20";
+	    "DB_Alarme".MLD[19].%X5 := "Ventil_Stati_DB".Mld."SF_GP01.QM20";
+	    "DB_Alarme".MLD[19].%X6 := "Ventil_Stati_DB".Mld."TO_auf_GP01.QM21";
+	    "DB_Alarme".MLD[19].%X7 := "Ventil_Stati_DB".Mld."TO_zu_GP01.QM21";
+	    "DB_Alarme".MLD[19].%X8 := "Ventil_Stati_DB".Mld."SF_GP01.QM21";
+	    "DB_Alarme".MLD[19].%X9 := "Ventil_Stati_DB".Mld."TO_auf_GP01.QM22";
+	    "DB_Alarme".MLD[19].%X10 := "Ventil_Stati_DB".Mld."TO_zu_GP01.QM22";
+	    "DB_Alarme".MLD[19].%X11 := "Ventil_Stati_DB".Mld."SF_GP01.QM22";
+	    "DB_Alarme".MLD[19].%X12 := "Ventil_Stati_DB".Mld."TO_auf_GP02.QM38";
+	    "DB_Alarme".MLD[19].%X13 := "Ventil_Stati_DB".Mld."TO_zu_GP02.QM38";
+	    "DB_Alarme".MLD[19].%X14 := "Ventil_Stati_DB".Mld."SF_GP02.QM38";
+	    "DB_Alarme".MLD[19].%X15 := "Ventil_Stati_DB".Mld."TO_auf_GP02.QM39";
+	    
+	    "DB_Alarme".MLD[20].%X0 := "Ventil_Stati_DB".Mld."TO_zu_GP02.QM39";
+	    "DB_Alarme".MLD[20].%X1 := "Ventil_Stati_DB".Mld."SF_GP02.QM39";
+	    "DB_Alarme".MLD[20].%X2 := "Ventil_Stati_DB".Mld."TO_auf_GP02.QM40";
+	    "DB_Alarme".MLD[20].%X3 := "Ventil_Stati_DB".Mld."TO_zu_GP02.QM40";
+	    "DB_Alarme".MLD[20].%X4 := "Ventil_Stati_DB".Mld."SF_GP02.QM40";
+	    "DB_Alarme".MLD[20].%X5 := "Ventil_Stati_DB".Mld."TO_auf_GP02.QM41";
+	    "DB_Alarme".MLD[20].%X6 := "Ventil_Stati_DB".Mld."TO_zu_GP02.QM41";
+	    "DB_Alarme".MLD[20].%X7 := "Ventil_Stati_DB".Mld."SF_GP02.QM41";
+	    "DB_Alarme".MLD[20].%X8 := "Ventil_Stati_DB".Mld."TO_auf_GP02.QM42";
+	    "DB_Alarme".MLD[20].%X9 := "Ventil_Stati_DB".Mld."TO_zu_GP02.QM42";
+	    "DB_Alarme".MLD[20].%X10 := "Ventil_Stati_DB".Mld."SF_GP02.QM42";
+	    "DB_Alarme".MLD[20].%X11 := "Ventil_Stati_DB".Mld."TO_auf_GP02.QM43";
+	    "DB_Alarme".MLD[20].%X12 := "Ventil_Stati_DB".Mld."TO_zu_GP02.QM43";
+	    "DB_Alarme".MLD[20].%X13 := "Ventil_Stati_DB".Mld."SF_GP02.QM43";
+	    "DB_Alarme".MLD[20].%X14 := "Ventil_Stati_DB".Mld."TO_auf_GP02.QM44";
+	    "DB_Alarme".MLD[20].%X15 := "Ventil_Stati_DB".Mld."TO_zu_GP02.QM44";
+	    
+	    "DB_Alarme".MLD[21].%X0 := "Ventil_Stati_DB".Mld."SF_GP02.QM44";
+	    "DB_Alarme".MLD[21].%X1 := "Ventil_Stati_DB".Mld."TO_auf_GP02.QM45";
+	    "DB_Alarme".MLD[21].%X2 := "Ventil_Stati_DB".Mld."TO_zu_GP02.QM45";
+	    "DB_Alarme".MLD[21].%X3 := "Ventil_Stati_DB".Mld."SF_GP02.QM45";
+	    "DB_Alarme".MLD[21].%X4 := "Ventil_Stati_DB".Mld."TO_auf_GP02.QM46";
+	    "DB_Alarme".MLD[21].%X5 := "Ventil_Stati_DB".Mld."TO_zu_GP02.QM46";
+	    "DB_Alarme".MLD[21].%X6 := "Ventil_Stati_DB".Mld."SF_GP02.QM46";
+	    "DB_Alarme".MLD[21].%X7 := "Ventil_Stati_DB".Mld."TO_auf_GP01.QM14";
+	    "DB_Alarme".MLD[21].%X8 := "Ventil_Stati_DB".Mld."TO_zu_GP01.QM14";
+	    "DB_Alarme".MLD[21].%X9 := "Ventil_Stati_DB".Mld."SF_GP01.QM14";
+	    "DB_Alarme".MLD[21].%X10 := "FP_CM01.GP01".Mld.Drucktest_Filter_ok;
+	    "DB_Alarme".MLD[21].%X11 := "FP_CM01.GP01".Mld.Drucktest_Filter_Fehler;
+	    "DB_Alarme".MLD[21].%X12 := "FP_CM02.GP04".Mld.Drucktest_Filter_ok;
+	    "DB_Alarme".MLD[21].%X13 := "FP_CM02.GP04".Mld.Drucktest_Filter_Fehler;
+	    "DB_Alarme".MLD[21].%X14 := "FP_CM01.GP01".Mld.Drucktest_Filter_erfordert;
+	    "DB_Alarme".MLD[21].%X15 := "FP_CM02.GP04".Mld.Drucktest_Filter_erfordert;
+	    
+	    "DB_Alarme".MLD[22].%X0 := "DI_FW_1".MLD.Alarm_HW.PosSys;
+	    "DB_Alarme".MLD[22].%X1 := "DI_FW_1".MLD.Alarm_HW.BE_rck;
+	    "DB_Alarme".MLD[22].%X2 := "DI_FW_1".MLD.Alarm_HW.BE_vor;
+	    "DB_Alarme".MLD[22].%X3 := "DI_FW_1".MLD.Alarm_HW.HubSys_li;
+	    "DB_Alarme".MLD[22].%X4 := "DI_FW_1".MLD.Alarm_HW.HubSys_re;
+	    "DB_Alarme".MLD[22].%X5 := "DI_FW_1".MLD.Alarm_HW.GE_oben_li;
+	    "DB_Alarme".MLD[22].%X6 := "DI_FW_1".MLD.Alarm_HW.GE_unten_li;
+	    "DB_Alarme".MLD[22].%X7 := "DI_FW_1".MLD.Alarm_HW.GE_oben_re;
+	    "DB_Alarme".MLD[22].%X8 := "DI_FW_1".MLD.Alarm_HW.GE_unten_re;
+	    "DB_Alarme".MLD[22].%X9 := "DI_FW_1".MLD.Alarm_HW.Koll_LF;
+	    "DB_Alarme".MLD[22].%X10 := "DI_FW_1".MLD.Alarm_HW.Koll_WF;
+	    "DB_Alarme".MLD[22].%X11 := "DI_FW_1".MLD.Alarm_HW.Afs_BS;
+	    "DB_Alarme".MLD[22].%X12 := "DI_FW_1".MLD.Alarm_HW.Afs_WS;
+	    "DB_Alarme".MLD[22].%X13 := "DI_FW_1".MLD.Alarm_HW.GurtUeL_li;
+	    "DB_Alarme".MLD[22].%X14 := "DI_FW_1".MLD.Alarm_HW.GurtUeL_re;
+	    "DB_Alarme".MLD[22].%X15 := "DI_FW_1".MLD.Alarm_HW.St_FU_Fahrt;
+	    
+	    "DB_Alarme".MLD[23].%X0 := "DI_FW_1".MLD.Alarm_HW.F_Brk_Hub_li;
+	    "DB_Alarme".MLD[23].%X1 := "DI_FW_1".MLD.Alarm_HW.F_Brk_Hub_re;
+	    "DB_Alarme".MLD[23].%X2 := "DI_FW_1".MLD.Alarm_HW.F_Brk_Fahr;
+	    "DB_Alarme".MLD[23].%X3 := "DI_FW_1".MLD.Alarm_HW.St_FU_Hub_li;
+	    "DB_Alarme".MLD[23].%X4 := "DI_FW_1".MLD.Alarm_HW.St_FU_Hub_re;
+	    "DB_Alarme".MLD[23].%X5 := "DI_FW_1".MLD.Alarm_HW.Last_UeW_li;
+	    "DB_Alarme".MLD[23].%X6 := "DI_FW_1".MLD.Alarm_HW.Last_UeW_re;
+	    "DB_Alarme".MLD[23].%X7 := "DI_FW_1".MLD.Alarm_HW.Temp_Fahrt;
+	    "DB_Alarme".MLD[23].%X8 := "DI_FW_1".MLD.Alarm_HW.Temp_Hub;
+	    "DB_Alarme".MLD[23].%X9 := "DI_FW_1".MLD.Alarm_HW.Laser_TF;
+	    "DB_Alarme".MLD[23].%X10 := "DI_FW_1".MLD.Alarm_HW.Laser_PL;
+	    "DB_Alarme".MLD[23].%X11 := "DI_FW_1".MLD.Alarm_HW.Profinet_nok;
+	    "DB_Alarme".MLD[23].%X12 := "DI_FW_1".MLD.Alarm_HW.res_1;
+	    "DB_Alarme".MLD[23].%X13 := "DI_FW_1".MLD.Alarm_HW.res_2;
+	    "DB_Alarme".MLD[23].%X14 := "DI_FW_1".MLD.Alarm_HW.res_3;
+	    "DB_Alarme".MLD[23].%X15 := "DI_FW_1".MLD.Alarm_HW.res_4;
+	    
+	    "DB_Alarme".MLD[24].%X0 := "DI_FW_1".MLD.Alarm_SW.Fehler_Quitt;
+	    "DB_Alarme".MLD[24].%X1 := "DI_FW_1".MLD.Alarm_SW.BA_ungueltig;
+	    "DB_Alarme".MLD[24].%X2 := "DI_FW_1".MLD.Alarm_SW.ProgErr;
+	    "DB_Alarme".MLD[24].%X3 := "DI_FW_1".MLD.Alarm_SW.nReferenz;
+	    "DB_Alarme".MLD[24].%X4 := "DI_FW_1".MLD.Alarm_SW.NotStop;
+	    "DB_Alarme".MLD[24].%X5 := "DI_FW_1".MLD.Alarm_SW.Laser_off;
+	    "DB_Alarme".MLD[24].%X6 := "DI_FW_1".MLD.Alarm_SW.TO_Fahrt;
+	    "DB_Alarme".MLD[24].%X7 := "DI_FW_1".MLD.Alarm_SW.Auto_SU;
+	    "DB_Alarme".MLD[24].%X8 := "DI_FW_1".MLD.Alarm_SW.Auto_WT;
+	    "DB_Alarme".MLD[24].%X9 := "DI_FW_1".MLD.Alarm_SW.WT_change;
+	    "DB_Alarme".MLD[24].%X10 := "DI_FW_1".MLD.Alarm_SW.Hub_not_mittig_li;
+	    "DB_Alarme".MLD[24].%X11 := "DI_FW_1".MLD.Alarm_SW.Hub_nen_li;
+	    "DB_Alarme".MLD[24].%X12 := "DI_FW_1".MLD.Alarm_SW.TO_Hub_li;
+	    "DB_Alarme".MLD[24].%X13 := "DI_FW_1".MLD.Alarm_SW.Senken_WT_li;
+	    "DB_Alarme".MLD[24].%X14 := "DI_FW_1".MLD.Alarm_SW.Senken_Sperre_li;
+	    "DB_Alarme".MLD[24].%X15 := "DI_FW_1".MLD.Alarm_SW.Heben_WT_li;
+	    
+	    "DB_Alarme".MLD[25].%X0 := "DI_FW_1".MLD.Alarm_SW.SO_fehlt_li;
+	    "DB_Alarme".MLD[25].%X1 := "DI_FW_1".MLD.Alarm_SW.SU_fehlt_li;
+	    "DB_Alarme".MLD[25].%X2 := "DI_FW_1".MLD.Alarm_SW.PosTyp_WT_Typ_li;
+	    "DB_Alarme".MLD[25].%X3 := "DI_FW_1".MLD.Alarm_SW.WTon_bei_SU_li;
+	    "DB_Alarme".MLD[25].%X4 := "DI_FW_1".MLD.Alarm_SW.TO_Hub_re;
+	    "DB_Alarme".MLD[25].%X5 := "DI_FW_1".MLD.Alarm_SW.Senken_WT_re;
+	    "DB_Alarme".MLD[25].%X6 := "DI_FW_1".MLD.Alarm_SW.Senken_Sperre_re;
+	    "DB_Alarme".MLD[25].%X7 := "DI_FW_1".MLD.Alarm_SW.Heben_WT_re;
+	    "DB_Alarme".MLD[25].%X8 := "DI_FW_1".MLD.Alarm_SW.SO_fehlt_re;
+	    "DB_Alarme".MLD[25].%X9 := "DI_FW_1".MLD.Alarm_SW.SU_fehlt_re;
+	    "DB_Alarme".MLD[25].%X10 := "DI_FW_1".MLD.Alarm_SW.PosTyp_WT_Typ_re;
+	    "DB_Alarme".MLD[25].%X11 := "DI_FW_1".MLD.Alarm_SW.WTon_bei_SU_re;
+	    "DB_Alarme".MLD[25].%X12 := "DI_FW_1".MLD.Alarm_SW.Hub_not_mittig_re;
+	    "DB_Alarme".MLD[25].%X13 := "DI_FW_1".MLD.Alarm_SW.Hub_nen_re;
+	    "DB_Alarme".MLD[25].%X14 := "DI_FW_1".MLD.Alarm_SW.ALSW_31;
+	    "DB_Alarme".MLD[25].%X15 := "DI_FW_1".MLD.Alarm_SW.TO_Befehl;
+	    
+	    "DB_Alarme".MLD[26].%X0 := "DI_FW_1".MLD.Warnung.Optik_PosSys;
+	    "DB_Alarme".MLD[26].%X1 := "DI_FW_1".MLD.Warnung.Temp_PosSys;
+	    "DB_Alarme".MLD[26].%X2 := "DI_FW_1".MLD.Warnung.Temp_Fahrt;
+	    "DB_Alarme".MLD[26].%X3 := "DI_FW_1".MLD.Warnung.Temp_Hub;
+	    "DB_Alarme".MLD[26].%X4 := "DI_FW_1".MLD.Warnung.LSA;
+	    "DB_Alarme".MLD[26].%X5 := "DI_FW_1".MLD.Warnung.Bh0;
+	    "DB_Alarme".MLD[26].%X6 := "DI_FW_1".MLD.Warnung.Bh100;
+	    "DB_Alarme".MLD[26].%X7 := "DI_FW_1".MLD.Warnung.Bh1000;
+	    "DB_Alarme".MLD[26].%X8 := "DI_FW_1".MLD.Warnung.Wrn_Plaus_PosSys;
+	    "DB_Alarme".MLD[26].%X9 := "DI_FW_1".MLD.Warnung.Wrn_WZ_niO_li_1;
+	    "DB_Alarme".MLD[26].%X10 := "DI_FW_1".MLD.Warnung.Wrn_WZ_niO_li_2;
+	    "DB_Alarme".MLD[26].%X11 := "DI_FW_1".MLD.Warnung.Wrn_WZ_niO_li_3;
+	    "DB_Alarme".MLD[26].%X12 := "DI_FW_1".MLD.Warnung.Wrn_WZ_niO_li_4;
+	    "DB_Alarme".MLD[26].%X13 := "DI_FW_1".MLD.Warnung.Wrn_WZ_niO_re_1;
+	    "DB_Alarme".MLD[26].%X14 := "DI_FW_1".MLD.Warnung.Wrn_WZ_niO_re_2;
+	    "DB_Alarme".MLD[26].%X15 := "DI_FW_1".MLD.Warnung.Wrn_WZ_niO_re_3;
+	    
+	    "DB_Alarme".MLD[27].%X0 := "DI_FW_1".MLD.Warnung.Wrn_WZ_niO_re_4;
+	    "DB_Alarme".MLD[27].%X1 := "DI_FW_1".MLD.Warnung.WARN_18;
+	    "DB_Alarme".MLD[27].%X2 := "DI_FW_1".MLD.Warnung.WARN_19;
+	    "DB_Alarme".MLD[27].%X3 := "DI_FW_1".MLD.Warnung.WARN_20;
+	    "DB_Alarme".MLD[27].%X4 := "DI_FW_1".MLD.Warnung.WARN_21;
+	    "DB_Alarme".MLD[27].%X5 := "DI_FW_1".MLD.Warnung.WARN_22;
+	    "DB_Alarme".MLD[27].%X6 := "DI_FW_1".MLD.Warnung.WARN_23;
+	    "DB_Alarme".MLD[27].%X7 := "DI_FW_1".MLD.Warnung.WARN_24;
+	    "DB_Alarme".MLD[27].%X8 := "DI_FW_1".MLD.Warnung.WARN_25;
+	    "DB_Alarme".MLD[27].%X9 := "DI_FW_1".MLD.Warnung.WARN_26;
+	    "DB_Alarme".MLD[27].%X10 := "DI_FW_1".MLD.Warnung.WARN_27;
+	    "DB_Alarme".MLD[27].%X11 := "DI_FW_1".MLD.Warnung.WARN_28;
+	    "DB_Alarme".MLD[27].%X12 := "DI_FW_1".MLD.Warnung.WARN_29;
+	    "DB_Alarme".MLD[27].%X13 := "DI_FW_1".MLD.Warnung.WARN_30;
+	    "DB_Alarme".MLD[27].%X14 := "DI_FW_1".MLD.Warnung.WARN_WT_nUms;
+	    "DB_Alarme".MLD[27].%X15 := "DI_FW_1".MLD.Warnung.WARN_nAuto;
+	    
+	    "DB_Alarme".MLD[28].%X0 := "DI_QF_WR02_03".Mld.TO_WR02;
+	    "DB_Alarme".MLD[28].%X1 := "DI_QF_WR02_03".Mld.TO_WR03;
+	    "DB_Alarme".MLD[28].%X2 := "DI_QF_WR02_03".Mld.St_FU_WR02;
+	    "DB_Alarme".MLD[28].%X3 := "DI_QF_WR02_03".Mld.St_FU_WR03;
+	    "DB_Alarme".MLD[28].%X4 := "DI_QF_WR02_03".Mld.FU_nichtbereit_WR02;
+	    "DB_Alarme".MLD[28].%X5 := "DI_QF_WR02_03".Mld.FU_nichtbereit_WR03;
+	    "DB_Alarme".MLD[28].%X6 := "DI_QF_WR02_03".Mld.SF_WR02;
+	    "DB_Alarme".MLD[28].%X7 := "DI_QF_WR02_03".Mld.SF_WR03;
+	    "DB_Alarme".MLD[28].%X8 := FALSE;
+	    "DB_Alarme".MLD[28].%X9 := "FP_CM01.GP01".Mld.Pu_Spuelen_Fertig;
+	    "DB_Alarme".MLD[28].%X10 := "FP_CM02.GP04".Mld.Pu_Spuelen_Fertig;
+	    "DB_Alarme".MLD[28].%X11 := "UP_CM01.GP02".Mld.Pu_Spuelen_Fertig;
+	    "DB_Alarme".MLD[28].%X12 := "UP_CM02.GP05".Mld.Pu_Spuelen_Fertig;
+	    "DB_Alarme".MLD[28].%X13 := "UP_CM03.GP03".Mld.Pu_Spuelen_Fertig;
+	    "DB_Alarme".MLD[28].%X14 := "UP_CM04.GP06".Mld.Pu_Spuelen_Fertig;
+	    "DB_Alarme".MLD[28].%X15 := "Pu_CM05.GP11_DB".Mld.Pu_Spuelen_Fertig;
+	    
+	    "DB_Alarme".MLD[29].%X0 := "DB_Korbumlaeufe".Korb[1].Warnung;
+	    "DB_Alarme".MLD[29].%X1 := "DB_Korbumlaeufe".Korb[1].max_erreicht;
+	    "DB_Alarme".MLD[29].%X2 := "DB_Korbumlaeufe".Korb[2].Warnung;
+	    "DB_Alarme".MLD[29].%X3 := "DB_Korbumlaeufe".Korb[2].max_erreicht;
+	    "DB_Alarme".MLD[29].%X4 := "DB_Korbumlaeufe".Korb[3].Warnung;
+	    "DB_Alarme".MLD[29].%X5 := "DB_Korbumlaeufe".Korb[3].max_erreicht;
+	    "DB_Alarme".MLD[29].%X6 := "DB_Korbumlaeufe".Korb[4].Warnung;
+	    "DB_Alarme".MLD[29].%X7 := "DB_Korbumlaeufe".Korb[4].max_erreicht;
+	    "DB_Alarme".MLD[29].%X8 := "DB_Korbumlaeufe".Korb[5].Warnung;
+	    "DB_Alarme".MLD[29].%X9 := "DB_Korbumlaeufe".Korb[5].max_erreicht;
+	    "DB_Alarme".MLD[29].%X10 := "DB_Korbumlaeufe".Korb[6].Warnung;
+	    "DB_Alarme".MLD[29].%X11 := "DB_Korbumlaeufe".Korb[6].max_erreicht;
+	    "DB_Alarme".MLD[29].%X12 := "DB_Korbumlaeufe".Korb[7].Warnung;
+	    "DB_Alarme".MLD[29].%X13 := "DB_Korbumlaeufe".Korb[7].max_erreicht;
+	    "DB_Alarme".MLD[29].%X14 := "DB_Korbumlaeufe".Korb[8].Warnung;
+	    "DB_Alarme".MLD[29].%X15 := "DB_Korbumlaeufe".Korb[8].max_erreicht;
+	        
+	    "DB_Alarme".MLD[30].%X0 := "DB_Korbumlaeufe".Korb[9].Warnung;
+	    "DB_Alarme".MLD[30].%X1 := "DB_Korbumlaeufe".Korb[9].max_erreicht;
+	    "DB_Alarme".MLD[30].%X2 := "DB_Korbumlaeufe".Korb[10].Warnung;
+	    "DB_Alarme".MLD[30].%X3 := "DB_Korbumlaeufe".Korb[10].max_erreicht;
+	    "DB_Alarme".MLD[30].%X4 := "DB_Korbumlaeufe".Korb[11].Warnung;
+	    "DB_Alarme".MLD[30].%X5 := "DB_Korbumlaeufe".Korb[11].max_erreicht;
+	    "DB_Alarme".MLD[30].%X6 := "DB_Korbumlaeufe".Korb[12].Warnung;
+	    "DB_Alarme".MLD[30].%X7 := "DB_Korbumlaeufe".Korb[12].max_erreicht;
+	    "DB_Alarme".MLD[30].%X8 := "DB_Korbumlaeufe".Korb[13].Warnung;
+	    "DB_Alarme".MLD[30].%X9 := "DB_Korbumlaeufe".Korb[13].max_erreicht;
+	    "DB_Alarme".MLD[30].%X10 := "FP_CM01.GP01".Mld.Filterbeutel_Wechsel_Vorwarngrenze;
+	    "DB_Alarme".MLD[30].%X11 := "FP_CM01.GP01".Mld.Filterbeutel_Wechsel_notwendig;
+	    "DB_Alarme".MLD[30].%X12 := "FP_CM02.GP04".Mld.Filterbeutel_Wechsel_Vorwarngrenze;
+	    "DB_Alarme".MLD[30].%X13 := "FP_CM02.GP04".Mld.Filterbeutel_Wechsel_notwendig;
+	    "DB_Alarme".MLD[30].%X14 :=  "Pu_GP01.GP13".Mld.UeW_Dfl_Dos;
+	    "DB_Alarme".MLD[30].%X15 := "Pu_GP02.GP10".Mld.UeW_Dfl_Dos;
+	    
+	    "DB_Alarme".MLD[31].%X0 := "FP_CM01.GP01".Mld.Drucktest_Pumpe_ok;
+	    "DB_Alarme".MLD[31].%X1 := "FP_CM01.GP01".Mld.Drucktest_Pumpe_Fehler;
+	    "DB_Alarme".MLD[31].%X2 := "FP_CM02.GP04".Mld.Drucktest_Pumpe_ok;
+	    "DB_Alarme".MLD[31].%X3 := "FP_CM02.GP04".Mld.Drucktest_Pumpe_Fehler;
+	    "DB_Alarme".MLD[31].%X4 := "UP_CM01.GP02".Mld.Drucktest_ok;
+	    "DB_Alarme".MLD[31].%X5 := "UP_CM01.GP02".Mld.DT_Fehler;
+	    "DB_Alarme".MLD[31].%X6 := "UP_CM02.GP05".Mld.Drucktest_ok;
+	    "DB_Alarme".MLD[31].%X7 := "UP_CM02.GP05".Mld.DT_Fehler;
+	    "DB_Alarme".MLD[31].%X8 := "UP_CM03.GP03".Mld.Drucktest_ok;
+	    "DB_Alarme".MLD[31].%X9 := "UP_CM03.GP03".Mld.DT_Fehler;
+	    "DB_Alarme".MLD[31].%X10 := "UP_CM04.GP06".Mld.Drucktest_ok;
+	    "DB_Alarme".MLD[31].%X11 := "UP_CM04.GP06".Mld.DT_Fehler;
+	    "DB_Alarme".MLD[31].%X12 := "Pu_CM05.GP11_DB".Mld.Drucktest_ok;
+	    "DB_Alarme".MLD[31].%X13 := "Pu_CM05.GP11_DB".Mld.DT_Fehler;
+	    "DB_Alarme".MLD[31].%X14 := "UP_CM01.GP02".Mld.UeW_Dfl_Ents;
+	    "DB_Alarme".MLD[31].%X15 := "UP_CM02.GP05".Mld.UeW_Dfl_Ents;
+	    
+	        REGION Reserve
+	        
+	        "DB_Alarme".MLD[32].%X0 := FALSE;
+	        "DB_Alarme".MLD[32].%X1 := FALSE;
+	        "DB_Alarme".MLD[32].%X2 := FALSE;
+	        "DB_Alarme".MLD[32].%X3 := FALSE;
+	        "DB_Alarme".MLD[32].%X4 := FALSE;
+	        "DB_Alarme".MLD[32].%X5 := FALSE;
+	        "DB_Alarme".MLD[32].%X6 := FALSE;
+	        "DB_Alarme".MLD[32].%X7 := FALSE;
+	        "DB_Alarme".MLD[32].%X8 := FALSE;
+	        "DB_Alarme".MLD[32].%X9 := FALSE;
+	        "DB_Alarme".MLD[32].%X10 := FALSE;
+	        "DB_Alarme".MLD[32].%X11 := FALSE;
+	        "DB_Alarme".MLD[32].%X12 := FALSE;
+	        "DB_Alarme".MLD[32].%X13 := FALSE;
+	        "DB_Alarme".MLD[32].%X14 := FALSE;
+	        "DB_Alarme".MLD[32].%X15 := FALSE;
+	        
+	        "DB_Alarme".MLD[33].%X0 := FALSE;
+	        "DB_Alarme".MLD[33].%X1 := FALSE;
+	        "DB_Alarme".MLD[33].%X2 := FALSE;
+	        "DB_Alarme".MLD[33].%X3 := FALSE;
+	        "DB_Alarme".MLD[33].%X4 := FALSE;
+	        "DB_Alarme".MLD[33].%X5 := FALSE;
+	        "DB_Alarme".MLD[33].%X6 := FALSE;
+	        "DB_Alarme".MLD[33].%X7 := FALSE;
+	        "DB_Alarme".MLD[33].%X8 := FALSE;
+	        "DB_Alarme".MLD[33].%X9 := FALSE;
+	        "DB_Alarme".MLD[33].%X10 := FALSE;
+	        "DB_Alarme".MLD[33].%X11 := FALSE;
+	        "DB_Alarme".MLD[33].%X12 := FALSE;
+	        "DB_Alarme".MLD[33].%X13 := FALSE;
+	        "DB_Alarme".MLD[33].%X14 := FALSE;
+	        "DB_Alarme".MLD[33].%X15 := FALSE;
+	        
+	        "DB_Alarme".MLD[34].%X0 := FALSE;
+	        "DB_Alarme".MLD[34].%X1 := FALSE;
+	        "DB_Alarme".MLD[34].%X2 := FALSE;
+	        "DB_Alarme".MLD[34].%X3 := FALSE;
+	        "DB_Alarme".MLD[34].%X4 := FALSE;
+	        "DB_Alarme".MLD[34].%X5 := FALSE;
+	        "DB_Alarme".MLD[34].%X6 := FALSE;
+	        "DB_Alarme".MLD[34].%X7 := FALSE;
+	        "DB_Alarme".MLD[34].%X8 := FALSE;
+	        "DB_Alarme".MLD[34].%X9 := FALSE;
+	        "DB_Alarme".MLD[34].%X10 := FALSE;
+	        "DB_Alarme".MLD[34].%X11 := FALSE;
+	        "DB_Alarme".MLD[34].%X12 := FALSE;
+	        "DB_Alarme".MLD[34].%X13 := FALSE;
+	        "DB_Alarme".MLD[34].%X14 := FALSE;
+	        "DB_Alarme".MLD[34].%X15 := FALSE;
+	        
+	        "DB_Alarme".MLD[35].%X0 := FALSE;
+	        "DB_Alarme".MLD[35].%X1 := FALSE;
+	        "DB_Alarme".MLD[35].%X2 := FALSE;
+	        "DB_Alarme".MLD[35].%X3 := FALSE;
+	        "DB_Alarme".MLD[35].%X4 := FALSE;
+	        "DB_Alarme".MLD[35].%X5 := FALSE;
+	        "DB_Alarme".MLD[35].%X6 := FALSE;
+	        "DB_Alarme".MLD[35].%X7 := FALSE;
+	        "DB_Alarme".MLD[35].%X8 := FALSE;
+	        "DB_Alarme".MLD[35].%X9 := FALSE;
+	        "DB_Alarme".MLD[35].%X10 := FALSE;
+	        "DB_Alarme".MLD[35].%X11 := FALSE;
+	        "DB_Alarme".MLD[35].%X12 := FALSE;
+	        "DB_Alarme".MLD[35].%X13 := FALSE;
+	        "DB_Alarme".MLD[35].%X14 := FALSE;
+	        "DB_Alarme".MLD[35].%X15 := FALSE;
+	        
+	        "DB_Alarme".MLD[36].%X0 := FALSE;
+	        "DB_Alarme".MLD[36].%X1 := FALSE;
+	        "DB_Alarme".MLD[36].%X2 := FALSE;
+	        "DB_Alarme".MLD[36].%X3 := FALSE;
+	        "DB_Alarme".MLD[36].%X4 := FALSE;
+	        "DB_Alarme".MLD[36].%X5 := FALSE;
+	        "DB_Alarme".MLD[36].%X6 := FALSE;
+	        "DB_Alarme".MLD[36].%X7 := FALSE;
+	        "DB_Alarme".MLD[36].%X8 := FALSE;
+	        "DB_Alarme".MLD[36].%X9 := FALSE;
+	        "DB_Alarme".MLD[36].%X10 := FALSE;
+	        "DB_Alarme".MLD[36].%X11 := FALSE;
+	        "DB_Alarme".MLD[36].%X12 := FALSE;
+	        "DB_Alarme".MLD[36].%X13 := FALSE;
+	        "DB_Alarme".MLD[36].%X14 := FALSE;
+	        "DB_Alarme".MLD[36].%X15 := FALSE;
+	        
+	        "DB_Alarme".MLD[37].%X0 := FALSE;
+	        "DB_Alarme".MLD[37].%X1 := FALSE;
+	        "DB_Alarme".MLD[37].%X2 := FALSE;
+	        "DB_Alarme".MLD[37].%X3 := FALSE;
+	        "DB_Alarme".MLD[37].%X4 := FALSE;
+	        "DB_Alarme".MLD[37].%X5 := FALSE;
+	        "DB_Alarme".MLD[37].%X6 := FALSE;
+	        "DB_Alarme".MLD[37].%X7 := FALSE;
+	        "DB_Alarme".MLD[37].%X8 := FALSE;
+	        "DB_Alarme".MLD[37].%X9 := FALSE;
+	        "DB_Alarme".MLD[37].%X10 := FALSE;
+	        "DB_Alarme".MLD[37].%X11 := FALSE;
+	        "DB_Alarme".MLD[37].%X12 := FALSE;
+	        "DB_Alarme".MLD[37].%X13 := FALSE;
+	        "DB_Alarme".MLD[37].%X14 := FALSE;
+	        "DB_Alarme".MLD[37].%X15 := FALSE;
+	        
+	        "DB_Alarme".MLD[38].%X0 := FALSE;
+	        "DB_Alarme".MLD[38].%X1 := FALSE;
+	        "DB_Alarme".MLD[38].%X2 := FALSE;
+	        "DB_Alarme".MLD[38].%X3 := FALSE;
+	        "DB_Alarme".MLD[38].%X4 := FALSE;
+	        "DB_Alarme".MLD[38].%X5 := FALSE;
+	        "DB_Alarme".MLD[38].%X6 := FALSE;
+	        "DB_Alarme".MLD[38].%X7 := FALSE;
+	        "DB_Alarme".MLD[38].%X8 := FALSE;
+	        "DB_Alarme".MLD[38].%X9 := FALSE;
+	        "DB_Alarme".MLD[38].%X10 := FALSE;
+	        "DB_Alarme".MLD[38].%X11 := FALSE;
+	        "DB_Alarme".MLD[38].%X12 := FALSE;
+	        "DB_Alarme".MLD[38].%X13 := FALSE;
+	        "DB_Alarme".MLD[38].%X14 := FALSE;
+	        "DB_Alarme".MLD[38].%X15 := FALSE;
+	        
+	        "DB_Alarme".MLD[39].%X0 := FALSE;
+	        "DB_Alarme".MLD[39].%X1 := FALSE;
+	        "DB_Alarme".MLD[39].%X2 := FALSE;
+	        "DB_Alarme".MLD[39].%X3 := FALSE;
+	        "DB_Alarme".MLD[39].%X4 := FALSE;
+	        "DB_Alarme".MLD[39].%X5 := FALSE;
+	        "DB_Alarme".MLD[39].%X6 := FALSE;
+	        "DB_Alarme".MLD[39].%X7 := FALSE;
+	        "DB_Alarme".MLD[39].%X8 := FALSE;
+	        "DB_Alarme".MLD[39].%X9 := FALSE;
+	        "DB_Alarme".MLD[39].%X10 := FALSE;
+	        "DB_Alarme".MLD[39].%X11 := FALSE;
+	        "DB_Alarme".MLD[39].%X12 := FALSE;
+	        "DB_Alarme".MLD[39].%X13 := FALSE;
+	        "DB_Alarme".MLD[39].%X14 := FALSE;
+	        "DB_Alarme".MLD[39].%X15 := FALSE;
+	        
+	        "DB_Alarme".MLD[40].%X0 := FALSE;
+	        "DB_Alarme".MLD[40].%X1 := FALSE;
+	        "DB_Alarme".MLD[40].%X2 := FALSE;
+	        "DB_Alarme".MLD[40].%X3 := FALSE;
+	        "DB_Alarme".MLD[40].%X4 := FALSE;
+	        "DB_Alarme".MLD[40].%X5 := FALSE;
+	        "DB_Alarme".MLD[40].%X6 := FALSE;
+	        "DB_Alarme".MLD[40].%X7 := FALSE;
+	        "DB_Alarme".MLD[40].%X8 := FALSE;
+	        "DB_Alarme".MLD[40].%X9 := FALSE;
+	        "DB_Alarme".MLD[40].%X10 := FALSE;
+	        "DB_Alarme".MLD[40].%X11 := FALSE;
+	        "DB_Alarme".MLD[40].%X12 := FALSE;
+	        "DB_Alarme".MLD[40].%X13 := FALSE;
+	        "DB_Alarme".MLD[40].%X14 := FALSE;
+	        "DB_Alarme".MLD[40].%X15 := FALSE;
+	    END_REGION ;
+	    
+	END_REGION
+	
+	"FC_Mld_Leuchte_Hupe"(Max_Word := "Anzahl_Alarm_Woerter",
+	                      La_Rot => #La_Rot,
+	                      La_Gelb => #La_Gelb,
+	                      La_Blau => #La_Blau);
+	
+	REGION Hupe
+	    
+	    //Quittung Hupe Rot
+	    "DB_Alarme".Timer_Hupe_Rot.TON(IN := NOT "DB_Alarme".M_Q_Hupe_Rot AND NOT "DB_Alarme".Hupe_Dauer_Rot,
+	    PT := "DB_Alarme".Zeit_Auto_Quitt_Hupe_Rot,
+	    Q => #Hupe_Quitt_Rot);
+	    
+	    IF "DB_Alarme".IN_Quitt_Hupe OR #Hupe_Quitt_Rot THEN
+	        "DB_Alarme".M_Q_Hupe_Rot := true;
+	        "DB_Alarme".Hupe_Dauer_Rot := FALSE;
+	    END_IF;
+	    
+	    //Quittung Hupe Gelb
+	    "DB_Alarme".Timer_Hupe_Gelb.TON(IN := NOT "DB_Alarme".M_Q_Hupe_Gelb AND NOT "DB_Alarme".Hupe_Dauer_Gelb,
+	    PT := "DB_Alarme".Zeit_Auto_Quitt_Hupe_Gelb,
+	    Q => #Hupe_Quitt_Gelb);
+	    
+	    IF "DB_Alarme".IN_Quitt_Hupe OR #Hupe_Quitt_Gelb THEN
+	        "DB_Alarme".M_Q_Hupe_Gelb := true;
+	        "DB_Alarme".Hupe_Dauer_Gelb := FALSE;
+	    END_IF;
+	    
+	    //Quittung Hupe Blau
+	    "DB_Alarme".Timer_Hupe_Blau.TON(IN := NOT "DB_Alarme".M_Q_Hupe_Blau AND NOT "DB_Alarme".Hupe_Dauer_Blau,
+	    PT := "DB_Alarme".Zeit_Auto_Quitt_Hupe_Blau,
+	    Q => #Hupe_Quitt_Blau);
+	    
+	    IF "DB_Alarme".IN_Quitt_Hupe OR #Hupe_Quitt_Blau  THEN
+	        "DB_Alarme".M_Q_Hupe_Blau := true;
+	        "DB_Alarme".Hupe_Dauer_Blau := FALSE;
+	    END_IF;
+	    
+	    //Ausgänge beschreiben
+	    "DB_ANLAGE".OUT.Stoerung_Aku  := NOT "DB_Alarme".M_Q_Hupe_Rot;
+	    "DB_Alarme".Lampe_Rot := #La_Rot;
+	    "DB_Alarme".Lampe_Gelb := #La_Gelb;
+	    "DB_Alarme".Lampe_Blau := #La_Blau;
+	    
+	    "DB_ANLAGE".OUT.Fehler_Quitt := "DI_FW_1".ZST.FEHLER OR NOT "DB_PNOZ_Comm".connection.activate
+	    OR "Deckel_CM01".Zst.Fehler OR "Deckel_CM02".Zst.Fehler OR "Tor".Zst.Fehler
+	    OR "DI_QF_WR02_03".Zst.Fehler OR "DB_Alarme".La_Quit_Err;
+	    
+	END_REGION
+	
+END_FUNCTION
+

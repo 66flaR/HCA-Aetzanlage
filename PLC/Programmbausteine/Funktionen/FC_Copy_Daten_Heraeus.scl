@@ -1,0 +1,29 @@
+﻿FUNCTION "FC_Copy_Daten_Heraeus" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      i : Int;
+   END_VAR
+
+
+BEGIN
+	REGION Leitwerte
+	    "DB_Daten_Heraeus"."Leitwert_CM01.BN01" := "Panel".IW."LF_CM01.BN01";
+	    "DB_Daten_Heraeus"."Leitwert_CM01.BN02" :=  "Panel".IW."LF_CM01.BN02";
+	    "DB_Daten_Heraeus"."Leitwert_CM02.BN03":= "Panel".IW."LF_CM02.BN03";
+	    "DB_Daten_Heraeus"."Leitwert_CM02.BN04" := "Panel".IW."LF_CM02.BN04";
+	END_REGION ;
+	
+	REGION Druckwerte
+	    "DB_Daten_Heraeus"."p_HQ01.BP01" := "Panel".IW."p_HQ01.BP01";
+	    "DB_Daten_Heraeus"."p_HQ02.BP02" := "Panel".IW."p_HQ02.BP02";
+	    "DB_Daten_Heraeus"."p_CM01.BP03" := "Panel".IW."p_CM01.BP03";
+	    "DB_Daten_Heraeus"."p_CM01.BP04" := "Panel".IW."p_CM01.BP04";
+	    "DB_Daten_Heraeus"."p_CM03.BP05" := "Panel".IW."p_CM03.BP05";
+	    "DB_Daten_Heraeus"."p_CM02.BP06" := "Panel".IW."p_CM02.BP06";
+	    "DB_Daten_Heraeus"."p_CM02.BP07" := "Panel".IW."p_CM02.BP07";
+	    "DB_Daten_Heraeus"."p_CM04.BP08" := "Panel".IW."p_CM04.BP08";
+	    "DB_Daten_Heraeus"."p_CM05.BP09" := "Panel".IW."p_CM05.BP09";
+	   END_REGION
+END_FUNCTION
+

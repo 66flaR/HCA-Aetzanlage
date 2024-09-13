@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>MS</HeaderAuthor>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="ANZAHL" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* max. Anzahl der Befehle DB45 beachten!!</MultiLanguageText>
+      </Comment>
+      <StartValue>10</StartValue>
+    </Member>
+    <Member Name="OFFSET" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Beginn der Befehlskette</MultiLanguageText>
+      </Comment>
+      <StartValue>180</StartValue>
+    </Member>
+    <Member Name="LENG" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Befehlslänge in Byte</MultiLanguageText>
+      </Comment>
+      <StartValue>8</StartValue>
+    </Member>
+    <Member Name="WT_NR_lang" Datatype="DInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Warenträger-Nr. lang</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Oberflaeche" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Oberfläche in dm²</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Korb_Nr" Datatype="USInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Korbnummer (fest)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="POS" Datatype="USInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aktuelle Position</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Technologie" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Technologie Code</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="priorisiert" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">WT ist proorisiert</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="in_Anlage" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">will in die Anlage</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="in_Entm" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">will in die Entmetallisierung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="aus_Anlage" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">kommt aus der Anlage</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="aus_Entm" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">kommt aus der Entmetallisierung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Speicher" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Speicherprogramm</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="FW_Pos" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">WT befindet sich am FW</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="QT_Pos" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">WT befindet sich im QT</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Auto_Pos" Datatype="USInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Position für Automatikbetrieb</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Trommel" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">WT ist eine Trommel</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="UT_Anforderung" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Trockneranforderung erzeugt aus Befehl"FF"</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Stop" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Stopbefehl aktiv</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Nassware" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Nassware-Trichter am Entladestand anfordern</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="TW_Pos" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Warenträger ist noch in seiner Taktwechselposition</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="noKorrBefx" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Befehlsindex nicht korregieren</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="noOPT_WT" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">kann nicht wie berechnet eingefahren werden</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="last_Auto" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">letzter Umsetzvorgang erfolgte in Automatik</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Ziel_Pos_WT" Datatype="USInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Zielposition des WT für Korrektur beim Einsetzen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="lngsm_senken" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">langsam Senken</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="lngsm_heben" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">langsam Heben</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="lngsm_Fahrt" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">langsam Fahren</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="WT_nok" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Behandlungsfehler</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="WT_151" Datatype="Bool" Remanence="Retain" />
+    <Member Name="WT_161" Datatype="Bool" Remanence="Retain" />
+    <Member Name="res226" Datatype="Bool" Remanence="Retain" />
+    <Member Name="res227" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Alt_Befx" Datatype="USInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Befehlsindex in letzter Automatikposition</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Alt_Bereichstakte" Datatype="USInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bereichstakte der letzten Automatikposition</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Alt_TW_Pos" Datatype="USInt" Remanence="Retain" />
+    <Member Name="Alt_Verweil" Datatype="DInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Verweilzeit der letzten Automatikposition</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Fertigzeitpunkt" Datatype="DInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Systemzeit PC, wann WT voraussichtlich fertig</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Meld_Pos" Datatype="USInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">gemerkte Kollisionposition</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="WT_Typ" Datatype="Byte" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Warenträgertyp (für die Zuordnung bestimmter Ware)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="End_Ziel_Pos" Datatype="USInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Zielposition an die der WT</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="End_Ziel_QT_Pos" Datatype="USInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Position die ein verwendeter QT anfahren muß</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="KorrPend" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Korrekturfaktor Pendelzeit</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="KorrATZ" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Korrekturfaktor Abtropfzeit</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="P_PNTER" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Parameter-Pointer</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="B_PNTER" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Befehls-pointer</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="SaveExpo" Datatype="DInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">gerettete Expozeit bei Zwangsräumung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Bereichstakte" Datatype="USInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Takt die der WT noch im aktuellen Behandlungsbereich verbringen muß</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Variante1" Datatype="Byte" Remanence="Retain" />
+    <Member Name="Variante2" Datatype="Byte" Remanence="Retain" />
+    <Member Name="Variante3" Datatype="Byte" Remanence="Retain" />
+    <Member Name="Variante4" Datatype="Byte" Remanence="Retain" />
+    <Member Name="Variante5" Datatype="Byte" Remanence="Retain" />
+    <Member Name="akt_Ziel" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aktuelles Ziel aus FB9(FC120)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="akt_CMD" Datatype="Byte" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aktueller Befehl</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="WT_Kennung" Datatype="Byte" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">farbliche Markierung für PC</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Speed_Up" Datatype="Int" Remanence="Retain" />
+    <Member Name="Speed_Dn" Datatype="Int" Remanence="Retain" />
+    <Member Name="Speed_Fahrt" Datatype="Int" Remanence="Retain" />
+    <Member Name="resI" Datatype="Int" Remanence="Retain" />
+    <Member Name="Aufgabezeitpunkt" Datatype="DInt" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Systemzeit PC, wann WT aufgegeben wurde</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="RestTakte" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Resttakte durch die Anlage</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Name" Datatype="String[100]" Remanence="Retain" />
+    <Member Name="Befehl" Datatype="Array[1..20] of Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Feldlänge anpassen DB45 beachten!!</MultiLanguageText>
+      </Comment>
+      <Member Name="Kennung" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Befehlskennung</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Startpos" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Position</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Laenge" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Länge</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Startpos2" Datatype="Byte" />
+      <Member Name="Laenge2" Datatype="Byte" />
+      <Member Name="Sonderparam" Datatype="Byte" />
+      <Member Name="Param_Ptr" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Pointer für Parameter</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Param_Bereich" Datatype="Array[1..100] of Byte" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Feldlänge anpassen DB45 beachten!!</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_WT3</Name>
+      <Namespace />
+      <Number>103</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

@@ -1,0 +1,46 @@
+﻿FUNCTION "Status_E0A" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Hand : Bool;
+      Auto : Bool;
+      SonderModus_PumpeSpuelen : Bool;
+      Stoerung : Bool;   // 1 bei Fehler
+      Ausgang : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      StatusByte : USInt;
+   END_VAR
+
+   VAR CONSTANT 
+      Aus : USInt;
+      Hand_EIN : USInt := 1;
+      Hand_AUS : USInt := 2;
+      Auto_EIN : USInt := 3;
+      Auto_AUS : USInt := 4;
+      Fehler : USInt := 5;
+      Spuelen_aktiv : USInt := 10;
+   END_VAR
+
+
+BEGIN
+	//Status für Visu
+	IF (#Hand OR #Auto) AND #Stoerung THEN
+	    #StatusByte := #Fehler;
+	ELSIF #Auto AND NOT #Ausgang THEN
+	    #StatusByte := #Auto_AUS;
+	ELSIF #Ausgang AND #Auto THEN
+	    #StatusByte := #Auto_EIN;
+	ELSIF #Hand AND NOT #Ausgang AND #SonderModus_PumpeSpuelen THEN
+	    #StatusByte := #Spuelen_aktiv;
+	ELSIF #Hand AND NOT #Ausgang THEN
+	    #StatusByte := #Hand_AUS;
+	ELSIF #Hand AND #Ausgang THEN
+	    #StatusByte := #Hand_EIN;
+	ELSE
+	    #StatusByte := #Aus;
+	END_IF;
+	
+END_FUNCTION
+

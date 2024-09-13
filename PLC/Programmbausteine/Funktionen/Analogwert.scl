@@ -1,0 +1,64 @@
+﻿FUNCTION "Analogwert" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Deaktiviert : Bool;
+      EW : Int;
+      Messbereich_Min : Real;
+      Messbereich_Max : Real;
+      UG_Alarm : Real;
+      OG_Alarm : Real;
+      GF : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      Al_Drahtbruch : Bool;
+      Al_MW_ausserhalb : Bool;
+   END_VAR
+
+   VAR_IN_OUT 
+      Messwert : Real;
+   END_VAR
+
+   VAR_TEMP 
+      akt_Messwert : Real;
+      Messbereich : Real;
+      Eingangswert : Real;
+   END_VAR
+
+   VAR CONSTANT 
+      Drahtbruchkennung : Int := 16#7FFF;
+      Defekt : Int := 16#8000;
+      EW_min : Real;
+      EW_max : Real := 27648.0;   // SIEMENS-Baugruppe (0x6C00)
+   END_VAR
+
+
+BEGIN
+	IF #Deaktiviert THEN //20.01.22
+	    #Al_Drahtbruch := FALSE;
+	    #Al_MW_ausserhalb := false;
+	    #Messwert := 0.0;
+	    
+	ELSIF (#EW = #Drahtbruchkennung) OR (#EW = #Defekt) THEN
+	    #Al_Drahtbruch := TRUE;
+	    #Al_MW_ausserhalb := false;
+	    #Messwert := 0.0;
+	ELSE
+	    #Al_Drahtbruch := FALSE;
+	    #Messbereich := (#EW_max - #EW_min);
+	    #Eingangswert := DINT_TO_REAL(INT_TO_DINT(#EW));
+	    
+	    #akt_Messwert := ((#Eingangswert - #EW_min) * #Messbereich_Max / #Messbereich) + ((#EW_max - #Eingangswert) * #Messbereich_Min / #Messbereich);
+	      
+	    IF (#GF <= 0.0) OR #GF >= 1.0 THEN
+	        #Messwert := #akt_Messwert;
+	    ELSE
+	         #Messwert := (#akt_Messwert * #GF) + ((1.0 - #GF) * #Messwert);
+	     END_IF;
+	     #Al_MW_ausserhalb := (#Messwert < #UG_Alarm) OR (#Messwert > #OG_Alarm);
+	    
+	END_IF;
+	
+END_FUNCTION
+

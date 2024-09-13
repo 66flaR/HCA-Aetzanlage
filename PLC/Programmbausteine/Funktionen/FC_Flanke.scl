@@ -1,0 +1,28 @@
+﻿FUNCTION "FC_Flanke" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      In : Bool;
+      neg : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Flanke : Bool;
+   END_VAR
+
+   VAR_IN_OUT 
+      AM : Bool;
+   END_VAR
+
+
+BEGIN
+	IF (#In = TRUE AND #AM = FALSE AND #neg = FALSE) OR (#In = FALSE AND #AM = TRUE AND #neg = TRUE) THEN
+	    #Flanke := TRUE;
+	ELSE
+	    #Flanke := false;
+	END_IF;
+	
+	#AM := #In;
+	
+END_FUNCTION
+

@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>MS</HeaderAuthor>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="Evnt_Nbr" Datatype="Byte" />
+  </Section>
+  <Section Name="Constant">
+    <Member Name="Not_Halt" Datatype="USInt" />
+    <Member Name="Tipp" Datatype="USInt">
+      <StartValue>1</StartValue>
+    </Member>
+    <Member Name="Hand" Datatype="USInt">
+      <StartValue>2</StartValue>
+    </Member>
+    <Member Name="Automat_Aus" Datatype="USInt">
+      <StartValue>3</StartValue>
+    </Member>
+    <Member Name="Automat_Ein" Datatype="USInt">
+      <StartValue>4</StartValue>
+    </Member>
+  </Section>
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>BA_WXL</Name>
+      <Namespace />
+      <Number>4</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="config" />
+        <Component Name="Anl_getaktet" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Panel_OVERVIEW" />
+        <Component Name="SPS_getaktet" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="52">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="S_Not_Aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="55">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="off" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="58">
+    <LineComment>
+      <Text>Automatikbetrieb</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="60">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Not_Aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="62">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Not_Aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="64">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Tippbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="66">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Handbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="68">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="70">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="72">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="73">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="75">
+    <StlToken Text="Rise" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="FP_Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="77">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Not_Aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="79">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Tippbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="81">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Handbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="83">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="85">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="Automat_aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="109">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Not_Aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="111">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Tippbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="113">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Handbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="115">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="117">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="119">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="120">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="122">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_MANAGER" />
+        <Component Name="Auto" />
+        <Component Name="Anlage" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="124">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="Lamp_Test" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="126">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="OUT" />
+        <Component Name="MD_Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="128">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="129">
+    <LineComment>
+      <Text>Handbetrieb</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="131">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="BA_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="133">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Not_Aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="135">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Tippbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="137">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Handbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="139">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="141">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="143">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="144">
+    <LineComment>
+      <Text>Einrichten</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="146">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="IN" />
+        <Component Name="BA_Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="148">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Not_Aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="150">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Tippbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="152">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Handbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="154">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="156">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="158">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="159">
+    <LineComment>
+      <Text>Auto-Stop</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="161">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="163">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Not_Aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="165">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Tippbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="167">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Handbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="169">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="L" />
+    <Access Scope="LocalConstant">
+      <Constant Name="Automat_Ein" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="47">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="A_BA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="49">
+    <StlToken Text="L" />
+    <Access Scope="LocalConstant">
+      <Constant Name="Automat_Aus" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="53">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="51">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="A_BA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="102">
+    <StlToken Text="L" />
+    <Access Scope="LocalConstant">
+      <Constant Name="Hand" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="88">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Handbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="92">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="A_BA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="91">
+    <StlToken Text="L" />
+    <Access Scope="LocalConstant">
+      <Constant Name="Tipp" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Tippbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="98">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="A_BA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="100">
+    <StlToken Text="L" />
+    <Access Scope="LocalConstant">
+      <Constant Name="Not_Halt" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="26">
+    <LabelDeclaration>
+      <Label Name="A_BA" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Panel" />
+        <Component Name="Betriebsart" />
+        <Component Name="Anzeige" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="220">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="ende" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="222">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="223">
+    <LineComment>
+      <Text>alles aus</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="225">
+    <LabelDeclaration>
+      <Label Name="off" />
+    </LabelDeclaration>
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="free0" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="228">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="free1" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="230">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Tippbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="232">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Handbetrieb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="234">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="236">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Automat_aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="238">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Not_Aus" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="240">
+    <StlToken Text="L" />
+    <Access Scope="LocalConstant">
+      <Constant Name="Not_Halt" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Panel" />
+        <Component Name="Betriebsart" />
+        <Component Name="Anzeige" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="241">
+    <LabelDeclaration>
+      <Label Name="ende" />
+    </LabelDeclaration>
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="244">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Word" BitOffset="0" />
+      <LineComment>
+        <Text>Betriebsart SPS</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="279">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_Panel_OVERVIEW" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="245">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Word" BitOffset="0" />
+      <LineComment>
+        <Text>Betriebsart Visualisierung</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="248">
+    <StlToken Text="BE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Not-Aus ist betätigt</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

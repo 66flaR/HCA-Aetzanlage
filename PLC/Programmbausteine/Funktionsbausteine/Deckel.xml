@@ -1,0 +1,3004 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="In" Datatype="Struct">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="NotHalt" Datatype="Bool" />
+      <Member Name="Si_24VDC_links" Datatype="Bool" />
+      <Member Name="Si_24VDC_rechts" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Hand" Datatype="Bool" />
+      <Member Name="Tipp" Datatype="Bool" />
+      <Member Name="ErrQ" Datatype="Bool" />
+      <Member Name="T_links_auf" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Paneltaste</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="T_links_zu" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Paneltaste</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="T_rechts_auf" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Paneltaste</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="T_rechts_zu" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Paneltaste</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SRM_links_auf" Datatype="Bool" />
+      <Member Name="SRM_links_zu" Datatype="Bool" />
+      <Member Name="SRM_rechts_auf" Datatype="Bool" />
+      <Member Name="SRM_rechts_zu" Datatype="Bool" />
+      <Member Name="S_links_auf" Datatype="Bool" />
+      <Member Name="S_links_zu" Datatype="Bool" />
+      <Member Name="S_rechts_auf" Datatype="Bool" />
+      <Member Name="S_rechts_zu" Datatype="Bool" />
+    </Member>
+    <Member Name="Param" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="TO" Datatype="Time">
+        <StartValue>T#27s</StartValue>
+      </Member>
+      <Member Name="gleichzeitig" Datatype="Time">
+        <StartValue>T#1s500ms</StartValue>
+      </Member>
+    </Member>
+    <Member Name="Zst" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="Fehler" Datatype="Bool" />
+      <Member Name="Sperre_Pos_li" Datatype="Bool" />
+      <Member Name="Sperre_Pos_re" Datatype="Bool" />
+      <Member Name="Req_links_auf" Datatype="Bool" />
+      <Member Name="Req_rechts_auf" Datatype="Bool" />
+      <Member Name="TW_sicher" Datatype="Bool" />
+      <Member Name="Ist_Pos_links" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0% = auf; 100% = zu</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Ist_Pos_rechts" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">0% = auf; 100% = zu</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Out" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="links_auf" Datatype="Bool" />
+      <Member Name="links_zu" Datatype="Bool" />
+      <Member Name="rechts_auf" Datatype="Bool" />
+      <Member Name="rechts_zu" Datatype="Bool" />
+    </Member>
+    <Member Name="Mld" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="TO_links_auf" Datatype="Bool" />
+      <Member Name="TO_links_zu" Datatype="Bool" />
+      <Member Name="TO_rechts_auf" Datatype="Bool" />
+      <Member Name="TO_rechts_zu" Datatype="Bool" />
+      <Member Name="Si_24VDC_links" Datatype="Bool" />
+      <Member Name="Si_24VDC_rechts" Datatype="Bool" />
+      <Member Name="n_Auto" Datatype="Bool" />
+      <Member Name="SF_gleich_li_auf" Datatype="Bool" />
+      <Member Name="SF_gleich_li_zu" Datatype="Bool" />
+      <Member Name="SF_gleich_re_auf" Datatype="Bool" />
+      <Member Name="SF_gleich_re_zu" Datatype="Bool" />
+    </Member>
+    <Member Name="IEC_Timer" Datatype="Struct">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="TO_li_auf" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_li_zu" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_re_auf" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_re_zu" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="gleich_li_auf" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="gleich_li_zu" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="gleich_re_auf" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="gleich_re_zu" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+    </Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="TO_links_auf" Datatype="Bool" />
+    <Member Name="TO_links_zu" Datatype="Bool" />
+    <Member Name="TO_rechts_auf" Datatype="Bool" />
+    <Member Name="TO_rechts_zu" Datatype="Bool" />
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Deckel</Name>
+      <Namespace />
+      <Number>1190</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>true</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Not-Halt</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="In" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="NotHalt" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank UId="29" />
+  <Token Text=":=" UId="30" />
+  <Blank Num="2" UId="31" />
+  <Token Text="NOT" UId="32" />
+  <Blank UId="33" />
+  <Access Scope="GlobalVariable" UId="34">
+    <Symbol UId="35">
+      <Component Name="DB_PNOZ_IN_Out" UId="36">
+        <BooleanAttribute Name="HasQuotes" UId="37">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="38" />
+      <Component Name="In" UId="39" />
+      <Token Text="." UId="40" />
+      <Component Name="NH_Frg_Deckel" UId="41" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="2" UId="43" />
+  <Token Text="IF" UId="44" />
+  <Blank UId="45" />
+  <Access Scope="LocalVariable" UId="46">
+    <Symbol UId="47">
+      <Component Name="In" UId="48" />
+      <Token Text="." UId="49" />
+      <Component Name="ErrQ" UId="50" />
+    </Symbol>
+  </Access>
+  <Blank UId="51" />
+  <Token Text="THEN" UId="52" />
+  <NewLine UId="53" />
+  <Blank Num="4" UId="54" />
+  <Access Scope="LocalVariable" UId="55">
+    <Symbol UId="56">
+      <Component Name="Zst" UId="57" />
+      <Token Text="." UId="58" />
+      <Component Name="Fehler" UId="59" />
+    </Symbol>
+  </Access>
+  <Blank UId="60" />
+  <Token Text=":=" UId="61" />
+  <Blank UId="62" />
+  <Access Scope="LiteralConstant" UId="63">
+    <Constant UId="64">
+      <ConstantValue UId="66">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="67" />
+  <NewLine UId="68" />
+  <Token Text="END_IF" UId="69" />
+  <Token Text=";" UId="70" />
+  <NewLine Num="2" UId="71" />
+  <Token Text="IF" UId="72" />
+  <Blank UId="73" />
+  <Access Scope="LocalVariable" UId="74">
+    <Symbol UId="75">
+      <Component Name="In" UId="76" />
+      <Token Text="." UId="77" />
+      <Component Name="NotHalt" UId="78" />
+    </Symbol>
+  </Access>
+  <Blank UId="79" />
+  <Token Text="OR" UId="80" />
+  <Blank UId="81" />
+  <Token Text="NOT" UId="82" />
+  <Blank UId="83" />
+  <Access Scope="LocalVariable" UId="84">
+    <Symbol UId="85">
+      <Component Name="In" UId="86" />
+      <Token Text="." UId="87" />
+      <Component Name="Si_24VDC_links" UId="88" />
+    </Symbol>
+  </Access>
+  <Blank UId="89" />
+  <Token Text="OR" UId="90" />
+  <Blank UId="91" />
+  <Token Text="NOT" UId="92" />
+  <Blank UId="93" />
+  <Access Scope="LocalVariable" UId="94">
+    <Symbol UId="95">
+      <Component Name="In" UId="96" />
+      <Token Text="." UId="97" />
+      <Component Name="Si_24VDC_rechts" UId="98" />
+    </Symbol>
+  </Access>
+  <Blank UId="99" />
+  <Token Text="OR" UId="100" />
+  <Blank UId="101" />
+  <Access Scope="LocalVariable" UId="102">
+    <Symbol UId="103">
+      <Component Name="Mld" UId="104" />
+      <Token Text="." UId="105" />
+      <Component Name="TO_links_auf" UId="106" />
+    </Symbol>
+  </Access>
+  <Blank UId="107" />
+  <Token Text="OR" UId="108" />
+  <Blank UId="109" />
+  <Access Scope="LocalVariable" UId="110">
+    <Symbol UId="111">
+      <Component Name="Mld" UId="112" />
+      <Token Text="." UId="113" />
+      <Component Name="TO_links_zu" UId="114" />
+    </Symbol>
+  </Access>
+  <NewLine UId="115" />
+  <Blank Num="4" UId="116" />
+  <Token Text="OR" UId="117" />
+  <Blank UId="118" />
+  <Access Scope="LocalVariable" UId="119">
+    <Symbol UId="120">
+      <Component Name="Mld" UId="121" />
+      <Token Text="." UId="122" />
+      <Component Name="TO_rechts_auf" UId="123" />
+    </Symbol>
+  </Access>
+  <Blank UId="124" />
+  <Token Text="OR" UId="125" />
+  <Blank UId="126" />
+  <Access Scope="LocalVariable" UId="127">
+    <Symbol UId="128">
+      <Component Name="Mld" UId="129" />
+      <Token Text="." UId="130" />
+      <Component Name="TO_rechts_zu" UId="131" />
+    </Symbol>
+  </Access>
+  <NewLine UId="132" />
+  <Token Text="THEN" UId="133" />
+  <NewLine UId="134" />
+  <Blank Num="4" UId="135" />
+  <Access Scope="LocalVariable" UId="136">
+    <Symbol UId="137">
+      <Component Name="Zst" UId="138" />
+      <Token Text="." UId="139" />
+      <Component Name="Fehler" UId="140" />
+    </Symbol>
+  </Access>
+  <Blank UId="141" />
+  <Token Text=":=" UId="142" />
+  <Blank UId="143" />
+  <Access Scope="LiteralConstant" UId="144">
+    <Constant UId="145">
+      <ConstantValue UId="147">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="148" />
+  <NewLine UId="149" />
+  <Token Text="END_IF" UId="150" />
+  <Token Text=";" UId="151" />
+  <NewLine UId="152" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Panelbedienung und Sensoren --> Input()</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Input / Sammelstörung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="IF" UId="21" />
+  <Blank UId="22" />
+  <Token Text="NOT" UId="23" />
+  <Blank UId="24" />
+  <Access Scope="LocalVariable" UId="25">
+    <Symbol UId="26">
+      <Component Name="Zst" UId="27" />
+      <Token Text="." UId="28" />
+      <Component Name="Fehler" UId="29" />
+    </Symbol>
+  </Access>
+  <Blank UId="30" />
+  <Token Text="THEN" UId="31" />
+  <NewLine UId="32" />
+  <Blank Num="4" UId="33" />
+  <Token Text="IF" UId="34" />
+  <Blank UId="35" />
+  <Access Scope="LocalVariable" UId="36">
+    <Symbol UId="37">
+      <Component Name="In" UId="38" />
+      <Token Text="." UId="39" />
+      <Component Name="Auto" UId="40" />
+    </Symbol>
+  </Access>
+  <Blank UId="41" />
+  <Token Text="AND" UId="42" />
+  <Blank UId="43" />
+  <Access Scope="LocalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="Zst" UId="46" />
+      <Token Text="." UId="47" />
+      <Component Name="TW_sicher" UId="48" />
+    </Symbol>
+  </Access>
+  <Blank UId="49" />
+  <Token Text="THEN" UId="50" />
+  <Blank UId="51" />
+  <LineComment UId="52">
+    <Text UId="53"> Automatikbetrieb</Text>
+  </LineComment>
+  <NewLine UId="54" />
+  <Blank Num="8" UId="55" />
+  <LineComment UId="56">
+    <Text UId="57"> Linke Seite</Text>
+  </LineComment>
+  <NewLine UId="58" />
+  <Blank Num="8" UId="59" />
+  <Access Scope="LocalVariable" UId="60">
+    <Symbol UId="61">
+      <Component Name="Out" UId="62" />
+      <Token Text="." UId="63" />
+      <Component Name="links_auf" UId="64" />
+    </Symbol>
+  </Access>
+  <Blank UId="65" />
+  <Token Text=":=" UId="66" />
+  <Blank UId="67" />
+  <Access Scope="LocalVariable" UId="68">
+    <Symbol UId="69">
+      <Component Name="Zst" UId="70" />
+      <Token Text="." UId="71" />
+      <Component Name="Req_links_auf" UId="72" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="73" />
+  <NewLine UId="74" />
+  <Blank Num="8" UId="75" />
+  <Access Scope="LocalVariable" UId="76">
+    <Symbol UId="77">
+      <Component Name="Out" UId="78" />
+      <Token Text="." UId="79" />
+      <Component Name="links_zu" UId="80" />
+    </Symbol>
+  </Access>
+  <Blank UId="81" />
+  <Token Text=":=" UId="82" />
+  <Blank UId="83" />
+  <Token Text="NOT" UId="84" />
+  <Blank UId="85" />
+  <Access Scope="LocalVariable" UId="86">
+    <Symbol UId="87">
+      <Component Name="Zst" UId="88" />
+      <Token Text="." UId="89" />
+      <Component Name="Req_links_auf" UId="90" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="91" />
+  <NewLine UId="92" />
+  <Blank Num="8" UId="93" />
+  <LineComment UId="94">
+    <Text UId="95"> Rechte Seite</Text>
+  </LineComment>
+  <NewLine UId="96" />
+  <Blank Num="8" UId="97" />
+  <Access Scope="LocalVariable" UId="98">
+    <Symbol UId="99">
+      <Component Name="Out" UId="100" />
+      <Token Text="." UId="101" />
+      <Component Name="rechts_auf" UId="102" />
+    </Symbol>
+  </Access>
+  <Blank UId="103" />
+  <Token Text=":=" UId="104" />
+  <Blank UId="105" />
+  <Access Scope="LocalVariable" UId="106">
+    <Symbol UId="107">
+      <Component Name="Zst" UId="108" />
+      <Token Text="." UId="109" />
+      <Component Name="Req_rechts_auf" UId="110" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="111" />
+  <NewLine UId="112" />
+  <Blank Num="8" UId="113" />
+  <Access Scope="LocalVariable" UId="114">
+    <Symbol UId="115">
+      <Component Name="Out" UId="116" />
+      <Token Text="." UId="117" />
+      <Component Name="rechts_zu" UId="118" />
+    </Symbol>
+  </Access>
+  <Blank UId="119" />
+  <Token Text=":=" UId="120" />
+  <Blank UId="121" />
+  <Token Text="NOT" UId="122" />
+  <Blank UId="123" />
+  <Access Scope="LocalVariable" UId="124">
+    <Symbol UId="125">
+      <Component Name="Zst" UId="126" />
+      <Token Text="." UId="127" />
+      <Component Name="Req_rechts_auf" UId="128" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="129" />
+  <NewLine UId="130" />
+  <Blank Num="8" UId="131" />
+  <NewLine UId="132" />
+  <Blank Num="4" UId="133" />
+  <Token Text="ELSIF" UId="134" />
+  <Blank UId="135" />
+  <Access Scope="LocalVariable" UId="136">
+    <Symbol UId="137">
+      <Component Name="In" UId="138" />
+      <Token Text="." UId="139" />
+      <Component Name="Hand" UId="140" />
+    </Symbol>
+  </Access>
+  <Blank UId="141" />
+  <Token Text="AND" UId="142" />
+  <Blank UId="143" />
+  <Access Scope="LocalVariable" UId="144">
+    <Symbol UId="145">
+      <Component Name="Zst" UId="146" />
+      <Token Text="." UId="147" />
+      <Component Name="TW_sicher" UId="148" />
+    </Symbol>
+  </Access>
+  <Blank UId="149" />
+  <Token Text="THEN" UId="150" />
+  <Blank UId="151" />
+  <LineComment UId="152">
+    <Text UId="153"> Handbetrieb</Text>
+  </LineComment>
+  <NewLine UId="154" />
+  <Blank Num="8" UId="155" />
+  <LineComment UId="156">
+    <Text UId="157"> Linke Seite</Text>
+  </LineComment>
+  <NewLine UId="158" />
+  <Blank Num="8" UId="159" />
+  <Token Text="IF" UId="160" />
+  <Blank UId="161" />
+  <Access Scope="LocalVariable" UId="162">
+    <Symbol UId="163">
+      <Component Name="In" UId="164" />
+      <Token Text="." UId="165" />
+      <Component Name="T_links_auf" UId="166" />
+    </Symbol>
+  </Access>
+  <Blank UId="167" />
+  <Token Text="AND" UId="168" />
+  <Blank UId="169" />
+  <Token Text="NOT" UId="170" />
+  <Blank UId="171" />
+  <Access Scope="LocalVariable" UId="172">
+    <Symbol UId="173">
+      <Component Name="In" UId="174" />
+      <Token Text="." UId="175" />
+      <Component Name="T_links_zu" UId="176" />
+    </Symbol>
+  </Access>
+  <Blank UId="177" />
+  <Token Text="THEN" UId="178" />
+  <NewLine UId="179" />
+  <Blank Num="12" UId="180" />
+  <Access Scope="LocalVariable" UId="181">
+    <Symbol UId="182">
+      <Component Name="Out" UId="183" />
+      <Token Text="." UId="184" />
+      <Component Name="links_auf" UId="185" />
+    </Symbol>
+  </Access>
+  <Blank UId="186" />
+  <Token Text=":=" UId="187" />
+  <Blank UId="188" />
+  <Access Scope="LiteralConstant" UId="189">
+    <Constant UId="190">
+      <ConstantValue UId="192">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="193" />
+  <NewLine UId="194" />
+  <Blank Num="12" UId="195" />
+  <Access Scope="LocalVariable" UId="196">
+    <Symbol UId="197">
+      <Component Name="Out" UId="198" />
+      <Token Text="." UId="199" />
+      <Component Name="links_zu" UId="200" />
+    </Symbol>
+  </Access>
+  <Blank UId="201" />
+  <Token Text=":=" UId="202" />
+  <Blank UId="203" />
+  <Access Scope="LiteralConstant" UId="204">
+    <Constant UId="205">
+      <ConstantValue UId="207">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="208" />
+  <NewLine UId="209" />
+  <Blank Num="8" UId="210" />
+  <Token Text="END_IF" UId="211" />
+  <Token Text=";" UId="212" />
+  <NewLine UId="213" />
+  <Blank Num="8" UId="214" />
+  <Token Text="IF" UId="215" />
+  <Blank UId="216" />
+  <Access Scope="LocalVariable" UId="217">
+    <Symbol UId="218">
+      <Component Name="In" UId="219" />
+      <Token Text="." UId="220" />
+      <Component Name="T_links_zu" UId="221" />
+    </Symbol>
+  </Access>
+  <Blank UId="222" />
+  <Token Text="AND" UId="223" />
+  <Blank UId="224" />
+  <Token Text="NOT" UId="225" />
+  <Blank UId="226" />
+  <Access Scope="LocalVariable" UId="227">
+    <Symbol UId="228">
+      <Component Name="In" UId="229" />
+      <Token Text="." UId="230" />
+      <Component Name="T_links_auf" UId="231" />
+    </Symbol>
+  </Access>
+  <Blank UId="232" />
+  <Token Text="THEN" UId="233" />
+  <NewLine UId="234" />
+  <Blank Num="12" UId="235" />
+  <Access Scope="LocalVariable" UId="236">
+    <Symbol UId="237">
+      <Component Name="Out" UId="238" />
+      <Token Text="." UId="239" />
+      <Component Name="links_zu" UId="240" />
+    </Symbol>
+  </Access>
+  <Blank UId="241" />
+  <Token Text=":=" UId="242" />
+  <Blank UId="243" />
+  <Access Scope="LiteralConstant" UId="244">
+    <Constant UId="245">
+      <ConstantValue UId="247">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="248" />
+  <NewLine UId="249" />
+  <Blank Num="12" UId="250" />
+  <Access Scope="LocalVariable" UId="251">
+    <Symbol UId="252">
+      <Component Name="Out" UId="253" />
+      <Token Text="." UId="254" />
+      <Component Name="links_auf" UId="255" />
+    </Symbol>
+  </Access>
+  <Blank UId="256" />
+  <Token Text=":=" UId="257" />
+  <Blank UId="258" />
+  <Access Scope="LiteralConstant" UId="259">
+    <Constant UId="260">
+      <ConstantValue UId="262">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="263" />
+  <NewLine UId="264" />
+  <Blank Num="8" UId="265" />
+  <Token Text="END_IF" UId="266" />
+  <Token Text=";" UId="267" />
+  <NewLine UId="268" />
+  <Blank Num="8" UId="269" />
+  <LineComment UId="270">
+    <Text UId="271"> Rechte Seite</Text>
+  </LineComment>
+  <NewLine UId="272" />
+  <Blank Num="8" UId="273" />
+  <Token Text="IF" UId="274" />
+  <Blank UId="275" />
+  <Access Scope="LocalVariable" UId="276">
+    <Symbol UId="277">
+      <Component Name="In" UId="278" />
+      <Token Text="." UId="279" />
+      <Component Name="T_rechts_auf" UId="280" />
+    </Symbol>
+  </Access>
+  <Blank UId="281" />
+  <Token Text="AND" UId="282" />
+  <Blank UId="283" />
+  <Token Text="NOT" UId="284" />
+  <Blank UId="285" />
+  <Access Scope="LocalVariable" UId="286">
+    <Symbol UId="287">
+      <Component Name="In" UId="288" />
+      <Token Text="." UId="289" />
+      <Component Name="T_rechts_zu" UId="290" />
+    </Symbol>
+  </Access>
+  <Blank UId="291" />
+  <Token Text="THEN" UId="292" />
+  <NewLine UId="293" />
+  <Blank Num="12" UId="294" />
+  <Access Scope="LocalVariable" UId="295">
+    <Symbol UId="296">
+      <Component Name="Out" UId="297" />
+      <Token Text="." UId="298" />
+      <Component Name="rechts_auf" UId="299" />
+    </Symbol>
+  </Access>
+  <Blank UId="300" />
+  <Token Text=":=" UId="301" />
+  <Blank UId="302" />
+  <Access Scope="LiteralConstant" UId="303">
+    <Constant UId="304">
+      <ConstantValue UId="306">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="307" />
+  <NewLine UId="308" />
+  <Blank Num="12" UId="309" />
+  <Access Scope="LocalVariable" UId="310">
+    <Symbol UId="311">
+      <Component Name="Out" UId="312" />
+      <Token Text="." UId="313" />
+      <Component Name="rechts_zu" UId="314" />
+    </Symbol>
+  </Access>
+  <Blank UId="315" />
+  <Token Text=":=" UId="316" />
+  <Blank UId="317" />
+  <Access Scope="LiteralConstant" UId="318">
+    <Constant UId="319">
+      <ConstantValue UId="321">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="322" />
+  <NewLine UId="323" />
+  <Blank Num="8" UId="324" />
+  <Token Text="END_IF" UId="325" />
+  <Token Text=";" UId="326" />
+  <NewLine UId="327" />
+  <Blank Num="8" UId="328" />
+  <Token Text="IF" UId="329" />
+  <Blank UId="330" />
+  <Access Scope="LocalVariable" UId="331">
+    <Symbol UId="332">
+      <Component Name="In" UId="333" />
+      <Token Text="." UId="334" />
+      <Component Name="T_rechts_zu" UId="335" />
+    </Symbol>
+  </Access>
+  <Blank UId="336" />
+  <Token Text="AND" UId="337" />
+  <Blank UId="338" />
+  <Token Text="NOT" UId="339" />
+  <Blank UId="340" />
+  <Access Scope="LocalVariable" UId="341">
+    <Symbol UId="342">
+      <Component Name="In" UId="343" />
+      <Token Text="." UId="344" />
+      <Component Name="T_rechts_auf" UId="345" />
+    </Symbol>
+  </Access>
+  <Blank UId="346" />
+  <Token Text="THEN" UId="347" />
+  <NewLine UId="348" />
+  <Blank Num="12" UId="349" />
+  <Access Scope="LocalVariable" UId="350">
+    <Symbol UId="351">
+      <Component Name="Out" UId="352" />
+      <Token Text="." UId="353" />
+      <Component Name="rechts_zu" UId="354" />
+    </Symbol>
+  </Access>
+  <Blank UId="355" />
+  <Token Text=":=" UId="356" />
+  <Blank UId="357" />
+  <Access Scope="LiteralConstant" UId="358">
+    <Constant UId="359">
+      <ConstantValue UId="361">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="362" />
+  <NewLine UId="363" />
+  <Blank Num="12" UId="364" />
+  <Access Scope="LocalVariable" UId="365">
+    <Symbol UId="366">
+      <Component Name="Out" UId="367" />
+      <Token Text="." UId="368" />
+      <Component Name="rechts_auf" UId="369" />
+    </Symbol>
+  </Access>
+  <Blank UId="370" />
+  <Token Text=":=" UId="371" />
+  <Blank UId="372" />
+  <Access Scope="LiteralConstant" UId="373">
+    <Constant UId="374">
+      <ConstantValue UId="376">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="377" />
+  <NewLine UId="378" />
+  <Blank Num="8" UId="379" />
+  <Token Text="END_IF" UId="380" />
+  <Token Text=";" UId="381" />
+  <NewLine UId="382" />
+  <Blank Num="4" UId="383" />
+  <Token Text="ELSIF" UId="384" />
+  <Blank UId="385" />
+  <Access Scope="LocalVariable" UId="386">
+    <Symbol UId="387">
+      <Component Name="In" UId="388" />
+      <Token Text="." UId="389" />
+      <Component Name="Tipp" UId="390" />
+    </Symbol>
+  </Access>
+  <Blank UId="391" />
+  <Token Text="THEN" UId="392" />
+  <Blank Num="2" UId="393" />
+  <LineComment UId="394">
+    <Text UId="395"> Tippbetrieb</Text>
+  </LineComment>
+  <NewLine UId="396" />
+  <Blank Num="8" UId="397" />
+  <LineComment UId="398">
+    <Text UId="399"> Linke Seite</Text>
+  </LineComment>
+  <NewLine UId="400" />
+  <Blank Num="8" UId="401" />
+  <Access Scope="LocalVariable" UId="402">
+    <Symbol UId="403">
+      <Component Name="Out" UId="404" />
+      <Token Text="." UId="405" />
+      <Component Name="links_auf" UId="406" />
+    </Symbol>
+  </Access>
+  <Blank UId="407" />
+  <Token Text=":=" UId="408" />
+  <Blank UId="409" />
+  <Access Scope="LocalVariable" UId="410">
+    <Symbol UId="411">
+      <Component Name="In" UId="412" />
+      <Token Text="." UId="413" />
+      <Component Name="T_links_auf" UId="414" />
+    </Symbol>
+  </Access>
+  <Blank UId="415" />
+  <Token Text="AND" UId="416" />
+  <Blank UId="417" />
+  <Token Text="NOT" UId="418" />
+  <Blank UId="419" />
+  <Access Scope="LocalVariable" UId="420">
+    <Symbol UId="421">
+      <Component Name="In" UId="422" />
+      <Token Text="." UId="423" />
+      <Component Name="T_links_zu" UId="424" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="425" />
+  <NewLine UId="426" />
+  <Blank Num="8" UId="427" />
+  <Access Scope="LocalVariable" UId="428">
+    <Symbol UId="429">
+      <Component Name="Out" UId="430" />
+      <Token Text="." UId="431" />
+      <Component Name="links_zu" UId="432" />
+    </Symbol>
+  </Access>
+  <Blank UId="433" />
+  <Token Text=":=" UId="434" />
+  <Blank UId="435" />
+  <Access Scope="LocalVariable" UId="436">
+    <Symbol UId="437">
+      <Component Name="In" UId="438" />
+      <Token Text="." UId="439" />
+      <Component Name="T_links_zu" UId="440" />
+    </Symbol>
+  </Access>
+  <Blank UId="441" />
+  <Token Text="AND" UId="442" />
+  <Blank UId="443" />
+  <Token Text="NOT" UId="444" />
+  <Blank UId="445" />
+  <Access Scope="LocalVariable" UId="446">
+    <Symbol UId="447">
+      <Component Name="In" UId="448" />
+      <Token Text="." UId="449" />
+      <Component Name="T_links_auf" UId="450" />
+    </Symbol>
+  </Access>
+  <Blank UId="451" />
+  <Token Text="AND" UId="452" />
+  <Blank UId="453" />
+  <Access Scope="LocalVariable" UId="454">
+    <Symbol UId="455">
+      <Component Name="Zst" UId="456" />
+      <Token Text="." UId="457" />
+      <Component Name="TW_sicher" UId="458" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="459" />
+  <NewLine UId="460" />
+  <Blank Num="7" UId="461" />
+  <NewLine UId="462" />
+  <Blank Num="8" UId="463" />
+  <LineComment UId="464">
+    <Text UId="465"> Rechte Seite</Text>
+  </LineComment>
+  <NewLine UId="466" />
+  <Blank Num="8" UId="467" />
+  <Access Scope="LocalVariable" UId="468">
+    <Symbol UId="469">
+      <Component Name="Out" UId="470" />
+      <Token Text="." UId="471" />
+      <Component Name="rechts_auf" UId="472" />
+    </Symbol>
+  </Access>
+  <Blank UId="473" />
+  <Token Text=":=" UId="474" />
+  <Blank UId="475" />
+  <Access Scope="LocalVariable" UId="476">
+    <Symbol UId="477">
+      <Component Name="In" UId="478" />
+      <Token Text="." UId="479" />
+      <Component Name="T_rechts_auf" UId="480" />
+    </Symbol>
+  </Access>
+  <Blank UId="481" />
+  <Token Text="AND" UId="482" />
+  <Blank UId="483" />
+  <Token Text="NOT" UId="484" />
+  <Blank UId="485" />
+  <Access Scope="LocalVariable" UId="486">
+    <Symbol UId="487">
+      <Component Name="In" UId="488" />
+      <Token Text="." UId="489" />
+      <Component Name="T_rechts_zu" UId="490" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="491" />
+  <NewLine UId="492" />
+  <Blank Num="8" UId="493" />
+  <Access Scope="LocalVariable" UId="494">
+    <Symbol UId="495">
+      <Component Name="Out" UId="496" />
+      <Token Text="." UId="497" />
+      <Component Name="rechts_zu" UId="498" />
+    </Symbol>
+  </Access>
+  <Blank UId="499" />
+  <Token Text=":=" UId="500" />
+  <Blank UId="501" />
+  <Access Scope="LocalVariable" UId="502">
+    <Symbol UId="503">
+      <Component Name="In" UId="504" />
+      <Token Text="." UId="505" />
+      <Component Name="T_rechts_zu" UId="506" />
+    </Symbol>
+  </Access>
+  <Blank UId="507" />
+  <Token Text="AND" UId="508" />
+  <Blank UId="509" />
+  <Token Text="NOT" UId="510" />
+  <Blank UId="511" />
+  <Access Scope="LocalVariable" UId="512">
+    <Symbol UId="513">
+      <Component Name="In" UId="514" />
+      <Token Text="." UId="515" />
+      <Component Name="T_rechts_auf" UId="516" />
+    </Symbol>
+  </Access>
+  <Blank UId="517" />
+  <Token Text="AND" UId="518" />
+  <Blank UId="519" />
+  <Access Scope="LocalVariable" UId="520">
+    <Symbol UId="521">
+      <Component Name="Zst" UId="522" />
+      <Token Text="." UId="523" />
+      <Component Name="TW_sicher" UId="524" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="525" />
+  <NewLine UId="526" />
+  <Blank Num="4" UId="527" />
+  <Token Text="ELSE" UId="528" />
+  <NewLine UId="529" />
+  <Blank Num="8" UId="530" />
+  <Access Scope="LocalVariable" UId="531">
+    <Symbol UId="532">
+      <Component Name="Out" UId="533" />
+      <Token Text="." UId="534" />
+      <Component Name="links_auf" UId="535" />
+    </Symbol>
+  </Access>
+  <Blank UId="536" />
+  <Token Text=":=" UId="537" />
+  <Blank UId="538" />
+  <Access Scope="LiteralConstant" UId="539">
+    <Constant UId="540">
+      <ConstantValue UId="542">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="543" />
+  <NewLine UId="544" />
+  <Blank Num="8" UId="545" />
+  <Access Scope="LocalVariable" UId="546">
+    <Symbol UId="547">
+      <Component Name="Out" UId="548" />
+      <Token Text="." UId="549" />
+      <Component Name="links_zu" UId="550" />
+    </Symbol>
+  </Access>
+  <Blank UId="551" />
+  <Token Text=":=" UId="552" />
+  <Blank UId="553" />
+  <Access Scope="LiteralConstant" UId="554">
+    <Constant UId="555">
+      <ConstantValue UId="557">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="558" />
+  <NewLine UId="559" />
+  <Blank Num="8" UId="560" />
+  <Access Scope="LocalVariable" UId="561">
+    <Symbol UId="562">
+      <Component Name="Out" UId="563" />
+      <Token Text="." UId="564" />
+      <Component Name="rechts_auf" UId="565" />
+    </Symbol>
+  </Access>
+  <Blank UId="566" />
+  <Token Text=":=" UId="567" />
+  <Blank UId="568" />
+  <Access Scope="LiteralConstant" UId="569">
+    <Constant UId="570">
+      <ConstantValue UId="572">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="573" />
+  <NewLine UId="574" />
+  <Blank Num="8" UId="575" />
+  <Access Scope="LocalVariable" UId="576">
+    <Symbol UId="577">
+      <Component Name="Out" UId="578" />
+      <Token Text="." UId="579" />
+      <Component Name="rechts_zu" UId="580" />
+    </Symbol>
+  </Access>
+  <Blank UId="581" />
+  <Token Text=":=" UId="582" />
+  <Blank UId="583" />
+  <Access Scope="LiteralConstant" UId="584">
+    <Constant UId="585">
+      <ConstantValue UId="587">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="588" />
+  <NewLine UId="589" />
+  <Blank Num="4" UId="590" />
+  <Token Text="END_IF" UId="591" />
+  <Token Text=";" UId="592" />
+  <NewLine UId="593" />
+  <Blank Num="4" UId="594" />
+  <NewLine UId="595" />
+  <Token Text="ELSE" UId="596" />
+  <Blank UId="597" />
+  <LineComment UId="598">
+    <Text UId="599"> Not-Halt</Text>
+  </LineComment>
+  <NewLine UId="600" />
+  <Blank Num="4" UId="601" />
+  <Access Scope="LocalVariable" UId="602">
+    <Symbol UId="603">
+      <Component Name="Out" UId="604" />
+      <Token Text="." UId="605" />
+      <Component Name="links_auf" UId="606" />
+    </Symbol>
+  </Access>
+  <Blank UId="607" />
+  <Token Text=":=" UId="608" />
+  <Blank UId="609" />
+  <Access Scope="LiteralConstant" UId="610">
+    <Constant UId="611">
+      <ConstantValue UId="613">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="614" />
+  <NewLine UId="615" />
+  <Blank Num="4" UId="616" />
+  <Access Scope="LocalVariable" UId="617">
+    <Symbol UId="618">
+      <Component Name="Out" UId="619" />
+      <Token Text="." UId="620" />
+      <Component Name="links_zu" UId="621" />
+    </Symbol>
+  </Access>
+  <Blank UId="622" />
+  <Token Text=":=" UId="623" />
+  <Blank UId="624" />
+  <Access Scope="LiteralConstant" UId="625">
+    <Constant UId="626">
+      <ConstantValue UId="628">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="629" />
+  <NewLine UId="630" />
+  <Blank Num="4" UId="631" />
+  <Access Scope="LocalVariable" UId="632">
+    <Symbol UId="633">
+      <Component Name="Out" UId="634" />
+      <Token Text="." UId="635" />
+      <Component Name="rechts_auf" UId="636" />
+    </Symbol>
+  </Access>
+  <Blank UId="637" />
+  <Token Text=":=" UId="638" />
+  <Blank UId="639" />
+  <Access Scope="LiteralConstant" UId="640">
+    <Constant UId="641">
+      <ConstantValue UId="643">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="644" />
+  <NewLine UId="645" />
+  <Blank Num="4" UId="646" />
+  <Access Scope="LocalVariable" UId="647">
+    <Symbol UId="648">
+      <Component Name="Out" UId="649" />
+      <Token Text="." UId="650" />
+      <Component Name="rechts_zu" UId="651" />
+    </Symbol>
+  </Access>
+  <Blank UId="652" />
+  <Token Text=":=" UId="653" />
+  <Blank UId="654" />
+  <Access Scope="LiteralConstant" UId="655">
+    <Constant UId="656">
+      <ConstantValue UId="658">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="659" />
+  <NewLine UId="660" />
+  <Token Text="END_IF" UId="661" />
+  <Token Text=";" UId="662" />
+  <NewLine Num="2" UId="663" />
+  <LineComment UId="664">
+    <Text UId="665"> Endlagen erreicht</Text>
+  </LineComment>
+  <NewLine UId="666" />
+  <Token Text="IF" UId="667" />
+  <Blank UId="668" />
+  <Access Scope="LocalVariable" UId="669">
+    <Symbol UId="670">
+      <Component Name="In" UId="671" />
+      <Token Text="." UId="672" />
+      <Component Name="S_links_auf" UId="673" />
+    </Symbol>
+  </Access>
+  <Blank UId="674" />
+  <Token Text="OR" UId="675" />
+  <Blank UId="676" />
+  <Access Scope="LocalVariable" UId="677">
+    <Symbol UId="678">
+      <Component Name="In" UId="679" />
+      <Token Text="." UId="680" />
+      <Component Name="SRM_links_auf" UId="681" />
+    </Symbol>
+  </Access>
+  <Blank UId="682" />
+  <Token Text="THEN" UId="683" />
+  <NewLine UId="684" />
+  <Blank Num="4" UId="685" />
+  <Access Scope="LocalVariable" UId="686">
+    <Symbol UId="687">
+      <Component Name="Out" UId="688" />
+      <Token Text="." UId="689" />
+      <Component Name="links_auf" UId="690" />
+    </Symbol>
+  </Access>
+  <Blank UId="691" />
+  <Token Text=":=" UId="692" />
+  <Blank UId="693" />
+  <Access Scope="LiteralConstant" UId="694">
+    <Constant UId="695">
+      <ConstantValue UId="697">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="698" />
+  <NewLine UId="699" />
+  <Token Text="END_IF" UId="700" />
+  <Token Text=";" UId="701" />
+  <NewLine UId="702" />
+  <Token Text="IF" UId="703" />
+  <Blank UId="704" />
+  <Access Scope="LocalVariable" UId="705">
+    <Symbol UId="706">
+      <Component Name="In" UId="707" />
+      <Token Text="." UId="708" />
+      <Component Name="S_links_zu" UId="709" />
+    </Symbol>
+  </Access>
+  <Blank UId="710" />
+  <Token Text="OR" UId="711" />
+  <Blank UId="712" />
+  <Access Scope="LocalVariable" UId="713">
+    <Symbol UId="714">
+      <Component Name="In" UId="715" />
+      <Token Text="." UId="716" />
+      <Component Name="SRM_links_zu" UId="717" />
+    </Symbol>
+  </Access>
+  <Blank UId="718" />
+  <Token Text="THEN" UId="719" />
+  <NewLine UId="720" />
+  <Blank Num="4" UId="721" />
+  <Access Scope="LocalVariable" UId="722">
+    <Symbol UId="723">
+      <Component Name="Out" UId="724" />
+      <Token Text="." UId="725" />
+      <Component Name="links_zu" UId="726" />
+    </Symbol>
+  </Access>
+  <Blank UId="727" />
+  <Token Text=":=" UId="728" />
+  <Blank UId="729" />
+  <Access Scope="LiteralConstant" UId="730">
+    <Constant UId="731">
+      <ConstantValue UId="733">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="734" />
+  <NewLine UId="735" />
+  <Token Text="END_IF" UId="736" />
+  <Token Text=";" UId="737" />
+  <NewLine UId="738" />
+  <Token Text="IF" UId="739" />
+  <Blank UId="740" />
+  <Access Scope="LocalVariable" UId="741">
+    <Symbol UId="742">
+      <Component Name="In" UId="743" />
+      <Token Text="." UId="744" />
+      <Component Name="S_rechts_auf" UId="745" />
+    </Symbol>
+  </Access>
+  <Blank UId="746" />
+  <Token Text="OR" UId="747" />
+  <Blank UId="748" />
+  <Access Scope="LocalVariable" UId="749">
+    <Symbol UId="750">
+      <Component Name="In" UId="751" />
+      <Token Text="." UId="752" />
+      <Component Name="SRM_rechts_auf" UId="753" />
+    </Symbol>
+  </Access>
+  <Blank UId="754" />
+  <Token Text="THEN" UId="755" />
+  <NewLine UId="756" />
+  <Blank Num="4" UId="757" />
+  <Access Scope="LocalVariable" UId="758">
+    <Symbol UId="759">
+      <Component Name="Out" UId="760" />
+      <Token Text="." UId="761" />
+      <Component Name="rechts_auf" UId="762" />
+    </Symbol>
+  </Access>
+  <Blank UId="763" />
+  <Token Text=":=" UId="764" />
+  <Blank UId="765" />
+  <Access Scope="LiteralConstant" UId="766">
+    <Constant UId="767">
+      <ConstantValue UId="769">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="770" />
+  <NewLine UId="771" />
+  <Token Text="END_IF" UId="772" />
+  <Token Text=";" UId="773" />
+  <NewLine UId="774" />
+  <Token Text="IF" UId="775" />
+  <Blank UId="776" />
+  <Access Scope="LocalVariable" UId="777">
+    <Symbol UId="778">
+      <Component Name="In" UId="779" />
+      <Token Text="." UId="780" />
+      <Component Name="S_rechts_zu" UId="781" />
+    </Symbol>
+  </Access>
+  <Blank UId="782" />
+  <Token Text="OR" UId="783" />
+  <Blank UId="784" />
+  <Access Scope="LocalVariable" UId="785">
+    <Symbol UId="786">
+      <Component Name="In" UId="787" />
+      <Token Text="." UId="788" />
+      <Component Name="SRM_rechts_zu" UId="789" />
+    </Symbol>
+  </Access>
+  <Blank UId="790" />
+  <Token Text="THEN" UId="791" />
+  <NewLine UId="792" />
+  <Blank Num="4" UId="793" />
+  <Access Scope="LocalVariable" UId="794">
+    <Symbol UId="795">
+      <Component Name="Out" UId="796" />
+      <Token Text="." UId="797" />
+      <Component Name="rechts_zu" UId="798" />
+    </Symbol>
+  </Access>
+  <Blank UId="799" />
+  <Token Text=":=" UId="800" />
+  <Blank UId="801" />
+  <Access Scope="LiteralConstant" UId="802">
+    <Constant UId="803">
+      <ConstantValue UId="805">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="806" />
+  <NewLine UId="807" />
+  <Token Text="END_IF" UId="808" />
+  <Token Text=";" UId="809" />
+  <NewLine Num="3" UId="810" />
+  <Token Text="REGION" UId="811" />
+  <Blank UId="812" />
+  <Text UId="813">Ist-Position</Text>
+  <NewLine UId="814" />
+  <Blank Num="4" UId="815" />
+  <LineComment UId="816">
+    <Text UId="817"> Ist-Pos simulieren für Visu </Text>
+  </LineComment>
+  <NewLine UId="818" />
+  <Blank Num="4" UId="819" />
+  <Token Text="IF" UId="820" />
+  <Blank UId="821" />
+  <Access Scope="LocalVariable" UId="822">
+    <Symbol UId="823">
+      <Component Name="Out" UId="824" />
+      <Token Text="." UId="825" />
+      <Component Name="links_auf" UId="826" />
+    </Symbol>
+  </Access>
+  <Blank UId="827" />
+  <Token Text="AND" UId="828" />
+  <Blank UId="829" />
+  <Access Scope="GlobalVariable" UId="830">
+    <Symbol UId="831">
+      <Component Name="Imp_10Hz" UId="832">
+        <BooleanAttribute Name="HasQuotes" UId="833">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="834" />
+  <Token Text="AND" UId="835" />
+  <Blank UId="836" />
+  <Token Text="NOT" UId="837" />
+  <Blank UId="838" />
+  <Access Scope="LocalVariable" UId="839">
+    <Symbol UId="840">
+      <Component Name="In" UId="841" />
+      <Token Text="." UId="842" />
+      <Component Name="S_links_auf" UId="843" />
+    </Symbol>
+  </Access>
+  <Blank UId="844" />
+  <Token Text="THEN" UId="845" />
+  <NewLine UId="846" />
+  <Blank Num="8" UId="847" />
+  <Access Scope="LocalVariable" UId="848">
+    <Symbol UId="849">
+      <Component Name="Zst" UId="850" />
+      <Token Text="." UId="851" />
+      <Component Name="Ist_Pos_links" UId="852" />
+    </Symbol>
+  </Access>
+  <Blank UId="853" />
+  <Token Text=":=" UId="854" />
+  <Blank UId="855" />
+  <Access Scope="Call" UId="856">
+    <Instruction Name="MAX" UId="857">
+      <Token Text="(" UId="858" />
+      <Parameter Name="IN1" UId="859">
+        <Blank UId="860" />
+        <Token Text=":=" UId="861" />
+        <Blank UId="862" />
+        <Access Scope="LiteralConstant" UId="863">
+          <Constant UId="864">
+            <ConstantValue UId="866">5</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="867" />
+      <Blank UId="868" />
+      <Parameter Name="IN2" UId="869">
+        <Blank UId="870" />
+        <Token Text=":=" UId="871" />
+        <Blank UId="872" />
+        <Token Text="(" UId="873" />
+        <Access Scope="LocalVariable" UId="874">
+          <Symbol UId="875">
+            <Component Name="Zst" UId="876" />
+            <Token Text="." UId="877" />
+            <Component Name="Ist_Pos_links" UId="878" />
+          </Symbol>
+        </Access>
+        <Blank UId="879" />
+        <Token Text="-" UId="880" />
+        <Blank UId="881" />
+        <Access Scope="LiteralConstant" UId="882">
+          <Constant UId="883">
+            <ConstantValue UId="885">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="886" />
+      </Parameter>
+      <Token Text=")" UId="888" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="889" />
+  <NewLine UId="890" />
+  <Blank Num="4" UId="891" />
+  <Token Text="ELSIF" UId="892" />
+  <Blank UId="893" />
+  <Access Scope="LocalVariable" UId="894">
+    <Symbol UId="895">
+      <Component Name="In" UId="896" />
+      <Token Text="." UId="897" />
+      <Component Name="S_links_auf" UId="898" />
+    </Symbol>
+  </Access>
+  <Blank UId="899" />
+  <Token Text="THEN" UId="900" />
+  <NewLine UId="901" />
+  <Blank Num="8" UId="902" />
+  <Access Scope="LocalVariable" UId="903">
+    <Symbol UId="904">
+      <Component Name="Zst" UId="905" />
+      <Token Text="." UId="906" />
+      <Component Name="Ist_Pos_links" UId="907" />
+    </Symbol>
+  </Access>
+  <Blank UId="908" />
+  <Token Text=":=" UId="909" />
+  <Blank UId="910" />
+  <Access Scope="LiteralConstant" UId="911">
+    <Constant UId="912">
+      <ConstantValue UId="914">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="915" />
+  <NewLine UId="916" />
+  <Blank Num="4" UId="917" />
+  <Token Text="END_IF" UId="918" />
+  <Token Text=";" UId="919" />
+  <NewLine UId="920" />
+  <Blank Num="4" UId="921" />
+  <NewLine UId="922" />
+  <Blank Num="4" UId="923" />
+  <Token Text="IF" UId="924" />
+  <Blank UId="925" />
+  <Access Scope="LocalVariable" UId="926">
+    <Symbol UId="927">
+      <Component Name="Out" UId="928" />
+      <Token Text="." UId="929" />
+      <Component Name="rechts_auf" UId="930" />
+    </Symbol>
+  </Access>
+  <Blank UId="931" />
+  <Token Text="AND" UId="932" />
+  <Blank UId="933" />
+  <Access Scope="GlobalVariable" UId="934">
+    <Symbol UId="935">
+      <Component Name="Imp_10Hz" UId="936">
+        <BooleanAttribute Name="HasQuotes" UId="937">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="938" />
+  <Token Text="AND" UId="939" />
+  <Blank UId="940" />
+  <Token Text="NOT" UId="941" />
+  <Blank UId="942" />
+  <Access Scope="LocalVariable" UId="943">
+    <Symbol UId="944">
+      <Component Name="In" UId="945" />
+      <Token Text="." UId="946" />
+      <Component Name="S_rechts_auf" UId="947" />
+    </Symbol>
+  </Access>
+  <Blank UId="948" />
+  <Token Text="THEN" UId="949" />
+  <NewLine UId="950" />
+  <Blank Num="8" UId="951" />
+  <Access Scope="LocalVariable" UId="952">
+    <Symbol UId="953">
+      <Component Name="Zst" UId="954" />
+      <Token Text="." UId="955" />
+      <Component Name="Ist_Pos_rechts" UId="956" />
+    </Symbol>
+  </Access>
+  <Blank UId="957" />
+  <Token Text=":=" UId="958" />
+  <Blank UId="959" />
+  <Access Scope="Call" UId="960">
+    <Instruction Name="MAX" UId="961">
+      <Token Text="(" UId="962" />
+      <Parameter Name="IN1" UId="963">
+        <Blank UId="964" />
+        <Token Text=":=" UId="965" />
+        <Blank UId="966" />
+        <Access Scope="LiteralConstant" UId="967">
+          <Constant UId="968">
+            <ConstantValue UId="970">5</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="971" />
+      <Blank UId="972" />
+      <Parameter Name="IN2" UId="973">
+        <Blank UId="974" />
+        <Token Text=":=" UId="975" />
+        <Blank UId="976" />
+        <Token Text="(" UId="977" />
+        <Access Scope="LocalVariable" UId="978">
+          <Symbol UId="979">
+            <Component Name="Zst" UId="980" />
+            <Token Text="." UId="981" />
+            <Component Name="Ist_Pos_rechts" UId="982" />
+          </Symbol>
+        </Access>
+        <Blank UId="983" />
+        <Token Text="-" UId="984" />
+        <Blank UId="985" />
+        <Access Scope="LiteralConstant" UId="986">
+          <Constant UId="987">
+            <ConstantValue UId="989">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="990" />
+      </Parameter>
+      <Token Text=")" UId="992" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="993" />
+  <NewLine UId="994" />
+  <Blank Num="4" UId="995" />
+  <Token Text="ELSIF" UId="996" />
+  <Blank UId="997" />
+  <Access Scope="LocalVariable" UId="998">
+    <Symbol UId="999">
+      <Component Name="In" UId="1000" />
+      <Token Text="." UId="1001" />
+      <Component Name="S_rechts_auf" UId="1002" />
+    </Symbol>
+  </Access>
+  <Blank UId="1003" />
+  <Token Text="THEN" UId="1004" />
+  <NewLine UId="1005" />
+  <Blank Num="8" UId="1006" />
+  <Access Scope="LocalVariable" UId="1007">
+    <Symbol UId="1008">
+      <Component Name="Zst" UId="1009" />
+      <Token Text="." UId="1010" />
+      <Component Name="Ist_Pos_rechts" UId="1011" />
+    </Symbol>
+  </Access>
+  <Blank UId="1012" />
+  <Token Text=":=" UId="1013" />
+  <Blank UId="1014" />
+  <Access Scope="LiteralConstant" UId="1015">
+    <Constant UId="1016">
+      <ConstantValue UId="1018">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1019" />
+  <NewLine UId="1020" />
+  <Blank Num="4" UId="1021" />
+  <Token Text="END_IF" UId="1022" />
+  <Token Text=";" UId="1023" />
+  <NewLine UId="1024" />
+  <Blank Num="4" UId="1025" />
+  <NewLine UId="1026" />
+  <Blank Num="4" UId="1027" />
+  <LineComment UId="1028">
+    <Text UId="1029"> Ist-Pos simulieren für Visu </Text>
+  </LineComment>
+  <NewLine UId="1030" />
+  <Blank Num="4" UId="1031" />
+  <Token Text="IF" UId="1032" />
+  <Blank UId="1033" />
+  <Access Scope="LocalVariable" UId="1034">
+    <Symbol UId="1035">
+      <Component Name="Out" UId="1036" />
+      <Token Text="." UId="1037" />
+      <Component Name="links_zu" UId="1038" />
+    </Symbol>
+  </Access>
+  <Blank UId="1039" />
+  <Token Text="AND" UId="1040" />
+  <Blank UId="1041" />
+  <Access Scope="GlobalVariable" UId="1042">
+    <Symbol UId="1043">
+      <Component Name="Imp_5Hz" UId="1044">
+        <BooleanAttribute Name="HasQuotes" UId="1045">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="1046" />
+  <Token Text="AND" UId="1047" />
+  <Blank UId="1048" />
+  <Token Text="NOT" UId="1049" />
+  <Blank UId="1050" />
+  <Access Scope="LocalVariable" UId="1051">
+    <Symbol UId="1052">
+      <Component Name="In" UId="1053" />
+      <Token Text="." UId="1054" />
+      <Component Name="S_links_zu" UId="1055" />
+    </Symbol>
+  </Access>
+  <Blank UId="1056" />
+  <Token Text="THEN" UId="1057" />
+  <NewLine UId="1058" />
+  <Blank Num="8" UId="1059" />
+  <Access Scope="LocalVariable" UId="1060">
+    <Symbol UId="1061">
+      <Component Name="Zst" UId="1062" />
+      <Token Text="." UId="1063" />
+      <Component Name="Ist_Pos_links" UId="1064" />
+    </Symbol>
+  </Access>
+  <Blank UId="1065" />
+  <Token Text=":=" UId="1066" />
+  <Blank UId="1067" />
+  <Access Scope="Call" UId="1068">
+    <Instruction Name="MIN" UId="1069">
+      <Token Text="(" UId="1070" />
+      <Parameter Name="IN1" UId="1071">
+        <Blank UId="1072" />
+        <Token Text=":=" UId="1073" />
+        <Blank UId="1074" />
+        <Access Scope="LiteralConstant" UId="1075">
+          <Constant UId="1076">
+            <ConstantValue UId="1078">95</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1079" />
+      <Blank UId="1080" />
+      <Parameter Name="IN2" UId="1081">
+        <Blank UId="1082" />
+        <Token Text=":=" UId="1083" />
+        <Blank UId="1084" />
+        <Token Text="(" UId="1085" />
+        <Access Scope="LocalVariable" UId="1086">
+          <Symbol UId="1087">
+            <Component Name="Zst" UId="1088" />
+            <Token Text="." UId="1089" />
+            <Component Name="Ist_Pos_links" UId="1090" />
+          </Symbol>
+        </Access>
+        <Blank UId="1091" />
+        <Token Text="+" UId="1092" />
+        <Blank UId="1093" />
+        <Access Scope="LiteralConstant" UId="1094">
+          <Constant UId="1095">
+            <ConstantValue UId="1097">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="1098" />
+      </Parameter>
+      <Token Text=")" UId="1100" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="1101" />
+  <NewLine UId="1102" />
+  <Blank Num="4" UId="1103" />
+  <Token Text="ELSIF" UId="1104" />
+  <Blank UId="1105" />
+  <Access Scope="LocalVariable" UId="1106">
+    <Symbol UId="1107">
+      <Component Name="In" UId="1108" />
+      <Token Text="." UId="1109" />
+      <Component Name="S_links_zu" UId="1110" />
+    </Symbol>
+  </Access>
+  <Blank UId="1111" />
+  <Token Text="THEN" UId="1112" />
+  <NewLine UId="1113" />
+  <Blank Num="8" UId="1114" />
+  <Access Scope="LocalVariable" UId="1115">
+    <Symbol UId="1116">
+      <Component Name="Zst" UId="1117" />
+      <Token Text="." UId="1118" />
+      <Component Name="Ist_Pos_links" UId="1119" />
+    </Symbol>
+  </Access>
+  <Blank UId="1120" />
+  <Token Text=":=" UId="1121" />
+  <Blank UId="1122" />
+  <Access Scope="LiteralConstant" UId="1123">
+    <Constant UId="1124">
+      <ConstantValue UId="1126">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1127" />
+  <NewLine UId="1128" />
+  <Blank Num="4" UId="1129" />
+  <Token Text="END_IF" UId="1130" />
+  <Token Text=";" UId="1131" />
+  <NewLine UId="1132" />
+  <Blank Num="4" UId="1133" />
+  <NewLine UId="1134" />
+  <Blank Num="4" UId="1135" />
+  <Token Text="IF" UId="1136" />
+  <Blank UId="1137" />
+  <Access Scope="LocalVariable" UId="1138">
+    <Symbol UId="1139">
+      <Component Name="Out" UId="1140" />
+      <Token Text="." UId="1141" />
+      <Component Name="rechts_zu" UId="1142" />
+    </Symbol>
+  </Access>
+  <Blank UId="1143" />
+  <Token Text="AND" UId="1144" />
+  <Blank UId="1145" />
+  <Access Scope="GlobalVariable" UId="1146">
+    <Symbol UId="1147">
+      <Component Name="Imp_5Hz" UId="1148">
+        <BooleanAttribute Name="HasQuotes" UId="1149">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="1150" />
+  <Token Text="AND" UId="1151" />
+  <Blank UId="1152" />
+  <Token Text="NOT" UId="1153" />
+  <Blank UId="1154" />
+  <Access Scope="LocalVariable" UId="1155">
+    <Symbol UId="1156">
+      <Component Name="In" UId="1157" />
+      <Token Text="." UId="1158" />
+      <Component Name="S_rechts_zu" UId="1159" />
+    </Symbol>
+  </Access>
+  <Blank UId="1160" />
+  <Token Text="THEN" UId="1161" />
+  <NewLine UId="1162" />
+  <Blank Num="8" UId="1163" />
+  <Access Scope="LocalVariable" UId="1164">
+    <Symbol UId="1165">
+      <Component Name="Zst" UId="1166" />
+      <Token Text="." UId="1167" />
+      <Component Name="Ist_Pos_rechts" UId="1168" />
+    </Symbol>
+  </Access>
+  <Blank UId="1169" />
+  <Token Text=":=" UId="1170" />
+  <Blank UId="1171" />
+  <Access Scope="Call" UId="1172">
+    <Instruction Name="MIN" UId="1173">
+      <Token Text="(" UId="1174" />
+      <Parameter Name="IN1" UId="1175">
+        <Blank UId="1176" />
+        <Token Text=":=" UId="1177" />
+        <Blank UId="1178" />
+        <Access Scope="LiteralConstant" UId="1179">
+          <Constant UId="1180">
+            <ConstantValue UId="1182">95</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="1183" />
+      <Blank UId="1184" />
+      <Parameter Name="IN2" UId="1185">
+        <Blank UId="1186" />
+        <Token Text=":=" UId="1187" />
+        <Blank UId="1188" />
+        <Token Text="(" UId="1189" />
+        <Access Scope="LocalVariable" UId="1190">
+          <Symbol UId="1191">
+            <Component Name="Zst" UId="1192" />
+            <Token Text="." UId="1193" />
+            <Component Name="Ist_Pos_rechts" UId="1194" />
+          </Symbol>
+        </Access>
+        <Blank UId="1195" />
+        <Token Text="+" UId="1196" />
+        <Blank UId="1197" />
+        <Access Scope="LiteralConstant" UId="1198">
+          <Constant UId="1199">
+            <ConstantValue UId="1201">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text=")" UId="1202" />
+      </Parameter>
+      <Token Text=")" UId="1204" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="1205" />
+  <NewLine UId="1206" />
+  <Blank Num="4" UId="1207" />
+  <Token Text="ELSIF" UId="1208" />
+  <Blank UId="1209" />
+  <Access Scope="LocalVariable" UId="1210">
+    <Symbol UId="1211">
+      <Component Name="In" UId="1212" />
+      <Token Text="." UId="1213" />
+      <Component Name="S_rechts_zu" UId="1214" />
+    </Symbol>
+  </Access>
+  <Blank UId="1215" />
+  <Token Text="THEN" UId="1216" />
+  <NewLine UId="1217" />
+  <Blank Num="8" UId="1218" />
+  <Access Scope="LocalVariable" UId="1219">
+    <Symbol UId="1220">
+      <Component Name="Zst" UId="1221" />
+      <Token Text="." UId="1222" />
+      <Component Name="Ist_Pos_rechts" UId="1223" />
+    </Symbol>
+  </Access>
+  <Blank UId="1224" />
+  <Token Text=":=" UId="1225" />
+  <Blank UId="1226" />
+  <Access Scope="LiteralConstant" UId="1227">
+    <Constant UId="1228">
+      <ConstantValue UId="1230">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1231" />
+  <NewLine UId="1232" />
+  <Blank Num="4" UId="1233" />
+  <Token Text="END_IF" UId="1234" />
+  <Token Text=";" UId="1235" />
+  <NewLine UId="1236" />
+  <Token Text="END_REGION" UId="1237" />
+  <NewLine Num="2" UId="1238" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Ansteuerung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="LocalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="Zst" UId="23" />
+      <Token Text="." UId="24" />
+      <Component Name="Sperre_Pos_li" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank UId="26" />
+  <Token Text=":=" UId="27" />
+  <Blank UId="28" />
+  <Token Text="NOT" UId="29" />
+  <Blank UId="30" />
+  <Token Text="(" UId="31" />
+  <Access Scope="LocalVariable" UId="32">
+    <Symbol UId="33">
+      <Component Name="In" UId="34" />
+      <Token Text="." UId="35" />
+      <Component Name="S_links_auf" UId="36" />
+    </Symbol>
+  </Access>
+  <Blank UId="37" />
+  <Token Text="XOR" UId="38" />
+  <Blank UId="39" />
+  <Access Scope="LocalVariable" UId="40">
+    <Symbol UId="41">
+      <Component Name="In" UId="42" />
+      <Token Text="." UId="43" />
+      <Component Name="S_links_zu" UId="44" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="45" />
+  <Blank Num="2" UId="46" />
+  <Token Text="OR" UId="47" />
+  <Blank UId="48" />
+  <Access Scope="LocalVariable" UId="49">
+    <Symbol UId="50">
+      <Component Name="Out" UId="51" />
+      <Token Text="." UId="52" />
+      <Component Name="links_auf" UId="53" />
+    </Symbol>
+  </Access>
+  <Blank UId="54" />
+  <Token Text="OR" UId="55" />
+  <Blank UId="56" />
+  <Access Scope="LocalVariable" UId="57">
+    <Symbol UId="58">
+      <Component Name="Out" UId="59" />
+      <Token Text="." UId="60" />
+      <Component Name="links_zu" UId="61" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="62" />
+  <NewLine Num="2" UId="63" />
+  <Access Scope="LocalVariable" UId="64">
+    <Symbol UId="65">
+      <Component Name="Zst" UId="66" />
+      <Token Text="." UId="67" />
+      <Component Name="Sperre_Pos_re" UId="68" />
+    </Symbol>
+  </Access>
+  <Blank UId="69" />
+  <Token Text=":=" UId="70" />
+  <Blank UId="71" />
+  <Token Text="NOT" UId="72" />
+  <Blank UId="73" />
+  <Token Text="(" UId="74" />
+  <Access Scope="LocalVariable" UId="75">
+    <Symbol UId="76">
+      <Component Name="In" UId="77" />
+      <Token Text="." UId="78" />
+      <Component Name="S_rechts_auf" UId="79" />
+    </Symbol>
+  </Access>
+  <Blank UId="80" />
+  <Token Text="XOR" UId="81" />
+  <Blank UId="82" />
+  <Access Scope="LocalVariable" UId="83">
+    <Symbol UId="84">
+      <Component Name="In" UId="85" />
+      <Token Text="." UId="86" />
+      <Component Name="S_rechts_zu" UId="87" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="88" />
+  <Blank UId="89" />
+  <Token Text="OR" UId="90" />
+  <Blank UId="91" />
+  <Access Scope="LocalVariable" UId="92">
+    <Symbol UId="93">
+      <Component Name="Out" UId="94" />
+      <Token Text="." UId="95" />
+      <Component Name="rechts_auf" UId="96" />
+    </Symbol>
+  </Access>
+  <Blank UId="97" />
+  <Token Text="OR" UId="98" />
+  <Blank UId="99" />
+  <Access Scope="LocalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="Out" UId="102" />
+      <Token Text="." UId="103" />
+      <Component Name="rechts_zu" UId="104" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="105" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Überfahren verboten</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Possperre</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Sicherungsfall 24V DC links</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="Mld" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Si_24VDC_links" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank UId="29" />
+  <Token Text=":=" UId="30" />
+  <Blank UId="31" />
+  <Token Text="NOT" UId="32" />
+  <Blank UId="33" />
+  <Access Scope="LocalVariable" UId="34">
+    <Symbol UId="35">
+      <Component Name="In" UId="36" />
+      <Token Text="." UId="37" />
+      <Component Name="Si_24VDC_links" UId="38" />
+    </Symbol>
+  </Access>
+  <Blank UId="39" />
+  <Token Text="AND" UId="40" />
+  <Blank UId="41" />
+  <Token Text="NOT" UId="42" />
+  <Blank UId="43" />
+  <Access Scope="LocalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="In" UId="46" />
+      <Token Text="." UId="47" />
+      <Component Name="NotHalt" UId="48" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="49" />
+  <NewLine UId="50" />
+  <LineComment UId="51">
+    <Text UId="52"> Sicherungsfall 24V DC rechts</Text>
+  </LineComment>
+  <NewLine UId="53" />
+  <Access Scope="LocalVariable" UId="54">
+    <Symbol UId="55">
+      <Component Name="Mld" UId="56" />
+      <Token Text="." UId="57" />
+      <Component Name="Si_24VDC_rechts" UId="58" />
+    </Symbol>
+  </Access>
+  <Blank UId="59" />
+  <Token Text=":=" UId="60" />
+  <Blank UId="61" />
+  <Token Text="NOT" UId="62" />
+  <Blank UId="63" />
+  <Access Scope="LocalVariable" UId="64">
+    <Symbol UId="65">
+      <Component Name="In" UId="66" />
+      <Token Text="." UId="67" />
+      <Component Name="Si_24VDC_rechts" UId="68" />
+    </Symbol>
+  </Access>
+  <Blank UId="69" />
+  <Token Text="AND" UId="70" />
+  <Blank UId="71" />
+  <Token Text="NOT" UId="72" />
+  <Blank UId="73" />
+  <Access Scope="LocalVariable" UId="74">
+    <Symbol UId="75">
+      <Component Name="In" UId="76" />
+      <Token Text="." UId="77" />
+      <Component Name="NotHalt" UId="78" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="79" />
+  <NewLine Num="2" UId="80" />
+  <LineComment UId="81">
+    <Text UId="82"> nicht in Automatik</Text>
+  </LineComment>
+  <NewLine UId="83" />
+  <Access Scope="LocalVariable" UId="84">
+    <Symbol UId="85">
+      <Component Name="Mld" UId="86" />
+      <Token Text="." UId="87" />
+      <Component Name="n_Auto" UId="88" />
+    </Symbol>
+  </Access>
+  <Blank UId="89" />
+  <Token Text=":=" UId="90" />
+  <Blank UId="91" />
+  <Token Text="NOT" UId="92" />
+  <Blank UId="93" />
+  <Access Scope="LocalVariable" UId="94">
+    <Symbol UId="95">
+      <Component Name="In" UId="96" />
+      <Token Text="." UId="97" />
+      <Component Name="Auto" UId="98" />
+    </Symbol>
+  </Access>
+  <Blank UId="99" />
+  <Token Text="AND" UId="100" />
+  <Blank UId="101" />
+  <Access Scope="GlobalVariable" UId="102">
+    <Symbol UId="103">
+      <Component Name="DB_ANLAGE" UId="104">
+        <BooleanAttribute Name="HasQuotes" UId="105">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="106" />
+      <Component Name="BA" UId="107" />
+      <Token Text="." UId="108" />
+      <Component Name="Automat_ein" UId="109" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="110" />
+  <NewLine Num="2" UId="111" />
+  <LineComment UId="112">
+    <Text UId="113"> Zeitüberschreitung links öffnen</Text>
+  </LineComment>
+  <NewLine UId="114" />
+  <Access Scope="LocalVariable" UId="115">
+    <Symbol UId="116">
+      <Component Name="IEC_Timer" UId="117" />
+      <Token Text="." UId="118" />
+      <Component Name="TO_li_auf" UId="119" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="120">
+    <Instruction UId="121">
+      <Token Text="(" UId="122" />
+      <Parameter Name="IN" UId="123">
+        <Blank UId="124" />
+        <Token Text=":=" UId="125" />
+        <Blank UId="126" />
+        <Access Scope="LocalVariable" UId="127">
+          <Symbol UId="128">
+            <Component Name="Out" UId="129" />
+            <Token Text="." UId="130" />
+            <Component Name="links_auf" UId="131" />
+          </Symbol>
+        </Access>
+        <Blank UId="132" />
+        <Token Text="AND" UId="133" />
+        <Blank UId="134" />
+        <Token Text="NOT" UId="135" />
+        <Blank UId="136" />
+        <Access Scope="LocalVariable" UId="137">
+          <Symbol UId="138">
+            <Component Name="In" UId="139" />
+            <Token Text="." UId="140" />
+            <Component Name="S_links_auf" UId="141" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="142" />
+      <NewLine UId="143" />
+      <Blank Num="21" UId="144" />
+      <Parameter Name="PT" UId="145">
+        <Blank UId="146" />
+        <Token Text=":=" UId="147" />
+        <Blank UId="148" />
+        <Access Scope="LocalVariable" UId="149">
+          <Symbol UId="150">
+            <Component Name="Param" UId="151" />
+            <Token Text="." UId="152" />
+            <Component Name="TO" UId="153" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="154" />
+      <NewLine UId="155" />
+      <Blank Num="21" UId="156" />
+      <Parameter Name="Q" UId="157">
+        <Blank UId="158" />
+        <Token Text="=&gt;" UId="159" />
+        <Blank UId="160" />
+        <Access Scope="LocalVariable" UId="161">
+          <Symbol UId="162">
+            <Component Name="TO_links_auf" UId="163" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="164" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="165" />
+  <NewLine UId="166" />
+  <Token Text="IF" UId="167" />
+  <Blank UId="168" />
+  <Access Scope="LocalVariable" UId="169">
+    <Symbol UId="170">
+      <Component Name="TO_links_auf" UId="171" />
+    </Symbol>
+  </Access>
+  <Blank UId="172" />
+  <Token Text="THEN" UId="173" />
+  <NewLine UId="174" />
+  <Blank Num="4" UId="175" />
+  <Access Scope="LocalVariable" UId="176">
+    <Symbol UId="177">
+      <Component Name="Mld" UId="178" />
+      <Token Text="." UId="179" />
+      <Component Name="TO_links_auf" UId="180" />
+    </Symbol>
+  </Access>
+  <Blank UId="181" />
+  <Token Text=":=" UId="182" />
+  <Blank UId="183" />
+  <Access Scope="LiteralConstant" UId="184">
+    <Constant UId="185">
+      <ConstantValue UId="187">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="188" />
+  <NewLine UId="189" />
+  <Token Text="ELSIF" UId="190" />
+  <Blank UId="191" />
+  <Access Scope="LocalVariable" UId="192">
+    <Symbol UId="193">
+      <Component Name="In" UId="194" />
+      <Token Text="." UId="195" />
+      <Component Name="ErrQ" UId="196" />
+    </Symbol>
+  </Access>
+  <Blank UId="197" />
+  <Token Text="THEN" UId="198" />
+  <NewLine UId="199" />
+  <Blank Num="4" UId="200" />
+  <Access Scope="LocalVariable" UId="201">
+    <Symbol UId="202">
+      <Component Name="Mld" UId="203" />
+      <Token Text="." UId="204" />
+      <Component Name="TO_links_auf" UId="205" />
+    </Symbol>
+  </Access>
+  <Blank UId="206" />
+  <Token Text=":=" UId="207" />
+  <Blank UId="208" />
+  <Access Scope="LiteralConstant" UId="209">
+    <Constant UId="210">
+      <ConstantValue UId="212">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="213" />
+  <NewLine UId="214" />
+  <Token Text="END_IF" UId="215" />
+  <Token Text=";" UId="216" />
+  <NewLine UId="217" />
+  <LineComment UId="218">
+    <Text UId="219"> Zeitüberschreitung links schließen</Text>
+  </LineComment>
+  <NewLine UId="220" />
+  <Access Scope="LocalVariable" UId="221">
+    <Symbol UId="222">
+      <Component Name="IEC_Timer" UId="223" />
+      <Token Text="." UId="224" />
+      <Component Name="TO_li_zu" UId="225" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="226">
+    <Instruction UId="227">
+      <Token Text="(" UId="228" />
+      <Parameter Name="IN" UId="229">
+        <Blank UId="230" />
+        <Token Text=":=" UId="231" />
+        <Blank UId="232" />
+        <Access Scope="LocalVariable" UId="233">
+          <Symbol UId="234">
+            <Component Name="Out" UId="235" />
+            <Token Text="." UId="236" />
+            <Component Name="links_zu" UId="237" />
+          </Symbol>
+        </Access>
+        <Blank UId="238" />
+        <Token Text="AND" UId="239" />
+        <Blank UId="240" />
+        <Token Text="NOT" UId="241" />
+        <Blank UId="242" />
+        <Access Scope="LocalVariable" UId="243">
+          <Symbol UId="244">
+            <Component Name="In" UId="245" />
+            <Token Text="." UId="246" />
+            <Component Name="S_links_zu" UId="247" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="248" />
+      <NewLine UId="249" />
+      <Blank Num="21" UId="250" />
+      <Parameter Name="PT" UId="251">
+        <Blank UId="252" />
+        <Token Text=":=" UId="253" />
+        <Blank UId="254" />
+        <Access Scope="LocalVariable" UId="255">
+          <Symbol UId="256">
+            <Component Name="Param" UId="257" />
+            <Token Text="." UId="258" />
+            <Component Name="TO" UId="259" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="260" />
+      <NewLine UId="261" />
+      <Blank Num="21" UId="262" />
+      <Parameter Name="Q" UId="263">
+        <Blank UId="264" />
+        <Token Text="=&gt;" UId="265" />
+        <Blank UId="266" />
+        <Access Scope="LocalVariable" UId="267">
+          <Symbol UId="268">
+            <Component Name="TO_links_zu" UId="269" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="270" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="271" />
+  <NewLine UId="272" />
+  <Blank UId="273" />
+  <Token Text="IF" UId="274" />
+  <Blank UId="275" />
+  <Access Scope="LocalVariable" UId="276">
+    <Symbol UId="277">
+      <Component Name="TO_links_zu" UId="278" />
+    </Symbol>
+  </Access>
+  <Blank UId="279" />
+  <Token Text="THEN" UId="280" />
+  <NewLine UId="281" />
+  <Blank Num="5" UId="282" />
+  <Access Scope="LocalVariable" UId="283">
+    <Symbol UId="284">
+      <Component Name="Mld" UId="285" />
+      <Token Text="." UId="286" />
+      <Component Name="TO_links_zu" UId="287" />
+    </Symbol>
+  </Access>
+  <Blank UId="288" />
+  <Token Text=":=" UId="289" />
+  <Blank UId="290" />
+  <Access Scope="LiteralConstant" UId="291">
+    <Constant UId="292">
+      <ConstantValue UId="294">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="295" />
+  <NewLine UId="296" />
+  <Blank UId="297" />
+  <Token Text="ELSIF" UId="298" />
+  <Blank UId="299" />
+  <Access Scope="LocalVariable" UId="300">
+    <Symbol UId="301">
+      <Component Name="In" UId="302" />
+      <Token Text="." UId="303" />
+      <Component Name="ErrQ" UId="304" />
+    </Symbol>
+  </Access>
+  <Blank UId="305" />
+  <Token Text="THEN" UId="306" />
+  <NewLine UId="307" />
+  <Blank Num="5" UId="308" />
+  <Access Scope="LocalVariable" UId="309">
+    <Symbol UId="310">
+      <Component Name="Mld" UId="311" />
+      <Token Text="." UId="312" />
+      <Component Name="TO_links_zu" UId="313" />
+    </Symbol>
+  </Access>
+  <Blank UId="314" />
+  <Token Text=":=" UId="315" />
+  <Blank UId="316" />
+  <Access Scope="LiteralConstant" UId="317">
+    <Constant UId="318">
+      <ConstantValue UId="320">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="321" />
+  <NewLine UId="322" />
+  <Blank UId="323" />
+  <Token Text="END_IF" UId="324" />
+  <Token Text=";" UId="325" />
+  <NewLine UId="326" />
+  <Blank Num="2" UId="327" />
+  <LineComment UId="328">
+    <Text UId="329"> Zeitüberschreitung rechts öffnen</Text>
+  </LineComment>
+  <NewLine UId="330" />
+  <Blank UId="331" />
+  <Access Scope="LocalVariable" UId="332">
+    <Symbol UId="333">
+      <Component Name="IEC_Timer" UId="334" />
+      <Token Text="." UId="335" />
+      <Component Name="TO_re_auf" UId="336" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="337">
+    <Instruction UId="338">
+      <Token Text="(" UId="339" />
+      <Parameter Name="IN" UId="340">
+        <Blank UId="341" />
+        <Token Text=":=" UId="342" />
+        <Blank UId="343" />
+        <Access Scope="LocalVariable" UId="344">
+          <Symbol UId="345">
+            <Component Name="Out" UId="346" />
+            <Token Text="." UId="347" />
+            <Component Name="rechts_auf" UId="348" />
+          </Symbol>
+        </Access>
+        <Blank UId="349" />
+        <Token Text="AND" UId="350" />
+        <Blank UId="351" />
+        <Token Text="NOT" UId="352" />
+        <Blank UId="353" />
+        <Access Scope="LocalVariable" UId="354">
+          <Symbol UId="355">
+            <Component Name="In" UId="356" />
+            <Token Text="." UId="357" />
+            <Component Name="S_rechts_auf" UId="358" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="359" />
+      <NewLine UId="360" />
+      <Blank Num="22" UId="361" />
+      <Parameter Name="PT" UId="362">
+        <Blank UId="363" />
+        <Token Text=":=" UId="364" />
+        <Blank UId="365" />
+        <Access Scope="LocalVariable" UId="366">
+          <Symbol UId="367">
+            <Component Name="Param" UId="368" />
+            <Token Text="." UId="369" />
+            <Component Name="TO" UId="370" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="371" />
+      <NewLine UId="372" />
+      <Blank Num="22" UId="373" />
+      <Parameter Name="Q" UId="374">
+        <Blank UId="375" />
+        <Token Text="=&gt;" UId="376" />
+        <Blank UId="377" />
+        <Access Scope="LocalVariable" UId="378">
+          <Symbol UId="379">
+            <Component Name="TO_rechts_auf" UId="380" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="381" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="382" />
+  <NewLine UId="383" />
+  <Blank UId="384" />
+  <Token Text="IF" UId="385" />
+  <Blank UId="386" />
+  <Access Scope="LocalVariable" UId="387">
+    <Symbol UId="388">
+      <Component Name="TO_rechts_auf" UId="389" />
+    </Symbol>
+  </Access>
+  <Blank UId="390" />
+  <Token Text="THEN" UId="391" />
+  <NewLine UId="392" />
+  <Blank Num="5" UId="393" />
+  <Access Scope="LocalVariable" UId="394">
+    <Symbol UId="395">
+      <Component Name="Mld" UId="396" />
+      <Token Text="." UId="397" />
+      <Component Name="TO_rechts_auf" UId="398" />
+    </Symbol>
+  </Access>
+  <Blank UId="399" />
+  <Token Text=":=" UId="400" />
+  <Blank UId="401" />
+  <Access Scope="LiteralConstant" UId="402">
+    <Constant UId="403">
+      <ConstantValue UId="405">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="406" />
+  <NewLine UId="407" />
+  <Blank UId="408" />
+  <Token Text="ELSIF" UId="409" />
+  <Blank UId="410" />
+  <Access Scope="LocalVariable" UId="411">
+    <Symbol UId="412">
+      <Component Name="In" UId="413" />
+      <Token Text="." UId="414" />
+      <Component Name="ErrQ" UId="415" />
+    </Symbol>
+  </Access>
+  <Blank UId="416" />
+  <Token Text="THEN" UId="417" />
+  <NewLine UId="418" />
+  <Blank Num="5" UId="419" />
+  <Access Scope="LocalVariable" UId="420">
+    <Symbol UId="421">
+      <Component Name="Mld" UId="422" />
+      <Token Text="." UId="423" />
+      <Component Name="TO_rechts_auf" UId="424" />
+    </Symbol>
+  </Access>
+  <Blank UId="425" />
+  <Token Text=":=" UId="426" />
+  <Blank UId="427" />
+  <Access Scope="LiteralConstant" UId="428">
+    <Constant UId="429">
+      <ConstantValue UId="431">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="432" />
+  <NewLine UId="433" />
+  <Blank UId="434" />
+  <Token Text="END_IF" UId="435" />
+  <Token Text=";" UId="436" />
+  <NewLine UId="437" />
+  <Blank UId="438" />
+  <LineComment UId="439">
+    <Text UId="440"> Zeitüberschreitung rechts schließen</Text>
+  </LineComment>
+  <NewLine UId="441" />
+  <Blank UId="442" />
+  <Access Scope="LocalVariable" UId="443">
+    <Symbol UId="444">
+      <Component Name="IEC_Timer" UId="445" />
+      <Token Text="." UId="446" />
+      <Component Name="TO_re_zu" UId="447" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="448">
+    <Instruction UId="449">
+      <Token Text="(" UId="450" />
+      <Parameter Name="IN" UId="451">
+        <Blank UId="452" />
+        <Token Text=":=" UId="453" />
+        <Blank UId="454" />
+        <Access Scope="LocalVariable" UId="455">
+          <Symbol UId="456">
+            <Component Name="Out" UId="457" />
+            <Token Text="." UId="458" />
+            <Component Name="rechts_zu" UId="459" />
+          </Symbol>
+        </Access>
+        <Blank UId="460" />
+        <Token Text="AND" UId="461" />
+        <Blank UId="462" />
+        <Token Text="NOT" UId="463" />
+        <Blank UId="464" />
+        <Access Scope="LocalVariable" UId="465">
+          <Symbol UId="466">
+            <Component Name="In" UId="467" />
+            <Token Text="." UId="468" />
+            <Component Name="S_rechts_zu" UId="469" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="470" />
+      <NewLine UId="471" />
+      <Blank Num="21" UId="472" />
+      <Parameter Name="PT" UId="473">
+        <Blank UId="474" />
+        <Token Text=":=" UId="475" />
+        <Blank UId="476" />
+        <Access Scope="LocalVariable" UId="477">
+          <Symbol UId="478">
+            <Component Name="Param" UId="479" />
+            <Token Text="." UId="480" />
+            <Component Name="TO" UId="481" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="482" />
+      <NewLine UId="483" />
+      <Blank Num="21" UId="484" />
+      <Parameter Name="Q" UId="485">
+        <Blank UId="486" />
+        <Token Text="=&gt;" UId="487" />
+        <Blank UId="488" />
+        <Access Scope="LocalVariable" UId="489">
+          <Symbol UId="490">
+            <Component Name="TO_rechts_zu" UId="491" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="492" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="493" />
+  <NewLine UId="494" />
+  <Blank UId="495" />
+  <Token Text="IF" UId="496" />
+  <Blank UId="497" />
+  <Access Scope="LocalVariable" UId="498">
+    <Symbol UId="499">
+      <Component Name="TO_rechts_zu" UId="500" />
+    </Symbol>
+  </Access>
+  <Blank UId="501" />
+  <Token Text="THEN" UId="502" />
+  <NewLine UId="503" />
+  <Blank Num="5" UId="504" />
+  <Access Scope="LocalVariable" UId="505">
+    <Symbol UId="506">
+      <Component Name="Mld" UId="507" />
+      <Token Text="." UId="508" />
+      <Component Name="TO_rechts_zu" UId="509" />
+    </Symbol>
+  </Access>
+  <Blank UId="510" />
+  <Token Text=":=" UId="511" />
+  <Blank UId="512" />
+  <Access Scope="LiteralConstant" UId="513">
+    <Constant UId="514">
+      <ConstantValue UId="516">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="517" />
+  <NewLine UId="518" />
+  <Blank UId="519" />
+  <Token Text="ELSIF" UId="520" />
+  <Blank UId="521" />
+  <Access Scope="LocalVariable" UId="522">
+    <Symbol UId="523">
+      <Component Name="In" UId="524" />
+      <Token Text="." UId="525" />
+      <Component Name="ErrQ" UId="526" />
+    </Symbol>
+  </Access>
+  <Blank UId="527" />
+  <Token Text="THEN" UId="528" />
+  <NewLine UId="529" />
+  <Blank Num="5" UId="530" />
+  <Access Scope="LocalVariable" UId="531">
+    <Symbol UId="532">
+      <Component Name="Mld" UId="533" />
+      <Token Text="." UId="534" />
+      <Component Name="TO_rechts_zu" UId="535" />
+    </Symbol>
+  </Access>
+  <Blank UId="536" />
+  <Token Text=":=" UId="537" />
+  <Blank UId="538" />
+  <Access Scope="LiteralConstant" UId="539">
+    <Constant UId="540">
+      <ConstantValue UId="542">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="543" />
+  <NewLine UId="544" />
+  <Blank UId="545" />
+  <Token Text="END_IF" UId="546" />
+  <Token Text=";" UId="547" />
+  <NewLine UId="548" />
+  <LineComment UId="549">
+    <Text UId="550"> Sensor und SRM Zylinder Zeitfenster überwachen </Text>
+  </LineComment>
+  <NewLine UId="551" />
+  <Blank UId="552" />
+  <Access Scope="LocalVariable" UId="553">
+    <Symbol UId="554">
+      <Component Name="IEC_Timer" UId="555" />
+      <Token Text="." UId="556" />
+      <Component Name="gleich_li_auf" UId="557" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="558">
+    <Instruction UId="559">
+      <Token Text="(" UId="560" />
+      <Parameter Name="IN" UId="561">
+        <Blank UId="562" />
+        <Token Text=":=" UId="563" />
+        <Blank UId="564" />
+        <Access Scope="LocalVariable" UId="565">
+          <Symbol UId="566">
+            <Component Name="In" UId="567" />
+            <Token Text="." UId="568" />
+            <Component Name="SRM_links_auf" UId="569" />
+          </Symbol>
+        </Access>
+        <Blank UId="570" />
+        <Token Text="AND" UId="571" />
+        <Blank UId="572" />
+        <Token Text="NOT" UId="573" />
+        <Blank UId="574" />
+        <Access Scope="LocalVariable" UId="575">
+          <Symbol UId="576">
+            <Component Name="In" UId="577" />
+            <Token Text="." UId="578" />
+            <Component Name="S_links_auf" UId="579" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="580" />
+      <NewLine UId="581" />
+      <Blank Num="26" UId="582" />
+      <Parameter Name="PT" UId="583">
+        <Blank UId="584" />
+        <Token Text=":=" UId="585" />
+        <Blank UId="586" />
+        <Access Scope="LocalVariable" UId="587">
+          <Symbol UId="588">
+            <Component Name="Param" UId="589" />
+            <Token Text="." UId="590" />
+            <Component Name="gleichzeitig" UId="591" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="592" />
+      <NewLine UId="593" />
+      <Blank Num="26" UId="594" />
+      <Parameter Name="Q" UId="595">
+        <Blank UId="596" />
+        <Token Text="=&gt;" UId="597" />
+        <Blank UId="598" />
+        <Access Scope="LocalVariable" UId="599">
+          <Symbol UId="600">
+            <Component Name="Mld" UId="601" />
+            <Token Text="." UId="602" />
+            <Component Name="SF_gleich_li_auf" UId="603" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="604" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="605" />
+  <NewLine UId="606" />
+  <Blank UId="607" />
+  <LineComment UId="608">
+    <Text UId="609"> Sensor und SRM Zylinder Zeitfenster überwachen </Text>
+  </LineComment>
+  <NewLine UId="610" />
+  <Blank UId="611" />
+  <Access Scope="LocalVariable" UId="612">
+    <Symbol UId="613">
+      <Component Name="IEC_Timer" UId="614" />
+      <Token Text="." UId="615" />
+      <Component Name="gleich_li_zu" UId="616" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="617">
+    <Instruction UId="618">
+      <Token Text="(" UId="619" />
+      <Parameter Name="IN" UId="620">
+        <Blank UId="621" />
+        <Token Text=":=" UId="622" />
+        <Blank UId="623" />
+        <Access Scope="LocalVariable" UId="624">
+          <Symbol UId="625">
+            <Component Name="In" UId="626" />
+            <Token Text="." UId="627" />
+            <Component Name="SRM_links_zu" UId="628" />
+          </Symbol>
+        </Access>
+        <Blank UId="629" />
+        <Token Text="AND" UId="630" />
+        <Blank UId="631" />
+        <Token Text="NOT" UId="632" />
+        <Blank UId="633" />
+        <Access Scope="LocalVariable" UId="634">
+          <Symbol UId="635">
+            <Component Name="In" UId="636" />
+            <Token Text="." UId="637" />
+            <Component Name="S_links_zu" UId="638" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="639" />
+      <NewLine UId="640" />
+      <Blank Num="26" UId="641" />
+      <Parameter Name="PT" UId="642">
+        <Blank UId="643" />
+        <Token Text=":=" UId="644" />
+        <Blank UId="645" />
+        <Access Scope="LocalVariable" UId="646">
+          <Symbol UId="647">
+            <Component Name="Param" UId="648" />
+            <Token Text="." UId="649" />
+            <Component Name="gleichzeitig" UId="650" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="651" />
+      <NewLine UId="652" />
+      <Blank Num="26" UId="653" />
+      <Parameter Name="Q" UId="654">
+        <Blank UId="655" />
+        <Token Text="=&gt;" UId="656" />
+        <Blank UId="657" />
+        <Access Scope="LocalVariable" UId="658">
+          <Symbol UId="659">
+            <Component Name="Mld" UId="660" />
+            <Token Text="." UId="661" />
+            <Component Name="SF_gleich_li_zu" UId="662" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="663" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="664" />
+  <NewLine UId="665" />
+  <Blank Num="2" UId="666" />
+  <LineComment UId="667">
+    <Text UId="668"> Sensor und SRM Zylinder Zeitfenster überwachen </Text>
+  </LineComment>
+  <NewLine UId="669" />
+  <Blank Num="2" UId="670" />
+  <Access Scope="LocalVariable" UId="671">
+    <Symbol UId="672">
+      <Component Name="IEC_Timer" UId="673" />
+      <Token Text="." UId="674" />
+      <Component Name="gleich_re_auf" UId="675" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="676">
+    <Instruction UId="677">
+      <Token Text="(" UId="678" />
+      <Parameter Name="IN" UId="679">
+        <Blank UId="680" />
+        <Token Text=":=" UId="681" />
+        <Blank UId="682" />
+        <Access Scope="LocalVariable" UId="683">
+          <Symbol UId="684">
+            <Component Name="In" UId="685" />
+            <Token Text="." UId="686" />
+            <Component Name="SRM_rechts_auf" UId="687" />
+          </Symbol>
+        </Access>
+        <Blank UId="688" />
+        <Token Text="AND" UId="689" />
+        <Blank UId="690" />
+        <Token Text="NOT" UId="691" />
+        <Blank UId="692" />
+        <Access Scope="LocalVariable" UId="693">
+          <Symbol UId="694">
+            <Component Name="In" UId="695" />
+            <Token Text="." UId="696" />
+            <Component Name="S_rechts_auf" UId="697" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="698" />
+      <NewLine UId="699" />
+      <Blank Num="26" UId="700" />
+      <Parameter Name="PT" UId="701">
+        <Blank UId="702" />
+        <Token Text=":=" UId="703" />
+        <Blank UId="704" />
+        <Access Scope="LocalVariable" UId="705">
+          <Symbol UId="706">
+            <Component Name="Param" UId="707" />
+            <Token Text="." UId="708" />
+            <Component Name="gleichzeitig" UId="709" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="710" />
+      <NewLine UId="711" />
+      <Blank Num="26" UId="712" />
+      <Parameter Name="Q" UId="713">
+        <Blank UId="714" />
+        <Token Text="=&gt;" UId="715" />
+        <Blank UId="716" />
+        <Access Scope="LocalVariable" UId="717">
+          <Symbol UId="718">
+            <Component Name="Mld" UId="719" />
+            <Token Text="." UId="720" />
+            <Component Name="SF_gleich_re_auf" UId="721" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="722" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="723" />
+  <NewLine UId="724" />
+  <Blank UId="725" />
+  <LineComment UId="726">
+    <Text UId="727"> Sensor und SRM Zylinder Zeitfenster überwachen </Text>
+  </LineComment>
+  <NewLine UId="728" />
+  <Blank UId="729" />
+  <Access Scope="LocalVariable" UId="730">
+    <Symbol UId="731">
+      <Component Name="IEC_Timer" UId="732" />
+      <Token Text="." UId="733" />
+      <Component Name="gleich_re_zu" UId="734" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="735">
+    <Instruction UId="736">
+      <Token Text="(" UId="737" />
+      <Parameter Name="IN" UId="738">
+        <Blank UId="739" />
+        <Token Text=":=" UId="740" />
+        <Blank UId="741" />
+        <Access Scope="LocalVariable" UId="742">
+          <Symbol UId="743">
+            <Component Name="In" UId="744" />
+            <Token Text="." UId="745" />
+            <Component Name="SRM_rechts_zu" UId="746" />
+          </Symbol>
+        </Access>
+        <Blank UId="747" />
+        <Token Text="AND" UId="748" />
+        <Blank UId="749" />
+        <Token Text="NOT" UId="750" />
+        <Blank UId="751" />
+        <Access Scope="LocalVariable" UId="752">
+          <Symbol UId="753">
+            <Component Name="In" UId="754" />
+            <Token Text="." UId="755" />
+            <Component Name="S_rechts_zu" UId="756" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="757" />
+      <NewLine UId="758" />
+      <Blank Num="25" UId="759" />
+      <Parameter Name="PT" UId="760">
+        <Blank UId="761" />
+        <Token Text=":=" UId="762" />
+        <Blank UId="763" />
+        <Access Scope="LocalVariable" UId="764">
+          <Symbol UId="765">
+            <Component Name="Param" UId="766" />
+            <Token Text="." UId="767" />
+            <Component Name="gleichzeitig" UId="768" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="769" />
+      <NewLine UId="770" />
+      <Blank Num="25" UId="771" />
+      <Parameter Name="Q" UId="772">
+        <Blank UId="773" />
+        <Token Text="=&gt;" UId="774" />
+        <Blank UId="775" />
+        <Access Scope="LocalVariable" UId="776">
+          <Symbol UId="777">
+            <Component Name="Mld" UId="778" />
+            <Token Text="." UId="779" />
+            <Component Name="SF_gleich_re_zu" UId="780" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="781" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="782" />
+  <NewLine UId="783" />
+  <Blank UId="784" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Sicherungsfall / Zeitüberschreitung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Überwachung / Alarme</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="17" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="18" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Deckelsteuerung</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

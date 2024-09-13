@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <InstanceOfName>Deckel</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="In" Datatype="Struct">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="NotHalt" Datatype="Bool" />
+      <Member Name="Si_24VDC_links" Datatype="Bool" />
+      <Member Name="Si_24VDC_rechts" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Hand" Datatype="Bool" />
+      <Member Name="Tipp" Datatype="Bool" />
+      <Member Name="ErrQ" Datatype="Bool" />
+      <Member Name="T_links_auf" Datatype="Bool" />
+      <Member Name="T_links_zu" Datatype="Bool" />
+      <Member Name="T_rechts_auf" Datatype="Bool" />
+      <Member Name="T_rechts_zu" Datatype="Bool" />
+      <Member Name="SRM_links_auf" Datatype="Bool" />
+      <Member Name="SRM_links_zu" Datatype="Bool" />
+      <Member Name="SRM_rechts_auf" Datatype="Bool" />
+      <Member Name="SRM_rechts_zu" Datatype="Bool" />
+      <Member Name="S_links_auf" Datatype="Bool" />
+      <Member Name="S_links_zu" Datatype="Bool" />
+      <Member Name="S_rechts_auf" Datatype="Bool" />
+      <Member Name="S_rechts_zu" Datatype="Bool" />
+    </Member>
+    <Member Name="Param" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="TO" Datatype="Time" />
+      <Member Name="gleichzeitig" Datatype="Time" />
+    </Member>
+    <Member Name="Zst" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="Fehler" Datatype="Bool" />
+      <Member Name="Sperre_Pos_li" Datatype="Bool" />
+      <Member Name="Sperre_Pos_re" Datatype="Bool" />
+      <Member Name="Req_links_auf" Datatype="Bool" />
+      <Member Name="Req_rechts_auf" Datatype="Bool" />
+      <Member Name="TW_sicher" Datatype="Bool" />
+      <Member Name="Ist_Pos_links" Datatype="Int" />
+      <Member Name="Ist_Pos_rechts" Datatype="Int" />
+    </Member>
+    <Member Name="Out" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="links_auf" Datatype="Bool" />
+      <Member Name="links_zu" Datatype="Bool" />
+      <Member Name="rechts_auf" Datatype="Bool" />
+      <Member Name="rechts_zu" Datatype="Bool" />
+    </Member>
+    <Member Name="Mld" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="TO_links_auf" Datatype="Bool" />
+      <Member Name="TO_links_zu" Datatype="Bool" />
+      <Member Name="TO_rechts_auf" Datatype="Bool" />
+      <Member Name="TO_rechts_zu" Datatype="Bool" />
+      <Member Name="Si_24VDC_links" Datatype="Bool" />
+      <Member Name="Si_24VDC_rechts" Datatype="Bool" />
+      <Member Name="n_Auto" Datatype="Bool" />
+      <Member Name="SF_gleich_li_auf" Datatype="Bool" />
+      <Member Name="SF_gleich_li_zu" Datatype="Bool" />
+      <Member Name="SF_gleich_re_auf" Datatype="Bool" />
+      <Member Name="SF_gleich_re_zu" Datatype="Bool" />
+    </Member>
+    <Member Name="IEC_Timer" Datatype="Struct">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="TO_li_auf" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_li_zu" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_re_auf" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_re_zu" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="gleich_li_auf" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="gleich_li_zu" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="gleich_re_auf" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="gleich_re_zu" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>Deckel_CM02</Name>
+      <Namespace />
+      <Number>1191</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

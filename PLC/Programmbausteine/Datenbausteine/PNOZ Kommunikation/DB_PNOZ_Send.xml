@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Out" Datatype="Struct">
+      <Member Name="Header" Datatype="Array[0..7] of Byte">
+        <Subelement Path="0">
+          <StartValue>BYTE#16#05</StartValue>
+        </Subelement>
+        <Subelement Path="1">
+          <StartValue>BYTE#16#15</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>BYTE#16#26</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>BYTE#16#5C</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="VirtualOutput" Datatype="Array[0..127] of Bool" />
+      <Member Name="LED" Datatype="Byte" />
+      <Member Name="Req_Table_Nr" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Table Nr</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Segment" Datatype="Struct">
+        <Member Name="Req_Nr" Datatype="Byte" />
+        <Member Name="Byte_0" Datatype="Byte" />
+        <Member Name="Byte_1" Datatype="Byte" />
+        <Member Name="Byte_2" Datatype="Byte" />
+        <Member Name="Byte_3" Datatype="Byte" />
+        <Member Name="Byte_4" Datatype="Byte" />
+        <Member Name="Byte_5" Datatype="Byte" />
+        <Member Name="Byte_6" Datatype="Byte" />
+        <Member Name="Byte_7" Datatype="Byte" />
+        <Member Name="Byte_8" Datatype="Byte" />
+        <Member Name="Byte_9" Datatype="Byte" />
+        <Member Name="Byte_10" Datatype="Byte" />
+        <Member Name="Byte_11" Datatype="Byte" />
+        <Member Name="Byte_12" Datatype="Byte" />
+      </Member>
+      <Member Name="reserviert" Datatype="Byte" />
+      <Member Name="Checksum" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Checksumme, Byte 4 + Byte 39</MultiLanguageText>
+        </Comment>
+        <StartValue>BYTE#16#A4</StartValue>
+      </Member>
+      <Member Name="Endekennung" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">last Byte, must be 0x10 every time!</MultiLanguageText>
+        </Comment>
+        <StartValue>BYTE#16#10</StartValue>
+      </Member>
+      <Member Name="Struct_Auffueller" Datatype="Byte" />
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_PNOZ_Send</Name>
+      <Namespace />
+      <Number>363</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

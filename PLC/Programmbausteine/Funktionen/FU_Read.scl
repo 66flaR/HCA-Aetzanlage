@@ -1,0 +1,44 @@
+﻿FUNCTION "FU_Read" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      i : Int;
+      Ret_Value : Int;
+   END_VAR
+
+
+BEGIN
+	IF "DB_ANLAGE".BA.Simulation THEN
+	    RETURN;
+	END_IF;
+	
+	// Pumpen
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC01~Filterbeschickung_HQ01", RECORD => "FU_In_Out".FU[1].PE);
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC01~Umwaelzung_CM01", RECORD => "FU_In_Out".FU[2].PE);
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC01~Umwaelzung_CM03", RECORD => "FU_In_Out".FU[3].PE);
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC01~Filterbeschickung_HQ02", RECORD => "FU_In_Out".FU[4].PE);
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC01~Umwaelzung_CM02", RECORD => "FU_In_Out".FU[5].PE);
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC01~Umwaelzung_CM04", RECORD => "FU_In_Out".FU[6].PE);
+	//Ventilator
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC01~Ventilator_Sperrluft", RECORD => "FU_In_Out".FU[7].PE);
+	
+	// QF
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC06~QF_WR02", RECORD => "FU_In_Out".FU[8].PE);
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC06~QF_WR03", RECORD => "FU_In_Out".FU[9].PE);
+	// TW
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC07~TW_Fahrt", RECORD => "FU_In_Out".FU[10].PE);
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC07~TW_Hub_li_WR04", RECORD => "FU_In_Out".FU[11].PE);
+	#Ret_Value := DPRD_DAT(LADDR := "SEW-GW_UC07~TW_Hub_re_WR05", RECORD => "FU_In_Out".FU[12].PE);
+	
+	FOR #i := 1 TO "FU_In_Out".Anzahl DO
+	    IF "DB_ANLAGE".IN.Quitt_Err THEN
+	        "FU_In_Out".FU[#i].Fehler := FALSE;
+	    END_IF;
+	    
+	    "FU_In_Out".FU[#i].Fehler := "FU_In_Out".FU[#i].PE.Statusbyte.Stoer;
+	    "FU_In_Out".FU[#i].AM_Fehlernummer := "FU_In_Out".FU[#i].PE.Statusbyte.Fehlernummer;
+	END_FOR;
+	
+	
+END_FUNCTION
+

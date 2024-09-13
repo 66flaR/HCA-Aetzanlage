@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>MW_CSTS</HeaderAuthor>
+      <HeaderFamily>PNOZmc_p</HeaderFamily>
+      <HeaderVersion>0.4</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="In" Datatype="Struct">
+      <Member Name="Header" Datatype="Array[0..7] of Byte">
+        <Subelement Path="0">
+          <StartValue>BYTE#16#05</StartValue>
+        </Subelement>
+        <Subelement Path="1">
+          <StartValue>BYTE#16#15</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>BYTE#16#26</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>BYTE#16#DC</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PNOZ_OK" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">kein NotHalt global aktiv</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="NH-T_SS_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">NH-Taster Schaltschrank o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="NH-T_Filter_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">NH-Taster Filterstation o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="NH-T_Vers_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">NH-Taster Versorgung o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="NH-T_Ents_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">NH-Taster Entsorgung o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="NH-T_Vent_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">NH-Taster Ventilator o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="NH_Koppl_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">NH Koppl. Res. o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="NH_MP_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">NH Mobile Panel o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Tuer_VS_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Tür Vorderseite o.k.</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="Tuer_RS_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Tür Rückseite o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SRM_Zu_BG-QM43" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">SRM ZU UV GP02.BG-QM43</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SRM_Auf_BG-QM43" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">SRM AUF UV GP02.BG-QM43</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SRM_Zu_BG-QM44" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">SRM ZU UV GP02.BG-QM44</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SRM_Auf_BG-QM44" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">SRM AUF UV GP02.BG-QM44</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Abluft_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Abluft o.k.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Tuer_zu_Seite_GP01" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Tür geschlossen Seite GP01</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="Tuer_zu_vorn_GP01" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Tür geschlossen vorn GP01</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="Tuer_zu_vorn_GP02" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Tür geschlossen vorn GP02</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="FG_zu_HQ01" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Filtereinhausung geschloosen HQ01.BG06</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="FG_zu_HQ02" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Filtereinhausung geschloosen HQ02.BG09</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="T_Aktion_MP" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Aktionstaster MobilePanel</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="NH_Frg_TW_QF" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Freigabe Nothalt Transportsystem</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="NH_Frg_Pumpen" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Freigabe Nothalt Pumpen</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="NH_Frg_FP_CM01" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Freigabe Nothalt Filterpumpe CM01</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="NH_Frg_FP_CM02" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Freigabe Nothalt Filterpumpe CM02</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="NH_Frg_Deckel" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Freigabe Not-Halt Deckel</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="NH_Frg_RT" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Freigabe Not-Halt Rolltor</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="res11.3" Datatype="Bool" />
+      <Member Name="res11.4" Datatype="Bool" />
+      <Member Name="res11.5" Datatype="Bool" />
+      <Member Name="res11.6" Datatype="Bool" />
+      <Member Name="res11.7" Datatype="Bool" />
+      <Member Name="VirtualInput" Datatype="Array[32..127] of Bool" />
+      <Member Name="LED_0_Fault" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">LED 0 Fault</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LED_1_Fault" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">LED 1 Fault</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LED_Fault" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">LED Fault</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LED_Diag" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">LED Diag</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LED_Run_ST" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">LED Run ST</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="reserved1" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">reserved</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LED_Run_FS" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">LED Run FS</MultiLanguageText>
+        </Comment>
+        <StartValue>false</StartValue>
+      </Member>
+      <Member Name="Data_cons_check_bit" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Data consistence check bit</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Table_Nr" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Table Nr</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Segment" Datatype="Struct">
+        <Member Name="Nr" Datatype="Byte" />
+        <Member Name="Byte_0" Datatype="Byte" />
+        <Member Name="Byte_1" Datatype="Byte" />
+        <Member Name="Byte_2" Datatype="Byte" />
+        <Member Name="Byte_3" Datatype="Byte" />
+        <Member Name="Byte_4" Datatype="Byte" />
+        <Member Name="Byte_5" Datatype="Byte" />
+        <Member Name="Byte_6" Datatype="Byte" />
+        <Member Name="Byte_7" Datatype="Byte" />
+        <Member Name="Byte_8" Datatype="Byte" />
+        <Member Name="Byte_9" Datatype="Byte" />
+        <Member Name="Byte_10" Datatype="Byte" />
+        <Member Name="Byte_11" Datatype="Byte" />
+        <Member Name="Byte_12" Datatype="Byte" />
+      </Member>
+      <Member Name="reserviert" Datatype="Byte" />
+      <Member Name="Checksum" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Checksumme, Byte 4 + Byte 39</MultiLanguageText>
+        </Comment>
+        <StartValue>BYTE#16#0</StartValue>
+      </Member>
+      <Member Name="Endekennung" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">last Byte, must be 0x10 every time!</MultiLanguageText>
+        </Comment>
+        <StartValue>BYTE#16#10</StartValue>
+      </Member>
+      <Member Name="Struct_Auffueller" Datatype="Byte" />
+    </Member>
+    <Member Name="Out" Datatype="Struct">
+      <Member Name="Header" Datatype="Array[0..7] of Byte">
+        <Subelement Path="0">
+          <StartValue>BYTE#16#05</StartValue>
+        </Subelement>
+        <Subelement Path="1">
+          <StartValue>BYTE#16#15</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>BYTE#16#26</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>BYTE#16#5C</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="T_NH_Quitt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Taster Not-Halt Quittierung</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Frg_Automatik" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Freigabe Automatik Transportsystem</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="res_2" Datatype="Bool" />
+      <Member Name="res_3" Datatype="Bool" />
+      <Member Name="res_4" Datatype="Bool" />
+      <Member Name="res_5" Datatype="Bool" />
+      <Member Name="res_6" Datatype="Bool" />
+      <Member Name="res_7" Datatype="Bool" />
+      <Member Name="res_8" Datatype="Bool" />
+      <Member Name="res_9" Datatype="Bool" />
+      <Member Name="res_10" Datatype="Bool" />
+      <Member Name="res_11" Datatype="Bool" />
+      <Member Name="res_12" Datatype="Bool" />
+      <Member Name="res_13" Datatype="Bool" />
+      <Member Name="res_14" Datatype="Bool" />
+      <Member Name="res_15" Datatype="Bool" />
+      <Member Name="VirtualOutput" Datatype="Array[16..127] of Bool" />
+      <Member Name="LED" Datatype="Byte" />
+      <Member Name="Req_Table_Nr" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Table Nr</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Segment" Datatype="Struct">
+        <Member Name="Req_Nr" Datatype="Byte" />
+        <Member Name="Byte_0" Datatype="Byte" />
+        <Member Name="Byte_1" Datatype="Byte" />
+        <Member Name="Byte_2" Datatype="Byte" />
+        <Member Name="Byte_3" Datatype="Byte" />
+        <Member Name="Byte_4" Datatype="Byte" />
+        <Member Name="Byte_5" Datatype="Byte" />
+        <Member Name="Byte_6" Datatype="Byte" />
+        <Member Name="Byte_7" Datatype="Byte" />
+        <Member Name="Byte_8" Datatype="Byte" />
+        <Member Name="Byte_9" Datatype="Byte" />
+        <Member Name="Byte_10" Datatype="Byte" />
+        <Member Name="Byte_11" Datatype="Byte" />
+        <Member Name="Byte_12" Datatype="Byte" />
+      </Member>
+      <Member Name="reserviert" Datatype="Byte" />
+      <Member Name="Checksum" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Checksumme, Byte 4 + Byte 39</MultiLanguageText>
+        </Comment>
+        <StartValue>BYTE#16#A4</StartValue>
+      </Member>
+      <Member Name="Endekennung" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">last Byte, must be 0x10 every time!</MultiLanguageText>
+        </Comment>
+        <StartValue>BYTE#16#10</StartValue>
+      </Member>
+      <Member Name="Struct_Auffueller" Datatype="Byte" />
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_PNOZ_IN_Out</Name>
+      <Namespace />
+      <Number>361</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>für PNOZmulti m1p ab V5.6</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>DB99 V0.4</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

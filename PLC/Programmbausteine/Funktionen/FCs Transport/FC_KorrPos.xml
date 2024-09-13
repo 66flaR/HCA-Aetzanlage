@@ -1,0 +1,1225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="TW_Nr" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Fahrwagennummer</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="IstPos" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Istposition aus Messbaustein</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ErrCount" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Messwert ungültig bei &lt;&gt;0</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Laser_on" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Messwert neu --&gt; Korrektur</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut">
+    <Member Name="PosInc" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">IstPosition TW</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="IstPosInc" Datatype="DInt" />
+    <Member Name="CheckPosInc" Datatype="DInt" />
+    <Member Name="Korrektur" Datatype="DInt" />
+    <Member Name="CheckPosKorr" Datatype="DInt" />
+    <Member Name="s_max" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Abstand zwischen den Pos.</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="s_ist" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Abstand zur Istposition</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="KorrDiff" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Differenz beider Korrekturwerte</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="CheckPos" Datatype="Int" />
+    <Member Name="FW_DB" Datatype="Int" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>FC_KorrPos</Name>
+      <Namespace />
+      <Number>216</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <LineComment>
+      <Text>Korrekturrechnung deaktiviert</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_KorrPos" />
+        <Component Name="Berechnung_ein" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Mess_on" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="30">
+    <LineComment>
+      <Text>erster Durchlauf ohne Korrektur</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="39">
+    <LineComment>
+      <Text>Messsystem liefert gerade keinen Messwert</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ErrCount" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="43">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="45">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="46">
+    <StlToken Text="ON" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Laser_on" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="48">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="49">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Initialisieren</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="50">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="52">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="LENG" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="54">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="55">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="Offset" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="58">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="60">
+    <StlToken Text="LAR1_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="61">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="176" />
+      <LineComment>
+        <Text>"DB_POS".POS[0].IncPos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="64">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="66">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="67">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="TW_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="69">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="71">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_KorrPos" />
+        <Component Name="Leng" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="73">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="74">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_KorrPos" />
+        <Component Name="Offset" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="76">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="77">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="79">
+    <StlToken Text="LAR1_ACCU1" />
+    <LineComment>
+      <Text>Adresse Start TWx</Text>
+    </LineComment>
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_KorrPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="81">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="83">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="85">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="87">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="88">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="90">
+    <StlToken Text="ADDAR1" />
+    <LineComment>
+      <Text>Adresse Posy zu TWx</Text>
+    </LineComment>
+  </StlStatement>
+  <StlStatement UId="92">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Word" Area="DB" Register="AR1" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_KorrPos".TW1[1].Pos[1]</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="95">
+    <StlToken Text="ITD" />
+  </StlStatement>
+  <StlStatement UId="96">
+    <StlToken Text="NEG_D" />
+    <LineComment>
+      <Text>Invertieren, weil positiver Offset negative Korrektur bedeutet</Text>
+    </LineComment>
+  </StlStatement>
+  <StlStatement UId="98">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Korrektur" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="100">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="101">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="103">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="105">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="106">
+    <LineComment>
+      <Text>höhere Pos testen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="108">
+    <StlToken Text="JP" />
+    <Access Scope="Label">
+      <Label Name="hPos" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="110">
+    <LineComment>
+      <Text>niedrigere Pos testen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="112">
+    <StlToken Text="JM" />
+    <Access Scope="Label">
+      <Label Name="nPos" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="114">
+    <LineComment>
+      <Text>genau mittig</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="116">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Out" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="118">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="119">
+    <LineComment>
+      <Text>Höhere Position Testen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="121">
+    <LabelDeclaration>
+      <Label Name="hPos" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="config" />
+        <Component Name="ANZ_Pos" />
+      </Symbol>
+      <LineComment>
+        <Text>Es existiert keine größere Pos.</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="125">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="127">
+    <StlToken Text="LE_I" />
+  </StlStatement>
+  <StlStatement UId="128">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Out" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="130">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="132">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="134">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Chk" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="136">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="137">
+    <LineComment>
+      <Text>Niedrigere Position Testen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="139">
+    <LabelDeclaration>
+      <Label Name="nPos" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Es existiert keine niedrigere Pos.</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="143">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="145">
+    <StlToken Text="GE_I" />
+  </StlStatement>
+  <StlStatement UId="146">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Out" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="148">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="150">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="152">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Chk" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="154">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Inkremente holen Istposition</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="155">
+    <LabelDeclaration>
+      <Label Name="Chk" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="158">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="LENG" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="160">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="161">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="Offset" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="163">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="164">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="166">
+    <StlToken Text="LAR1_ACCU1" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="167">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Double" Area="DB" Register="AR1" BitOffset="176" />
+      <LineComment>
+        <Text>"DB_POS".POS[0].IncPos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="170">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="172">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="173">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="TW_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="175">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="177">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_KorrPos" />
+        <Component Name="Leng" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="179">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="180">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_KorrPos" />
+        <Component Name="Offset" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="182">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="183">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="185">
+    <StlToken Text="LAR1_ACCU1" />
+    <LineComment>
+      <Text>Adresse Start TWx</Text>
+    </LineComment>
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_KorrPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="187">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="189">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="191">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>2</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="193">
+    <StlToken Text="MUL_D" />
+  </StlStatement>
+  <StlStatement UId="194">
+    <StlToken Text="SLD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="196">
+    <StlToken Text="ADDAR1" />
+    <LineComment>
+      <Text>Adresse Posy zu TWx</Text>
+    </LineComment>
+  </StlStatement>
+  <StlStatement UId="198">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Indirect Width="Word" Area="DB" Register="AR1" BitOffset="0" />
+      <LineComment>
+        <Text>"DB_KorrPos".TW1[1].Pos[1]</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="201">
+    <StlToken Text="ITD" />
+  </StlStatement>
+  <StlStatement UId="202">
+    <StlToken Text="NEG_D" />
+    <LineComment>
+      <Text>Invertieren, weil positiver Offset negative Korrektur bedeutet</Text>
+    </LineComment>
+  </StlStatement>
+  <StlStatement UId="204">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPosKorr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="206">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Checkposdaten holen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="207">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="209">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Korrektur" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="211">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="212">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="214">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="215">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="217">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPosKorr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="219">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="220">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="222">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="223">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="225">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="227">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="228">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="229">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="230">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="s_max" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="232">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Div durch Null (beide Pos gleiches Inc)</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="235">
+    <StlToken Text="EQ_R" />
+  </StlStatement>
+  <StlStatement UId="236">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Out" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="238">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="239">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstPosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="241">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="243">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="244">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="245">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="246">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="s_ist" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="248">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="249">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="CheckPosKorr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="251">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Korrektur" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="253">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="254">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="255">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="KorrDiff" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="257">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="258">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="s_ist" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="260">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="s_max" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="262">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="263">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="KorrDiff" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="265">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="266">
+    <StlToken Text="RND" />
+  </StlStatement>
+  <StlStatement UId="267">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Korrektur" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="269">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="270">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Korrektur" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="272">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Korrektur berechnen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="273">
+    <LabelDeclaration>
+      <Label Name="Out" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Korrektur" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="276">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="278">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="279">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="281">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Ausgabe</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="1C" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="1D" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

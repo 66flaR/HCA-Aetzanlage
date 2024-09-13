@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <InstanceOfName>FP_Saeure.GP0x</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="In" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="NotHalt" Datatype="Bool" />
+      <Member Name="ext_Freigabe" Datatype="Bool" />
+      <Member Name="Auto" Datatype="Bool" />
+      <Member Name="Ein" Datatype="Bool" />
+      <Member Name="Quitt_FW" Datatype="Bool" />
+      <Member Name="FU_betriebsbereit" Datatype="Bool" />
+      <Member Name="FU_Stoerung" Datatype="Bool" />
+      <Member Name="Niv_TLS" Datatype="Bool" />
+      <Member Name="Niv_min" Datatype="Bool" />
+      <Member Name="Niv_max" Datatype="Bool" />
+      <Member Name="Niv_Uel" Datatype="Bool" />
+      <Member Name="Frg_Niv_CM05" Datatype="Bool" />
+      <Member Name="Leckage_ok" Datatype="Bool" />
+      <Member Name="SRM_Saugseite_auf" Datatype="Bool" />
+      <Member Name="SRM_Saugseite_zu" Datatype="Bool" />
+      <Member Name="SRM_Eingang_Filter_auf" Datatype="Bool" />
+      <Member Name="SRM_Eingang_Filter_zu" Datatype="Bool" />
+      <Member Name="SRM_Ausgang_Filter_auf" Datatype="Bool" />
+      <Member Name="SRM_Ausgang_Filter_zu" Datatype="Bool" />
+      <Member Name="SRM_Entluften_auf" Datatype="Bool" />
+      <Member Name="SRM_Entlueften_zu" Datatype="Bool" />
+      <Member Name="SRM_Eingang_Spülltg_P_auf" Datatype="Bool" />
+      <Member Name="SRM_Eingang_Spülltg_P_zu" Datatype="Bool" />
+      <Member Name="SRM_Eingang_Spülltg_F_auf" Datatype="Bool" />
+      <Member Name="SRM_Eingang_Spülltg_F_zu" Datatype="Bool" />
+      <Member Name="SRM_Ausgang_Spülltg_auf" Datatype="Bool" />
+      <Member Name="SRM_Ausgang_Spülltg_zu" Datatype="Bool" />
+      <Member Name="Sensor_FG_links" Datatype="Bool" />
+      <Member Name="Sensor_FG_rechts" Datatype="Bool" />
+      <Member Name="Einhausung_HQ0x_zu" Datatype="Bool" />
+      <Member Name="GW_p_FP" Datatype="Bool" />
+      <Member Name="GW_p_FG" Datatype="Bool" />
+      <Member Name="GW_LF_FP" Datatype="Bool" />
+      <Member Name="Betriebsart" Datatype="USInt" />
+      <Member Name="FU_speed" Datatype="Int" />
+      <Member Name="Druck_Pumpe" Datatype="Real" />
+      <Member Name="Delta_p_Filter" Datatype="Real" />
+    </Member>
+    <Member Name="Param" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="SW_Hand" Datatype="Int" />
+      <Member Name="SW_Auto_AZ" Datatype="Int" />
+      <Member Name="SW_Auto_aAZ" Datatype="Int" />
+      <Member Name="Spülzeit_Pumpe" Datatype="Time" />
+      <Member Name="FG_Zeit_leeren_Saurebecken" Datatype="Time" />
+      <Member Name="FG_Zeit_leeren_CM05" Datatype="Time" />
+      <Member Name="FW_Spülzeit" Datatype="Time" />
+      <Member Name="FW_Wartezeit" Datatype="Time" />
+      <Member Name="FW_Zeit_fuellen" Datatype="Time" />
+      <Member Name="DT_Druckaufbau" Datatype="Time" />
+      <Member Name="DT_Testzeit_Pumpe" Datatype="Time" />
+      <Member Name="DT_Testzeit_Filter" Datatype="Time" />
+      <Member Name="SW_Drucktest_Pumpe" Datatype="Real" />
+      <Member Name="SW_Drucktest_Filter" Datatype="Real" />
+      <Member Name="WarnGr_FW" Datatype="Real" />
+      <Member Name="Wechsel_FW" Datatype="Real" />
+      <Member Name="Name_Pumpe" Datatype="String[12]" />
+      <Member Name="Name_Filter" Datatype="String[12]" />
+    </Member>
+    <Member Name="Zst" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="Status_GP0x" Datatype="USInt" />
+      <Member Name="Status_FW" Datatype="USInt" />
+      <Member Name="Status_DT_Pumpe" Datatype="USInt" />
+      <Member Name="Status_DT_Filter" Datatype="USInt" />
+      <Member Name="Restzeit_Spülen_Pumpe" Datatype="Time" />
+      <Member Name="Restzeit_Filter" Datatype="Time" />
+      <Member Name="Restzeit_DT" Datatype="Time" />
+      <Member Name="Spuelen_Pumpe" Datatype="Bool" />
+      <Member Name="Spuelen_Filter" Datatype="Bool" />
+      <Member Name="Spuelen_aktiv" Datatype="Bool" />
+      <Member Name="Drucktest_aktiv" Datatype="Bool" />
+      <Member Name="Filtern" Datatype="Bool" />
+      <Member Name="Zeit_laeuft" Datatype="Bool" />
+      <Member Name="Drucktest_Pu_ok" Datatype="Bool" />
+      <Member Name="Drucktest_Filter_ok" Datatype="Bool" />
+      <Member Name="Bedienung_erlaubt" Datatype="Bool" />
+      <Member Name="speed" Datatype="Int" />
+    </Member>
+    <Member Name="Mld" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="Leckage" Datatype="Bool" />
+      <Member Name="GW_p_FP" Datatype="Bool" />
+      <Member Name="GW_LF_FP" Datatype="Bool" />
+      <Member Name="GW_p_FG" Datatype="Bool" />
+      <Member Name="FG_links_nicht_zu" Datatype="Bool" />
+      <Member Name="FG_rechts_nicht_zu" Datatype="Bool" />
+      <Member Name="Einhausung_nicht_zu" Datatype="Bool" />
+      <Member Name="FU_nicht_bereit" Datatype="Bool" />
+      <Member Name="FU_Stoerung" Datatype="Bool" />
+      <Member Name="FG_Spülen_Ende" Datatype="Bool" />
+      <Member Name="n_Auto" Datatype="Bool" />
+      <Member Name="TO_Druckaufbau" Datatype="Bool" />
+      <Member Name="Drucktest_Pumpe_ok" Datatype="Bool" />
+      <Member Name="Drucktest_Pumpe_Fehler" Datatype="Bool" />
+      <Member Name="Pu_Spuelen_Fertig" Datatype="Bool" />
+      <Member Name="Drucktest_Filter_ok" Datatype="Bool" />
+      <Member Name="Drucktest_Filter_Fehler" Datatype="Bool" />
+      <Member Name="Drucktest_Filter_erfordert" Datatype="Bool" />
+      <Member Name="Filterbeutel_Wechsel_Vorwarngrenze" Datatype="Bool" />
+      <Member Name="Filterbeutel_Wechsel_notwendig" Datatype="Bool" />
+    </Member>
+    <Member Name="Out" Datatype="Struct" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="GP0x_Ein" Datatype="Bool" />
+      <Member Name="Ventil_Saugseite" Datatype="Bool" />
+      <Member Name="Ventil_Eingang_Filter" Datatype="Bool" />
+      <Member Name="Ventil_Ausgang_Filter" Datatype="Bool" />
+      <Member Name="Ventil_Entlueften" Datatype="Bool" />
+      <Member Name="Spülventil_P_Eingang" Datatype="Bool" />
+      <Member Name="Spülventil_F_Eingang" Datatype="Bool" />
+      <Member Name="Spülventil_Ausgang" Datatype="Bool" />
+      <Member Name="Soll_speed" Datatype="Int" />
+    </Member>
+    <Member Name="IEC_Timer" Datatype="Struct">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Member Name="Spülen_Pumpe" Datatype="TP_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="Filterwechsel" Datatype="TP_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="GW_p" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="Drucktest" Datatype="TP_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="TO_Druckaufbau" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="Verz_Ueberdruck" Datatype="TON_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+      <Member Name="Spülventil_Ausgang" Datatype="TOF_TIME" Version="1.0">
+        <AttributeList>
+          <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+        </AttributeList>
+      </Member>
+    </Member>
+    <Member Name="R_TRIG_Hand_EIN" Datatype="R_TRIG" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>FP_CM01.GP01</Name>
+      <Namespace />
+      <Number>1001</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

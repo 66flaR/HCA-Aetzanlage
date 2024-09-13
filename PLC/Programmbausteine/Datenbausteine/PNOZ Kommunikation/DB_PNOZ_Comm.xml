@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Global_Status" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">0: OFF; 1: CONNECT; 2: WRITE; 3: READ;  4: DISCONNECT; 5: ERROR</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="connection" Datatype="Struct">
+      <Member Name="activate" Datatype="Bool">
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="established" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">E</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="CONNECT" Datatype="Struct">
+      <Member Name="Request" Datatype="Bool">
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="Done" Datatype="Bool" />
+      <Member Name="Busy" Datatype="Bool" />
+      <Member Name="Error" Datatype="Bool" />
+      <Member Name="ID" Datatype="Word">
+        <StartValue>WORD#16#0002</StartValue>
+      </Member>
+      <Member Name="Status" Datatype="Word" />
+    </Member>
+    <Member Name="SEND" Datatype="Struct">
+      <Member Name="Request" Datatype="Bool" />
+      <Member Name="Done" Datatype="Bool" />
+      <Member Name="Busy" Datatype="Bool" />
+      <Member Name="Error" Datatype="Bool" />
+      <Member Name="ID" Datatype="Word">
+        <StartValue>WORD#16#0002</StartValue>
+      </Member>
+      <Member Name="Status" Datatype="Word" />
+      <Member Name="Length" Datatype="UDInt">
+        <StartValue>43</StartValue>
+      </Member>
+    </Member>
+    <Member Name="RECEIVE" Datatype="Struct">
+      <Member Name="EN_R" Datatype="Bool">
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="ADHOC" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="NDR" Datatype="Bool">
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="Busy" Datatype="Bool" />
+      <Member Name="Error" Datatype="Bool" />
+      <Member Name="ID" Datatype="Word">
+        <StartValue>WORD#16#0002</StartValue>
+      </Member>
+      <Member Name="Status" Datatype="Word" />
+      <Member Name="Length" Datatype="UDInt">
+        <StartValue>43</StartValue>
+      </Member>
+      <Member Name="Receive_Length" Datatype="UDInt">
+        <StartValue>43</StartValue>
+      </Member>
+    </Member>
+    <Member Name="DISCONNECT" Datatype="Struct">
+      <Member Name="Request" Datatype="Bool" />
+      <Member Name="Done" Datatype="Bool" />
+      <Member Name="Busy" Datatype="Bool" />
+      <Member Name="Error" Datatype="Bool" />
+      <Member Name="ID" Datatype="Word" />
+      <Member Name="Status" Datatype="Word" />
+    </Member>
+    <Member Name="Connection_Param" Datatype="&quot;PNOZ Comm&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="local_device_id" Datatype="Byte">
+            <StartValue>BYTE#16#02</StartValue>
+          </Member>
+          <Member Name="rem_staddr" Datatype="Array[1..6] of Byte">
+            <Subelement Path="1">
+              <StartValue>BYTE#16#0A</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>BYTE#16#94</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>B#16#22</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>BYTE#16#46</StartValue>
+            </Subelement>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_PNOZ_Comm</Name>
+      <Namespace />
+      <Number>360</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

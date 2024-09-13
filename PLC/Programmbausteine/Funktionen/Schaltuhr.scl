@@ -1,0 +1,101 @@
+﻿FUNCTION "Schaltuhr" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      return : Int;
+      i : Int;
+      j : Int;
+      Minuten : Array[0..30] of Struct   // Array mit die Minuten von Sonntag 00:00 (Ein- und Ausschaltung)
+         Min : DInt;
+      END_STRUCT;
+      Start_Aus : Bool;
+      Switch_1 : Byte;   // Kann ein- oder ausschalten, es häng von Start_Aus ab
+      Switch_2 : Byte;
+   END_VAR
+
+
+BEGIN
+	//------------------
+	//Uhrzeit stellen
+	//------------------
+	//SPS Zeit holen nach Tastendruck
+	IF "DB_Schaltuhr".SPS_Zeit_holen THEN
+	    "DB_Schaltuhr".Date_Time_Visu := "Uhrzeit".aktDatum;
+	    "DB_Schaltuhr".SPS_Zeit_holen := FALSE;
+	END_IF;
+	
+	//SPS Zeit stellen nach Tastendruck
+	IF "DB_Schaltuhr".SPS_Zeit_Stellen THEN
+	    #return := WR_LOC_T(LOCTIME := "DB_Schaltuhr".Date_Time_Visu,DST := FALSE);
+	    "DB_Schaltuhr".SPS_Zeit_Stellen := FALSE;
+	END_IF;
+	
+	//-------------------------
+	//Betriebsart aus Visu
+	//-------------------------
+	CASE "DB_Schaltuhr".BA_Visu OF
+	    0:  //Aus
+	        "Uhrzeit".BA_Uhr_Ein := FALSE;
+	        "Uhrzeit".BA_Uhr_Dauer := FALSE;
+	    1:  // Dauerbetrieb
+	        "Uhrzeit".BA_Uhr_Ein := FALSE;
+	        "Uhrzeit".BA_Uhr_Dauer := TRUE;
+	    2:  // Ein
+	        "Uhrzeit".BA_Uhr_Ein := TRUE;
+	        "Uhrzeit".BA_Uhr_Dauer := FALSE;
+	END_CASE;
+	
+	//-------------------------
+	//Arbeitszeiten Übernehmen
+	//-------------------------
+	IF "DB_Schaltuhr".Taste_uebernehmen THEN
+	    
+	    "Schaltuhr_Pruefung"(Uebernehmen := "DB_Schaltuhr".Taste_uebernehmen,
+	                            Array => #Minuten,
+	                            Error => "DB_Schaltuhr".nichtOK,
+	                            Start_Aus => #Start_Aus);
+	    
+	    "DB_Schaltuhr".Taste_uebernehmen := FALSE;
+	    
+	    IF "DB_Schaltuhr".nichtOK THEN
+	        RETURN; //Ende wenn fehlerhafte Einträge
+	    END_IF;
+	    
+	    "DB_Schaltuhr".Uebernommen := TRUE;
+	    
+	    IF #Start_Aus THEN
+	        #Switch_1 := 2;
+	        #Switch_2 := 1;
+	    ELSE
+	        #Switch_1 := 1;
+	        #Switch_2 := 2;
+	    END_IF;
+	    
+	    // Array transferieren. -1 ist der Ende des Arrays
+	    FOR #i := 0 TO 27 DO
+	        #j := #i;
+	        
+	        IF #Minuten[#i].Min = dint#-1 THEN
+	            EXIT;
+	        END_IF;
+	        
+	        "Uhrzeit".ProfileWeek[#i].MinWeek := DINT_TO_INT(#Minuten[#i].Min);
+	        
+	        IF #i MOD 2 = 0 THEN
+	            "Uhrzeit".ProfileWeek[#i].State := #Switch_1;
+	        ELSE
+	            "Uhrzeit".ProfileWeek[#i].State := #Switch_2;
+	        END_IF;
+	        
+	    END_FOR;
+	    
+	    //Restliche Struktur löschen
+	    FOR #i := #j TO 27 DO
+	        "Uhrzeit".ProfileWeek[#i].MinWeek := 0;
+	        "Uhrzeit".ProfileWeek[#i].State := 0;
+	    END_FOR;
+	    
+	END_IF;
+	
+END_FUNCTION
+

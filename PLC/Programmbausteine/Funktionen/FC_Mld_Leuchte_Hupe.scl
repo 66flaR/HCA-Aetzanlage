@@ -1,0 +1,139 @@
+﻿FUNCTION "FC_Mld_Leuchte_Hupe" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Max_Word : Int;   // Anzahl Worte insgesamt
+   END_VAR
+
+   VAR_OUTPUT 
+      La_Rot : Bool;
+      La_Gelb : Bool;
+      La_Blau : Bool;
+   END_VAR
+
+   VAR_TEMP 
+      i : Int;
+      j : Int;
+      Temp_Mld : Array[0..15] of Bool;   // Inhalt eines Meldewortes
+      Temp_AM_Mld : Array[0..15] of Bool;   // Inhalt des Altmerkerwortes
+      Edit_Mld_change : Bool;
+   END_VAR
+
+
+BEGIN
+	REGION Parameter
+	    //für Editierfunktion in Visu
+	    //Meldenummer fängt in Visu bei 1 an, daher -1 für Wort und Bitberechnung
+	    
+	    //Adressberechnung
+	    "DB_Alarme".Edit.Edit_Meldewort := ("DB_Alarme".Edit.Edit_Meld - 1) / 16; //welches Meldewort
+	    "DB_Alarme".Edit.Edit_Meldebit := ("DB_Alarme".Edit.Edit_Meld - 1) MOD 16; //welches Meldebit
+	    
+	    //Änderung der ausgewählten Meldung in Visu erkannt
+	    "FC_Flanke"(In:="DB_Alarme".Edit.Edit_Meld <> "DB_Alarme".Edit.Edit_Meld_old,
+	                  neg:=FALSE,
+	                  Flanke=>#Edit_Mld_change,
+	                  AM:="DB_Alarme".Edit.AM_Edit);
+	    
+	    //Neue Daten in Editierstruktur
+	    IF #Edit_Mld_change AND "DB_Alarme".Edit.Edit_Meld <> 0 THEN
+	        "DB_Alarme".Edit.Par := "DB_Alarme".Para_Mld["DB_Alarme".Edit.Edit_Meldewort].Parameter["DB_Alarme".Edit.Edit_Meldebit];
+	        
+	        "DB_Alarme".Edit.Edit_Meld_old := "DB_Alarme".Edit.Edit_Meld; //Altmerker
+	        "DB_Alarme".Edit.Uebernommen := FALSE;
+	    END_IF;
+	    
+	    //Daten übernehmen
+	    IF "DB_Alarme".Edit.Uebernehmen THEN
+	        "DB_Alarme".Para_Mld["DB_Alarme".Edit.Edit_Meldewort].Parameter["DB_Alarme".Edit.Edit_Meldebit] := "DB_Alarme".Edit.Par;
+	        "DB_Alarme".Edit.Uebernommen := TRUE;
+	        "DB_Alarme".Edit.Uebernehmen := FALSE;
+	    END_IF;
+	    
+	    // Cancel changes
+	    IF "DB_Alarme".Edit.Verwerfen THEN
+	        "DB_Alarme".Edit.Par := "DB_Alarme".Para_Mld["DB_Alarme".Edit.Edit_Meldewort].Parameter["DB_Alarme".Edit.Edit_Meldebit];
+	        "DB_Alarme".Edit.Verwerfen := FALSE;
+	    END_IF;
+	    
+	    "DB_Alarme".Edit.Editiert := "FC_Alarm_Editiert_HMI"(IN1:="DB_Alarme".Para_Mld["DB_Alarme".Edit.Edit_Meldewort].Parameter["DB_Alarme".Edit.Edit_Meldebit], IN2:="DB_Alarme".Edit.Par);
+	        
+	END_REGION
+	
+	REGION Auswertung
+	    //Parameterbyte:
+	    //Hupe Rot und Lampe Rot sind Standard, alles andere wird übers Parabyte eingestellt
+	    //generell Hupe automatisch Quittieren pro Meldung, wenn Dauerhupen gewünscht dann im Parabyte einstellen
+	    
+	    //Init Meldeleuchten und Hupenquittung
+	    #La_Rot := FALSE;
+	    #La_Gelb := FALSE;
+	    #La_Blau := FALSE;
+	    "DB_Alarme".La_Quit_Err := FALSE;
+	    "DB_Alarme".auto_aus := FALSE;
+	    "DB_Alarme".stop_request := FALSE;
+	    
+	    FOR #i := 0 TO #Max_Word DO
+	        
+	        SCATTER(IN := "DB_Alarme".MLD[#i], //Meldewort in Bitarray vereinzeln
+	                OUT => #Temp_Mld);
+	        SCATTER(IN := "DB_Alarme".AM_MLD[#i], //Altmerkerwort in Bitarray vereinzeln
+	                OUT => #Temp_AM_Mld);
+	        
+	        //Meldewort bearbeiten
+	        FOR #j := 0 TO 15 DO
+	            
+	            //Lampen und sonstige Bits
+	            IF #Temp_Mld[#j] = TRUE THEN
+	                IF "DB_Alarme".Para_Mld[#i].Parameter[#j].La_Gelb = TRUE THEN
+	                    #La_Gelb := TRUE;
+	                END_IF;
+	                
+	                IF "DB_Alarme".Para_Mld[#i].Parameter[#j].La_Blau = TRUE THEN
+	                    #La_Blau := TRUE;
+	                END_IF;
+	                
+	                IF "DB_Alarme".Para_Mld[#i].Parameter[#j].nicht_La_Rot = FALSE THEN
+	                    #La_Rot := TRUE;
+	                END_IF;
+	                
+	                IF "DB_Alarme".Para_Mld[#i].Parameter[#j].La_Quit_Err = TRUE THEN
+	                    "DB_Alarme".La_Quit_Err := TRUE;
+	                END_IF;
+	                
+	            END_IF;
+	            
+	            //Hupen
+	            IF ((#Temp_Mld[#j] XOR #Temp_AM_Mld[#j]) AND #Temp_Mld[#j]) = TRUE THEN
+	                IF "DB_Alarme".Para_Mld[#i].Parameter[#j].Hupe_Gelb = TRUE THEN
+	                    "DB_Alarme".M_Q_Hupe_Gelb := false;
+	                    IF "DB_Alarme".Para_Mld[#i].Parameter[#j].Hupe_Dauer_Gelb = TRUE THEN
+	                        "DB_Alarme".Hupe_Dauer_Gelb := TRUE;
+	                    END_IF;
+	                END_IF;
+	                
+	                IF "DB_Alarme".Para_Mld[#i].Parameter[#j].Hupe_Blau = TRUE THEN
+	                    "DB_Alarme".M_Q_Hupe_Blau := false;
+	                    IF "DB_Alarme".Para_Mld[#i].Parameter[#j].Hupe_Dauer_Blau = TRUE THEN
+	                        "DB_Alarme".Hupe_Dauer_Blau := TRUE;
+	                    END_IF;
+	                END_IF;
+	                
+	                IF "DB_Alarme".Para_Mld[#i].Parameter[#j].nicht_Hupe_Rot = FALSE THEN
+	                    "DB_Alarme".M_Q_Hupe_Rot := false;
+	                    IF "DB_Alarme".Para_Mld[#i].Parameter[#j].Hupe_Dauer_Rot = TRUE THEN
+	                        "DB_Alarme".Hupe_Dauer_Rot := TRUE;
+	                    END_IF;
+	                END_IF;
+	            END_IF;
+	            
+	        END_FOR;
+	        
+	        //auf Altmerker kopieren
+	        "DB_Alarme".AM_MLD[#i] := "DB_Alarme".MLD[#i];
+	        
+	    END_FOR;
+	    
+	END_REGION
+END_FUNCTION
+

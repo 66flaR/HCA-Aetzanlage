@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Tag" Datatype="Array[1..7] of Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Tag 1: Sonntag</MultiLanguageText>
+      </Comment>
+      <Member Name="AZ_Begin1" Datatype="DTL" Version="1.0">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Arbeitszeit Beginn</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="AZ_Ende1" Datatype="DTL" Version="1.0">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Arbeitszeit Ende</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="AZ_Begin2" Datatype="DTL" Version="1.0">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Arbeitszeit Beginn</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="AZ_Ende2" Datatype="DTL" Version="1.0">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Arbeitszeit Ende</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Tag_aktiv" Datatype="Array[1..7] of Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Übertagung aktiv- oder deaktivieren</MultiLanguageText>
+      </Comment>
+      <Member Name="AZ_Begin1_aktiv" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">=1, das Wort wird im SPS übertragen (nach Plausibilitätsprüfung)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="AZ_Ende1_aktiv" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">=1, das Wort wird im SPS übertragen (nach Plausibilitätsprüfung)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="AZ_Begin2_aktiv" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">=1, das Wort wird im SPS übertragen (nach Plausibilitätsprüfung)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="AZ_Ende2_aktiv" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">=1, das Wort wird im SPS übertragen (nach Plausibilitätsprüfung)</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Date_Time_Visu" Datatype="DTL" Version="1.0" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">fürs Uhrzeit stellen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="BA_Visu" Datatype="Int" Remanence="Retain" />
+    <Member Name="SPS_Zeit_holen" Datatype="Bool" Remanence="Retain" />
+    <Member Name="SPS_Zeit_Stellen" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Taste_uebernehmen" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Schaltuhreinträge Prüfen und Übernehmen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Uebernommen" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">für sichtbarkeit von Button "Übernehmen in Visu"</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="nichtOK" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Meldung generieren wenn Eintrag niO</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>0</MemoryReserve>
+      <Name>DB_Schaltuhr</Name>
+      <Namespace />
+      <Number>1050</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

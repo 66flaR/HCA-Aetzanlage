@@ -1,0 +1,5157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="BA" Datatype="Struct">
+      <Member Name="Not_Aus" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Not-Aus ist betätigt</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="free0" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">sonst Anlage vom PC bedienen, nur bei BA-Schalter auf Auto</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="free1" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">sonst Automatikbetrieb ist nicht freigegeben</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Tippbetrieb" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Tippbetrieb</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Handbetrieb" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Handbetrieb</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="Automat_ein" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Automatikbetrieb möglich</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Automat_aus" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Automatikbetrieb nicht möglich</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Anlauf_Auto" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Anlauf Automatik für Scanvorgang WT-Positionen auf letzte Automatikposition</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Einfahr_Stop" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Stoppt die Einfahrt von WT in die Anlage(Feierabendprogramm)</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Mess_on" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Einmessung aktiv</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Taktwechsel" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Taktwechsel durchführen</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="SIM_HISPEED" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Simulation erfolgt mit doppelter Geschwindigkeit</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Simulation" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Simulation eingeschaltet</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="COM_RST" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Complete Restart</MultiLanguageText>
+        </Comment>
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="FP_Automat_ein" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Flankenmerker positive Flanke Taste Automat ein</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="newConfig" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">neue Konfiguration (Daten neu verteilen)</MultiLanguageText>
+        </Comment>
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="Offset" Datatype="Int">
+      <StartValue>50</StartValue>
+    </Member>
+    <Member Name="Leng" Datatype="Int">
+      <StartValue>40</StartValue>
+    </Member>
+    <Member Name="resW" Datatype="Word">
+      <StartValue>16#0000</StartValue>
+    </Member>
+    <Member Name="resDW2" Datatype="DWord">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="resDW3" Datatype="DWord">
+      <StartValue>16#0000_0000</StartValue>
+    </Member>
+    <Member Name="last_Takt" Datatype="DInt">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="Taktzeit" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Zeit die der Takt läuft</MultiLanguageText>
+      </Comment>
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="Takt_Ware" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Zeit seit Ausfahrt letzte Fertigware</MultiLanguageText>
+      </Comment>
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="resW1" Datatype="Word">
+      <StartValue>16#0000</StartValue>
+    </Member>
+    <Member Name="Stop_Anlage" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">ungleich 0--&gt;Kettenbearbeitung anhalten</MultiLanguageText>
+      </Comment>
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="Feierabend" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">ungleich 0--&gt;FEIERABENDPROGRAMM</MultiLanguageText>
+      </Comment>
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="Sonder_BA" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">ungleich 0--&gt;ELEKTROLYSE, ENTMETALLISIEREN</MultiLanguageText>
+      </Comment>
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="IST_Sonder_BA" Datatype="Byte">
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="FB_FW_akt" Datatype="Word">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">an Fernbedienung gewählter FW</MultiLanguageText>
+      </Comment>
+      <StartValue>16#0000</StartValue>
+    </Member>
+    <Member Name="SPS_getaktet" Datatype="Bool">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="resDW9" Datatype="Word">
+      <StartValue>16#0000</StartValue>
+    </Member>
+    <Member Name="Systime" Datatype="DInt">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="WT_Frueh" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE"> Anzeige Anzahl der fertiggestellten WTs in der Frühschicht</MultiLanguageText>
+      </Comment>
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="WT_Spaet" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE"> Anzeige Anzahl der fertiggestellten WTs in der Spätschicht</MultiLanguageText>
+      </Comment>
+      <StartValue>16#15</StartValue>
+    </Member>
+    <Member Name="WT_Nacht" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE"> Anzeige Anzahl der fertiggestellten WTs in der Nachtschicht</MultiLanguageText>
+      </Comment>
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="resB" Datatype="Byte">
+      <StartValue>16#00</StartValue>
+    </Member>
+    <Member Name="resI" Datatype="Int">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="Pos" Datatype="Array[1..30] of Struct">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">* Feldlänge anpassen</MultiLanguageText>
+      </Comment>
+      <Member Name="WT_Nr_lang" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Warenträger-Nr lang</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>0</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="WT_Nr_kurz" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Warenträger-Nr kurz DB</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Stange_Nr" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Warenstangen-Nr. (falls vorhanden)</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Soll_Expo" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Sollwert Expositionszeit</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>360</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>60</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>1260</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>1260</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>1260</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>1260</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>90</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>90</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>75</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>75</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>75</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>75</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>75</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>10</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>360</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>5</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>5</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Rest_Expo" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verbleibende Expositionszeit</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>0</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="BE_rdy" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Beladestand bereit</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="BE_leer" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Beladestand leer</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="BE_WT_vorhanden" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Beladestand mit nicht aufgebbaren WT belegt</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="BE_verriegelt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Beladestand angedockt und verriegelt(arretiert)</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>TRUE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="BE_gelb" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="BE_rot" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="BE_Charge_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Behandlung fehlerfrei</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="BE_Charge_nok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Fehler bei Behandlung</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Sonderfkt" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Sonderfunktionen frei verwendbar(WT-Kennung)</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="priorisiert" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">priorisierter WT im Bad</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="in_Anlage" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">will in die Anlage</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="in_Entm" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">will in die Entmetallisierung</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="aus_Anlage" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">kommt aus der Anlage</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="aus_Entm" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">kommt aus der Entmetallisierung</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Speicher" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Speicherprogramm</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Warnung" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">in Position wurde eine Warnung ausgelöst</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Alarm" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">in position wurde ein Alarm ausgelöst</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="belegt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Bad belegt</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Trommel" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Trommelware im Bad</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Leer_WT" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Leerstange im Bad</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Vorruf" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Vorruf für Fahrwagen ausgelößt</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="fertig" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Expozeit abgelaufen WT zu Abholung bereit</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Sperre_in" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Einfahrsperre</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Sperre_FW" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Überfahrsperre</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Sperre_out" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ausfahrsperre</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Befx" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Befehlsindex</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>0</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Vorsperre" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Einfahrsperre angemeldet</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Dummy1" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Dummy auf Dummyposition abgelegt</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Dummy2" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Dummy auf Mittenposition abgelegt</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Dkl_auf_Pos" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Deckel auf dieser Position</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Expo_Warn" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Warnung: Toleranzüberschreitg.Expozeit</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Expo_Off" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Expositionszeit eingefroren</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="NSP_ON" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Laufanzeige Nachspeisung</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="SPR_ON" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Laufanzeige Spritzregister</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="WT_Typ" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Art des Warenträgers (z.Bsp. bei fester Zuordnung Ware-WT)</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Verweilzeit" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verweilzeit in s</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Sonderwert_1" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">z.B. Gewicht bei Beladestand</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Fertigzeitpunkt" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Systemzeit PC, wann WT voraussichtlich fertig</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>0</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>0</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Sonderwert_2" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">z.B. Gewicht bei Beladestand</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>0.0</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="resb" Datatype="Byte">
+        <Subelement Path="1">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>16#00</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Dkl_zu" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Deckel ist zu</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="Dkl_auf" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Deckel ist auf</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="res392" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="res393" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="PendelHub" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Mehrfachtauchen</MultiLanguageText>
+        </Comment>
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="res395" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="res396" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+      <Member Name="res397" Datatype="Bool">
+        <Subelement Path="1">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="2">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="3">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="4">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="5">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="6">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="7">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="8">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="9">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="10">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="11">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="12">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="13">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="14">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="15">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="16">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="17">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="18">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="19">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="20">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="21">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="22">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="23">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="24">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="25">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="26">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="27">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="28">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="29">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+        <Subelement Path="30">
+          <StartValue>FALSE</StartValue>
+        </Subelement>
+      </Member>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_Panel_OVERVIEW</Name>
+      <Namespace />
+      <Number>50</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

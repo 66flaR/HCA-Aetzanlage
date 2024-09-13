@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Leitwert_CM01.BN01" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Leitfähigkeit Bypass Filterpumpe</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Leitwert_CM01.BN02" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Leitfähigkeit Düsen Umwälzung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Leitwert_CM02.BN03" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Leitfähigkeit Bypass Filterpumpe</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Leitwert_CM02.BN04" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Leitfähigkeit Düsen Umwälzung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="p_HQ01.BP01" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Beutelfiltergehäuse</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="p_HQ02.BP02" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Beutelfiltergehäuse</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="p_CM01.BP03" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Filterpumpe</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="p_CM01.BP04" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Umwälzpumpe</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="p_CM03.BP05" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Umwäzpumpe</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="p_CM02.BP06" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Filterpumpe</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="p_CM02.BP07" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Umwälzpumpe</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="p_CM04.BP08" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Umwäzpumpe</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="p_CM05.BP09" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Pumpe Entleerung Sammeltank</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_Daten_Heraeus</Name>
+      <Namespace />
+      <Number>1111</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

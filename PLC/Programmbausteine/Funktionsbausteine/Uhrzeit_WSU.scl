@@ -1,0 +1,233 @@
+﻿FUNCTION_BLOCK "Uhrzeit_WSU"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   VAR 
+      aktDatum {InstructionName := 'DTL'; LibVersion := '1.0'} : DTL;
+      Time_to_on : Int;   // Zeit bis/seit Arbeitszeitbeginn Wert>0-->bis Wert<0-->seit (in Minuten]
+      Time_to_off : Int;   // Zeit bis/seit Arbeitszeitende Wert>0-->bis Wert<0-->seit (in Minuten]
+      min_of_week : Int;   // Minuten seit Wochenbeginn
+      BA_Uhr_Ein : Bool;   // Dauer-Ein BA_Uhr_Aus: 9.0=0 UND 9.1=0
+      BA_Uhr_Dauer : Bool;   // Uhrenbetrieb
+      AZ_aktiv : Bool;   // Arbeitszeit aktiv
+      ProfileWeek : Array[0..28] of Struct   // Wochenschaltpunkte
+         MinWeek : Int;
+         State : Byte;   // 0=kein Eintrag, bit0=ein, bit1=aus
+         resB : Byte;
+      END_STRUCT;
+   END_VAR
+
+   VAR_TEMP 
+      retVal : Int;
+      Woko : DInt;   // muss direkt hinter ProfileWeek stehen!
+      rdRetval : Int;
+      WoTime_bis : Int;
+      WoTime_seit : Int;
+      TempTime : Int;
+      lastOn : Bool;
+      nextOn : Bool;
+      lastFnd : Bool;
+      nextFnd : Bool;
+      i : Int;
+   END_VAR
+
+   VAR CONSTANT 
+      MaxWeek : Int := 10080;   // Anzahl Minuten pro Woche
+      "0x7FFF" : Int := 32767;
+   END_VAR
+
+
+BEGIN
+	//Lokalzeit auslesen
+	IF RD_LOC_T(#aktDatum) > #"0x7FFF"  THEN //Wenn Retval >= 0x08000,
+	    RETURN;
+	END_IF;
+	
+	//-------------
+	//Betriebsart
+	//-------------
+	
+	//-----------------------------
+	//Uhrenbetrieb (Wochenfunktion)
+	//-----------------------------
+	IF #BA_Uhr_Ein THEN
+	    REGION Woche
+	        #lastFnd := FALSE;  //letzter Eintrag gefunden/Wochenwechsel erkannt
+	        #nextFnd := FALSE;  //nächster Eintrag gefunden
+	        #lastOn := FALSE;
+	        #nextOn := FALSE;
+	        
+	        #WoTime_bis := 32767;
+	        #WoTime_seit := 32767;
+	        
+	        //--------------------------------------------------------------------------
+	        //Berechnung Minuten seit Wochenbeginn
+	        //--------------------------------------------------------------------------
+	        #min_of_week := ((USINT_TO_INT(#aktDatum.WEEKDAY) - 1) * 1440) + (USINT_TO_INT(#aktDatum.HOUR) * 60) + USINT_TO_INT(#aktDatum.MINUTE); //Wenn aktueller Wochentag 1 = Sonntag
+	        
+	        //Schaltuhr leer?
+	        IF #ProfileWeek[1].State = b#16#0 THEN
+	            #Time_to_on := 32767;
+	            #Time_to_off := -32767;
+	            
+	            //----------------------------
+	            //Schaltpunkte suchen
+	            //----------------------------
+	        ELSE
+	            
+	            //--------------------------------------------------------------------------
+	            //letzten Schaltpunkt suchen
+	            //--------------------------------------------------------------------------
+	        REGION last
+	            //alles ab rela:
+	            //vorherigen Schaltpunkt suchen
+	                #Woko := #min_of_week;
+	                #i := -1;
+	                
+	                REPEAT //FOR Schleife geht nicht weil ich #i während des Ablaufs nicht verändern darf :-(
+	                    
+	                    #i += 1;
+	                    
+	                    IF #ProfileWeek[#i].State <> 0 AND #Woko >= #ProfileWeek[#i].MinWeek THEN //Eintrag leer oder in der Zukunft? dann weiter
+	                        //Eintrag gefunden
+	                        #lastFnd := TRUE;
+	                        IF #ProfileWeek[#i].State = 1 THEN
+	                            #lastOn := TRUE;
+	                        ELSIF #ProfileWeek[#i].State = 2 THEN
+	                            #lastOn := FALSE;
+	                        END_IF;
+	                        
+	                        IF #min_of_week < #ProfileWeek[#i].MinWeek THEN
+	                            #WoTime_seit := #MaxWeek - #ProfileWeek[#i].MinWeek + #min_of_week;
+	                        ELSE
+	                            #WoTime_seit := #min_of_week - #ProfileWeek[#i].MinWeek;
+	                        END_IF;
+	                    END_IF;
+	                    
+	                //Prüfung im letzten Durchgang
+	                IF #i = 28 THEN
+	                    //fündig geworden?
+	                    IF #lastFnd THEN//gefunden, ok
+	                        EXIT;
+	                        
+	                    //keinen letzten Schaltpunkt entdeckt
+	                    //aktueller Status bleibt erhalten
+	                    ELSIF #Woko = #MaxWeek THEN //im 2ten Durchgang?
+	                        IF #Time_to_on < 0 THEN
+	                            #lastOn := TRUE;
+	                            #WoTime_seit := #Time_to_on * -1;
+	                        ELSE
+	                            #lastOn := FALSE;
+	                            #WoTime_seit := #Time_to_off * -1;
+	                        END_IF;
+	                        
+	                        EXIT;
+	                        
+	                    ELSE//im ersten Durchgang nichts gefunden, dann evtl. in voriger Woche im 2ten Durchgang?
+	                        #Woko := #MaxWeek;
+	                        #i := -1;
+	                    END_IF;
+	                END_IF;
+	                
+	            UNTIL #i = 28
+	            END_REPEAT;
+	        END_REGION
+	            
+	            //--------------------------------------------------------------------------
+	            //nächsten Schaltpunkt suchen
+	            //--------------------------------------------------------------------------
+	        REGION next
+	            //alles ab snex:
+	            //nächsten Schaltpunkt suchen
+	            #i := -1;
+	            
+	            REPEAT //FOR Schleife geht nicht weil ich #i während des Ablaufs nicht verändern darf :-(
+	                
+	                #i += 1;
+	                
+	                IF #ProfileWeek[#i].State <> 0 AND #ProfileWeek[#i].MinWeek - #min_of_week >= 0 THEN //Eintrag leer oder in der Zukunft? dann weiter
+	                    //Eintrag gefunden
+	                    #TempTime := #ProfileWeek[#i].MinWeek - #min_of_week;
+	                    
+	                    #nextFnd := TRUE;
+	                    
+	                    IF #TempTime > #WoTime_bis THEN
+	                        EXIT;
+	                    END_IF;
+	                    
+	                    #WoTime_bis := #TempTime;
+	                    
+	                    IF #ProfileWeek[#i].State = 1 THEN
+	                        #nextOn := TRUE;
+	                    ELSIF #ProfileWeek[#i].State = 2 THEN
+	                        #nextOn := FALSE;
+	                    END_IF;
+	                    EXIT;
+	                    
+	                END_IF;
+	                
+	            UNTIL #i = 28
+	            END_REPEAT;
+	            
+	            //nichts gefunden? Dann nächste Woche checken (ersten Eintrag)
+	            //Prüfung im letzten Durchgang
+	            IF NOT #nextFnd THEN
+	                #TempTime := #MaxWeek - #min_of_week + #ProfileWeek[0].MinWeek;
+	                #nextFnd := TRUE;
+	                IF #TempTime <= #WoTime_bis THEN
+	                    #WoTime_bis := #TempTime;
+	                    
+	                    IF #ProfileWeek[0].State = 1 THEN
+	                        #nextOn := TRUE;
+	                    ELSIF #ProfileWeek[0].State = 2 THEN
+	                        #nextOn := FALSE;
+	                    END_IF;
+	                END_IF;
+	            END_IF;
+	            
+	        END_REGION
+	        
+	            END_IF;
+	            
+	            //Auswertung zum Schluss
+	            IF #lastOn AND #nextOn THEN
+	                #Time_to_on := 0;// -32767;
+	                #Time_to_off := 32767;
+	            ELSIF NOT #lastOn AND NOT #nextOn THEN
+	                #Time_to_on := 32767;
+	                #Time_to_off := 0;// -32767;
+	            ELSIF #lastOn AND NOT #nextOn THEN
+	                #Time_to_off := #WoTime_bis;
+	                #Time_to_on := #WoTime_seit * -1;
+	            ELSE
+	                #Time_to_on := #WoTime_bis;
+	                #Time_to_off := #WoTime_seit * -1;
+	            END_IF;
+	            
+	            
+	            
+	    END_REGION
+	    
+	//-----------------------------   
+	//Dauerbetrieb
+	//-----------------------------
+	ELSIF #BA_Uhr_Dauer THEN
+	    REGION Dauer
+	        #Time_to_on := -32767;
+	        #Time_to_off := 32767;
+	    END_REGION
+	    
+	//-----------------------------
+	//Aus
+	//-----------------------------
+	ELSE
+	    REGION Aus
+	        #Time_to_on := 32767;
+	        #Time_to_off := -32767;
+	    END_REGION
+	END_IF;
+	
+	//Auswertung Arbeitszeit
+	#AZ_aktiv := #Time_to_on <= 0;
+	
+END_FUNCTION_BLOCK
+

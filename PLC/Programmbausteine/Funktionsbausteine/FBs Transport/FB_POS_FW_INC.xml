@@ -1,0 +1,5987 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>MS</HeaderAuthor>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="SysTime" Datatype="Time">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aktuelle Systemzeit</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Config" Datatype="Struct">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Konfiguration/Einstellungen für Positioniersystem</MultiLanguageText>
+      </Comment>
+      <Member Name="Speed" Datatype="Struct">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Geschwindigkeitsvorgaben</MultiLanguageText>
+        </Comment>
+        <Member Name="Min" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Mindestgeschwindigkeit in %</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Tipp" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Geschwindigkeit bei Tipp-Betrieb in %</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Hand" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">maximale Geschwindigkeit ohne Freigabe Eil (z.Bsp.:Hand-Betrieb) in %</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Max" Datatype="Int">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">maximale Geschwindigkeit mit Freigabe Eil (z.Bsp.: Automatik-Betrieb) in %</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Norm" Datatype="Real">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Geschwindigkeit in INC/s bei 100%</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="endMess" Datatype="Real">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">gemessene Geschwindigkeit in INC/s bei 100% (wird automatisch ermittelt)</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Rampe" Datatype="Struct">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Rampeneinstellungen</MultiLanguageText>
+        </Comment>
+        <Member Name="Auf_Leer" Datatype="Real">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Zeit für Beschleunigung bei Leerfahrt von 0% auf 200%</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Ab_Leer" Datatype="Real">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Zeit für Verzögerung bei Leerfahrt von 200% auf 0%</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Auf_Ware" Datatype="Real">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Zeit für Beschleunigung bei Warenfahrt von 0% auf 200%</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Ab_Ware" Datatype="Real">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Zeit für Verzögerung bei Warenfahrt von 200% auf 0%</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="NotStop" Datatype="Real">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Zeit für Verzögerung bei NotStopp von 200% auf 0%</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="Bereich" Datatype="Struct">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Positionsbereiche</MultiLanguageText>
+        </Comment>
+        <Member Name="Pos" Datatype="DInt">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">gilt als Positionsmitte (nur für Überwachung)</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Stop" Datatype="DInt">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Geschwindigkeit==0 Bremse ein</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Ziel" Datatype="DInt">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Zielbereich gilt für Ausgabe minSpeed</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Schleich" Datatype="DInt">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">nur für Sensorsysteme (Schleichgeschwindigkeit)</MultiLanguageText>
+          </Comment>
+        </Member>
+        <Member Name="Langsam" Datatype="DInt">
+          <Comment>
+            <MultiLanguageText Lang="de-DE">Bereich der für ein gezieltes Anhalten benötigt wird</MultiLanguageText>
+          </Comment>
+        </Member>
+      </Member>
+      <Member Name="TV_Position" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Verzögerung Positionsmitte in ms</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Reaktionszeit" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Reaktionszeit FU in ms (Zeit von Ausgabe Sollwert bis Rückmeldung)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Startzeit" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zeit Startverzögerung in ms (Zeit von erster Sollwertausgabe bis Istwert&gt;0)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Variante" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Art der Positionierung (0-Absolut, 1-4SensorSys, 2-..)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SimIstSpeed" Datatype="Byte">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Variante Simulation Istgeschwindigkeit (0-aus, 1-Soll=Ist,...)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="PlateauZeit" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zeit[ms] für Plateau zwischen Beschleunigung und Verzögerung</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="IN" Datatype="Struct">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Eingänge (werden aus FW-DB gelesen (Istwert muß evtl. separat erfasst werden)</MultiLanguageText>
+      </Comment>
+      <Member Name="BA_Tipp" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Betriebsart FW Tipp</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="BA_Hand" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Betriebsart FW Hand</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="BA_Auto" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Betriebsart FW Auto</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="LeerFahrt" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Leerfahrtparameter verwenden</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Frg_Fahren" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Freigabe Positioniervorgang</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Frg_Eil" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">max. Speed in Automatik und Hand-Speed in Tipp erlaubt</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Break_on" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Rückmeldung extern Bremse eingefallen / Wagen steht</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="res_2" Datatype="Bool" />
+      <Member Name="resB" Datatype="Byte" />
+      <Member Name="PosInc" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Istposition in Inkrementen (mm)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="ZielInc" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ziel in Inkrenmenten (mm)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="IstSpeed" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Istgeschwindigkeit in %</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="OUT" Datatype="Struct">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Ausgänge werden an FW-DB übergeben (Ausgabe SpeedOut + Umrechnung anlagenspez.)</MultiLanguageText>
+      </Comment>
+      <Member Name="Pos_ok" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Positionierung beendet FW steht</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Break_off" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Bremse lösen</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="res_1" Datatype="Bool" />
+      <Member Name="res_2" Datatype="Bool" />
+      <Member Name="res_3" Datatype="Bool" />
+      <Member Name="res_4" Datatype="Bool" />
+      <Member Name="res_5" Datatype="Bool" />
+      <Member Name="res_6" Datatype="Bool" />
+      <Member Name="resB" Datatype="Byte" />
+      <Member Name="Bereich_langsam" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">berechneter Anhaltebereich</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SollSpeed" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Sollgeschwindigkeit in %</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Tmp" Datatype="Struct">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Hilfsvariablen</MultiLanguageText>
+      </Comment>
+      <Member Name="lastTime" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">letzter Systemzeitpunkt</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="DiffTime" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zeit seit letzter Bearbeitung</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="lastSpeed" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">letzte ausgegebene Geschwindigkeit</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Messung" Datatype="Struct">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ermittlung der Normgeschwindigkeit</MultiLanguageText>
+        </Comment>
+        <Member Name="lastInc" Datatype="Real" />
+        <Member Name="addInc" Datatype="Real" />
+        <Member Name="addTime" Datatype="Real" />
+        <Member Name="lastIst" Datatype="Int" />
+        <Member Name="messAct" Datatype="Bool" />
+      </Member>
+      <Member Name="StopCount" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zähler für Positionsverzögerung</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="subInc" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Merkzelle für nicht ausgebbare Restwerte</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="lastOut" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">im letzten Zyklus ausgegebene Geschwindigkeit</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="TaktCount" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Taktzähler für Sensorsimu</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="RunTime" Datatype="DInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zeit seit Start Positioniervorgang</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="Rampe_Auf" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aufbereitete Rampe Beschleunigung Dauer in ms bis 100%-Speed</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Rampe_Ab" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aufbereitete Rampe Verzögerung Dauer in ms von 100% auf 0-Speed</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="IstSpeed" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aufbereitete Istgeschwindigkeit in Inc/ms</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Abstand" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Abstand zum Ziel (evtl. korrigiert durch Vorhaltezeit)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="minSpeed" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aktuell geltende Mindestgeschwindigkeit (Regelgrenze)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="maxSpeed" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aktuell geltende Maximalgeschwindigkeit (Regelgrenze)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="normSpeed" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Normalgeschwindigkeit bei Sollwert 100% in Inc/ms</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Speed" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Zwischenergebnis für Ausgabegeschwindigkeit</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="maxDelta" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">maximale Änderung der Sollwertvorgabe beim beschleunigen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="messAct" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Messung läuf (wird bei 1s konstantem Istwert gesetzt)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="incDelta" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">zurückgelgter Weg für Ermittlung des NormSpeeds</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Rampe_Not" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">aufbereitete Notrampe (nur in Simulation verwendet)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Korrmax" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Korrektur max-Speed vom WT</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="HandSpeed" Datatype="Real" />
+    <Member Name="TippRampe" Datatype="Int" />
+    <Member Name="VOR" Datatype="Bool" />
+    <Member Name="RCK" Datatype="Bool" />
+    <Member Name="Auto_Befehl" Datatype="Bool" />
+    <Member Name="Speicherpos" Datatype="Bool" />
+    <Member Name="HandTaste" Datatype="Bool" />
+    <Member Name="hiSpeed" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">unkorrigierter max. Speed</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Plateau" Datatype="Real" />
+    <Member Name="vPlateau" Datatype="Real" />
+    <Member Name="SimSpeed" Datatype="Bool" />
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>FB_POS_FW_INC</Name>
+      <Namespace />
+      <Number>21</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="IN" />
+        <Component Name="Com_Reset" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="nRes" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SysTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="subInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="44">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="45">
+    <LabelDeclaration>
+      <Label Name="nRes" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="49">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="51">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="54">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="56">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="59">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="TIPP" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="62">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="64">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Auto" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="66">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="68">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="69">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="Oben_li" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="76">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="Oben_re" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="72">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="LeerFahrt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="88">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="74">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="MicM2" />
+      </Symbol>
+      <LineComment>
+        <Text>--&gt;Handbetr.Taste gedrückt</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="77">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="79">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="HandTaste" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="81">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="82">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="VOR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="85">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="VOR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="87">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="RUECK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="90">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="RCK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="92">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="93">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="VOR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="96">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="RCK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="99">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Fahren" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="101">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="102">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="POS_EIL" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="105">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Eil" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="107">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="108">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="111">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="113">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="TMP" />
+        <Component Name="FahrZielInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="116">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="ZielInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="118">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="119">
+    <StlToken Text="CLR" />
+  </StlStatement>
+  <StlStatement UId="120">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speicherpos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="122">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="123">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="PAR" />
+        <Component Name="Fahrt" />
+        <Component Name="WT_Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="126">
+    <StlToken Text="ITD" />
+  </StlStatement>
+  <StlStatement UId="127">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="128">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>100.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="130">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="131">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Korrmax" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="133">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="134">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>3</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="136">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="BEFEHL" SliceAccessModifier="b2" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="138">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="139">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="140">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="142">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="143">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="144">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Auto_Befehl" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Daten aus FW lesen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="146">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="148">
+    <LineComment>
+      <Text>Zeitmessung</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="150">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="152">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SysTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="154">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="156">
+    <StlToken Text="GE_D" />
+  </StlStatement>
+  <StlStatement UId="157">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="nUms" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="159">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>DWord</ConstantType>
+        <ConstantValue>16#7FFF_FFFF</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>L#2147483647</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="162">
+    <StlToken Text="CAC" />
+  </StlStatement>
+  <StlStatement UId="163">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="164">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SysTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="166">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="167">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Ums" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="169">
+    <LabelDeclaration>
+      <Label Name="nUms" />
+    </LabelDeclaration>
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="171">
+    <LabelDeclaration>
+      <Label Name="Ums" />
+    </LabelDeclaration>
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="173">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="DiffTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="175">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>10.0</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Berechnung unter 10ms zu ungenau</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="178">
+    <StlToken Text="LT_R" />
+  </StlStatement>
+  <StlStatement UId="179">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="180">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="181">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SysTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="183">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="185">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="186">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="188">
+    <LineComment>
+      <Text>Parametersatz laden</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="190">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="192">
+    <LineComment>
+      <Text> :::::::::::::::::::::::::::::::::::::::</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="194">
+    <LineComment>
+      <Text> Rampen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="196">
+    <LineComment>
+      <Text> :::::::::::::::::::::::::::::::::::::::</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="198">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="LeerFahrt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="200">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="202">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Rampe" />
+        <Component Name="Auf_Ware" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="204">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="slu" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="206">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Rampe" />
+        <Component Name="Auf_Leer" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="208">
+    <LabelDeclaration>
+      <Label Name="slu" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1000.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="211">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="212">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>2.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="214">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="215">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Auf" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="217">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="218">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="LeerFahrt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="220">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="222">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Rampe" />
+        <Component Name="Ab_Ware" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="224">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="sld" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="226">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Rampe" />
+        <Component Name="Ab_Leer" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="228">
+    <LabelDeclaration>
+      <Label Name="sld" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1000.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="231">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="232">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>2.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="234">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="235">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Ab" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="237">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="238">
+    <LineComment>
+      <Text> :::::::::::::::::::::::::::::::::::::::</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="240">
+    <LineComment>
+      <Text> Normalgeschwindigkeit</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="242">
+    <LineComment>
+      <Text> :::::::::::::::::::::::::::::::::::::::</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="244">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Speed" />
+        <Component Name="Norm" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="246">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1000.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="248">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="249">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="251">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="252">
+    <LineComment>
+      <Text> :::::::::::::::::::::::::::::::::::::::</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="254">
+    <LineComment>
+      <Text> Istgeschwindigkeit</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="256">
+    <LineComment>
+      <Text> :::::::::::::::::::::::::::::::::::::::</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="258">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="IstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="260">
+    <StlToken Text="ITD" />
+  </StlStatement>
+  <StlStatement UId="261">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="262">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="263">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>10000.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="265">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="266">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="268">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="269">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="271">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="272">
+    <LineComment>
+      <Text> :::::::::::::::::::::::::::::::::::::::</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="274">
+    <LineComment>
+      <Text> Abstand</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="276">
+    <LineComment>
+      <Text> :::::::::::::::::::::::::::::::::::::::</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="278">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="280">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="ZielInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="282">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="283">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="284">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="285">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="287">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="288">
+    <LineComment>
+      <Text>Korrektur Abstand (Vorhalteweg)um Reaktionszeit auszugleichen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="290">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Reaktionszeit" />
+      </Symbol>
+      <LineComment>
+        <Text>VorhalteWeg=Istspeed * Reaktionszeit</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="293">
+    <StlToken Text="ITD" />
+    <LineComment>
+      <Text>s = v*t</Text>
+    </LineComment>
+  </StlStatement>
+  <StlStatement UId="295">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="296">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="298">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="299">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="301">
+    <StlToken Text="CAC" />
+  </StlStatement>
+  <StlStatement UId="302">
+    <StlToken Text="SUB_R" />
+  </StlStatement>
+  <StlStatement UId="303">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="305">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="306">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="StA" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="308">
+    <StlToken Text="CAC" />
+  </StlStatement>
+  <StlStatement UId="309">
+    <LabelDeclaration>
+      <Label Name="StA" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="312">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="313">
+    <LineComment>
+      <Text> :::::::::::::::::::::::::::::::::::::::</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="315">
+    <LineComment>
+      <Text> --- Geschwindigkeiten (Min, Hand, Max)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="317">
+    <LineComment>
+      <Text> :::::::::::::::::::::::::::::::::::::::</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="319">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Speed" />
+        <Component Name="Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="321">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="323">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Eil" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="325">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="min" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="327">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Speed" />
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="329">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="331">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Eil" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="333">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="min" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="335">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Speed" />
+        <Component Name="Min" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="337">
+    <LabelDeclaration>
+      <Label Name="min" />
+    </LabelDeclaration>
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="339">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="340">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>100.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="342">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="343">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="345">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="346">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="minSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="348">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="349">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Speed" />
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="351">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="353">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Auto_Befehl" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="355">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="357">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="max" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="359">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Speed" />
+        <Component Name="Max" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="361">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="362">
+    <LabelDeclaration>
+      <Label Name="max" />
+    </LabelDeclaration>
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="364">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="365">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>100.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="367">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="368">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="370">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="371">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Korrmax" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="373">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="374">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="376">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="minSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="378">
+    <StlToken Text="GE_R" />
+  </StlStatement>
+  <StlStatement UId="379">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="okmx" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="381">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="383">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="384">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="386">
+    <LineComment>
+      <Text>kein Auftrag</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="388">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="390">
+    <LabelDeclaration>
+      <Label Name="okmx" />
+    </LabelDeclaration>
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Fahren" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="393">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Off" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="395">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="396">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="DiffTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="398">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="RunTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="400">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="401">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="RunTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="403">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="404">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="BA_Tipp" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="406">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Auto" />
+    </Access>
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>kein Auftrag/Initialisieren</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="408">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="410">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="SimIstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="412">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="413">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SimSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="415">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="416">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="418">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="TippRampe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="420">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="421">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="423">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="425">
+    <StlToken Text="GE_R" />
+  </StlStatement>
+  <StlStatement UId="426">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Eil" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="428">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="429">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SimSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="431">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Eil" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="433">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="434">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Tout" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="436">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="438">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="minSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="440">
+    <StlToken Text="GE_R" />
+  </StlStatement>
+  <StlStatement UId="441">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="SimSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="443">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Eil" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="445">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Tout" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="447">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="448">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="RunTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="450">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="TippRampe" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="452">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="453">
+    <StlToken Text="LT_R" />
+  </StlStatement>
+  <StlStatement UId="454">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="456">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Tout" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="458">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="459">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="461">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="RunTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="463">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="464">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="466">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>100.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="468">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="469">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="471">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="472">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="474">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Tout" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="476">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="477">
+    <LabelDeclaration>
+      <Label Name="Tout" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="480">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="481">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Fahren" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="483">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="outW" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="485">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="486">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="488">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="RunTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="490">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="492">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="494">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="495">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="outW" />
+    </Access>
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Tipp</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="497">
+    <LabelDeclaration>
+      <Label Name="Auto" />
+    </LabelDeclaration>
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="499">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Pos_ok" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="501">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="502">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Variante" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="504">
+    <StlToken Text="JL" />
+    <Access Scope="Label">
+      <Label Name="vErr" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="506">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="vAbs" />
+      <LineComment>
+        <Text>0 Absolut direkt</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="509">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="v4FX" />
+      <LineComment>
+        <Text>1 mit 4-Sensor-System</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="512">
+    <LabelDeclaration>
+      <Label Name="vErr" />
+    </LabelDeclaration>
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Off" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="515">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Positioniervariante aussuchen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="516">
+    <LabelDeclaration>
+      <Label Name="vAbs" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+  <StlStatement UId="518">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="519">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="521">
+    <LineComment>
+      <Text> Bereich_Langsam berechnen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="523">
+    <LineComment>
+      <Text> </Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="525">
+    <LineComment>
+      <Text> s = (Rampe * Vist * Vist) / (2 * Vnorm)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="527">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="529">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Ab" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="531">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="533">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="534">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Langsam" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="536">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="setB" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="538">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="539">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="541">
+    <StlToken Text="SQR" />
+  </StlStatement>
+  <StlStatement UId="542">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Ab" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="544">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="545">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="547">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="548">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>2.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="550">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="551">
+    <StlToken Text="RND" />
+  </StlStatement>
+  <StlStatement UId="552">
+    <LabelDeclaration>
+      <Label Name="setB" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Bereich_langsam" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="555">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="556">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="558">
+    <LineComment>
+      <Text> maximal mögl. Geschwindigkeit berechnen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="560">
+    <LineComment>
+      <Text> </Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="562">
+    <LineComment>
+      <Text> v = SQRT(2 * s * Vnorm / Rampe)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="564">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="566">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="568">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Ziel" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="570">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="571">
+    <StlToken Text="GT_R" />
+  </StlStatement>
+  <StlStatement UId="572">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Sped" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="574">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="575">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="577">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Stop" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="579">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="580">
+    <StlToken Text="GT_R" />
+  </StlStatement>
+  <StlStatement UId="581">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="minSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="583">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="setS" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="585">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="586">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="588">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="setS" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="590">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="591">
+    <LabelDeclaration>
+      <Label Name="Sped" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Ab" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="594">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="596">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="597">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="599">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="setS" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="601">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="602">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>2.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="604">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="606">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="607">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="609">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="610">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Ab" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="612">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="613">
+    <StlToken Text="SQRT" />
+  </StlStatement>
+  <StlStatement UId="614">
+    <LabelDeclaration>
+      <Label Name="setS" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="617">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="hiSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="619">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="620">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="622">
+    <LineComment>
+      <Text> errechnete Geschwindigkeit auf MAX begrenzen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="624">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="626">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="628">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="630">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="631">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Ramp" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="633">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="635">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Ramp" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="637">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="638">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="640">
+    <LineComment>
+      <Text> Anstiegsrampe begrenzen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="642">
+    <LineComment>
+      <Text> </Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="644">
+    <LineComment>
+      <Text> Vdelta = (Vnorm * Tdelta / Rampe)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="646">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="648">
+    <LabelDeclaration>
+      <Label Name="Ramp" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="651">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="653">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="654">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="aMin" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="656">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="657">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Auf" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="659">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="661">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="662">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="aMin" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="664">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="665">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="667">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="SimIstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="669">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="670">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="wait" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="672">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="673">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="675">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>2.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="677">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="678">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="680">
+    <StlToken Text="GE_R" />
+  </StlStatement>
+  <StlStatement UId="681">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="wtr" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="683">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="684">
+    <LabelDeclaration>
+      <Label Name="wait" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="RunTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="687">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Startzeit" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="689">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="690">
+    <StlToken Text="LT_R" />
+  </StlStatement>
+  <StlStatement UId="691">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="693">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="altw" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="695">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="696">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="698">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="SimIstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="700">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="701">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="wtr" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="703">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="704">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="706">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="RunTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="708">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="709">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="711">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>100.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="713">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="714">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="716">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="717">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="719">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="altw" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="721">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="722">
+    <LabelDeclaration>
+      <Label Name="wtr" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="725">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="DiffTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="727">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="728">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Auf" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="730">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="731">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="733">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="734">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="HandTaste" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="736">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="okD" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="738">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="739">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="PlateauZeit" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="741">
+    <StlToken Text="ITD" />
+  </StlStatement>
+  <StlStatement UId="742">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="743">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Plateau" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="745">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="746">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="748">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Plateau" />
+      </Symbol>
+      <LineComment>
+        <Text>PlateauZeit</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="751">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="752">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Auf" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="754">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="755">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Plateau" />
+      </Symbol>
+      <LineComment>
+        <Text>Plateau v-Diff</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="758">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="759">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Plateau" />
+      </Symbol>
+      <LineComment>
+        <Text>Plateau v-Diff</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="762">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="764">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="765">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="vPlateau" />
+      </Symbol>
+      <LineComment>
+        <Text>PlateauGeschwindigkeit</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="768">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="769">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="hiSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="771">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="vPlateau" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="773">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="774">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="776">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="altw" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="778">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="779">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="hiSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="781">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="vPlateau" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="783">
+    <StlToken Text="SUB_R" />
+  </StlStatement>
+  <StlStatement UId="784">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="786">
+    <StlToken Text="GT_R" />
+  </StlStatement>
+  <StlStatement UId="787">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="okD" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="789">
+    <StlToken Text="CAC" />
+  </StlStatement>
+  <StlStatement UId="790">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="792">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="793">
+    <LabelDeclaration>
+      <Label Name="okD" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="796">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="798">
+    <StlToken Text="SUB_R" />
+  </StlStatement>
+  <StlStatement UId="799">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="800">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="802">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="803">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="aMin" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="805">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="806">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="808">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="810">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="811">
+    <LabelDeclaration>
+      <Label Name="altw" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="814">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="815">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="817">
+    <LineComment>
+      <Text> errechnete Geschwindigkeit auf MIN begrenzen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="819">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="821">
+    <LabelDeclaration>
+      <Label Name="aMin" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="824">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="minSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="826">
+    <StlToken Text="GE_R" />
+  </StlStatement>
+  <StlStatement UId="827">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Out" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="829">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="830">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="832">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="833">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Out" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="835">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Positionierung Absolut direkt</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="1C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="836">
+    <LabelDeclaration>
+      <Label Name="v4FX" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Speed" />
+        <Component Name="Hand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="839">
+    <StlToken Text="ITD" />
+  </StlStatement>
+  <StlStatement UId="840">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="841">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>100.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="843">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="844">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="846">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="847">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="HandSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="849">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="850">
+    <LineComment>
+      <Text>  L     #Config.Bereich.Langsam</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="852">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>4</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="854">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Bereich_langsam" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="856">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="857">
+    <LineComment>
+      <Text>Schleichen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="859">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="861">
+    <StlToken Text="RND" />
+  </StlStatement>
+  <StlStatement UId="862">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Schleich" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="864">
+    <StlToken Text="LE_D" />
+  </StlStatement>
+  <StlStatement UId="865">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="minSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="867">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="StFX" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="869">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="870">
+    <LineComment>
+      <Text>Langsam</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="872">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Langsam" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="874">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speicherpos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="876">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Nnor" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="878">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Langsam" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="880">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="881">
+    <LabelDeclaration>
+      <Label Name="Nnor" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="884">
+    <StlToken Text="RND" />
+  </StlStatement>
+  <StlStatement UId="885">
+    <StlToken Text="GE_D" />
+  </StlStatement>
+  <StlStatement UId="886">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="HandSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="888">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="StFX" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="890">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="891">
+    <LineComment>
+      <Text>Eil</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="893">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="895">
+    <LabelDeclaration>
+      <Label Name="StFX" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="898">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="Out" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="900">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Positionierung mit 4-Sensor-System</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="21" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="901">
+    <LabelDeclaration>
+      <Label Name="Out" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="904">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="ZielInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="906">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="907">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="908">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="909">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="911">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="912">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Variante" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="914">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="916">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="917">
+    <StlToken Text="A_BRACK" />
+  </StlStatement>
+  <StlStatement UId="918">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="920">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Stop" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="922">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="923">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="924">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="925">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Off" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="927">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="928">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="ZielInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="930">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="932">
+    <StlToken Text="SUB_D" />
+  </StlStatement>
+  <StlStatement UId="933">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="935">
+    <StlToken Text="GT_D" />
+  </StlStatement>
+  <StlStatement UId="936">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="RCK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="938">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="939">
+    <StlToken Text="LT_D" />
+  </StlStatement>
+  <StlStatement UId="940">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="VOR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="942">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="943">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Off" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="945">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="946">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="948">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Ziel" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="950">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="951">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="952">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="GOO" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="954">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="955">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Variante" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="957">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="959">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="960">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="VOR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="962">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="TV_Position" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="964">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="965">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="setT" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="967">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Reaktionszeit" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="969">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="970">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="setT" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="972">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="973">
+    <LabelDeclaration>
+      <Label Name="GOO" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="976">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="StopCount" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="978">
+    <StlToken Text="GE_R" />
+  </StlStatement>
+  <StlStatement UId="979">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Off" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="981">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="982">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="DiffTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="984">
+    <StlToken Text="SUB_R" />
+  </StlStatement>
+  <StlStatement UId="985">
+    <LabelDeclaration>
+      <Label Name="setT" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="StopCount" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="988">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="outW" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="990">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="991">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="992">
+    <LabelDeclaration>
+      <Label Name="Off" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Break_on" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="995">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Pos_ok" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="997">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="998">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1000">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Bereich_langsam" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1002">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1004">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1006">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1008">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="RunTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1010">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="outW" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1012">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1013">
+    <LabelDeclaration>
+      <Label Name="outW" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1016">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastOut" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1018">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>10000.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1020">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="1021">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1023">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1024">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1026">
+    <StlToken Text="TRUNC" />
+  </StlStatement>
+  <StlStatement UId="1027">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="SollSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1029">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1030">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="RunTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1032">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Startzeit" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1034">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="1035">
+    <StlToken Text="GE_R" />
+  </StlStatement>
+  <StlStatement UId="1036">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Fahren" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1038">
+    <StlToken Text="S" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Break_off" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1040">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1041">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="SollSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1043">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1045">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="1046">
+    <StlToken Text="ON" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Fahren" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1048">
+    <StlToken Text="R" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Break_off" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1050">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="22" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Ausgabe</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="26" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="1051">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="IstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1053">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="lastIst" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1055">
+    <StlToken Text="SUB_I" />
+  </StlStatement>
+  <StlStatement UId="1056">
+    <StlToken Text="JP" />
+    <Access Scope="Label">
+      <Label Name="cNeg" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1058">
+    <StlToken Text="NEG_I" />
+  </StlStatement>
+  <StlStatement UId="1059">
+    <LabelDeclaration>
+      <Label Name="cNeg" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1062">
+    <StlToken Text="LE_I" />
+  </StlStatement>
+  <StlStatement UId="1063">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Frg_Fahren" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1065">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="messAct" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1067">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="cOn" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1069">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1071">
+    <LineComment>
+      <Text> Messung aus</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1073">
+    <LineComment>
+      <Text> Werte initialisieren</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1075">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1077">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>0.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1079">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="addTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1081">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="addInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1083">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1084">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="IstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1086">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="lastIst" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1088">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="cEnd" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1090">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1091">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1093">
+    <LineComment>
+      <Text> Messung läuft</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1095">
+    <LineComment>
+      <Text> Werte aufzeichnen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1097">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1099">
+    <LabelDeclaration>
+      <Label Name="cOn" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1102">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="1103">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="lastInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1105">
+    <StlToken Text="SUB_R" />
+  </StlStatement>
+  <StlStatement UId="1106">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="1107">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="addInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1109">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="1110">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="addInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1112">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1113">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="DiffTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1115">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="addTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1117">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="1118">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="addTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1120">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1121">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1123">
+    <LineComment>
+      <Text> Messung läuft lange genug</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1125">
+    <LineComment>
+      <Text> um Werte zu berechnen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1127">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1129">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="addTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1131">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1000.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1133">
+    <StlToken Text="LT_R" />
+  </StlStatement>
+  <StlStatement UId="1134">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="cEnd" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1136">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1137">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="addInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1139">
+    <StlToken Text="CAC" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1141">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="lastIst" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1143">
+    <StlToken Text="ITD" />
+  </StlStatement>
+  <StlStatement UId="1144">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="1145">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="1146">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1147">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>10000.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1149">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="1150">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Speed" />
+        <Component Name="endMess" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1152">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="cEnd" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1154">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1155">
+    <LabelDeclaration>
+      <Label Name="cEnd" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1158">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="1159">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="Messung" />
+        <Component Name="lastInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1161">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="27" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="28" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="29" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Messung der Normgeschwindigkeit</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="21">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1166">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Pos_ok" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1168">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="IN" />
+        <Component Name="Pos_ok" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1171">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1172">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Bereich_langsam" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1174">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="PAR" />
+        <Component Name="Fahrt" />
+        <Component Name="Bereich_lngsm" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1177">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1178">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Ziel" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1180">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="PAR" />
+        <Component Name="Fahrt" />
+        <Component Name="Bereich_Ziel" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1183">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1184">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Pos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1186">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="PAR" />
+        <Component Name="Fahrt" />
+        <Component Name="Bereich_Pos" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1189">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1190">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="SollSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1192">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="Speed_Fahrt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1195">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1196">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Variante" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1198">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1200">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="1201">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Bereich" />
+        <Component Name="Langsam" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1203">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="setL" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1205">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1206">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Reaktionszeit" />
+      </Symbol>
+      <LineComment>
+        <Text>VorhalteWeg=Istspeed * Reaktionszeit</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1209">
+    <StlToken Text="ITD" />
+    <LineComment>
+      <Text>s = v*t</Text>
+    </LineComment>
+  </StlStatement>
+  <StlStatement UId="1211">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="1212">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1214">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="1215">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1217">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1218">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1220">
+    <StlToken Text="SQR" />
+  </StlStatement>
+  <StlStatement UId="1221">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Ab" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1223">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="1224">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1226">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1227">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>2.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1229">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1230">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Abstand" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1232">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="1233">
+    <StlToken Text="RND_P" />
+  </StlStatement>
+  <StlStatement UId="1234">
+    <LabelDeclaration>
+      <Label Name="setL" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="PAR" />
+        <Component Name="Fahrt" />
+        <Component Name="max_Anhalteweg" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1238">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Daten in FW schreiben</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="30" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="1239">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="SimIstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1241">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1243">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="1244">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="simu" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1246">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1247">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="SollSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1249">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="IstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1251">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1252">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Break_off" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1254">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Break_on" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1256">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1257">
+    <LineComment>
+      <Text>    BE    </Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1259">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1260">
+    <LabelDeclaration>
+      <Label Name="simu" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="31" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="32" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="33" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Simulation Ist-Wert-Rückgabe</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="1262">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_ANLAGE" />
+        <Component Name="BA" />
+        <Component Name="Simulation" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1264">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="1265">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1266">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="OUT" />
+        <Component Name="Break_off" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1268">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="Break_on" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1270">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1271">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Speed" />
+        <Component Name="Norm" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1273">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1000.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1275">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1276">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1278">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1279">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Rampe" />
+        <Component Name="NotStop" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1281">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>1000.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1283">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="1284">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>2.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1286">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1287">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Not" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1289">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1290">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1292">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="DiffTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1294">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="1295">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Rampe_Not" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1297">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1298">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1300">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="OUT" />
+        <Component Name="RUECK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1307">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="sTra" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1309">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1311">
+    <StlToken Text="NEG_R" />
+  </StlStatement>
+  <StlStatement UId="1312">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1314">
+    <LabelDeclaration>
+      <Label Name="sTra" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1317">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1319">
+    <StlToken Text="SUB_R" />
+  </StlStatement>
+  <StlStatement UId="1320">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="1321">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1323">
+    <StlToken Text="LE_R" />
+  </StlStatement>
+  <StlStatement UId="1324">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Ink" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1326">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1327">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1329">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1331">
+    <StlToken Text="LT_R" />
+  </StlStatement>
+  <StlStatement UId="1332">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1334">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="maxDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1336">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="sub" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1338">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="1339">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="stt" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1341">
+    <LabelDeclaration>
+      <Label Name="sub" />
+    </LabelDeclaration>
+    <StlToken Text="SUB_R" />
+  </StlStatement>
+  <StlStatement UId="1343">
+    <LabelDeclaration>
+      <Label Name="stt" />
+    </LabelDeclaration>
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1346">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1347">
+    <LabelDeclaration>
+      <Label Name="Ink" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="Variante" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1350">
+    <StlToken Text="JL" />
+    <Access Scope="Label">
+      <Label Name="sErr" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1352">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="sAbs" />
+      <LineComment>
+        <Text>0 Absolut direkt</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1355">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="sSen" />
+      <LineComment>
+        <Text>1 mit Sensor-System</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1358">
+    <LabelDeclaration>
+      <Label Name="sErr" />
+    </LabelDeclaration>
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="OutS" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1361">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1362">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1364">
+    <LineComment>
+      <Text> Simu Absolut</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1366">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1368">
+    <LabelDeclaration>
+      <Label Name="sAbs" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1371">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1373">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="1374">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>2.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1376">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1377">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="DiffTime" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1379">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="1380">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="subInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1382">
+    <StlToken Text="ADD_R" />
+  </StlStatement>
+  <StlStatement UId="1383">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="subInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1385">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1386">
+    <StlToken Text="TRUNC" />
+  </StlStatement>
+  <StlStatement UId="1387">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="incDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1389">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="PosInc" />
+      </Symbol>
+      <LineComment>
+        <Text> init startinkrement</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1392">
+    <StlToken Text="ADD_D" />
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DI_FW_1" />
+        <Component Name="ZST" />
+        <Component Name="PosInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1399">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1400">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="subInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1402">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="incDelta" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1404">
+    <StlToken Text="DTR" />
+  </StlStatement>
+  <StlStatement UId="1405">
+    <StlToken Text="SUB_R" />
+  </StlStatement>
+  <StlStatement UId="1406">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="subInc" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1408">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="OutS" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1410">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1411">
+    <LineComment>
+      <Text>------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1413">
+    <LineComment>
+      <Text> Simu Sensoren</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1415">
+    <LineComment>
+      <Text>------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1417">
+    <LabelDeclaration>
+      <Label Name="sSen" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+  <StlStatement UId="1419">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1420">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1421">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1422">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="OutS" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1424">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1425">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1427">
+    <LineComment>
+      <Text> Ausgabe Geschwindigkeit</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1429">
+    <LineComment>
+      <Text>----------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="1431">
+    <LabelDeclaration>
+      <Label Name="OutS" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1434">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1436">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1437">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1438">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Config" />
+        <Component Name="SimIstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1440">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1442">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="1443">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="1444">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="1445">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Tmp" />
+        <Component Name="lastSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1447">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Real</ConstantType>
+        <ConstantValue>10000.0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1449">
+    <StlToken Text="MUL_R" />
+  </StlStatement>
+  <StlStatement UId="1450">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="normSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1452">
+    <StlToken Text="DIV_R" />
+  </StlStatement>
+  <StlStatement UId="1453">
+    <StlToken Text="ABS_R" />
+  </StlStatement>
+  <StlStatement UId="1454">
+    <StlToken Text="TRUNC" />
+  </StlStatement>
+  <StlStatement UId="1455">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="IN" />
+        <Component Name="IstSpeed" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="1457">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="38" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="39" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Simulation  Bewegung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="3A" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="3B" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

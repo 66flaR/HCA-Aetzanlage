@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <InstanceOfName>FB_POS_FW_INC</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="SysTime" Datatype="Time" Remanence="Retain">
+      <StartValue>T#35M_13S_884MS</StartValue>
+    </Member>
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Config" Datatype="Struct" Remanence="Retain">
+      <Member Name="Speed" Datatype="Struct">
+        <Member Name="Min" Datatype="Int">
+          <StartValue>5</StartValue>
+        </Member>
+        <Member Name="Tipp" Datatype="Int">
+          <StartValue>10</StartValue>
+        </Member>
+        <Member Name="Hand" Datatype="Int">
+          <StartValue>50</StartValue>
+        </Member>
+        <Member Name="Max" Datatype="Int">
+          <StartValue>100</StartValue>
+        </Member>
+        <Member Name="Norm" Datatype="Real">
+          <StartValue>800.0</StartValue>
+        </Member>
+        <Member Name="endMess" Datatype="Real">
+          <StartValue>800.4667</StartValue>
+        </Member>
+      </Member>
+      <Member Name="Rampe" Datatype="Struct">
+        <Member Name="Auf_Leer" Datatype="Real">
+          <StartValue>3.0</StartValue>
+        </Member>
+        <Member Name="Ab_Leer" Datatype="Real">
+          <StartValue>3.0</StartValue>
+        </Member>
+        <Member Name="Auf_Ware" Datatype="Real">
+          <StartValue>5.0</StartValue>
+        </Member>
+        <Member Name="Ab_Ware" Datatype="Real">
+          <StartValue>5.0</StartValue>
+        </Member>
+        <Member Name="NotStop" Datatype="Real">
+          <StartValue>1.0</StartValue>
+        </Member>
+      </Member>
+      <Member Name="Bereich" Datatype="Struct">
+        <Member Name="Pos" Datatype="DInt">
+          <StartValue>10</StartValue>
+        </Member>
+        <Member Name="Stop" Datatype="DInt">
+          <StartValue>2</StartValue>
+        </Member>
+        <Member Name="Ziel" Datatype="DInt">
+          <StartValue>5</StartValue>
+        </Member>
+        <Member Name="Schleich" Datatype="DInt">
+          <StartValue>200</StartValue>
+        </Member>
+        <Member Name="Langsam" Datatype="DInt">
+          <StartValue>0</StartValue>
+        </Member>
+      </Member>
+      <Member Name="TV_Position" Datatype="DInt">
+        <StartValue>1000</StartValue>
+      </Member>
+      <Member Name="Reaktionszeit" Datatype="Int">
+        <StartValue>50</StartValue>
+      </Member>
+      <Member Name="Startzeit" Datatype="Int">
+        <StartValue>200</StartValue>
+      </Member>
+      <Member Name="Variante" Datatype="Byte">
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="SimIstSpeed" Datatype="Byte">
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PlateauZeit" Datatype="Int">
+        <StartValue>250</StartValue>
+      </Member>
+    </Member>
+    <Member Name="IN" Datatype="Struct" Remanence="Retain">
+      <Member Name="BA_Tipp" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="BA_Hand" Datatype="Bool">
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="BA_Auto" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="LeerFahrt" Datatype="Bool">
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="Frg_Fahren" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Frg_Eil" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="Break_on" Datatype="Bool">
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="res_2" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="resB" Datatype="Byte">
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="PosInc" Datatype="DInt">
+        <StartValue>1998</StartValue>
+      </Member>
+      <Member Name="ZielInc" Datatype="DInt">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="IstSpeed" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="OUT" Datatype="Struct" Remanence="Retain">
+      <Member Name="Pos_ok" Datatype="Bool">
+        <StartValue>TRUE</StartValue>
+      </Member>
+      <Member Name="Break_off" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res_1" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res_2" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res_3" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res_4" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res_5" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="res_6" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="resB" Datatype="Byte">
+        <StartValue>16#00</StartValue>
+      </Member>
+      <Member Name="Bereich_langsam" Datatype="DInt">
+        <StartValue>0</StartValue>
+      </Member>
+      <Member Name="SollSpeed" Datatype="Int">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+    <Member Name="Tmp" Datatype="Struct" Remanence="Retain">
+      <Member Name="lastTime" Datatype="DInt">
+        <StartValue>2113884</StartValue>
+      </Member>
+      <Member Name="DiffTime" Datatype="Real">
+        <StartValue>31.0</StartValue>
+      </Member>
+      <Member Name="lastSpeed" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="Messung" Datatype="Struct">
+        <Member Name="lastInc" Datatype="Real">
+          <StartValue>1998.0</StartValue>
+        </Member>
+        <Member Name="addInc" Datatype="Real">
+          <StartValue>0.0</StartValue>
+        </Member>
+        <Member Name="addTime" Datatype="Real">
+          <StartValue>0.0</StartValue>
+        </Member>
+        <Member Name="lastIst" Datatype="Int">
+          <StartValue>0</StartValue>
+        </Member>
+        <Member Name="messAct" Datatype="Bool">
+          <StartValue>FALSE</StartValue>
+        </Member>
+      </Member>
+      <Member Name="StopCount" Datatype="DInt">
+        <StartValue>1_147_715_584</StartValue>
+      </Member>
+      <Member Name="subInc" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="lastOut" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="TaktCount" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="RunTime" Datatype="DInt">
+        <StartValue>0</StartValue>
+      </Member>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>DI_FW_POS_1</Name>
+      <Namespace />
+      <Number>21</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

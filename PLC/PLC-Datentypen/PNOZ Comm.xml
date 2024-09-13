@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="block_length" Datatype="Word">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">#!PNOZ m ES ETH!#</MultiLanguageText>
+      </Comment>
+      <StartValue>WORD#16#0040</StartValue>
+    </Member>
+    <Member Name="id" Datatype="Word">
+      <StartValue>WORD#16#0002</StartValue>
+    </Member>
+    <Member Name="connection_type" Datatype="Byte">
+      <StartValue>BYTE#16#11</StartValue>
+    </Member>
+    <Member Name="active_est" Datatype="Bool">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="local_device_id" Datatype="Byte">
+      <StartValue>BYTE#16#03</StartValue>
+    </Member>
+    <Member Name="local_tsap_id_len" Datatype="Byte" />
+    <Member Name="rem_subnet_id_len" Datatype="Byte" />
+    <Member Name="rem_staddr_len" Datatype="Byte">
+      <StartValue>BYTE#16#04</StartValue>
+    </Member>
+    <Member Name="rem_tsap_id_len" Datatype="Byte">
+      <StartValue>BYTE#16#02</StartValue>
+    </Member>
+    <Member Name="next_staddr_len" Datatype="Byte" />
+    <Member Name="local_tsap_id" Datatype="Array[1..16] of Byte" />
+    <Member Name="rem_subnet_id" Datatype="Array[1..6] of Byte" />
+    <Member Name="rem_staddr" Datatype="Array[1..6] of Byte">
+      <Subelement Path="1">
+        <StartValue>BYTE#16#A9</StartValue>
+      </Subelement>
+      <Subelement Path="2">
+        <StartValue>BYTE#16#FE</StartValue>
+      </Subelement>
+      <Subelement Path="3">
+        <StartValue>BYTE#16#3C</StartValue>
+      </Subelement>
+      <Subelement Path="4">
+        <StartValue>BYTE#16#01</StartValue>
+      </Subelement>
+    </Member>
+    <Member Name="rem_tsap_id" Datatype="Array[1..16] of Byte">
+      <Subelement Path="1">
+        <StartValue>BYTE#16#23</StartValue>
+      </Subelement>
+      <Subelement Path="2">
+        <StartValue>BYTE#16#28</StartValue>
+      </Subelement>
+    </Member>
+    <Member Name="next_staddr" Datatype="Array[1..6] of Byte" />
+    <Member Name="spare" Datatype="Word">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">#!PNOZ m ES ETH!#</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>PNOZ Comm</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Connection Parameters for TCON</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

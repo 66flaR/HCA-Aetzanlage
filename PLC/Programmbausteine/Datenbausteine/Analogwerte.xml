@@ -1,0 +1,853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="LF_CM01.BN01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Leitfähigkeit Bypass Filterpumpe</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">mS</MultiLanguageText>
+        </Comment>
+        <StartValue>2000.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>2200.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="LF_CM01.BN02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Leitfähigkeit Düsen Umwälzung</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">mS</MultiLanguageText>
+        </Comment>
+        <StartValue>2000.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>2200.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="LF_CM02.BN03" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Leitfähigkeit Bypass Filterpumpe</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">mS</MultiLanguageText>
+        </Comment>
+        <StartValue>2000.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>2200.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="LF_CM02.BN04" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Leitfähigkeit Düsen Umwälzung</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">mS</MultiLanguageText>
+        </Comment>
+        <StartValue>2000.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>2200.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="p_HQ01.BP01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Beutelfiltergehäuse</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">bar</MultiLanguageText>
+        </Comment>
+        <StartValue>4.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>4.5</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="p_HQ02.BP02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Beutelfiltergehäuse</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">bar</MultiLanguageText>
+        </Comment>
+        <StartValue>4.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>4.5</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="p_CM01.BP03" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Filterpumpe</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">bar</MultiLanguageText>
+        </Comment>
+        <StartValue>4.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>4.5</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="p_CM01.BP04" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Umwälzpumpe</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">bar</MultiLanguageText>
+        </Comment>
+        <StartValue>4.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>4.5</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="p_CM03.BP05" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Umwäzpumpe</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">bar</MultiLanguageText>
+        </Comment>
+        <StartValue>4.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>4.5</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="p_CM02.BP06" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Filterpumpe</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">bar</MultiLanguageText>
+        </Comment>
+        <StartValue>4.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>4.5</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="p_CM02.BP07" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Umwälzpumpe</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">bar</MultiLanguageText>
+        </Comment>
+        <StartValue>4.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>4.5</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="p_CM04.BP08" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Umwäzpumpe</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">bar</MultiLanguageText>
+        </Comment>
+        <StartValue>4.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>4.5</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="p_CM05.BP09" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck Pumpe Entleerung Sammeltank</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">bar</MultiLanguageText>
+        </Comment>
+        <StartValue>4.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>4.5</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="Dfl_GP01.BF01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Durchfluss Versorgung Frischsäure</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">ml/s</MultiLanguageText>
+        </Comment>
+        <StartValue>2000.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>2200.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="Dfl_GP02.BF02" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Durchfluss Entsorgung Altsäure</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">ml/s</MultiLanguageText>
+        </Comment>
+        <StartValue>2000.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>2200.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="Niv_GP01.BL30" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Füllstand Versorgung Frischsäure</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="Niv_GP02.BL31" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Füllstand Entsorgung Altsäure</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="pH_WR01" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">pH-Wert Be-/Entladen</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="WZ_1_1" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wägezelle WR04.BW01</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="WZ_1_2" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wägezelle WR04.BW02</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="WZ_1_3" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wägezelle WR04.BW03</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="WZ_1_4" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wägezelle WR04.BW04</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="WZ_2_1" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wägezelle WR05.BW01</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="WZ_2_2" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wägezelle WR05.BW01</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="WZ_2_3" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wägezelle WR05.BW01</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="WZ_2_4" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wägezelle WR05.BW01</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="Last_1" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Novamat WR04.BW34</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+    <Member Name="Last_2" Datatype="Struct" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Novamat WR05.BW43</MultiLanguageText>
+      </Comment>
+      <Member Name="MB_min" Datatype="Real">
+        <StartValue>0.0</StartValue>
+      </Member>
+      <Member Name="MB_max" Datatype="Real">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">%</MultiLanguageText>
+        </Comment>
+        <StartValue>100.0</StartValue>
+      </Member>
+      <Member Name="UG_Alarm" Datatype="Real">
+        <StartValue>-0.5</StartValue>
+      </Member>
+      <Member Name="OG_Alarm" Datatype="Real">
+        <StartValue>110.0</StartValue>
+      </Member>
+      <Member Name="GF" Datatype="Real">
+        <StartValue>0.5</StartValue>
+      </Member>
+      <Member Name="Drahtbruch" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+      <Member Name="ungueltig" Datatype="Bool">
+        <StartValue>FALSE</StartValue>
+      </Member>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Analogwerte</Name>
+      <Namespace />
+      <Number>1110</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

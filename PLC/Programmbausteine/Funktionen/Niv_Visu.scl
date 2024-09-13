@@ -1,0 +1,53 @@
+﻿FUNCTION "Niv_Visu" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Niv_1 : Bool;   // 1 == Niveau erreicht
+      Niv_2 : Bool;   // 1 == Niveau erreicht
+      Niv_3 : Bool;   // 1 == Niveau erreicht
+      Niv_4 : Bool;   // 1 == Niveau erreicht
+      Niv_5 : Bool;   // 1 == Niveau erreicht
+      Niv_6 : Bool;   // 1 == Niveau erreicht
+      Wert_1 : USInt;   // [%]
+      Wert_2 : USInt;   // [%]
+      Wert_3 : USInt;   // [%]
+      Wert_4 : USInt;   // [%]
+      Wert_5 : USInt;   // [%]
+      Wert_6 : USInt;   // [%]
+   END_VAR
+
+   VAR_OUTPUT 
+      Niveau : USInt;   // [%]
+      Niv_Err : Bool;   // ein höheres Niveau ist an obwohl ein niedrigeres nicht an ist
+   END_VAR
+
+
+BEGIN
+	//Analogwert - Prozentanzeige Visu
+	IF #Niv_6 AND #Niv_5 AND #Niv_4 AND #Niv_3 AND #Niv_2 AND #Niv_1 THEN
+	    #Niveau := #Wert_6;
+	ELSIF NOT #Niv_6 AND #Niv_5 AND #Niv_4 AND #Niv_3 AND #Niv_2 AND #Niv_1 THEN
+	    #Niveau := #Wert_5;
+	ELSIF NOT #Niv_6 AND NOT #Niv_5 AND #Niv_4 AND #Niv_3 AND #Niv_2 AND #Niv_1 THEN
+	    #Niveau := #Wert_4;
+	ELSIF NOT #Niv_6 AND NOT #Niv_5 AND NOT #Niv_4 AND #Niv_3 AND #Niv_2 AND #Niv_1 THEN
+	    #Niveau := #Wert_3;
+	ELSIF NOT #Niv_6 AND NOT #Niv_5 AND NOT #Niv_4 AND NOT #Niv_3 AND #Niv_2 AND #Niv_1 THEN
+	    #Niveau := #Wert_2;
+	ELSIF NOT #Niv_6 AND NOT #Niv_5 AND NOT #Niv_4 AND NOT #Niv_3 AND NOT #Niv_2 AND #Niv_1 THEN
+	    #Niveau := #Wert_1;
+	ELSIF NOT #Niv_6 AND NOT #Niv_5 AND NOT #Niv_4 AND NOT #Niv_3 AND NOT #Niv_2 AND NOT #Niv_1 THEN
+	    #Niveau := 0;
+	ELSE
+	    #Niveau := 150; //Fehler Niveau
+	END_IF;
+	
+	//Plausibilitätsprüfung
+	#Niv_Err := (#Niv_6 AND (NOT #Niv_5 OR NOT #Niv_4 OR NOT #Niv_3 OR NOT #Niv_2 OR NOT #Niv_1)) OR
+	(#Niv_5 AND (NOT #Niv_4 OR NOT #Niv_3 OR NOT #Niv_2 OR NOT #Niv_1)) OR
+	(#Niv_4 AND (NOT #Niv_3 OR NOT #Niv_2 OR NOT #Niv_1)) OR
+	(#Niv_3 AND (NOT #Niv_2 OR NOT #Niv_1)) OR
+	(#Niv_2 AND (NOT #Niv_1));
+	
+END_FUNCTION
+

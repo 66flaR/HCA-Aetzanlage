@@ -1,0 +1,2044 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Stand_Nr" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Nummer des Beladestandes</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="E_Belegt" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">WT erkannt (bei nicht vorhanden auf TRUE setzen)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="E_S_innen" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wagen innerer Sensor ok (bei nicht vorhanden auf TRUE setzen)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="E_S_aussen" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wagen äußerer Sensor ok (bei nicht vorhanden auf TRUE setzen)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="E_S_verriegelt" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Standbedienung erlaubt (bei nicht vorhanden auf TRUE setzen)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="E_Freigabe" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Freigabetaster aus Stand-DB (bei nicht vorhanden auf TRUE setzen)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Auto_Delete" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">automatisches löschen fertiger WT</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ext_Delete" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">löschen durch externe Anforderung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Del_All" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">0=Programm löschen 1=gesamten WT löschen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Afg_WT_Nr" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Aufgabe auch bei WT_Nr_lang&lt;&gt;0 erlaubt</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Del_count" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Zeit nach der Wt gelöscht wird in s</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="WT_DB" Datatype="Int" />
+    <Member Name="Pos_Nr" Datatype="USInt" />
+    <Member Name="WT_Nr" Datatype="Byte" />
+    <Member Name="WT_Nr_lang" Datatype="DWord" />
+    <Member Name="Return" Datatype="Bool" />
+    <Member Name="kein_Korb" Datatype="Bool" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>FC_Beladen</Name>
+      <Namespace />
+      <Number>43</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Datenbasis für Beladestandhandling DB4</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <LineComment>
+      <Text>---------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <LineComment>
+      <Text>Zeiger auf Stand (DB4) berechnen</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="26">
+    <LineComment>
+      <Text>---------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Stand_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Anzahl" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="GT_I" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="38">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="55">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Del_All" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="Del_All" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="60">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Auto_Delete" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="62">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="Auto_Delete" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="65">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Afg_WT_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="67">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="Afg_WT_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="Pos_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="79">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Pos_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="95">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Berechnung der Arbeitsbereiche
+und initialisieren temporärer Variablen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Initialisierung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="96">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="98">
+    <LineComment>
+      <Text>Signal FW kommt</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="100">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="102">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="FW_kommt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="105">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="OUT_FW_kommt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="108">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="109">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="111">
+    <LineComment>
+      <Text>Stand ist leer</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="113">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="115">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="118">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="120">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="121">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Del_All" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="123">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="124">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_Belegt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="126">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Del_All" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="128">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="133">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="kein_WT" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="136">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="137">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="139">
+    <LineComment>
+      <Text>WT bereits aufgegeben</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="141">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="goon" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="151">
+    <StlToken Text="ADD" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="153">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="155">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="Address">
+      <Indirect Width="Block" Area="DB">
+        <Access Scope="LocalVariable">
+          <Symbol>
+            <Component Name="WT_DB" />
+          </Symbol>
+        </Access>
+      </Indirect>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="158">
+    <StlToken Text="AN_BRACK" />
+  </StlStatement>
+  <StlStatement UId="159">
+    <StlToken Text="L" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Word" BitOffset="384" />
+      <LineComment>
+        <Text>"DB_WTx".B_PNTER</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="162">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="164">
+    <StlToken Text="GT_I" />
+  </StlStatement>
+  <StlStatement UId="165">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="41">
+    <LabelDeclaration>
+      <Label Name="goon" />
+    </LabelDeclaration>
+    <StlToken Text="A_BRACK" />
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_Nr_lang" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="173">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="175">
+    <StlToken Text="NE_D" />
+  </StlStatement>
+  <StlStatement UId="176">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="177">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="belegt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="45">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="INA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_aufgegeben" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="47">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="195">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="197">
+    <LineComment>
+      <Text>Aufgabe erlauben</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="199">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="201">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_Nr_lang" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="204">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="206">
+    <StlToken Text="EQ_D" />
+  </StlStatement>
+  <StlStatement UId="207">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Afg_WT_Nr" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_S_aussen" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="209">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="FW_Hebt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="212">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="FW_Senkt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="215">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="kein_WT" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="218">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="Aufgabe_erlaubt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="221">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="222">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="224">
+    <LineComment>
+      <Text>Sperre FW</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="226">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="228">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_S_innen" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="230">
+    <StlToken Text="X" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_S_aussen" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="61">
+    <StlToken Text="NEG" />
+  </StlStatement>
+  <StlStatement UId="58">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="OUT_Sperre_FW" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="236">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="238">
+    <LineComment>
+      <Text>Einfahrsperre</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="240">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="242">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="245">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="247">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="248">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="249">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_Belegt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="251">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Del_All" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="253">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="254">
+    <StlToken Text="ON" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_S_innen" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="256">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_S_aussen" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="258">
+    <StlToken Text="ON" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_S_verriegelt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="260">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="OUT_Sperre_in" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="263">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="264">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="266">
+    <LineComment>
+      <Text>Ausfahrsperre</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="268">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="279">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="281">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="282">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="283">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_Belegt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="285">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Del_All" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="287">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="288">
+    <StlToken Text="ON" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_S_innen" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="290">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_S_aussen" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="292">
+    <StlToken Text="ON" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_S_verriegelt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="294">
+    <StlToken Text="ON" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_aufgegeben" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="297">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="OUT_Sperre_out" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="300">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Bearbeitung Sperren und Freigaben</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="368">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="371">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="373">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="374">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="wtok" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="376">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="last_WT" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="379">
+    <LabelDeclaration>
+      <Label Name="wtok" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+  <StlStatement UId="381">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="383">
+    <LineComment>
+      <Text>Stand wird gerade bedient</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="385">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="FW_Hebt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="O" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="FW_Senkt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="393">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="394">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="395">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="397">
+    <LineComment>
+      <Text>Korb wird entfernt</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="399">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="56">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_S_aussen" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="58">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="E_Belegt" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="405">
+    <StlToken Text="Assign" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="kein_Korb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="407">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Del" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="409">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="411">
+    <LineComment>
+      <Text>manuelles Löschen (Zeit)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="413">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="415">
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="ext_Delete" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="417">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Del" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="419">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="421">
+    <LineComment>
+      <Text>Automatisches Löschen (Zeit)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="423">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="425">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Auto_Delete" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="427">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="428">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="OUTA" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="434">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Wait" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="44">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="436">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_Befx" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="439">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="441">
+    <StlToken Text="NE_I" />
+  </StlStatement>
+  <StlStatement UId="442">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Wait" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="444">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Del_count" />
+      </Symbol>
+      <LineComment>
+        <Text>Wartezeit laden</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="447">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="Del_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="450">
+    <StlToken Text="BE" />
+  </StlStatement>
+  <StlStatement UId="451">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="452">
+    <LabelDeclaration>
+      <Label Name="Wait" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="Del_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="456">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="458">
+    <StlToken Text="LE_I" />
+  </StlStatement>
+  <StlStatement UId="459">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="Del" />
+      <LineComment>
+        <Text>Zeit abgelaufen</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="462">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Imp_1Hz" />
+      </Symbol>
+      <LineComment>
+        <Text>Sekundentakt</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="465">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="466">
+    <StlToken Text="CAC" />
+  </StlStatement>
+  <StlStatement UId="467">
+    <StlToken Text="DEC" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="469">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="Del_Count" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="472">
+    <StlToken Text="BE" />
+  </StlStatement>
+  <StlStatement UId="473">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="474">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="476">
+    <LineComment>
+      <Text>Löschvorgang</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="478">
+    <LineComment>
+      <Text>----------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="480">
+    <LabelDeclaration>
+      <Label Name="Del" />
+    </LabelDeclaration>
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="484">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="486">
+    <StlToken Text="EQ_I" />
+  </StlStatement>
+  <StlStatement UId="487">
+    <StlToken Text="O_BRACK" />
+  </StlStatement>
+  <StlStatement UId="488">
+    <StlToken Text="L" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_POS" />
+        <Component Name="POS" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="WT_Nr_lang" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="491">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="493">
+    <StlToken Text="EQ_D" />
+  </StlStatement>
+  <StlStatement UId="494">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Del_All" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="496">
+    <StlToken Text="BRACKET" />
+  </StlStatement>
+  <StlStatement UId="497">
+    <StlToken Text="BEC" />
+    <LineComment>
+      <Text>bereits gelöscht</Text>
+    </LineComment>
+  </StlStatement>
+  <StlStatement UId="499">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="500">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FC_WT_from_Pos" BlockType="FC">
+        <Token Text="," />
+        <LineComment>
+          <Text>Position bereinigen</Text>
+        </LineComment>
+        <Parameter Name="Pos_Nr" Section="Input" Type="USInt">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="send_DBEvt" Section="Input" Type="Bool">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Bool</ConstantType>
+              <ConstantValue>FALSE</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="load_ok" Section="Output" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Return" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WT_Nr" Section="InOut" Type="Byte">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="WT_Nr" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WT_Nr_lang" Section="InOut" Type="DWord">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="WT_Nr_lang" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="92">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="22">
+    <StlToken Text="AN" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Return" />
+      </Symbol>
+      <LineComment>
+        <Text>Ladevorgang mißlungen</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="513">
+    <StlToken Text="BEC" />
+  </StlStatement>
+  <StlStatement UId="46">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="48">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="WT_Nr" />
+      </Symbol>
+      <LineComment>
+        <Text>Warenträger-DB öffnen</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="54">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>100</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="64">
+    <StlToken Text="ADD_I" />
+  </StlStatement>
+  <StlStatement UId="65">
+    <StlToken Text="T" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="WT_DB" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="67">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="Address">
+      <Indirect Width="Block" Area="DB">
+        <Access Scope="LocalVariable">
+          <Symbol>
+            <Component Name="WT_DB" />
+          </Symbol>
+        </Access>
+      </Indirect>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="L" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="WT_Nr_lang" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="530">
+    <StlToken Text="T" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="DB_BE_Stand" />
+        <Component Name="Stand" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Stand_Nr" />
+            </Symbol>
+          </Access>
+        </Component>
+        <Component Name="last_WT" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="533">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="535">
+    <StlToken Text="EQ_D" />
+  </StlStatement>
+  <StlStatement UId="536">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="noEv" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="575">
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="Address">
+      <Indirect Width="Block" Area="DB">
+        <Access Scope="LocalVariable">
+          <Symbol>
+            <Component Name="WT_DB" />
+          </Symbol>
+        </Access>
+      </Indirect>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="578">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+      <LineComment>
+        <Text>Warenträger freigeben</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="581">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="DWord" BitOffset="48" />
+      <LineComment>
+        <Text>WT_Nr_lang</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="584">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="DWord" BitOffset="80" />
+      <LineComment>
+        <Text>Oberfläche</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="587">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="DWord" BitOffset="144" />
+      <LineComment>
+        <Text>Merkerfeld</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="590">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Word" BitOffset="128" />
+      <LineComment>
+        <Text>Technologie</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="593">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Byte" BitOffset="288" />
+      <LineComment>
+        <Text>End_Ziel_Pos</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="596">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Byte" BitOffset="296" />
+      <LineComment>
+        <Text>End_Ziel_Reihe</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="599">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="DWord" BitOffset="368" />
+      <LineComment>
+        <Text>Pointer</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="602">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="DWord" BitOffset="400" />
+      <LineComment>
+        <Text>SaveTime</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="620">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="642">
+    <LabelDeclaration>
+      <Label Name="noEv" />
+    </LabelDeclaration>
+    <StlToken Text="A" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="Del_All" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="645">
+    <StlToken Text="O" />
+    <Access Scope="LocalVariable">
+      <Symbol>
+        <Component Name="kein_Korb" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="647">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="All" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="649">
+    <LineComment>
+      <Text>------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="651">
+    <LineComment>
+      <Text>Restdaten zurückladen (teilweises Löschen)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="653">
+    <LineComment>
+      <Text>------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FC_WT_to_Pos" BlockType="FC">
+        <Parameter Name="Pos_Nr" Section="Input" Type="USInt">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Pos_Nr" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WT_Nr" Section="Input" Type="Byte">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="WT_Nr" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="BA_Auto" Section="Input" Type="Bool">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Bool</ConstantType>
+              <ConstantValue>TRUE</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="send_DBEvt" Section="Input" Type="Bool">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Bool</ConstantType>
+              <ConstantValue>FALSE</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="SimLoad" Section="Input" Type="Bool">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Bool</ConstantType>
+              <ConstantValue>FALSE</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="Copy_ok" Section="Output" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Return" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="664">
+    <StlToken Text="BE" />
+  </StlStatement>
+  <StlStatement UId="665">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="666">
+    <LineComment>
+      <Text>------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="668">
+    <LineComment>
+      <Text>Restdaten löschen (vollständiges Löschen)</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="670">
+    <LineComment>
+      <Text>------------------------------------------</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="672">
+    <LabelDeclaration>
+      <Label Name="All" />
+    </LabelDeclaration>
+    <StlToken Text="OPEN_DB" />
+    <Access Scope="Address">
+      <Indirect Width="Block" Area="DB">
+        <Access Scope="LocalVariable">
+          <Symbol>
+            <Component Name="WT_DB" />
+          </Symbol>
+        </Access>
+      </Indirect>
+      <LineComment>
+        <Text>WT bereinigen</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="677">
+    <StlToken Text="L" />
+    <Access Scope="LiteralConstant">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="61">
+    <StlToken Text="T" />
+    <Access Scope="Address">
+      <Address Area="DB" Type="Word" BitOffset="112" />
+      <LineComment>
+        <Text>"DB_WTx".Korb_Nr</Text>
+      </LineComment>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="682">
+    <StlToken Text="BE" />
+  </StlStatement>
+  <StlStatement UId="683">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>WTs werden gelöscht, wenn der Wagen abgezogen wird
+oder ein fertiger WT abgelegt wird.
+Ein WT wird nicht gelöscht, während der FW hebt/senkt oder der Belegtsensor
+ausfällt.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Löschen eines WT</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="12" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="13" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Be-/Entladestand</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

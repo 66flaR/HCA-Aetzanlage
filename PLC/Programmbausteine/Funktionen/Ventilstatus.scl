@@ -1,0 +1,57 @@
+﻿FUNCTION "Ventilstatus" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      SRM_auf : Bool;
+      SRM_zu : Bool;
+      A_Ventil : Bool;
+      Zeit : Time;
+   END_VAR
+
+   VAR_OUTPUT 
+      "Farbe HMI" : USInt;   // 0: geschlossen (grau) 1: geöffnet (grün) 2: Störung (rot)
+      Mld_TO_oeffnen : Bool;
+      Mld_TO_schliessen : Bool;
+   END_VAR
+
+   VAR_IN_OUT 
+      TO_oeffnen {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      TO_schliessen {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      Mld_Sensorfehler : Bool;
+   END_VAR
+
+   VAR CONSTANT 
+      grau : USInt;
+      grün : USInt := 1;
+      rot : USInt := 2;
+   END_VAR
+
+
+BEGIN
+	// Beide an
+	IF #SRM_auf AND #SRM_zu THEN
+	    #Mld_Sensorfehler := TRUE;
+	ELSIF "DB_ANLAGE".IN.Quitt_Err THEN
+	    #Mld_Sensorfehler := FALSE;
+	END_IF;
+	
+	// Zeitüberschreitung öffnen
+	#TO_oeffnen(IN := #A_Ventil AND NOT #SRM_auf,
+	            PT:= #Zeit,
+	            Q=> #Mld_TO_oeffnen);
+	
+	// Zeitüberschreitung schließen
+	#TO_schliessen(IN := NOT #A_Ventil AND NOT #SRM_zu,
+	            PT := #Zeit,
+	            Q => #Mld_TO_schliessen);
+	
+	//--> Visu
+	IF #Mld_TO_oeffnen OR #Mld_TO_schliessen OR #Mld_Sensorfehler THEN
+	    #"Farbe HMI" := #rot;
+	ELSIF #A_Ventil THEN
+	    #"Farbe HMI" := #grün;
+	ELSE
+	    #"Farbe HMI" := #grau;
+	END_IF;
+END_FUNCTION
+

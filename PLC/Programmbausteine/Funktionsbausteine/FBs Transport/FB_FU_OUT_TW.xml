@@ -1,0 +1,987 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V19" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Req_High" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Anforderung Vorwärts/Heben</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Req_Low" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Anforderun Rückwärts/Senken</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut">
+    <Member Name="Reglersperre" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Freigabe_Stopp" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Freigabe_Halt" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Break_ok" Datatype="Bool" />
+    <Member Name="SollSpeed" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Geschwindigkeit Fahren in %</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Ist_Speed" Datatype="Int" Remanence="Retain" />
+    <Member Name="PAW_Speed" Datatype="Int" Remanence="Retain" />
+    <Member Name="PEW_Speed" Datatype="Int" Remanence="Retain" />
+  </Section>
+  <Section Name="Static">
+    <Member Name="maxSpeed" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">maximale Ausgabe (entspricht 100%)</MultiLanguageText>
+      </Comment>
+      <StartValue>7500.0</StartValue>
+    </Member>
+    <Member Name="Faktor" Datatype="Real" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <StartValue>100.0</StartValue>
+    </Member>
+    <Member Name="minSpeed" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Freigabe nehmen unterhalb diesen Wertes im PEW</MultiLanguageText>
+      </Comment>
+      <StartValue>750</StartValue>
+    </Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="TempSpeed" Datatype="Real" />
+    <Member Name="Faktor_Sim" Datatype="Real" />
+    <Member Name="Delta" Datatype="Int" />
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <IsIECCheckEnabled>true</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>FB_FU_OUT_TW</Name>
+      <Namespace />
+      <Number>12</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="REGION" UId="21" />
+  <Blank UId="22" />
+  <Text UId="23">Istwert erfassen</Text>
+  <NewLine UId="24" />
+  <Blank Num="4" UId="25" />
+  <LineComment UId="26">
+    <Text UId="27"> Statement section REGION</Text>
+  </LineComment>
+  <NewLine UId="28" />
+  <Blank Num="4" UId="29" />
+  <Access Scope="LocalVariable" UId="30">
+    <Symbol UId="31">
+      <Component Name="Ist_Speed" UId="32" />
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="33" />
+  <Access Scope="Call" UId="34">
+    <Instruction Name="REAL_TO_INT" UId="35">
+      <Token Text="(" UId="36" />
+      <NamelessParameter UId="37">
+        <Token Text="(" UId="38" />
+        <Access Scope="Call" UId="39">
+          <Instruction Name="INT_TO_REAL" UId="40">
+            <Token Text="(" UId="41" />
+            <NamelessParameter UId="42">
+              <Access Scope="LocalVariable" UId="43">
+                <Symbol UId="44">
+                  <Component Name="PEW_Speed" UId="45" />
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="47" />
+          </Instruction>
+        </Access>
+        <Token Text="/" UId="48" />
+        <Access Scope="LocalVariable" UId="49">
+          <Symbol UId="50">
+            <Component Name="maxSpeed" UId="51" />
+          </Symbol>
+        </Access>
+        <Token Text=")" UId="52" />
+        <Blank UId="53" />
+        <Token Text="*" UId="54" />
+        <Blank UId="55" />
+        <Access Scope="LocalVariable" UId="56">
+          <Symbol UId="57">
+            <Component Name="Faktor" UId="58" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="60" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="61" />
+  <NewLine UId="62" />
+  <Token Text="END_REGION" UId="63" />
+  <NewLine UId="64" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Istwert erfassen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="REGION" UId="21" />
+  <Blank UId="22" />
+  <Text UId="23">Ausgabe Speed</Text>
+  <NewLine UId="24" />
+  <Blank Num="4" UId="25" />
+  <NewLine UId="26" />
+  <Blank Num="4" UId="27" />
+  <LineComment UId="28">
+    <Text UId="29">Not-Halt --&gt; sofort aus</Text>
+  </LineComment>
+  <NewLine UId="30" />
+  <Blank Num="4" UId="31" />
+  <Token Text="IF" UId="32" />
+  <Blank UId="33" />
+  <Access Scope="GlobalVariable" UId="34">
+    <Symbol UId="35">
+      <Component Name="DB_ANLAGE" UId="36">
+        <BooleanAttribute Name="HasQuotes" UId="37">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="38" />
+      <Component Name="BA" UId="39" />
+      <Token Text="." UId="40" />
+      <Component Name="Not_Aus" UId="41" />
+    </Symbol>
+  </Access>
+  <Blank UId="42" />
+  <Token Text="THEN" UId="43" />
+  <NewLine UId="44" />
+  <Blank Num="8" UId="45" />
+  <Access Scope="LocalVariable" UId="46">
+    <Symbol UId="47">
+      <Component Name="Reglersperre" UId="48" />
+    </Symbol>
+  </Access>
+  <Blank UId="49" />
+  <Token Text=":=" UId="50" />
+  <Blank UId="51" />
+  <Access Scope="LiteralConstant" UId="52">
+    <Constant UId="53">
+      <ConstantValue UId="55">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="56" />
+  <NewLine UId="57" />
+  <Blank Num="8" UId="58" />
+  <Access Scope="LocalVariable" UId="59">
+    <Symbol UId="60">
+      <Component Name="Freigabe_Stopp" UId="61" />
+    </Symbol>
+  </Access>
+  <Blank UId="62" />
+  <Token Text=":=" UId="63" />
+  <Blank UId="64" />
+  <Access Scope="LiteralConstant" UId="65">
+    <Constant UId="66">
+      <ConstantValue UId="68">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="69" />
+  <NewLine UId="70" />
+  <Blank Num="8" UId="71" />
+  <Access Scope="LocalVariable" UId="72">
+    <Symbol UId="73">
+      <Component Name="PAW_Speed" UId="74" />
+    </Symbol>
+  </Access>
+  <Blank UId="75" />
+  <Token Text=":=" UId="76" />
+  <Blank UId="77" />
+  <Access Scope="LiteralConstant" UId="78">
+    <Constant UId="79">
+      <ConstantValue UId="81">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="82" />
+  <NewLine UId="83" />
+  <Blank Num="8" UId="84" />
+  <NewLine UId="85" />
+  <Blank Num="8" UId="86" />
+  <LineComment UId="87">
+    <Text UId="88">vorwärts/hoch positive Ausgabe    </Text>
+  </LineComment>
+  <NewLine UId="89" />
+  <Blank Num="4" UId="90" />
+  <Token Text="ELSIF" UId="91" />
+  <Blank UId="92" />
+  <Access Scope="LocalVariable" UId="93">
+    <Symbol UId="94">
+      <Component Name="Req_High" UId="95" />
+    </Symbol>
+  </Access>
+  <Blank UId="96" />
+  <Token Text="AND" UId="97" />
+  <Blank UId="98" />
+  <Access Scope="LocalVariable" UId="99">
+    <Symbol UId="100">
+      <Component Name="SollSpeed" UId="101" />
+    </Symbol>
+  </Access>
+  <Blank UId="102" />
+  <Token Text="&lt;&gt;" UId="103" />
+  <Blank UId="104" />
+  <Access Scope="LiteralConstant" UId="105">
+    <Constant UId="106">
+      <ConstantValue UId="108">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="109" />
+  <Token Text="THEN" UId="110" />
+  <NewLine UId="111" />
+  <Blank Num="8" UId="112" />
+  <Access Scope="LocalVariable" UId="113">
+    <Symbol UId="114">
+      <Component Name="Reglersperre" UId="115" />
+    </Symbol>
+  </Access>
+  <Blank UId="116" />
+  <Token Text=":=" UId="117" />
+  <Blank UId="118" />
+  <Access Scope="LiteralConstant" UId="119">
+    <Constant UId="120">
+      <ConstantValue UId="122">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="123" />
+  <NewLine UId="124" />
+  <Blank Num="8" UId="125" />
+  <Access Scope="LocalVariable" UId="126">
+    <Symbol UId="127">
+      <Component Name="Freigabe_Stopp" UId="128" />
+    </Symbol>
+  </Access>
+  <Blank UId="129" />
+  <Token Text=":=" UId="130" />
+  <Blank UId="131" />
+  <Access Scope="LiteralConstant" UId="132">
+    <Constant UId="133">
+      <ConstantValue UId="135">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="136" />
+  <NewLine UId="137" />
+  <Blank Num="8" UId="138" />
+  <Access Scope="LocalVariable" UId="139">
+    <Symbol UId="140">
+      <Component Name="PAW_Speed" UId="141" />
+    </Symbol>
+  </Access>
+  <Blank UId="142" />
+  <Token Text=":=" UId="143" />
+  <Blank UId="144" />
+  <Access Scope="Call" UId="145">
+    <Instruction Name="REAL_TO_INT" UId="146">
+      <Token Text="(" UId="147" />
+      <NamelessParameter UId="148">
+        <Access Scope="Call" UId="149">
+          <Instruction Name="INT_TO_REAL" UId="150">
+            <Token Text="(" UId="151" />
+            <NamelessParameter UId="152">
+              <Access Scope="LocalVariable" UId="153">
+                <Symbol UId="154">
+                  <Component Name="SollSpeed" UId="155" />
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="157" />
+          </Instruction>
+        </Access>
+        <Blank UId="158" />
+        <Token Text="/" UId="159" />
+        <Blank UId="160" />
+        <Access Scope="LocalVariable" UId="161">
+          <Symbol UId="162">
+            <Component Name="Faktor" UId="163" />
+          </Symbol>
+        </Access>
+        <Blank UId="164" />
+        <Token Text="*" UId="165" />
+        <Blank UId="166" />
+        <Access Scope="LocalVariable" UId="167">
+          <Symbol UId="168">
+            <Component Name="maxSpeed" UId="169" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="171" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="172" />
+  <NewLine UId="173" />
+  <Blank Num="8" UId="174" />
+  <NewLine UId="175" />
+  <Blank Num="8" UId="176" />
+  <LineComment UId="177">
+    <Text UId="178">rückwärts/runter negative Ausgabe    </Text>
+  </LineComment>
+  <NewLine UId="179" />
+  <Blank Num="4" UId="180" />
+  <Token Text="ELSIF" UId="181" />
+  <Blank UId="182" />
+  <Access Scope="LocalVariable" UId="183">
+    <Symbol UId="184">
+      <Component Name="Req_Low" UId="185" />
+    </Symbol>
+  </Access>
+  <Blank UId="186" />
+  <Token Text="AND" UId="187" />
+  <Blank UId="188" />
+  <Access Scope="LocalVariable" UId="189">
+    <Symbol UId="190">
+      <Component Name="SollSpeed" UId="191" />
+    </Symbol>
+  </Access>
+  <Blank UId="192" />
+  <Token Text="&lt;&gt;" UId="193" />
+  <Blank UId="194" />
+  <Access Scope="LiteralConstant" UId="195">
+    <Constant UId="196">
+      <ConstantValue UId="198">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="199" />
+  <Token Text="THEN" UId="200" />
+  <NewLine UId="201" />
+  <Blank Num="8" UId="202" />
+  <Access Scope="LocalVariable" UId="203">
+    <Symbol UId="204">
+      <Component Name="Reglersperre" UId="205" />
+    </Symbol>
+  </Access>
+  <Blank UId="206" />
+  <Token Text=":=" UId="207" />
+  <Blank UId="208" />
+  <Access Scope="LiteralConstant" UId="209">
+    <Constant UId="210">
+      <ConstantValue UId="212">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="213" />
+  <NewLine UId="214" />
+  <Blank Num="8" UId="215" />
+  <Access Scope="LocalVariable" UId="216">
+    <Symbol UId="217">
+      <Component Name="Freigabe_Stopp" UId="218" />
+    </Symbol>
+  </Access>
+  <Blank UId="219" />
+  <Token Text=":=" UId="220" />
+  <Blank UId="221" />
+  <Access Scope="LiteralConstant" UId="222">
+    <Constant UId="223">
+      <ConstantValue UId="225">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="226" />
+  <NewLine UId="227" />
+  <Blank Num="8" UId="228" />
+  <Access Scope="LocalVariable" UId="229">
+    <Symbol UId="230">
+      <Component Name="PAW_Speed" UId="231" />
+    </Symbol>
+  </Access>
+  <Blank UId="232" />
+  <Token Text=":=" UId="233" />
+  <Blank UId="234" />
+  <Access Scope="Call" UId="235">
+    <Instruction Name="REAL_TO_INT" UId="236">
+      <Token Text="(" UId="237" />
+      <NamelessParameter UId="238">
+        <Access Scope="Call" UId="239">
+          <Instruction Name="INT_TO_REAL" UId="240">
+            <Token Text="(" UId="241" />
+            <NamelessParameter UId="242">
+              <Access Scope="LocalVariable" UId="243">
+                <Symbol UId="244">
+                  <Component Name="SollSpeed" UId="245" />
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="247" />
+          </Instruction>
+        </Access>
+        <Blank UId="248" />
+        <Token Text="/" UId="249" />
+        <Blank UId="250" />
+        <Access Scope="LocalVariable" UId="251">
+          <Symbol UId="252">
+            <Component Name="Faktor" UId="253" />
+          </Symbol>
+        </Access>
+        <Blank UId="254" />
+        <Token Text="*" UId="255" />
+        <Blank UId="256" />
+        <Access Scope="LocalVariable" UId="257">
+          <Symbol UId="258">
+            <Component Name="maxSpeed" UId="259" />
+          </Symbol>
+        </Access>
+        <Blank UId="260" />
+        <Token Text="*" UId="261" />
+        <Blank UId="262" />
+        <Access Scope="LiteralConstant" UId="263">
+          <Constant UId="264">
+            <ConstantValue UId="266">-1.0</ConstantValue>
+          </Constant>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="268" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="269" />
+  <NewLine UId="270" />
+  <Blank Num="8" UId="271" />
+  <NewLine UId="272" />
+  <Blank Num="8" UId="273" />
+  <LineComment UId="274">
+    <Text UId="275">sonst aus    </Text>
+  </LineComment>
+  <NewLine UId="276" />
+  <Blank Num="4" UId="277" />
+  <Token Text="ELSE" UId="278" />
+  <NewLine UId="279" />
+  <Blank Num="8" UId="280" />
+  <Access Scope="LocalVariable" UId="281">
+    <Symbol UId="282">
+      <Component Name="Freigabe_Stopp" UId="283" />
+    </Symbol>
+  </Access>
+  <Blank UId="284" />
+  <Token Text=":=" UId="285" />
+  <Blank UId="286" />
+  <Access Scope="LocalVariable" UId="287">
+    <Symbol UId="288">
+      <Component Name="PEW_Speed" UId="289" />
+    </Symbol>
+  </Access>
+  <Blank UId="290" />
+  <Token Text="&gt;=" UId="291" />
+  <Blank UId="292" />
+  <Access Scope="LocalVariable" UId="293">
+    <Symbol UId="294">
+      <Component Name="minSpeed" UId="295" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="296" />
+  <NewLine UId="297" />
+  <Blank Num="8" UId="298" />
+  <Access Scope="LocalVariable" UId="299">
+    <Symbol UId="300">
+      <Component Name="Reglersperre" UId="301" />
+    </Symbol>
+  </Access>
+  <Blank UId="302" />
+  <Token Text=":=" UId="303" />
+  <Blank UId="304" />
+  <Access Scope="LiteralConstant" UId="305">
+    <Constant UId="306">
+      <ConstantValue UId="308">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="309" />
+  <NewLine UId="310" />
+  <Blank Num="8" UId="311" />
+  <Access Scope="LocalVariable" UId="312">
+    <Symbol UId="313">
+      <Component Name="PAW_Speed" UId="314" />
+    </Symbol>
+  </Access>
+  <Blank UId="315" />
+  <Token Text=":=" UId="316" />
+  <Blank UId="317" />
+  <Access Scope="LiteralConstant" UId="318">
+    <Constant UId="319">
+      <ConstantValue UId="321">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="322" />
+  <NewLine UId="323" />
+  <Blank Num="4" UId="324" />
+  <Token Text="END_IF" UId="325" />
+  <Token Text=";" UId="326" />
+  <NewLine UId="327" />
+  <Blank Num="4" UId="328" />
+  <NewLine UId="329" />
+  <Blank Num="4" UId="330" />
+  <Access Scope="LocalVariable" UId="331">
+    <Symbol UId="332">
+      <Component Name="Freigabe_Halt" UId="333" />
+    </Symbol>
+  </Access>
+  <Blank UId="334" />
+  <Token Text=":=" UId="335" />
+  <Blank UId="336" />
+  <Access Scope="LocalVariable" UId="337">
+    <Symbol UId="338">
+      <Component Name="Freigabe_Stopp" UId="339" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="340" />
+  <NewLine UId="341" />
+  <Blank Num="4" UId="342" />
+  <Access Scope="LocalVariable" UId="343">
+    <Symbol UId="344">
+      <Component Name="Break_ok" UId="345" />
+    </Symbol>
+  </Access>
+  <Blank UId="346" />
+  <Token Text=":=" UId="347" />
+  <Blank UId="348" />
+  <Token Text="NOT" UId="349" />
+  <Blank UId="350" />
+  <Access Scope="LocalVariable" UId="351">
+    <Symbol UId="352">
+      <Component Name="Freigabe_Stopp" UId="353" />
+    </Symbol>
+  </Access>
+  <Blank UId="354" />
+  <Token Text="AND" UId="355" />
+  <Blank UId="356" />
+  <Access Scope="LocalVariable" UId="357">
+    <Symbol UId="358">
+      <Component Name="Ist_Speed" UId="359" />
+    </Symbol>
+  </Access>
+  <Token Text="=" UId="360" />
+  <Access Scope="LiteralConstant" UId="361">
+    <Constant UId="362">
+      <ConstantValue UId="364">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="365" />
+  <NewLine UId="366" />
+  <Blank Num="4" UId="367" />
+  <NewLine UId="368" />
+  <Token Text="END_REGION" UId="369" />
+  <NewLine UId="370" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Ausgabe Speed</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="REGION" UId="21" />
+  <Blank UId="22" />
+  <Text UId="23">Simulation</Text>
+  <NewLine UId="24" />
+  <Blank Num="4" UId="25" />
+  <NewLine UId="26" />
+  <Blank Num="4" UId="27" />
+  <Token Text="IF" UId="28" />
+  <Blank UId="29" />
+  <Access Scope="GlobalVariable" UId="30">
+    <Symbol UId="31">
+      <Component Name="DB_ANLAGE" UId="32">
+        <BooleanAttribute Name="HasQuotes" UId="33">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="34" />
+      <Component Name="BA" UId="35" />
+      <Token Text="." UId="36" />
+      <Component Name="Simulation" UId="37" />
+    </Symbol>
+  </Access>
+  <Blank UId="38" />
+  <Token Text="THEN" UId="39" />
+  <NewLine UId="40" />
+  <Blank Num="8" UId="41" />
+  <NewLine UId="42" />
+  <Blank Num="8" UId="43" />
+  <LineComment UId="44">
+    <Text UId="45">Abfahrrampe berechnen</Text>
+  </LineComment>
+  <NewLine UId="46" />
+  <Blank Num="8" UId="47" />
+  <Access Scope="LocalVariable" UId="48">
+    <Symbol UId="49">
+      <Component Name="Faktor_Sim" UId="50" />
+    </Symbol>
+  </Access>
+  <Blank UId="51" />
+  <Token Text=":=" UId="52" />
+  <Blank UId="53" />
+  <Access Scope="LiteralConstant" UId="54">
+    <Constant UId="55">
+      <ConstantValue UId="57">15.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="58" />
+  <Blank UId="59" />
+  <LineComment UId="60">
+    <Text UId="61">500ms von 7500 auf 0 (7500.0/500.0)</Text>
+  </LineComment>
+  <NewLine UId="62" />
+  <Blank Num="8" UId="63" />
+  <LineComment UId="64">
+    <Text UId="65">Korrekturwert berechnen</Text>
+  </LineComment>
+  <NewLine UId="66" />
+  <Blank Num="8" UId="67" />
+  <Access Scope="LocalVariable" UId="68">
+    <Symbol UId="69">
+      <Component Name="Delta" UId="70" />
+    </Symbol>
+  </Access>
+  <Blank UId="71" />
+  <Token Text=":=" UId="72" />
+  <Blank UId="73" />
+  <Access Scope="Call" UId="74">
+    <Instruction Name="REAL_TO_INT" UId="75">
+      <Token Text="(" UId="76" />
+      <NamelessParameter UId="77">
+        <Access Scope="LocalVariable" UId="78">
+          <Symbol UId="79">
+            <Component Name="Faktor_Sim" UId="80" />
+          </Symbol>
+        </Access>
+        <Blank UId="81" />
+        <Token Text="*" UId="82" />
+        <Blank UId="83" />
+        <Access Scope="Call" UId="84">
+          <Instruction Name="INT_TO_REAL" UId="85">
+            <Token Text="(" UId="86" />
+            <NamelessParameter UId="87">
+              <Access Scope="GlobalVariable" UId="88">
+                <Symbol UId="89">
+                  <Component Name="DI_FW_MANAGER" UId="90">
+                    <BooleanAttribute Name="HasQuotes" UId="91">true</BooleanAttribute>
+                  </Component>
+                  <Token Text="." UId="92" />
+                  <Component Name="akt_CT" UId="93" />
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="95" />
+          </Instruction>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="97" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="98" />
+  <NewLine UId="99" />
+  <Blank Num="8" UId="100" />
+  <NewLine UId="101" />
+  <Blank Num="8" UId="102" />
+  <LineComment UId="103">
+    <Text UId="104">Geschwindigkeit reduzieren</Text>
+  </LineComment>
+  <NewLine UId="105" />
+  <Blank Num="8" UId="106" />
+  <Token Text="IF" UId="107" />
+  <Blank UId="108" />
+  <Access Scope="LocalVariable" UId="109">
+    <Symbol UId="110">
+      <Component Name="PEW_Speed" UId="111" />
+    </Symbol>
+  </Access>
+  <Blank UId="112" />
+  <Token Text="&gt;" UId="113" />
+  <Blank UId="114" />
+  <Access Scope="LocalVariable" UId="115">
+    <Symbol UId="116">
+      <Component Name="PAW_Speed" UId="117" />
+    </Symbol>
+  </Access>
+  <Blank UId="118" />
+  <Token Text="THEN" UId="119" />
+  <NewLine UId="120" />
+  <Blank Num="12" UId="121" />
+  <Access Scope="LocalVariable" UId="122">
+    <Symbol UId="123">
+      <Component Name="PEW_Speed" UId="124" />
+    </Symbol>
+  </Access>
+  <Blank UId="125" />
+  <Token Text=":=" UId="126" />
+  <Blank UId="127" />
+  <Access Scope="LocalVariable" UId="128">
+    <Symbol UId="129">
+      <Component Name="PEW_Speed" UId="130" />
+    </Symbol>
+  </Access>
+  <Blank UId="131" />
+  <Token Text="-" UId="132" />
+  <Blank UId="133" />
+  <Access Scope="LocalVariable" UId="134">
+    <Symbol UId="135">
+      <Component Name="Delta" UId="136" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="137" />
+  <NewLine UId="138" />
+  <Blank Num="12" UId="139" />
+  <Token Text="IF" UId="140" />
+  <Blank UId="141" />
+  <Access Scope="LocalVariable" UId="142">
+    <Symbol UId="143">
+      <Component Name="PEW_Speed" UId="144" />
+    </Symbol>
+  </Access>
+  <Blank UId="145" />
+  <Token Text="&lt;=" UId="146" />
+  <Blank UId="147" />
+  <Access Scope="LocalVariable" UId="148">
+    <Symbol UId="149">
+      <Component Name="PAW_Speed" UId="150" />
+    </Symbol>
+  </Access>
+  <Blank UId="151" />
+  <Token Text="THEN" UId="152" />
+  <NewLine UId="153" />
+  <Blank Num="16" UId="154" />
+  <Access Scope="LocalVariable" UId="155">
+    <Symbol UId="156">
+      <Component Name="PEW_Speed" UId="157" />
+    </Symbol>
+  </Access>
+  <Blank UId="158" />
+  <Token Text=":=" UId="159" />
+  <Blank UId="160" />
+  <Access Scope="LocalVariable" UId="161">
+    <Symbol UId="162">
+      <Component Name="PAW_Speed" UId="163" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="164" />
+  <NewLine UId="165" />
+  <Blank Num="12" UId="166" />
+  <Token Text="END_IF" UId="167" />
+  <Token Text=";" UId="168" />
+  <NewLine UId="169" />
+  <Blank Num="12" UId="170" />
+  <NewLine UId="171" />
+  <Blank Num="12" UId="172" />
+  <LineComment UId="173">
+    <Text UId="174">Geschwindigkeit erhöhen</Text>
+  </LineComment>
+  <NewLine UId="175" />
+  <Blank Num="8" UId="176" />
+  <Token Text="ELSIF" UId="177" />
+  <Blank UId="178" />
+  <Access Scope="LocalVariable" UId="179">
+    <Symbol UId="180">
+      <Component Name="PEW_Speed" UId="181" />
+    </Symbol>
+  </Access>
+  <Blank UId="182" />
+  <Token Text="&lt;" UId="183" />
+  <Blank UId="184" />
+  <Access Scope="LocalVariable" UId="185">
+    <Symbol UId="186">
+      <Component Name="PAW_Speed" UId="187" />
+    </Symbol>
+  </Access>
+  <Blank UId="188" />
+  <Token Text="THEN" UId="189" />
+  <NewLine UId="190" />
+  <Blank Num="12" UId="191" />
+  <Access Scope="LocalVariable" UId="192">
+    <Symbol UId="193">
+      <Component Name="PEW_Speed" UId="194" />
+    </Symbol>
+  </Access>
+  <Blank UId="195" />
+  <Token Text=":=" UId="196" />
+  <Blank UId="197" />
+  <Access Scope="LocalVariable" UId="198">
+    <Symbol UId="199">
+      <Component Name="PEW_Speed" UId="200" />
+    </Symbol>
+  </Access>
+  <Blank UId="201" />
+  <Token Text="+" UId="202" />
+  <Blank UId="203" />
+  <Access Scope="LocalVariable" UId="204">
+    <Symbol UId="205">
+      <Component Name="Delta" UId="206" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="207" />
+  <NewLine UId="208" />
+  <Blank Num="12" UId="209" />
+  <Token Text="IF" UId="210" />
+  <Blank UId="211" />
+  <Access Scope="LocalVariable" UId="212">
+    <Symbol UId="213">
+      <Component Name="PEW_Speed" UId="214" />
+    </Symbol>
+  </Access>
+  <Blank UId="215" />
+  <Token Text="&gt;=" UId="216" />
+  <Blank UId="217" />
+  <Access Scope="LocalVariable" UId="218">
+    <Symbol UId="219">
+      <Component Name="PAW_Speed" UId="220" />
+    </Symbol>
+  </Access>
+  <Blank UId="221" />
+  <Token Text="THEN" UId="222" />
+  <NewLine UId="223" />
+  <Blank Num="16" UId="224" />
+  <Access Scope="LocalVariable" UId="225">
+    <Symbol UId="226">
+      <Component Name="PEW_Speed" UId="227" />
+    </Symbol>
+  </Access>
+  <Blank UId="228" />
+  <Token Text=":=" UId="229" />
+  <Blank UId="230" />
+  <Access Scope="LocalVariable" UId="231">
+    <Symbol UId="232">
+      <Component Name="PAW_Speed" UId="233" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="234" />
+  <NewLine UId="235" />
+  <Blank Num="12" UId="236" />
+  <Token Text="END_IF" UId="237" />
+  <Token Text=";" UId="238" />
+  <NewLine UId="239" />
+  <Blank Num="12" UId="240" />
+  <NewLine UId="241" />
+  <Blank Num="8" UId="242" />
+  <Token Text="ELSE" UId="243" />
+  <NewLine UId="244" />
+  <Blank Num="12" UId="245" />
+  <Access Scope="LocalVariable" UId="246">
+    <Symbol UId="247">
+      <Component Name="PEW_Speed" UId="248" />
+    </Symbol>
+  </Access>
+  <Blank UId="249" />
+  <Token Text=":=" UId="250" />
+  <Blank UId="251" />
+  <Access Scope="LocalVariable" UId="252">
+    <Symbol UId="253">
+      <Component Name="PAW_Speed" UId="254" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="255" />
+  <NewLine UId="256" />
+  <Blank Num="8" UId="257" />
+  <Token Text="END_IF" UId="258" />
+  <Token Text=";" UId="259" />
+  <Blank UId="260" />
+  <NewLine UId="261" />
+  <Blank Num="8" UId="262" />
+  <NewLine UId="263" />
+  <Blank Num="4" UId="264" />
+  <Token Text="END_IF" UId="265" />
+  <Token Text=";" UId="266" />
+  <NewLine UId="267" />
+  <Token Text="END_REGION" UId="268" />
+  <NewLine UId="269" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Simulation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="12" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="13" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Ausgabe Einzel-FU</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

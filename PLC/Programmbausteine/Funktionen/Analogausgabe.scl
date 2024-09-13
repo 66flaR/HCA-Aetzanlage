@@ -1,0 +1,30 @@
+﻿FUNCTION "Analogausgabe" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_Value : Real;   // zu wandelnde Größe
+      X_MIN : Real;
+      X_MAX : Real;
+      Y_UGR : Real;
+      Y_OGR : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      Output_Value : Int;
+   END_VAR
+
+   VAR_TEMP 
+      Range : Real;
+   END_VAR
+
+
+BEGIN
+	#Range := #X_MAX - #X_MIN;
+	IF #Range = 0.0 THEN
+	    #Output_Value := 0;
+	ELSE
+	    #Output_Value := UINT_TO_INT(ROUND_UINT(((#Input_Value - #X_MIN)* #Y_OGR / #Range ) + ((#X_MAX - #Input_Value) * #Y_UGR / #Range )));
+	END_IF;
+	 
+END_FUNCTION
+
