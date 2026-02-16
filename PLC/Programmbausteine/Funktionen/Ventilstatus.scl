@@ -31,6 +31,7 @@ BEGIN
 	// Beide an
 	IF #SRM_auf AND #SRM_zu THEN
 	    #Mld_Sensorfehler := TRUE;
+	// Keine automatische Quittierung    
 	ELSIF "DB_ANLAGE".IN.Quitt_Err THEN
 	    #Mld_Sensorfehler := FALSE;
 	END_IF;
