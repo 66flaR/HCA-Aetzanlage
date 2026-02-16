@@ -12561,7 +12561,7 @@
       <Component Name="Wartung" UId="427" />
     </Symbol>
   </Access>
-  <Blank Num="2" UId="428" />
+  <Blank UId="428" />
   <Token Text="OR" UId="429" />
   <Blank UId="430" />
   <Token Text="NOT" UId="431" />
